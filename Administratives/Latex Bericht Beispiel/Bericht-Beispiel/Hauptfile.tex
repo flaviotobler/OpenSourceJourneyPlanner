@@ -1,0 +1,65 @@
+\documentclass[a4paper,12pt]{scrartcl}
+\usepackage[left= 2.5cm,right = 2cm, bottom = 4 cm, top = 2.5cm]{geometry}
+
+
+% Standard Packages
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\sisetup{detect-weight=true, detect-family=true}
+\graphicspath{{img/}}
+\usepackage{amsmath}
+% nicht einrücken nach Absatz
+\setlength{\parindent}{0pt}
+
+% ============= Kopf- und Fußzeile =============
+\pagestyle{fancy}
+%
+\lhead{\thepage}
+\chead{}
+\rhead{\slshape \leftmark}
+%%
+\lfoot{}
+\cfoot{}
+\rfoot{}
+%%
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\begin{document}
+
+\include{01_titel}
+\newpage
+\pagenumbering{Roman}
+\newpage
+\include{02_danksagungen}
+\include{03_zusammenfassung}
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\newpage
+\pagestyle{fancy}
+ \include{04_kapitel_1}
+
+ \include{05_kapitel_2}
+
+ \include{06_kapitel_3}
+
+\include{07_kapitel_4}
+
+\include{08_kapitel_5}
+
+\include{09_kapitel_6}
+
+\newpage
+\listoffigures
+\include{literatur}
+
+\include{10_eidesstattliche_erklaerung}
+
+
+\end{document}

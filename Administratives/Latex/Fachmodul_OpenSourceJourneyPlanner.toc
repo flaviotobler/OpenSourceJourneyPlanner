@@ -1,0 +1,14 @@
+\select@language {ngerman}
+\contentsline {section}{\numberline {1}Algorithmen}{2}
+\contentsline {subsection}{\numberline {1.1}Graph Basierte Algorithmen}{2}
+\contentsline {subsubsection}{\numberline {1.1.1}Dijkstra}{2}
+\contentsline {subsubsection}{\numberline {1.1.2}A*}{2}
+\contentsline {subsubsection}{\numberline {1.1.3}Bellman-Ford}{2}
+\contentsline {subsection}{\numberline {1.2}Non Graph Basierte Algorithmen}{3}
+\contentsline {subsubsection}{\numberline {1.2.1}RAPTOR}{3}
+\contentsline {subsubsection}{\numberline {1.2.2}Connection Scan Algorithm}{3}
+\contentsline {subsection}{\numberline {1.3}Transfer Pattern}{4}
+\contentsline {section}{\numberline {2}Programme}{6}
+\contentsline {subsection}{\numberline {2.1}Traintickets.to}{6}
+\contentsline {subsection}{\numberline {2.2}Open Trip Planner}{6}
+\contentsline {subsection}{\numberline {2.3}R5}{7}

@@ -1,0 +1,30 @@
+\ifglsentryexists{Node}{}%
+{%
+\gls@defglossaryentry{Node}%
+{%
+name={Node},%
+sort={Node},%
+type={main},%
+first={Node},%
+firstplural={Nodes},%
+text={Node},%
+plural={Nodes},%
+description={testtest},%
+descriptionplural={testtest},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

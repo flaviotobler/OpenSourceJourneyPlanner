@@ -1,0 +1,54 @@
+\documentclass[a4paper,12pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{tikz}
+\usepackage{cite}
+\usepackage{glossaries}
+\graphicspath{{img/}}
+
+\makeglossary
+\newglossaryentry{Node}
+{
+	name={Node},
+	description={testtest},
+} 
+
+\begin{document}
+	
+	\include{titel}
+	\newpage
+	\pagenumbering{Roman}
+	\newpage
+	\include{abstract}
+	\newpage
+	\tableofcontents
+	\newpage
+	\pagenumbering{arabic}
+	\newpage
+	\printglossaries
+	\newpage
+	
+	\include{Einfuehrung}
+	
+	\include{Daten}
+	
+	\include{Algorithmen}
+	
+	\include{Programme}
+	
+	\include{Erkenntnisse}
+	
+	\include{AufgabenstellungBA}
+	
+	\newpage
+	\listoffigures
+	\include{literatur}
+	
+
+	
+	
+	
+	
+	
+\end{document}

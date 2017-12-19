@@ -1,0 +1,25 @@
+\begin{thebibliography}{1}
+
+\bibitem{DBLP:journals/corr/DibbeltPSW17}
+Julian Dibbelt, Thomas Pajor, Ben Strasser, and Dorothea Wagner.
+\newblock Connection scan algorithm.
+\newblock {\em CoRR}, abs/1703.05997, 2017.
+
+\bibitem{LinusNorton}
+Linus norton personal description.
+
+\bibitem{assertis}
+Assertis - {Rail} ticketing for {Online}. {Mobile}. {Digital}., December 2017.
+\newblock https://assertis.co.uk/.
+
+\bibitem{noauthor_so_nodate}
+So you want to build a journey planner.
+
+\bibitem{testus}
+journey-planner: {GTFS} based journey planner, December 2017.
+\newblock original-date: 2017-12-11T18:36:53Z.
+
+\bibitem{noauthor_train_nodate}
+Train {Tickets}, December 2017.
+
+\end{thebibliography}

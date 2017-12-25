@@ -12,3 +12,4 @@
 \contentsline {subsection}{\numberline {2.1}Traintickets.to}{6}
 \contentsline {subsection}{\numberline {2.2}Open Trip Planner}{6}
 \contentsline {subsection}{\numberline {2.3}R5}{7}
+\contentsline {section}{\numberline {3}Erkenntnisse}{8}

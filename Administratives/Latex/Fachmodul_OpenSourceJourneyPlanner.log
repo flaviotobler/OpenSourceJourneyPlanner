@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.12)  19 DEC 2017 10:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.12)  19 DEC 2017 14:24
 entering extended mode
 **./Fachmodul_OpenSourceJourneyPlanner.tex
 (Fachmodul_OpenSourceJourneyPlanner.tex
@@ -1150,7 +1150,10 @@ Overfull \hbox (14.05864pt too wide) in paragraph at lines 6--7
 ]) [7]
 \openout2 = `Erkenntnisse.aux'.
 
- (Erkenntnisse.tex)
+ (Erkenntnisse.tex) [8
+
+
+]
 \openout2 = `AufgabenstellungBA.aux'.
 
  (AufgabenstellungBA.tex)
@@ -1158,9 +1161,7 @@ Overfull \hbox (14.05864pt too wide) in paragraph at lines 6--7
 \tf@lof=\write7
 \openout7 = `Fachmodul_OpenSourceJourneyPlanner.lof'.
 
- [8
-
-
+ [9
 
 
 
@@ -1174,16 +1175,16 @@ Underfull \hbox (badness 1102) in paragraph at lines 12--14
 , De-cem-ber 2017.  htt-
  []
 
-)) [9
+)) [10
 
 ] (Fachmodul_OpenSourceJourneyPlanner.aux (titel.aux) (abstract.aux)
 (Einfuehrung.aux) (Daten.aux) (Algorithmen.aux) (Programme.aux)
 (Erkenntnisse.aux) (AufgabenstellungBA.aux) (literatur.aux)) ) 
 Here is how much of TeX's memory you used:
- 21173 strings out of 493323
- 406955 string characters out of 3139065
- 577716 words of memory out of 3000000
- 24236 multiletter control sequences out of 15000+200000
+ 21174 strings out of 493323
+ 406973 string characters out of 3139065
+ 577724 words of memory out of 3000000
+ 24237 multiletter control sequences out of 15000+200000
  8586 words of font info for 31 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,7n,60p,8847b,328s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1191,10 +1192,10 @@ Here is how much of TeX's memory you used:
 /MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2
 .9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Fachmodul_OpenSourceJourneyPlanner.pdf (10 pages, 69967 bytes
+Output written on Fachmodul_OpenSourceJourneyPlanner.pdf (11 pages, 70828 bytes
 ).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
+ 56 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

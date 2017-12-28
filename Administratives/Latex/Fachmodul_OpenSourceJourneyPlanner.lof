@@ -1,2 +1,4 @@
 \select@language {ngerman}
-\contentsline {figure}{\numberline {1}{\ignorespaces Veranschaulichung der Funktion des QuadTree-Preprocessings ~\cite {DBLP:journals/corr/DibbeltPSW17}}}{4}
+\contentsline {figure}{\numberline {1}{\ignorespaces Veranschaulichung der Funktion des QuadTree-Preprocessings ~\cite {csa}}}{4}
+\contentsline {figure}{\numberline {2}{\ignorespaces Traintickets.To Webseite ~\cite {traintickets_site}}}{7}
+\contentsline {figure}{\numberline {3}{\ignorespaces Implementation des OTP mit den Schweitzer Daten}}{9}

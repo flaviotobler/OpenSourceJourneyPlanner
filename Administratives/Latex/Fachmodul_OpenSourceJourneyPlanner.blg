@@ -8,9 +8,12 @@ A level-1 auxiliary file: Programme.aux
 A level-1 auxiliary file: Erkenntnisse.aux
 A level-1 auxiliary file: AufgabenstellungBA.aux
 A level-1 auxiliary file: literatur.aux
-The style file: unsrt.bst
-Database file #1: test2.bib
-Warning--entry type for "LinusNorton" isn't style-file defined
---line 3 of file test2.bib
-Database file #2: Programme.bib
+The style file: ieeetran.bst
+Database file #1: quellen.bib
+Warning--I didn't find a database entry for "traintickets_git_pattern"
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
 (There was 1 warning)

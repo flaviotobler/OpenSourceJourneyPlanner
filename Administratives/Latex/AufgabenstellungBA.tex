@@ -1,0 +1,60 @@
+\section[AufgabeBA]{AufgabeBA}
+\label{AufgabeBA}
+
+
+\subsection{AufgabenstellungBA}
+\label{AufgabenstellungBA}
+\begin{itemize}
+	\item Schreiben sie eine Implementation des CSA für den OpenTripPlanner. Dieser muss OTP-Development-Richtklinien konform sein.
+	\item Implementieren sie die Schweizer GTFS und OpenStreetMap daten für den OTP, so dass Punkt zu Punkt Verbindungen in der Schweiz berechnet werden können.
+	\item Implementieren sie den Schweizer realtime GTFS-Feed, so dass das Programm auf Verspätungen oder Fahrplanänderungen reagieren kann.
+	\item Implementieren sie Skalierungsoptimierungen für das Programm, so dass es mit einem landesweiten System bessere Performanz liefert.
+	\item Führen sie Performance Tests durch und vergleichen sie das Implementierte System mit dem auf Dijkstra basierenden OTP.
+	\item Dokumentieren sie ihre Ergebnisse und schreiben sie einen ausführlichen Bericht.
+\end{itemize}
+
+\subsection{Lastenheft}
+\label{Lastenheft}
+\begin{tabular}{ | p{5cm} | l | l | }
+	\hline
+	\multicolumn{3}{|c|}{Funktionale Anforderungen} \\
+	\hline
+	Anforderung & Anforderungsart & Priorisierung \\
+	\hline
+	Der CSA muss als Berechnungsalgorithmus verwendet werden. & Muss & 1 \\
+	\hline
+	Es kann eine Verbindung zwischen 2 Stationen zu einem bestimmten Zeitpunkt errechnet werden. & Muss & 2 \\
+	\hline
+	Fusswege zu Stationen hin können miteinbezogen werden können. & Muss & 3 \\
+	\hline
+	Das Programm kann auf Verspätungen und Fahrplanänderungen reagieren. & Muss & 4 \\
+	\hline
+	Mehrere mögliche Verbindungen können angezeigt werden. & Muss & 5 \\
+	\hline
+	Fusswege zwischen verschiedenen Stationen können miteinbezogen werden. & Soll & 6 \\
+	\hline
+	Die Angezeigte Route soll den Fahrlinien, z.B. Schienen, folgen. & Kann & 7 \\
+	\hline
+\end{tabular}
+
+Nicht funktionale Anforderungen
+\begin{itemize}
+	\item Der Programmcode muss den OTP-Development-Richtlinien entsprechen.
+	\item Die Query-Zeit muss weniger als 1 Sekunde betragen.
+	\item Die Preprocessing-Zeit muss weniger als 30 Minuten betragen.
+	\item Die Query-Zeit soll schneller als die des originalen OTP sein.
+\end{itemize}
+
+\subsection{Meilensteine}
+\label{Meilensteine}
+\begin{enumerate}
+	\item OTP Analysiert
+	\item OTP mit dem Schweitzer System implementieren
+	\item Basis CSA implementiert
+	\item CSA Spalierungsoptimierung implementiert
+	\item Performancetests durchgeführt
+	\item Bericht geschrieben
+\end{enumerate}
+
+\subsection{Zeitplan}
+\label{Zeitplan}

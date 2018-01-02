@@ -16,3 +16,8 @@
 \contentsline {subsection}{\numberline {3.1}Daten}{8}
 \contentsline {subsection}{\numberline {3.2}Algorithmen}{8}
 \contentsline {subsection}{\numberline {3.3}Programme}{8}
+\contentsline {section}{\numberline {4}AufgabeBA}{11}
+\contentsline {subsection}{\numberline {4.1}AufgabenstellungBA}{11}
+\contentsline {subsection}{\numberline {4.2}Lastenheft}{12}
+\contentsline {subsection}{\numberline {4.3}Meilensteine}{12}
+\contentsline {subsection}{\numberline {4.4}Zeitplan}{13}

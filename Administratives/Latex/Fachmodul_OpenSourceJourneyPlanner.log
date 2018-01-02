@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.12)  28 DEC 2017 10:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.12)  2 JAN 2018 14:51
 entering extended mode
 **./Fachmodul_OpenSourceJourneyPlanner.tex
 (Fachmodul_OpenSourceJourneyPlanner.tex
@@ -1190,14 +1190,62 @@ LaTeX Warning: Citation `traintickets_git_pattern' on page 9 undefined on input
 [9 <./img/OTP.png>]) [10]
 \openout2 = `AufgabenstellungBA.aux'.
 
- (AufgabenstellungBA.tex)
-(Fachmodul_OpenSourceJourneyPlanner.lof)
+ (AufgabenstellungBA.tex
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 8.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 8.
+
+Underfull \hbox (badness 4328) in paragraph at lines 24--24
+[]\OT1/cmr/m/n/12 Der CSA muss als Be-
+ []
+
+
+Underfull \hbox (badness 5245) in paragraph at lines 24--24
+\OT1/cmr/m/n/12 rech-nungs-al-go-rith-mus ver-
+ []
+
+
+Underfull \hbox (badness 1286) in paragraph at lines 26--26
+[]\OT1/cmr/m/n/12 Es kann ei-ne Ver-bin-dung
+ []
+
+
+Underfull \hbox (badness 2096) in paragraph at lines 30--30
+[]\OT1/cmr/m/n/12 Das Pro-gramm kann auf
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
+\OT1/cmr/m/n/12 Ver-sp[]atungen und Fahr-
+ []
+
+
+Underfull \hbox (badness 1546) in paragraph at lines 32--32
+[]\OT1/cmr/m/n/12 Mehrere m[]ogliche Ver-bin-
+ []
+
+
+Underfull \hbox (badness 3396) in paragraph at lines 32--32
+\OT1/cmr/m/n/12 dun-gen k[]onnen an-ge-zeigt
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--34
+\OT1/cmr/m/n/12 de-nen Sta-tio-nen k[]onnen
+ []
+
+[11
+
+
+] [12]) [13] (Fachmodul_OpenSourceJourneyPlanner.lof)
 \tf@lof=\write7
 \openout7 = `Fachmodul_OpenSourceJourneyPlanner.lof'.
 
- [11
-
-
+ [14
 
 ]
 \openout2 = `literatur.aux'.
@@ -1209,7 +1257,7 @@ Underfull \hbox (badness 5231) in paragraph at lines 32--35
 :
  []
 
-[12
+[15
 
 ]
 Underfull \hbox (badness 1325) in paragraph at lines 124--127
@@ -1223,7 +1271,7 @@ Underfull \hbox (badness 3128) in paragraph at lines 136--139
 a-ble:
  []
 
-)) [13] (Fachmodul_OpenSourceJourneyPlanner.aux (titel.aux) (abstract.aux)
+)) [16] (Fachmodul_OpenSourceJourneyPlanner.aux (titel.aux) (abstract.aux)
 (Einfuehrung.aux) (Daten.aux) (Algorithmen.aux) (Programme.aux)
 (Erkenntnisse.aux) (AufgabenstellungBA.aux) (literatur.aux))
 
@@ -1231,21 +1279,22 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 21213 strings out of 493323
- 407625 string characters out of 3139065
- 580822 words of memory out of 3000000
- 24273 multiletter control sequences out of 15000+200000
+ 21235 strings out of 493323
+ 407993 string characters out of 3139065
+ 580875 words of memory out of 3000000
+ 24292 multiletter control sequences out of 15000+200000
  8893 words of font info for 32 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,8n,60p,8847b,328s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 64i,9n,60p,8847b,328s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Fachmodul_OpenSourceJourneyPlanner.pdf (14 pages, 4261969 byt
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on Fachmodul_OpenSourceJourneyPlanner.pdf (17 pages, 4274026 byt
 es).
 PDF statistics:
- 74 PDF objects out of 1000 (max. 8388607)
+ 87 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  28 words of extra memory for PDF output out of 10000 (max. 10000000)
 

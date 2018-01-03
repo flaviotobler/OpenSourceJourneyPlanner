@@ -3,10 +3,16 @@
 
 \subsection{Daten}
 \label{sec:erkenntnisseDaten}
-Für unsere Anwendung ist der GTFS Datentyp dem HRDF Datentyp aus mehreren Gründen überlegen.
-\begin{enumerate}
-	\item Alle zuvor genannten Programme basieren auf dem GTFS-Datentyp. Dies führt
-\end{enumerate}
+Für unseren Journey Planer benötigen wir Fahrplaninformationen womit wir unseren Algorithmus füttern. Die Fahrplandaten stehen in zwei verschiedenen Dateiformaten zur Verfügung. 
+\newline
+\newline
+Wir haben uns für das GTFS-Format entschieden.
+Laut der Seite\footnote{\url{http://gtfs.geops.ch/doc/}}, die Konvertierung HAFAS-Rohdaten nach GTFS Dokumentation zur Verfügung stellt, erwähnt: "GTFS ist besser strukturiert, einfacher zu benutzen, einfacher zu erweitern und besser dokumentiert als HAFAS-Rohdaten". Zudem wird gesagt das OpenSource Routenfinder wie OTP unterstützen GTFS als einziges Dateiformat für Fahrplandaten.\cite{hrdfintogtfs}
+\newline
+\newline
+Zusätzlich laut der Plattform\footnote{\url{https://opentransportdata.swiss/}} die Daten zur Verfügung stellt warnt zudem noch: "Die HRDF-Datei(en) sind relativ komplex. Ohne Not sollte nicht damit gearbeitet werden."\cite{opentransporthrdf}
+
+Da wir uns für das GTFS-Format entschieden haben ist es auch logisch die dafür zugehörige Erweiterung für Echtzeit zu verwenden (GTFS-RT).
 
 
 

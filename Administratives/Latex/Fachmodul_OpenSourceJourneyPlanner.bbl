@@ -21,6 +21,100 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{gtfsbackground}
+\BIBentryALTinterwordspacing
+Google. [Online]. Available: \url{http://gtfs.org/gtfs-background/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{gtfs}
+\BIBentryALTinterwordspacing
+Gtfs-opentransportdata. [Online]. Available:
+  \url{https://opentransportdata.swiss/de/cookbook/gtfs/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{gtfsInhalt}
+\BIBentryALTinterwordspacing
+Google. [Online]. Available:
+  \url{https://developers.google.com/transit/gtfs/reference/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{gtfsUebersicht}
+\BIBentryALTinterwordspacing
+Transitwiki. [Online]. Available:
+  \url{https://www.transitwiki.org/TransitWiki/images/f/ff/GTFS_data_model_diagram.PNG}
+\BIBentrySTDinterwordspacing
+
+\bibitem{gtfs-rt}
+\BIBentryALTinterwordspacing
+Gtfs-rt-opentransportdata. [Online]. Available:
+  \url{https://opentransportdata.swiss/de/cookbook/gtfs-rt/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{gtfs-rt-google}
+\BIBentryALTinterwordspacing
+Google. [Online]. Available:
+  \url{https://developers.google.com/transit/gtfs-realtime/guides/feed-entities}
+\BIBentrySTDinterwordspacing
+
+\bibitem{haconUebersicht}
+\BIBentryALTinterwordspacing
+Hacon. [Online]. Available: \url{http://www.hacon.de/hafas/daten}
+\BIBentrySTDinterwordspacing
+
+\bibitem{hrdfintogtfs}
+\BIBentryALTinterwordspacing
+Konvertierung hafas-rohdaten nach gtfs dokumentation. [Online]. Available:
+  \url{http://gtfs.geops.ch/doc/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{opentransporthrdf}
+\BIBentryALTinterwordspacing
+Hrdf-opentransportdata. [Online]. Available:
+  \url{https://opentransportdata.swiss/de/cookbook/hafas-rohdaten-format-hrdf/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{istdaten}
+\BIBentryALTinterwordspacing
+Ist-daten-opentransportdata. [Online]. Available:
+  \url{https://opentransportdata.swiss/de/cookbook/ist-daten/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{didok}
+\BIBentryALTinterwordspacing
+Didok-opentransportdata. [Online]. Available:
+  \url{https://opentransportdata.swiss/de/cookbook/didok/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{geschaeftsorganisation}
+\BIBentryALTinterwordspacing
+Geschäftsorganisation-opentransportdata. [Online]. Available:
+  \url{https://opentransportdata.swiss/de/cookbook/geschaeftsorganisation/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{geschaeftsorganisation-rt}
+\BIBentryALTinterwordspacing
+Geschäftsorganisation-realtime-opentransportdata. [Online]. Available:
+  \url{https://opentransportdata.swiss/de/cookbook/go-realtime/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{gahtaliste}
+\BIBentryALTinterwordspacing
+Ga-hta-liste-opentransportdata. [Online]. Available:
+  \url{https://opentransportdata.swiss/de/dataset/ga-hta-liste1}
+\BIBentrySTDinterwordspacing
+
+\bibitem{bahnhofsliste}
+\BIBentryALTinterwordspacing
+Bahnhofsliste-opentransportdata. [Online]. Available:
+  \url{https://opentransportdata.swiss/de/cookbook/bahnhofsliste/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{fahrtprognose}
+\BIBentryALTinterwordspacing
+Fahrtprognose-opentransportdata. [Online]. Available:
+  \url{https://opentransportdata.swiss/de/cookbook/fahrtprognose/}
+\BIBentrySTDinterwordspacing
+
 \bibitem{dij_a}
 \BIBentryALTinterwordspacing
 R.~Geisberger, ``Advanced route planning in transportation networks,'' Feb.

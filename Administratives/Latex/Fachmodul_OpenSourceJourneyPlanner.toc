@@ -1,23 +1,46 @@
 \select@language {ngerman}
-\contentsline {section}{\numberline {1}Algorithmen}{2}
-\contentsline {subsection}{\numberline {1.1}Graph Basierte Algorithmen}{2}
-\contentsline {subsubsection}{\numberline {1.1.1}Dijkstra}{2}
-\contentsline {subsubsection}{\numberline {1.1.2}A*}{2}
-\contentsline {subsubsection}{\numberline {1.1.3}Bellman-Ford}{2}
-\contentsline {subsection}{\numberline {1.2}Non Graph Basierte Algorithmen}{3}
-\contentsline {subsubsection}{\numberline {1.2.1}RAPTOR}{3}
-\contentsline {subsubsection}{\numberline {1.2.2}Connection Scan Algorithm}{3}
-\contentsline {subsection}{\numberline {1.3}Transfer Pattern}{4}
-\contentsline {section}{\numberline {2}Programme}{6}
-\contentsline {subsection}{\numberline {2.1}Traintickets.to}{6}
-\contentsline {subsection}{\numberline {2.2}Open Trip Planner}{6}
-\contentsline {subsection}{\numberline {2.3}R5}{7}
-\contentsline {section}{\numberline {3}Erkenntnisse}{8}
-\contentsline {subsection}{\numberline {3.1}Daten}{8}
-\contentsline {subsection}{\numberline {3.2}Algorithmen}{8}
-\contentsline {subsection}{\numberline {3.3}Programme}{8}
-\contentsline {section}{\numberline {4}AufgabeBA}{11}
-\contentsline {subsection}{\numberline {4.1}AufgabenstellungBA}{11}
-\contentsline {subsection}{\numberline {4.2}Lastenheft}{12}
-\contentsline {subsection}{\numberline {4.3}Meilensteine}{12}
-\contentsline {subsection}{\numberline {4.4}Zeitplan}{13}
+\contentsline {section}{\numberline {1}Einf\IeC {\"u}hrung}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Aufgabenstellung}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Vorgehen}{2}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Ziel der Bachelorarbeit}{2}{subsection.1.3}
+\contentsline {section}{\numberline {2}Daten}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Fahrplan General Transit Feed Specification (GTFS)}{3}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}Datenstruktur}{3}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Vor- und Nachteile}{5}{subsubsection.2.1.2}
+\contentsline {subsection}{\numberline {2.2}GTFS Realtime (GTFS-RT)}{5}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Datenstruktur}{5}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Vor- und Nachteile}{5}{subsubsection.2.2.2}
+\contentsline {subsection}{\numberline {2.3}Fahrplan Hafas Rohdaten Format (HRDF)}{5}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.3.1}Datenstruktur}{5}{subsubsection.2.3.1}
+\contentsline {subsubsection}{\numberline {2.3.2}Vor- und Nachteile}{7}{subsubsection.2.3.2}
+\contentsline {subsection}{\numberline {2.4}Fahrplan \IeC {\"U}berblick (timetable overview)}{7}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Ist-Daten (actual data)}{7}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Dienststellendokumentation (DiDok)}{7}{subsection.2.6}
+\contentsline {subsection}{\numberline {2.7}Gesch\IeC {\"a}ftsorganisationen (business organisations)}{9}{subsection.2.7}
+\contentsline {subsubsection}{\numberline {2.7.1}Gesch\IeC {\"a}ftsorganisationen mit Echtzeit}{9}{subsubsection.2.7.1}
+\contentsline {subsection}{\numberline {2.8}GA-HTA-Liste}{9}{subsection.2.8}
+\contentsline {subsection}{\numberline {2.9}Bahnhofsliste (station list)}{10}{subsection.2.9}
+\contentsline {subsection}{\numberline {2.10}Abfahrts-/Ankunftsanzeiger (departure/arrival display)}{10}{subsection.2.10}
+\contentsline {subsection}{\numberline {2.11}Fahrtprognose (trip forecast)}{11}{subsection.2.11}
+\contentsline {section}{\numberline {3}Algorithmen}{13}{section.3}
+\contentsline {subsection}{\numberline {3.1}Graph Basierte Algorithmen}{13}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Dijkstra}{13}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}A*}{13}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}Bellman-Ford}{13}{subsubsection.3.1.3}
+\contentsline {subsection}{\numberline {3.2}Non Graph Basierte Algorithmen}{14}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}RAPTOR}{14}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Connection Scan Algorithm}{14}{subsubsection.3.2.2}
+\contentsline {subsection}{\numberline {3.3}Transfer Pattern}{15}{subsection.3.3}
+\contentsline {section}{\numberline {4}Programme}{17}{section.4}
+\contentsline {subsection}{\numberline {4.1}Traintickets.to}{17}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Open Trip Planner}{17}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}R5}{18}{subsection.4.3}
+\contentsline {section}{\numberline {5}Erkenntnisse}{19}{section.5}
+\contentsline {subsection}{\numberline {5.1}Daten}{19}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Algorithmen}{19}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Programme}{19}{subsection.5.3}
+\contentsline {section}{\numberline {6}AufgabeBA}{22}{section.6}
+\contentsline {subsection}{\numberline {6.1}AufgabenstellungBA}{22}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Lastenheft}{23}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Meilensteine}{23}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Zeitplan}{24}{subsection.6.4}

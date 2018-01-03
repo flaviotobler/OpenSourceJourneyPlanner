@@ -1,0 +1,19 @@
+\BOOKMARK [1][-]{section.1}{Daten}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Fahrplan General Transit Feed Specification \(GTFS\)}{section.1}% 2
+\BOOKMARK [3][-]{subsubsection.1.1.1}{Datenstruktur}{subsection.1.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.1.2}{Vor- und Nachteile}{subsection.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.2}{GTFS Realtime \(GTFS-RT\)}{section.1}% 5
+\BOOKMARK [3][-]{subsubsection.1.2.1}{Datenstruktur}{subsection.1.2}% 6
+\BOOKMARK [3][-]{subsubsection.1.2.2}{Vor- und Nachteile}{subsection.1.2}% 7
+\BOOKMARK [2][-]{subsection.1.3}{Fahrplan Hafas Rohdaten Format \(HRDF\)}{section.1}% 8
+\BOOKMARK [3][-]{subsubsection.1.3.1}{Datenstruktur}{subsection.1.3}% 9
+\BOOKMARK [3][-]{subsubsection.1.3.2}{Vor- und Nachteile}{subsection.1.3}% 10
+\BOOKMARK [2][-]{subsection.1.4}{Fahrplan \334berblick \(timetable overview\)}{section.1}% 11
+\BOOKMARK [2][-]{subsection.1.5}{Ist-Daten \(actual data\)}{section.1}% 12
+\BOOKMARK [2][-]{subsection.1.6}{Dienststellendokumentation \(DiDok\)}{section.1}% 13
+\BOOKMARK [2][-]{subsection.1.7}{Gesch\344ftsorganisationen \(business organisations\)}{section.1}% 14
+\BOOKMARK [3][-]{subsubsection.1.7.1}{Gesch\344ftsorganisationen mit Echtzeit}{subsection.1.7}% 15
+\BOOKMARK [2][-]{subsection.1.8}{GA-HTA-Liste}{section.1}% 16
+\BOOKMARK [2][-]{subsection.1.9}{Bahnhofsliste \(station list\)}{section.1}% 17
+\BOOKMARK [2][-]{subsection.1.10}{Abfahrts-/Ankunftsanzeiger \(departure/arrival display\)}{section.1}% 18
+\BOOKMARK [2][-]{subsection.1.11}{Fahrtprognose \(trip forecast\)}{section.1}% 19

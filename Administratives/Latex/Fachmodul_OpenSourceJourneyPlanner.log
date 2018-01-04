@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.12)  4 JAN 2018 13:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.12)  4 JAN 2018 16:29
 entering extended mode
 **./Fachmodul_OpenSourceJourneyPlanner.tex
 (Fachmodul_OpenSourceJourneyPlanner.tex
@@ -650,7 +650,8 @@ appings.tex"))
 "
 File: glossaries-german.ldf 2014/11/23 v1.0
 )
-\gls@level=\count123
+\glossary@main@sortcount=\count123
+\gls@level=\count124
 \@gls@tmpb=\toks27
 \gls@tmplen=\skip59
 \glskeylisttok=\toks28
@@ -673,16 +674,16 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \LTright=\skip62
 \LTpre=\skip63
 \LTpost=\skip64
-\LTchunksize=\count124
+\LTchunksize=\count125
 \LTcapwidth=\dimen115
 \LT@head=\box30
 \LT@firsthead=\box31
 \LT@foot=\box32
 \LT@lastfoot=\box33
-\LT@cols=\count125
-\LT@rows=\count126
-\c@LT@tables=\count127
-\c@LT@chunks=\count128
+\LT@cols=\count126
+\LT@rows=\count127
+\c@LT@tables=\count128
+\c@LT@chunks=\count129
 \LT@p@ftn=\toks32
 )
 Class scrartcl Info: longtable captions redefined on input line 43.
@@ -694,7 +695,7 @@ Package: glossary-super 2017/11/14 v4.35 (NLCT)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\supertabular\supertabular.sty"
 Package: supertabular 2004/02/20 v4.1e the supertabular environment
-\c@tracingst=\count129
+\c@tracingst=\count130
 \ST@wd=\dimen116
 \ST@rightskip=\skip67
 \ST@leftskip=\skip68
@@ -771,19 +772,20 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen127
-\Hy@linkcounter=\count130
-\Hy@pagecounter=\count131
+\Hy@linkcounter=\count131
+\Hy@pagecounter=\count132
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
 File: pd1enc.def 2017/03/14 v6.85a Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count132
+\Hy@SavedSpaceFactor=\count133
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
+Package hyperref Info: Option `colorlinks' set `true' on input line 4374.
 Package hyperref Info: Hyper figures OFF on input line 4498.
 Package hyperref Info: Link nesting OFF on input line 4503.
 Package hyperref Info: Hyper index ON on input line 4506.
@@ -791,7 +793,7 @@ Package hyperref Info: Plain pages OFF on input line 4513.
 Package hyperref Info: Backreferencing OFF on input line 4518.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4751.
-\c@Hy@tempcnt=\count133
+\c@Hy@tempcnt=\count134
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip11
@@ -799,29 +801,29 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5104.
 \XeTeXLinkMargin=\dimen128
-\Fld@menulength=\count134
+\Fld@menulength=\count135
 \Field@Width=\dimen129
 \Fld@charsize=\dimen130
 Package hyperref Info: Hyper figures OFF on input line 6358.
 Package hyperref Info: Link nesting OFF on input line 6363.
 Package hyperref Info: Hyper index ON on input line 6366.
 Package hyperref Info: backreferencing OFF on input line 6373.
-Package hyperref Info: Link coloring OFF on input line 6378.
+Package hyperref Info: Link coloring ON on input line 6376.
 Package hyperref Info: Link coloring with OCG OFF on input line 6383.
 Package hyperref Info: PDF/A mode OFF on input line 6388.
 LaTeX Info: Redefining \ref on input line 6428.
 LaTeX Info: Redefining \pageref on input line 6432.
-\Hy@abspage=\count135
-\c@Item=\count136
-\c@Hfootnote=\count137
+\Hy@abspage=\count136
+\c@Item=\count137
+\c@Hfootnote=\count138
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
 File: hpdftex.def 2017/03/14 v6.85a Hyperref driver for pdfTeX
-\Fld@listcount=\count138
-\c@bookmark@seq@number=\count139
+\Fld@listcount=\count139
+\c@bookmark@seq@number=\count140
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
@@ -842,33 +844,33 @@ er.glo on input line 12.
 (Erkenntnisse.aux) (AufgabenstellungBA.aux) (literatur.aux))
 \openout1 = `Fachmodul_OpenSourceJourneyPlanner.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count140
+\scratchcounter=\count141
 \scratchdimen=\dimen131
 \scratchbox=\box35
-\nofMPsegments=\count141
-\nofMParguments=\count142
+\nofMPsegments=\count142
+\nofMParguments=\count143
 \everyMPshowfont=\toks33
-\MPscratchCnt=\count143
+\MPscratchCnt=\count144
 \MPscratchDim=\dimen132
-\MPnumerator=\count144
-\makeMPintoPDFobject=\count145
+\MPnumerator=\count145
+\makeMPintoPDFobject=\count146
 \everyMPtoPDFconversion=\toks34
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -885,7 +887,16 @@ G,.JBIG2,.JB2,.eps]
 )
 (Fachmodul_OpenSourceJourneyPlanner.glsdefs)
 \AtBeginShipoutBox=\box36
-Package hyperref Info: Link coloring OFF on input line 19.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+)
+Package hyperref Info: Link coloring ON on input line 44.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -893,11 +904,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count146
+\c@section@level=\count147
 )
-LaTeX Info: Redefining \ref on input line 19.
-LaTeX Info: Redefining \pageref on input line 19.
-LaTeX Info: Redefining \nameref on input line 19.
+LaTeX Info: Redefining \ref on input line 44.
+LaTeX Info: Redefining \pageref on input line 44.
+LaTeX Info: Redefining \nameref on input line 44.
 
 (Fachmodul_OpenSourceJourneyPlanner.out)
 (Fachmodul_OpenSourceJourneyPlanner.out)
@@ -908,13 +919,13 @@ LaTeX Info: Redefining \nameref on input line 19.
 
  (titel.tex)
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 21.
+(babel)             in language  on input line 46.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 21.
+(babel)             in language  on input line 46.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 21.
+(babel)             in language  on input line 46.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 21.
+(babel)             in language  on input line 46.
  [1
 
 \openout3 = `Fachmodul_OpenSourceJourneyPlanner.ist'.
@@ -924,8 +935,33 @@ Package babel Info: Redefining ngerman shorthand "~
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 \openout2 = `abstract.aux'.
 
- (abstract.tex)
-(Fachmodul_OpenSourceJourneyPlanner.toc
+ (abstract.tex
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 1.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 1.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 3--50
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--50
+
+ []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 50.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 50.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 50.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 50.
+[1
+
+
+] (Fachmodul_OpenSourceJourneyPlanner.toc
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 41.
 Package babel Info: Redefining ngerman shorthand "~
@@ -934,37 +970,35 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 41.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 41.
- [1
-
-
+ [2
 
 ])
 \tf@toc=\write6
 \openout6 = `Fachmodul_OpenSourceJourneyPlanner.toc'.
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 53.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 53.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 53.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 28.
- [2]
+(babel)             in language  on input line 53.
+ [3]
 (Fachmodul_OpenSourceJourneyPlanner.gls)
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 32.
+(babel)             in language  on input line 57.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 32.
+(babel)             in language  on input line 57.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 32.
+(babel)             in language  on input line 57.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 32.
+(babel)             in language  on input line 57.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.32 	\newpage
+l.57 	\newpage
                [1]
 \openout2 = `Einfuehrung.aux'.
 
@@ -978,28 +1012,76 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 5.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 11.
+(babel)             in language  on input line 9.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 11.
+(babel)             in language  on input line 9.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 14.
+(babel)             in language  on input line 15.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 14.
+(babel)             in language  on input line 15.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 17.
+
+<img/Zielderarbeit.png, id=261, 618.05907pt x 303.38344pt>
+File: img/Zielderarbeit.png Graphic file (type png)
+
+<use img/Zielderarbeit.png>
+Package pdftex.def Info: img/Zielderarbeit.png used on input line 19.
+(pdftex.def)             Requested size: 426.79134pt x 209.50145pt.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 24.
+
+<img/Aufgabenstellungfachmodul.png, id=263, 476.53032pt x 444.91219pt>
+File: img/Aufgabenstellungfachmodul.png Graphic file (type png)
+
+<use img/Aufgabenstellungfachmodul.png>
+Package pdftex.def Info: img/Aufgabenstellungfachmodul.png used on input line 2
+6.
+(pdftex.def)             Requested size: 426.79134pt x 398.49602pt.
+
+Underfull \hbox (badness 2142) in paragraph at lines 27--27
+[][][]\OT1/cmr/m/n/12 Dies sind un-se-re Zie-le die wir in der Ar-beit am Fach-
+mo-dul zu
+ []
+
 )
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 35.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 35.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 35.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 35.
+(babel)             in language  on input line 60.
  [2
 
 ]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 60.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 60.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 60.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 60.
+ [3 <./img/Zielderarbeit.png>]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 60.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 60.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 60.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 60.
+ [4 <./img/Aufgabenstellungfachmodul.png>]
 \openout2 = `Daten.aux'.
 
- (Daten.tex
+
+(Daten.tex
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1017,7 +1099,7 @@ Package babel Info: Redefining ngerman shorthand "~
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 15.
 
-<img/bspcsv.png, id=264, 360.59718pt x 128.73094pt>
+<img/bspcsv.png, id=289, 360.59718pt x 128.73094pt>
 File: img/bspcsv.png Graphic file (type png)
  <use img/bspcsv.png>
 Package pdftex.def Info: img/bspcsv.png used on input line 17.
@@ -1051,7 +1133,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 45.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 45.
-[3
+[5
 
 
  <./img/bspcsv.png>]
@@ -1059,7 +1141,7 @@ Package babel Info: Redefining ngerman shorthand "~
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 46.
 
-<img/GTFS_data_model_diagram.png, id=276, 412.54124pt x 355.3275pt>
+<img/GTFS_data_model_diagram.png, id=300, 412.54124pt x 355.3275pt>
 File: img/GTFS_data_model_diagram.png Graphic file (type png)
 
 <use img/GTFS_data_model_diagram.png>
@@ -1078,7 +1160,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 58.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 58.
- [4 <./img/GTFS_data_model_diagram.png>]
+ [6 <./img/GTFS_data_model_diagram.png>]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 59.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1107,7 +1189,7 @@ Package babel Info: Redefining ngerman shorthand "~
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 82.
 
-<img/HAFAS.png, id=291, 714.41907pt x 368.1253pt>
+<img/HAFAS.png, id=314, 714.41907pt x 368.1253pt>
 File: img/HAFAS.png Graphic file (type png)
  <use img/HAFAS.png>
 Package pdftex.def Info: img/HAFAS.png used on input line 84.
@@ -1121,7 +1203,7 @@ Package babel Info: Redefining ngerman shorthand "~
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 94.
 
-<img/bsptsv.png, id=295, 336.50719pt x 204.01219pt>
+<img/bsptsv.png, id=318, 336.50719pt x 204.01219pt>
 File: img/bsptsv.png Graphic file (type png)
  <use img/bsptsv.png>
 Package pdftex.def Info: img/bsptsv.png used on input line 96.
@@ -1139,7 +1221,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 106.
 
-[5]
+[7]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 106.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1148,7 +1230,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 106.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 106.
- [6 <./img/HAFAS.png> <./img/bsptsv.png>]
+ [8 <./img/HAFAS.png> <./img/bsptsv.png>]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 106.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1158,7 +1240,7 @@ Package babel Info: Redefining ngerman shorthand "~
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 110.
 
-<img/fahrplanueberblick.png, id=315, 1331.72531pt x 265.74281pt>
+<img/fahrplanueberblick.png, id=338, 1331.72531pt x 265.74281pt>
 File: img/fahrplanueberblick.png Graphic file (type png)
 
 <use img/fahrplanueberblick.png>
@@ -1177,7 +1259,7 @@ Package babel Info: Redefining ngerman shorthand "~
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 131.
 
-<img/didokuebersicht.png, id=318, 758.835pt x 689.57625pt>
+<img/didokuebersicht.png, id=341, 758.835pt x 689.57625pt>
 File: img/didokuebersicht.png Graphic file (type png)
 
 <use img/didokuebersicht.png>
@@ -1192,7 +1274,7 @@ Package babel Info: Redefining ngerman shorthand "~
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 141.
 
-<img/GOuebersicht.png, id=321, 842.39719pt x 685.8122pt>
+<img/GOuebersicht.png, id=344, 842.39719pt x 685.8122pt>
 File: img/GOuebersicht.png Graphic file (type png)
 
 <use img/GOuebersicht.png>
@@ -1206,7 +1288,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 147.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 147.
- [7 <./img/fahrplanueberblick.png>]
+ [9 <./img/fahrplanueberblick.png>]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 147.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1215,7 +1297,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 147.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 147.
- [8 <./img/didokuebersicht.png>]
+ [10 <./img/didokuebersicht.png>]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 147.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1225,7 +1307,7 @@ Package babel Info: Redefining ngerman shorthand "~
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 151.
 
-<img/GO-Realtime.png, id=339, 575.14874pt x 216.81pt>
+<img/GO-Realtime.png, id=363, 575.14874pt x 216.81pt>
 File: img/GO-Realtime.png Graphic file (type png)
 
 <use img/GO-Realtime.png>
@@ -1240,7 +1322,7 @@ Package babel Info: Redefining ngerman shorthand "~
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 162.
 
-<img/bspGA-HTA-Liste.png, id=342, 507.39563pt x 70.01157pt>
+<img/bspGA-HTA-Liste.png, id=366, 507.39563pt x 70.01157pt>
 File: img/bspGA-HTA-Liste.png Graphic file (type png)
 
 <use img/bspGA-HTA-Liste.png>
@@ -1263,7 +1345,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 183.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 183.
-[9 <./img/GOuebersicht.png>]
+[11 <./img/GOuebersicht.png>]
 Overfull \hbox (13.86539pt too wide) in paragraph at lines 184--185
 []\OT1/cmr/bx/n/12 Station geo-gra-phic \OT1/cmr/m/n/12 -Hier wer-den die Ko-or
 -di-na-ten f[]ur die Hal-te-stel-len zur Verf[]ugung
@@ -1274,14 +1356,14 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 189.
 
-LaTeX Warning: Citation `abfahrts-ankunftsanzeige' on page 10 undefined on inpu
+LaTeX Warning: Citation `abfahrts-ankunftsanzeige' on page 12 undefined on inpu
 t line 191.
 
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 193.
 
-<img/bspAbfrageAnkunftAbfahrt.png, id=353, 430.60875pt x 306.39468pt>
+<img/bspAbfrageAnkunftAbfahrt.png, id=377, 430.60875pt x 306.39468pt>
 File: img/bspAbfrageAnkunftAbfahrt.png Graphic file (type png)
 
 <use img/bspAbfrageAnkunftAbfahrt.png>
@@ -1290,17 +1372,17 @@ Package pdftex.def Info: img/bspAbfrageAnkunftAbfahrt.png used on input line 19
 (pdftex.def)             Requested size: 341.43306pt x 242.94678pt.
 
 
-LaTeX Warning: Citation `abfahrts-ankunftsanzeige' on page 10 undefined on inpu
+LaTeX Warning: Citation `abfahrts-ankunftsanzeige' on page 12 undefined on inpu
 t line 196.
 
 
-LaTeX Warning: Citation `abfahrts-ankunftsanzeige' on page 10 undefined on inpu
+LaTeX Warning: Citation `abfahrts-ankunftsanzeige' on page 12 undefined on inpu
 t line 196.
 
 
 Underfull \hbox (badness 2790) in paragraph at lines 196--196
-[][]\OT1/cmr/m/n/12 Beispielcode ei-ner Abfahrts-/Ankunft-Anfrage. Die Pa-ra-me
--ter, die
+[][][]\OT1/cmr/m/n/12 Beispielcode ei-ner Abfahrts-/Ankunft-Anfrage. Die Pa-ra-
+me-ter, die
  []
 
 
@@ -1316,7 +1398,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 210.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 210.
-[10 <./img/GO-Realtime.png> <./img/bspGA-HTA-Liste.png>]
+[12 <./img/GO-Realtime.png> <./img/bspGA-HTA-Liste.png>]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 210.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1326,7 +1408,7 @@ Package babel Info: Redefining ngerman shorthand "~
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 214.
 
-<img/bspAbfrageFahrprognose.png, id=367, 426.09187pt x 242.40562pt>
+<img/bspAbfrageFahrprognose.png, id=390, 426.09187pt x 242.40562pt>
 File: img/bspAbfrageFahrprognose.png Graphic file (type png)
 
 <use img/bspAbfrageFahrprognose.png>
@@ -1334,28 +1416,28 @@ Package pdftex.def Info: img/bspAbfrageFahrprognose.png used on input line 216.
 
 (pdftex.def)             Requested size: 341.43306pt x 194.25394pt.
 )
-Overfull \hbox (67.48482pt too wide) in paragraph at lines 221--37
+Overfull \hbox (67.48482pt too wide) in paragraph at lines 221--62
 [][] 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 37.
+(babel)             in language  on input line 62.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 37.
+(babel)             in language  on input line 62.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 37.
+(babel)             in language  on input line 62.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 37.
-[11 <./img/bspAbfrageAnkunftAbfahrt.png>]
+(babel)             in language  on input line 62.
+[13 <./img/bspAbfrageAnkunftAbfahrt.png>]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 37.
+(babel)             in language  on input line 62.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 37.
+(babel)             in language  on input line 62.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 37.
+(babel)             in language  on input line 62.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 37.
- [12 <./img/bspAbfrageFahrprognose.png>]
+(babel)             in language  on input line 62.
+ [14 <./img/bspAbfrageFahrprognose.png>]
 \openout2 = `Algorithmen.aux'.
 
  (Algorithmen.tex
@@ -1387,7 +1469,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 26.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 26.
- [13
+ [15
 
 
 ]
@@ -1404,11 +1486,16 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 41.
 
+Overfull \hbox (43.63695pt too wide) in paragraph at lines 43--44
+\OT1/cmr/m/n/12 plan-ba-sier-te Netz-wer-ke zu-ge-schnit-ten. Er ar-bei-tet mit
+ Sta-ti-ons[]Stations, Connec-ti-ons[]Connections,
+ []
+
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 48.
 
-<img/QuadTree.png, id=395, 225.84375pt x 226.59656pt>
+<img/QuadTree.png, id=419, 225.84375pt x 226.59656pt>
 File: img/QuadTree.png Graphic file (type png)
  <use img/QuadTree.png>
 Package pdftex.def Info: img/QuadTree.png used on input line 50.
@@ -1422,7 +1509,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 54.
 
-[14]
+[16]
 Overfull \hbox (4.2103pt too wide) in paragraph at lines 56--57
 []\OT1/cmr/m/n/12 Im Ge-gen-satz zum Di-jkstra m[]ussen beim CSA die Connec-ti-
 ons nicht nach dem n[]achsten
@@ -1446,16 +1533,16 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 68.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 68.
-[15 <./img/QuadTree.png>])
+[17 <./img/QuadTree.png>])
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 39.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 39.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 39.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 39.
- [16]
+(babel)             in language  on input line 64.
+ [18]
 \openout2 = `Programme.aux'.
 
  (Programme.tex
@@ -1477,7 +1564,7 @@ Package babel Info: Redefining ngerman shorthand "~
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 22.
 
-<img/TrainticketsTO.png, id=428, 1426.57968pt x 690.32906pt>
+<img/TrainticketsTO.png, id=451, 1426.57968pt x 690.32906pt>
 File: img/TrainticketsTO.png Graphic file (type png)
 
 <use img/TrainticketsTO.png>
@@ -1500,7 +1587,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 41.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 41.
-[17
+[19
 
 
 ]
@@ -1510,14 +1597,14 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 45.
 )
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 41.
+(babel)             in language  on input line 66.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 41.
+(babel)             in language  on input line 66.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 41.
+(babel)             in language  on input line 66.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 41.
- [18 <./img/TrainticketsTO.png>]
+(babel)             in language  on input line 66.
+ [20 <./img/TrainticketsTO.png>]
 \openout2 = `Erkenntnisse.aux'.
 
  (Erkenntnisse.tex
@@ -1555,7 +1642,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 34.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 34.
-[19
+[21
 
 
 ]
@@ -1563,7 +1650,7 @@ Package babel Info: Redefining ngerman shorthand "~
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 38.
 
-<img/OTP.png, id=474, 1429.59094pt x 692.5875pt>
+<img/OTP.png, id=498, 1429.59094pt x 692.5875pt>
 File: img/OTP.png Graphic file (type png)
  <use img/OTP.png>
 Package pdftex.def Info: img/OTP.png used on input line 40.
@@ -1574,7 +1661,7 @@ Overfull \hbox (7.11313pt too wide) in paragraph at lines 40--41
  []
 
 
-LaTeX Warning: Citation `traintickets_git_pattern' on page 20 undefined on inpu
+LaTeX Warning: Citation `traintickets_git_pattern' on page 22 undefined on inpu
 t line 45.
 
 Package babel Info: Redefining ngerman shorthand "|
@@ -1585,16 +1672,16 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 48.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 48.
-[20])
+[22])
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 43.
+(babel)             in language  on input line 68.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 43.
+(babel)             in language  on input line 68.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 43.
+(babel)             in language  on input line 68.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 43.
- [21 <./img/OTP.png>]
+(babel)             in language  on input line 68.
+ [23 <./img/OTP.png>]
 \openout2 = `AufgabenstellungBA.aux'.
 
  (AufgabenstellungBA.tex
@@ -1668,7 +1755,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 43.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 43.
-[22
+[24
 
 
 ]
@@ -1684,34 +1771,40 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 59.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 59.
- [23]
+ [25]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 61.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 61.
 )
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 45.
+(babel)             in language  on input line 70.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 45.
+(babel)             in language  on input line 70.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 45.
+(babel)             in language  on input line 70.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 45.
- [24] (Fachmodul_OpenSourceJourneyPlanner.lof
-Overfull \hbox (7.0297pt too wide) in paragraph at lines 6--6
- [][] [][]\OT1/cmr/m/n/12 Die Fahr-plan []Uberblick Da-tei wird hier in ei-ner 
-Ex-cel Ta-bel-le zur Verf[]ugung 
+(babel)             in language  on input line 70.
+ [26] (Fachmodul_OpenSourceJourneyPlanner.lof
+Overfull \hbox (10.88936pt too wide) in paragraph at lines 3--3
+ [][] [][][]\OT1/cmr/m/n/12 Dies sind un-se-re Zie-le die wir in der Ar-beit am
+ Fach-mo-dul zu ber[]ucksichtigen 
  []
 
 
-LaTeX Warning: Citation `abfahrts-ankunftsanzeige' on page 25 undefined on inpu
-t line 11.
+Overfull \hbox (7.0297pt too wide) in paragraph at lines 8--8
+ [][] [][][]\OT1/cmr/m/n/12 Die Fahr-plan []Uberblick Da-tei wird hier in ei-ne
+r Ex-cel Ta-bel-le zur Verf[]ugung 
+ []
 
 
-Overfull \hbox (19.40256pt too wide) in paragraph at lines 11--11
- [][] [][]\OT1/cmr/m/n/12 Beispielcode ei-ner Abfahrts-/Ankunft-Anfrage. Die Pa
--ra-me-ter, die []Ubergeben 
+LaTeX Warning: Citation `abfahrts-ankunftsanzeige' on page 27 undefined on inpu
+t line 13.
+
+
+Overfull \hbox (19.40256pt too wide) in paragraph at lines 13--13
+ [][] [][][]\OT1/cmr/m/n/12 Beispielcode ei-ner Abfahrts-/Ankunft-Anfrage. Die 
+Pa-ra-me-ter, die []Ubergeben 
  []
 
 )
@@ -1719,14 +1812,14 @@ Overfull \hbox (19.40256pt too wide) in paragraph at lines 11--11
 \openout7 = `Fachmodul_OpenSourceJourneyPlanner.lof'.
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 49.
+(babel)             in language  on input line 74.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 49.
+(babel)             in language  on input line 74.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 49.
+(babel)             in language  on input line 74.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 49.
- [25
+(babel)             in language  on input line 74.
+ [27
 
 ]
 \openout2 = `literatur.aux'.
@@ -1734,7 +1827,7 @@ Package babel Info: Redefining ngerman shorthand "~
  (literatur.tex (Fachmodul_OpenSourceJourneyPlanner.bbl
 Underfull \hbox (badness 1824) in paragraph at lines 90--93
 []\OT1/cmr/m/n/12 Gesch[]aftsorganisation-opentransportdata. [On-li-ne]. Availa
--ble: []$https : / /
+-ble: [][]$https : / /
  []
 
 Package babel Info: Redefining ngerman shorthand "|
@@ -1745,7 +1838,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 130.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 130.
-[26
+[28
 
 ]
 Package babel Info: Redefining ngerman shorthand "|
@@ -1756,39 +1849,39 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 227.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 227.
- [27]))
+ [29]))
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 49.
+(babel)             in language  on input line 74.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 49.
+(babel)             in language  on input line 74.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 49.
+(babel)             in language  on input line 74.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 49.
- [28]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 58.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 58.
+(babel)             in language  on input line 74.
+ [30]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 83.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 83.
  (Fachmodul_OpenSourceJourneyPlanner.aux (titel.aux)
 (abstract.aux) (Einfuehrung.aux) (Daten.aux) (Algorithmen.aux) (Programme.aux)
 (Erkenntnisse.aux) (AufgabenstellungBA.aux) (literatur.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 58.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 58.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 83.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 83.
 Package rerunfilecheck Info: File `Fachmodul_OpenSourceJourneyPlanner.out' has 
 not changed.
-(rerunfilecheck)             Checksum: 44C4E3470D4C7CBE9B7A9F556424465E;3197.
+(rerunfilecheck)             Checksum: 6C309766210E810186A0505502F75678;3242.
 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 15179 strings out of 493323
- 256523 string characters out of 3139065
- 483892 words of memory out of 3000000
- 18264 multiletter control sequences out of 15000+200000
+ 15404 strings out of 493323
+ 260915 string characters out of 3139065
+ 488561 words of memory out of 3000000
+ 18477 multiletter control sequences out of 15000+200000
  10947 words of font info for 40 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,9n,51p,8847b,544s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,9n,51p,8847b,546s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX
@@ -1798,10 +1891,10 @@ lic/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.
 pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Fachmodul_OpenSourceJourneyPlanner.pdf (31 pages, 4795767 byt
+Output written on Fachmodul_OpenSourceJourneyPlanner.pdf (34 pages, 4988201 byt
 es).
 PDF statistics:
- 677 PDF objects out of 1000 (max. 8388607)
- 140 named destinations out of 1000 (max. 500000)
- 431 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 707 PDF objects out of 1000 (max. 8388607)
+ 146 named destinations out of 1000 (max. 500000)
+ 449 words of extra memory for PDF output out of 10000 (max. 10000000)
 

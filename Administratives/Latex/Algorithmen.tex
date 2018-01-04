@@ -40,7 +40,7 @@ Der RAPTOR Algorithmus besitzt eine höhere Performanz als alle Graph Basierten 
 
 \subsubsection{Connection Scan Algorithm}
 \label{sec:Connection Scan Algorithm}
-Der Connection Scan Algorithm, kurz CSA, ist schon vom Grundkonzept her auf Zeitplanbasierte Netzwerke zugeschnitten. Er arbeitet mit Stations, Connections, Trips und Footpaths. Eine Connection ist die Verbindung zwischen zwei Stationen während ein Trip den gesammten Weg eines Zuges darstellt. 
+Der Connection Scan Algorithm, kurz CSA, ist schon vom Grundkonzept her auf Zeitplanbasierte Netzwerke zugeschnitten. Er arbeitet mit Stations\gls{stations}, Connections\gls{connections}, Trips\gls{trips} und Footpaths\gls{footpaths}. 
 
 In einem Ersten Schritt werden die Daten in die benötigte Timetable-Form gebracht und alle Connections nach der Abfahrtszeit sortiert. Diese Schritte werden preprocessed. Danach wird über alle Connections iteriert. Eine Connection wird als erreichbar markiert, wenn sie an bereits als erreichbar markierte Connections anschliesst oder mit der Startstation verbunden ist. Dies wird dann solange durchgeführt, bis die Zielstation erreicht ist. Anschliessend wird von der Zielstation aus der verfolgte Weg zusammengesetzt, so dass ein Journey von der Startstation zur Zielstation entsteht. 
 
@@ -68,11 +68,7 @@ Um das Preprocessing zu beschleunigen können mehrere Erweiterungen hinzugefügt
 
 Der Preprocessing\gls{preprocessing} kann je nach Grösse und Struktur des Netzwerks eine lange Zeit in Anspruch nehmen. Selbst mit allen Erweiterungen braucht das Preprocessing für das CH-Netzwerk vier Stunden. Dafür benötigen die Query-Anfragen nur wenige Millisekunden. Der Nachteil ist jedoch, dass mit Transfer Pattern nicht auf Zugverspätungen und Fahrplanänderungen reagiert werden kann. 
 
-\newglossaryentry{preprocessing}
-{
-	name={Preprocessing},
-	description={Prozessschritte welche schon vor den eigentlichen Anfragen durchgeführt werden um die Anfragen zu beschleunigen. Diese Schritte können zum Beispiel sortierung von Tabellen beinhalten.},
-}
+
 
 
 

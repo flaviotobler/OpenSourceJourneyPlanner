@@ -4,8 +4,8 @@
 \usepackage[ngerman]{babel}
 \usepackage{cite} 
 \usepackage{graphicx}
-\usepackage{glossaries}
-\usepackage{hyperref}
+\usepackage[sort=use]{glossaries}
+\usepackage[colorlinks=true, urlcolor=black, linkcolor=black, citecolor=black]{hyperref}
 \graphicspath{{img/}}
 
 
@@ -13,8 +13,33 @@
 \newglossaryentry{Node}
 {
 	name={Node},
-	description={testtest},
+	description={Ein Node ist ein Punkt in einem Netzwerk oder einem Graphen in welchem sich Verbindungen kreuzen oder verzweigen.},
 } 
+\newglossaryentry{preprocessing}
+{
+	name={Preprocessing},
+	description={Prozessschritte welche schon vor den eigentlichen Anfragen durchgeführt werden um die Anfragen zu beschleunigen. Diese Schritte können zum Beispiel sortierung von Tabellen beinhalten.},
+}
+\newglossaryentry{stations}
+{
+	name={Stations},
+	description={Eine Station ist eine Haltestelle eines öffentlichen Verkehrsmittels.},
+}
+\newglossaryentry{connections}
+{
+	name={Connections},
+	description={Eine Connection ist eine Verbindung zwischen zwei Stationen.},
+}
+\newglossaryentry{trips}
+{
+	name={Trips},
+	description={Ein Trip bezeichnet den Fahrtweg eines öffentlichen Verkehrsmittels von dessen Anfangsstation bis Endstation.},
+}
+\newglossaryentry{footpaths}
+{
+	name={Footpaths},
+	description={Ein Footpath bezeichnet einen Fussweg. Dieser kann zu einer Station hin führen , zwischen zwei Stationen oder zwischen zwei Abfahrtstellen in der gleichen Station verlaufen.},
+}
 
 \begin{document}
 	

@@ -1,15 +1,17 @@
 \select@language {ngerman}
-\contentsline {figure}{\numberline {1}{\ignorespaces Hier sieht man wie so ein CSV-Format im Texteditor aussieht.}}{3}{figure.1}
-\contentsline {figure}{\numberline {2}{\ignorespaces Diese \IeC {\"U}bersicht zeigt die Abh\IeC {\"a}ngigkeiten der einzelnen Files.z.B. Braucht das Trips-File die Info der Route-Files(route\_id) um zu wissen auf welchem Weg diese Reise stattfindet. \cite {gtfsUebersicht}}}{4}{figure.2}
-\contentsline {figure}{\numberline {3}{\ignorespaces Dies ist eine \IeC {\"U}bersicht wie das HAFAS System aufgebaut ist. Die Fahrplandaten entsprechen hier dem HRDF-Format. \cite {haconUebersicht}}}{6}{figure.3}
-\contentsline {figure}{\numberline {4}{\ignorespaces Hier sieht man wie so ein TSV-Format im Texteditor aussieht.}}{6}{figure.4}
-\contentsline {figure}{\numberline {5}{\ignorespaces Die Fahrplan \IeC {\"U}berblick Datei wird hier in einer Excel Tabelle zur Verf\IeC {\"u}gung gestellt.}}{7}{figure.5}
-\contentsline {figure}{\numberline {6}{\ignorespaces Hier sieht man ein Beispiel(Haltestelle) f\IeC {\"u}r das DiDok-File inklusive der Beschreibung einzelner Attribute.\cite {didok}}}{8}{figure.6}
-\contentsline {figure}{\numberline {7}{\ignorespaces Beispiel einer Gesch\IeC {\"a}ftsorganisation mit Beschreibung der Attribute. \cite {geschaeftsorganisation}}}{9}{figure.7}
-\contentsline {figure}{\numberline {8}{\ignorespaces Beschreibung der Daten (Gesch\IeC {\"a}ftsorganisationen mit Echtzeit) anhand von einem Beispiel.\cite {geschaeftsorganisation-rt}}}{10}{figure.8}
-\contentsline {figure}{\numberline {9}{\ignorespaces Ausschnitt der Daten in einer GA-HTA-Liste \cite {gahtaliste}}}{10}{figure.9}
-\contentsline {figure}{\numberline {10}{\ignorespaces Beispielcode einer Abfahrts-/Ankunft-Anfrage. Die Parameter, die \IeC {\"U}bergeben werden sind in schwarzer Schrift dargestellt.\cite {abfahrts-ankunftsanzeige}}}{11}{figure.10}
-\contentsline {figure}{\numberline {11}{\ignorespaces Beispielcode einer Fahrtprognose-Anfrage. Die Parameter, die \IeC {\"U}bergeben werden sind in schwarzer Schrift dargestellt.\cite {fahrtprognose}}}{12}{figure.11}
-\contentsline {figure}{\numberline {12}{\ignorespaces Veranschaulichung der Funktion des QuadTree-Preprocessings ~\cite {csa}}}{15}{figure.12}
-\contentsline {figure}{\numberline {13}{\ignorespaces Traintickets.To Webseite ~\cite {traintickets_site}}}{18}{figure.13}
-\contentsline {figure}{\numberline {14}{\ignorespaces Implementation des OTP mit den Schweitzer Daten}}{21}{figure.14}
+\contentsline {figure}{\numberline {1}{\ignorespaces Dies sind die m\IeC {\"o}glichen Ziele f\IeC {\"u}r die Bachelorarbeit. Aus dieser offenen Aufgabenstellung werden wir im verlaufe dieses Berichts eine eigene ausgearbeitete Aufgabenstellung erarbeiten.}}{3}{figure.1}
+\contentsline {figure}{\numberline {2}{\ignorespaces Dies sind unsere Ziele die wir in der Arbeit am Fachmodul zu ber\IeC {\"u}cksichtigen haben. }}{4}{figure.2}
+\contentsline {figure}{\numberline {3}{\ignorespaces Hier sieht man wie so ein CSV-Format im Texteditor aussieht.}}{5}{figure.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces Diese \IeC {\"U}bersicht zeigt die Abh\IeC {\"a}ngigkeiten der einzelnen Files.z.B. Braucht das Trips-File die Info der Route-Files(route\_id) um zu wissen auf welchem Weg diese Reise stattfindet. \cite {gtfsUebersicht}}}{6}{figure.4}
+\contentsline {figure}{\numberline {5}{\ignorespaces Dies ist eine \IeC {\"U}bersicht wie das HAFAS System aufgebaut ist. Die Fahrplandaten entsprechen hier dem HRDF-Format. \cite {haconUebersicht}}}{8}{figure.5}
+\contentsline {figure}{\numberline {6}{\ignorespaces Hier sieht man wie so ein TSV-Format im Texteditor aussieht.}}{8}{figure.6}
+\contentsline {figure}{\numberline {7}{\ignorespaces Die Fahrplan \IeC {\"U}berblick Datei wird hier in einer Excel Tabelle zur Verf\IeC {\"u}gung gestellt.}}{9}{figure.7}
+\contentsline {figure}{\numberline {8}{\ignorespaces Hier sieht man ein Beispiel(Haltestelle) f\IeC {\"u}r das DiDok-File inklusive der Beschreibung einzelner Attribute.\cite {didok}}}{10}{figure.8}
+\contentsline {figure}{\numberline {9}{\ignorespaces Beispiel einer Gesch\IeC {\"a}ftsorganisation mit Beschreibung der Attribute. \cite {geschaeftsorganisation}}}{11}{figure.9}
+\contentsline {figure}{\numberline {10}{\ignorespaces Beschreibung der Daten (Gesch\IeC {\"a}ftsorganisationen mit Echtzeit) anhand von einem Beispiel.\cite {geschaeftsorganisation-rt}}}{12}{figure.10}
+\contentsline {figure}{\numberline {11}{\ignorespaces Ausschnitt der Daten in einer GA-HTA-Liste \cite {gahtaliste}}}{12}{figure.11}
+\contentsline {figure}{\numberline {12}{\ignorespaces Beispielcode einer Abfahrts-/Ankunft-Anfrage. Die Parameter, die \IeC {\"U}bergeben werden sind in schwarzer Schrift dargestellt.\cite {abfahrts-ankunftsanzeige}}}{13}{figure.12}
+\contentsline {figure}{\numberline {13}{\ignorespaces Beispielcode einer Fahrtprognose-Anfrage. Die Parameter, die \IeC {\"U}bergeben werden sind in schwarzer Schrift dargestellt.\cite {fahrtprognose}}}{14}{figure.13}
+\contentsline {figure}{\numberline {14}{\ignorespaces Veranschaulichung der Funktion des QuadTree-Preprocessings ~\cite {csa}}}{17}{figure.14}
+\contentsline {figure}{\numberline {15}{\ignorespaces Traintickets.To Webseite ~\cite {traintickets_site}}}{20}{figure.15}
+\contentsline {figure}{\numberline {16}{\ignorespaces Implementation des OTP mit den Schweitzer Daten}}{23}{figure.16}

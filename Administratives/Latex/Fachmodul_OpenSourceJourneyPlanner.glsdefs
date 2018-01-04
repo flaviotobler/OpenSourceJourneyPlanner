@@ -1,16 +1,16 @@
-\ifglsentryexists{Node}{}%
+\ifglsentryexists{preprocessing}{}%
 {%
-\gls@defglossaryentry{Node}%
+\gls@defglossaryentry{preprocessing}%
 {%
-name={Node},%
-sort={Node},%
+name={Preprocessing},%
+sort={Preprocessing},%
 type={main},%
-first={Node},%
-firstplural={Nodes},%
-text={Node},%
-plural={Nodes},%
-description={testtest},%
-descriptionplural={testtest},%
+first={Preprocessing},%
+firstplural={Preprocessings},%
+text={Preprocessing},%
+plural={Preprocessings},%
+description={Prozessschritte welche schon vor den eigentlichen Anfragen durchgeführt werden um die Anfragen zu beschleunigen. Diese Schritte können zum Beispiel sortierung von Tabellen beinhalten.},%
+descriptionplural={Prozessschritte welche schon vor den eigentlichen Anfragen durchgeführt werden um die Anfragen zu beschleunigen. Diese Schritte können zum Beispiel sortierung von Tabellen beinhalten.},%
 symbol={\relax },%
 symbolplural={\relax },%
 user1={},%

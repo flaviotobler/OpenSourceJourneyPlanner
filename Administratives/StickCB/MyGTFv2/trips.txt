@@ -1,0 +1,3 @@
+route_id,service_id,trip_id,trip_headsign,direction_id
+27-11-j17-1,TA+b12z0,56.TA.27-11-j17-1.3.R,Schaanwald Zuschg,1
+27-11-j17-1,TA+b12z1,57.TA.27-11-j17-1.3.R,Schaan Bahnhof,1

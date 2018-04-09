@@ -1,0 +1,3 @@
+service_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday,start_date,end_date
+TA+b12z0,1,1,1,1,1,1,1,20161211,20181209
+TA+b12z1,1,1,1,0,1,1,1,20161211,20181209

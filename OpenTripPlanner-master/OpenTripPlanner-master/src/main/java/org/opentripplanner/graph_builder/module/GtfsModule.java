@@ -34,6 +34,7 @@ import org.onebusaway.gtfs.services.GenericMutableDao;
 import org.onebusaway.gtfs.services.GtfsMutableRelationalDao;
 import org.opentripplanner.calendar.impl.CalendarServiceDataFactoryImpl;
 import org.opentripplanner.calendar.impl.MultiCalendarServiceImpl;
+import org.opentripplanner.csa.TimeTableBuilder;
 import org.opentripplanner.graph_builder.model.GtfsBundle;
 import org.opentripplanner.graph_builder.services.GraphBuilderModule;
 import org.opentripplanner.gtfs.BikeAccess;
@@ -103,6 +104,12 @@ public class GtfsModule implements GraphBuilderModule {
                     gtfsBundle.cacheDirectory = cacheDirectory;
                 if (useCached != null && gtfsBundle.useCached == null)
                     gtfsBundle.useCached = useCached;
+                
+                //start TimeTableBuilder
+                TimeTableBuilder ttb = new TimeTableBuilder();
+                ttb.loadGtfs(gtfsBundle); 
+                
+                
                 GtfsMutableRelationalDao dao = new GtfsRelationalDaoImpl();
                 GtfsContext context = GtfsLibrary.createContext(gtfsBundle.getFeedId(), dao, service);
                 GTFSPatternHopFactory hf = new GTFSPatternHopFactory(context);

@@ -2,17 +2,17 @@ package org.opentripplanner.csa;
 
 import java.util.Calendar;
 
-public class Connection implements Comparable{
-    private Stop departureStop;
-    private Stop arrivalStop;
+public class Connection {
+    private StopCSA departureStop;
+    private StopCSA arrivalStop;
     private Calendar departureTime;
     private Calendar arrivalTime;
-    private Trip trip;
+    private TripCSA trip;
     
     public Connection(){}
 
-    public Connection(Stop departureStop, Stop arrivalStop, Calendar startZeit,
-            Calendar stopZeit, Trip trip) {
+    public Connection(StopCSA departureStop, StopCSA arrivalStop, Calendar startZeit,
+            Calendar stopZeit, TripCSA trip) {
         this.departureStop = departureStop;
         this.arrivalStop = arrivalStop;
         this.departureTime = startZeit;
@@ -20,19 +20,19 @@ public class Connection implements Comparable{
         this.trip = trip;
     }
 
-    public Stop getDepartureStop() {
+    public StopCSA getDepartureStop() {
         return departureStop;
     }
 
-    public void setDepartureStop(Stop departureStop) {
+    public void setDepartureStop(StopCSA departureStop) {
         this.departureStop = departureStop;
     }
 
-    public Stop getArrivalStop() {
+    public StopCSA getArrivalStop() {
         return arrivalStop;
     }
 
-    public void setArrivalStop(Stop arrivalStop) {
+    public void setArrivalStop(StopCSA arrivalStop) {
         this.arrivalStop = arrivalStop;
     }
 
@@ -52,18 +52,12 @@ public class Connection implements Comparable{
         this.arrivalTime = arrivalTime;
     }
 
-    public Trip getTrip() {
+    public TripCSA getTrip() {
         return trip;
     }
 
-    public void setTrip(Trip trip) {
+    public void setTrip(TripCSA trip) {
         this.trip = trip;
-    }
-
-    @Override
-    public int compareTo(Object arg0) {
-        // TODO Auto-generated method stub
-        return 0;
     }
     
     

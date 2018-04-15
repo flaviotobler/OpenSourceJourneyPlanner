@@ -1,34 +1,25 @@
 package org.opentripplanner.csa;
 
-import java.io.IOException;
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.opentripplanner.common.MavenVersion;
 
-public class TimeTable implements Cloneable, Serializable{
+public class TimeTable {
 
-
-    private static final long serialVersionUID = MavenVersion.VERSION.getUID();
-    private Set<Stop> stops = new HashSet<Stop>();
-    private Set<Trip> trips = new HashSet<Trip>();
+    private Set<StopCSA> stops = new HashSet<StopCSA>();
+    private Set<TripCSA> trips = new HashSet<TripCSA>();
     private Set<Footpath> footpaths = new HashSet<Footpath>();
     private Set<Connection> connections = new TreeSet<Connection>();
     
-    
-    
     public TimeTable(){}
     
-
-    
-    public void addStop(Stop stop){
+    public void addStop(StopCSA stop){
         stops.add(stop);
     }
     
-    public void addTrip(Trip trip){
+    public void addTrip(TripCSA trip){
         trips.add(trip);
     }
     
@@ -38,6 +29,19 @@ public class TimeTable implements Cloneable, Serializable{
     
     public void addConnection(Connection connection){
         connections.add(connection);
+    }
+    
+    public void showStops() {
+    	System.out.println("STOPs: "+stops.size()+"--> "+stops);
+    }
+    public void showTrips() {
+    	System.out.println("TRIPs: "+trips.size()+"--> "+trips);
+    }
+    public void showFootPaths() {
+    	System.out.println("FOOTPATHs: "+footpaths.size()+"--> "+footpaths);
+    }
+    public void showConnections() {
+    	System.out.println("CONNECTIONS: "+connections.size()+"--> "+connections);
     }
     
     //Wird wahrscheinlich nicht gebraucht da normal darueber iteriert werden kann.

@@ -2,32 +2,32 @@ package org.opentripplanner.csa;
 
 public class Footpath {
     
-    private Stop departureStop;
-    private Stop arrivalStop;
-    private long duration;
+    private StopCSA departureStop;
+    private StopCSA arrivalStop;
+    private long duration;  //sekunden?
     
     public Footpath(){};
     
-    public Footpath(Stop departureStop, Stop arrivalStop, long duration) 
+    public Footpath(StopCSA departureStop, StopCSA arrivalStop, long duration) 
     {
         this.departureStop = departureStop;
         this.arrivalStop = arrivalStop;
         this.duration = duration;
     }
 
-    public Stop getDepartureStop() {
+    public StopCSA getDepartureStop() {
         return departureStop;
     }
 
-    public void setDepartureStop(Stop departureStop) {
+    public void setDepartureStop(StopCSA departureStop) {
         this.departureStop = departureStop;
     }
 
-    public Stop getArrivalStop() {
+    public StopCSA getArrivalStop() {
         return arrivalStop;
     }
 
-    public void setArrivalStop(Stop arrivalStop) {
+    public void setArrivalStop(StopCSA arrivalStop) {
         this.arrivalStop = arrivalStop;
     }
 

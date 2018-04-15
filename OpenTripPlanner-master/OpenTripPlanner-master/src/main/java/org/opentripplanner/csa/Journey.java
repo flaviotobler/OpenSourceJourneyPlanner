@@ -25,4 +25,8 @@ public class Journey {
     public void addJourneyPointer(JourneyPointer journeyPointer){
         journeyPointers.add(journeyPointer);
     }
+    
+    public Set<JourneyPointer> getJourneyPointers(){
+        return journeyPointers;
+    }
 }

@@ -43,12 +43,14 @@ import org.opentripplanner.routing.core.TraverseMode;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class JourneyToTripPlanConverterMock {
     
     public static TripPlan generatePlan(Set<Journey> journeys) throws JsonGenerationException, JsonMappingException, IOException
     {
         ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         mapper.writeValue(new File("journeysMockJSON.txt"),journeys);
         
         
@@ -66,15 +68,16 @@ public class JourneyToTripPlanConverterMock {
         Double lonf = 9.63119748849971;
         Double latf = 47.4142968347706;
         String namef = "stop Heerbrugg, Dornacherhof ";
-        Double lont = 9.62778389041958;
-        Double latt = 47.4108621837542;
-        String namet = "stop Heerbrugg, Bahnhof ";
+        Double lont = 9.55651155576762;
+        Double latt = 47.3742890246126;
+        String namet = "stop Altstätten SG ";
         Place from = new Place();
         from.name = namef;
         from.lon = lonf;
         from.lat = latf;
         from.orig = namef;
         from.vertexType = VertexType.NORMAL;
+        //from.stopId = new AgencyAndId("1","8578433");
         plan.from = from;
         Place to = new Place();
         to.name = namet;
@@ -82,6 +85,7 @@ public class JourneyToTripPlanConverterMock {
         to.lat = latt;
         to.orig = namet;
         to.vertexType = VertexType.NORMAL;
+        //to.stopId = new AgencyAndId("1","8574137");
         plan.to = to;
         
         Itinerary itinerary = new Itinerary();
@@ -90,15 +94,19 @@ public class JourneyToTripPlanConverterMock {
 
         
         Calendar startZeit = new GregorianCalendar(2018,4,9,12,36);
-        Calendar stopZeit = new GregorianCalendar(2018,4,9,12,44);
+        Calendar stopZeit = new GregorianCalendar(2018,4,9,12,40);
         itinerary.startTime = startZeit;
         itinerary.endTime = stopZeit;
-        itinerary.transitTime = dauer;
+        itinerary.transitTime = 240;
+        itinerary.walkTime = 0;
+        itinerary.waitingTime = 0;
+        itinerary.walkDistance = 0.0;
+        itinerary.transfers = 0;
         
-        Leg leg = new Leg();
+        Leg leg= new Leg();
         leg.startTime = startZeit;
         leg.endTime = stopZeit;
-        leg.distance = 460.26001370630223;
+        //leg.distance = 460.26001370630223;
         leg.mode = "BUS";
         leg.route = "351";
         leg.agencyName = "Bus Ostschweiz (Rheintal)";
@@ -121,20 +129,20 @@ public class JourneyToTripPlanConverterMock {
         f.lat = latf;
         f.departure = startZeit;
         f.orig = "stop Heerbrugg, Dornacherhof ";
-        f.stopIndex = 6;
-        f.stopSequence = 7;
+        //f.stopIndex = 6;
+        //f.stopSequence = 7;
         f.vertexType = VertexType.TRANSIT;
         leg.from = f;
         Place t = new Place();
         t.name = "Heerbrugg, Bahnhof";
         AgencyAndId sId2 = new AgencyAndId("1","8574137");
         t.stopId = sId2;
-        t.lon = lont;
-        t.lat = latt;
+        t.lon = 9.62778389041958;
+        t.lat = 47.4108621837542;
         t.arrival = stopZeit;
         t.orig = "stop Heerbrugg, Bahnhof ";
-        t.stopIndex = 7;
-        t.stopSequence = 8;
+        //t.stopIndex = 7;
+        //t.stopSequence = 8;
         t.vertexType = VertexType.TRANSIT;
         leg.to = t;
         EncodedPolylineBean legGeo = new EncodedPolylineBean();
@@ -146,6 +154,7 @@ public class JourneyToTripPlanConverterMock {
         leg.duration = 240.0;
         leg.transitLeg = true;
         itinerary.addLeg(leg);
+        
         plan.addItinerary(itinerary);
         
         Itinerary itinerary2 = new Itinerary();

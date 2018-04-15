@@ -3,16 +3,16 @@ package org.opentripplanner.csa;
 public class Stop {
     
     private String name;
-    private double xCord;
-    private double yCord;
+    private double lon;
+    private double lat;
     
     public Stop(){};
     
-    public Stop(String name, double xCord, double yCord)
+    public Stop(String name, double lon, double lat)
     {
         this.name = name;
-        this.xCord = xCord;
-        this.yCord = yCord;
+        this.lon = lon;
+        this.lat = lat;
     }
 
     public String getName() {
@@ -23,20 +23,20 @@ public class Stop {
         this.name = name;
     }
 
-    public double getXCord() {
-        return xCord;
+    public double getLon() {
+        return lon;
     }
 
-    public void setXCord(double xCord) {
-        this.xCord = xCord;
+    public void setLon(double lon) {
+        this.lon = lon;
     }
 
-    public double getYCord() {
-        return yCord;
+    public double getLat() {
+        return lat;
     }
 
-    public void setYCord(double yCord) {
-        this.yCord = yCord;
+    public void setLat(double lat) {
+        this.lat = lat;
     }
     
     

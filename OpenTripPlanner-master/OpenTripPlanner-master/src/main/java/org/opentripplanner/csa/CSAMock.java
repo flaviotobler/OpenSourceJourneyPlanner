@@ -7,14 +7,18 @@ import java.util.GregorianCalendar;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.opentripplanner.routing.core.RoutingRequest;
+
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class CSAMock {
     
-    public Set<Journey> createJourneys(TimeTable timeTable) throws JsonGenerationException, JsonMappingException, IOException{
+    public static Set<Journey> createJourneys(TimeTable timeTable, RoutingRequest request) throws JsonGenerationException, JsonMappingException, IOException{
         ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         mapper.writeValue(new File("timeTableMockJSON.txt"),timeTable);
         
         
@@ -26,7 +30,7 @@ public class CSAMock {
         Connection testConnection = new Connection(testStop, testStop2, startZeit, stopZeit, testTrip);
         Footpath testFootpath = new Footpath(testStop, testStop, 3);
         Footpath testFootpath2 = new Footpath(testStop2, testStop2, 5);
-        Leg testLeg = new Leg(testConnection, testConnection);
+        LegCSA testLeg = new LegCSA(testConnection, testConnection);
         JourneyPointer testJourneyPointer = new JourneyPointer(testLeg, testFootpath2);
         Journey testJourney = new Journey(testFootpath);
         testJourney.addJourneyPointer(testJourneyPointer);

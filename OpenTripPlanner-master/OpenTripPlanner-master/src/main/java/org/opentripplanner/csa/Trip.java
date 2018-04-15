@@ -4,6 +4,7 @@ public class Trip {
     
     private int TripId;
     private String TripName;
+    private String AgencyId;
     
     public Trip(){}
 

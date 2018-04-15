@@ -34,6 +34,7 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import org.opentripplanner.csa.*;
 
@@ -104,15 +105,18 @@ public class PlannerResource extends RoutingResource {
 
             /* Fill in request fields from query parameters via shared superclass method, catching any errors. */
             request = super.buildRequest();
-            router = otpServer.getRouter(request.routerId);
+            //router = otpServer.getRouter(request.routerId);
 
             /* Find some good GraphPaths through the OTP Graph. */
-            GraphPathFinder gpFinder = new GraphPathFinder(router); // we could also get a persistent router-scoped GraphPathFinder but there's no setup cost here
-            paths = gpFinder.graphPathFinderEntryPoint(request);
+            //GraphPathFinder gpFinder = new GraphPathFinder(router); // we could also get a persistent router-scoped GraphPathFinder but there's no setup cost here
+            //paths = gpFinder.graphPathFinderEntryPoint(request);
 
             /* Convert the internal GraphPaths to a TripPlan object that is included in an OTP web service Response. */
             //TripPlan plan = GraphPathToTripPlanConverter.generatePlan(paths, request);
-            Set<Journey> journeys = new LinkedHashSet<Journey>();
+            
+            TimeTable timeTable = new TimeTable();
+            Set<Journey> journeys = CSAMock.createJourneys(timeTable, request);
+            //Set<Journey> journeys = new LinkedHashSet<Journey>();
             TripPlan plan = JourneyToTripPlanConverterMock.generatePlan(journeys);
             
             response.setPlan(plan);
@@ -132,10 +136,10 @@ public class PlannerResource extends RoutingResource {
         }
 
         /* Populate up the elevation metadata */
-        response.elevationMetadata = new ElevationMetadata();
+        /*response.elevationMetadata = new ElevationMetadata();
         response.elevationMetadata.ellipsoidToGeoidDifference = router.graph.ellipsoidToGeoidDifference;
         response.elevationMetadata.geoidElevation = request.geoidElevation;
-        System.out.println(response.elevationMetadata.ellipsoidToGeoidDifference);
+        System.out.println(response.elevationMetadata.ellipsoidToGeoidDifference);*/
 
         /* Log this request if such logging is enabled. */
         /*if (request != null && router != null && router.requestLogger != null) {
@@ -171,7 +175,9 @@ public class PlannerResource extends RoutingResource {
         System.out.println("I");
         */
         ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         mapper.writeValue(new File("mockPlanJSON.txt"),response);
+        
         
         
         

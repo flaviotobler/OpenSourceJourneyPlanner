@@ -2,7 +2,7 @@ package org.opentripplanner.csa;
 
 import java.util.Calendar;
 
-public class Connection {
+public class Connection implements Comparable{
     private Stop departureStop;
     private Stop arrivalStop;
     private Calendar departureTime;
@@ -58,6 +58,12 @@ public class Connection {
 
     public void setTrip(Trip trip) {
         this.trip = trip;
+    }
+
+    @Override
+    public int compareTo(Object arg0) {
+        // TODO Auto-generated method stub
+        return 0;
     }
     
     

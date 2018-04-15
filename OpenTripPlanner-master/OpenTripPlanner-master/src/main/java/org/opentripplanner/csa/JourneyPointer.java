@@ -2,21 +2,21 @@ package org.opentripplanner.csa;
 
 public class JourneyPointer {
     
-    private Leg leg;
+    private LegCSA leg;
     private Footpath footpath;
     
     public JourneyPointer(){}
 
-    public JourneyPointer(Leg leg, Footpath footpath) {
+    public JourneyPointer(LegCSA leg, Footpath footpath) {
         this.leg = leg;
         this.footpath = footpath;
     }
 
-    public Leg getLeg() {
+    public LegCSA getLeg() {
         return leg;
     }
 
-    public void setLeg(Leg leg) {
+    public void setLeg(LegCSA leg) {
         this.leg = leg;
     }
 

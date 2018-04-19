@@ -1,6 +1,7 @@
 package org.opentripplanner.csa;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
 
@@ -9,10 +10,15 @@ import org.opentripplanner.api.model.Itinerary;
 import org.opentripplanner.api.model.Leg;
 import org.opentripplanner.api.model.Place;
 import org.opentripplanner.api.model.TripPlan;
+import org.opentripplanner.api.resource.CoordinateArrayListSequence;
+import com.vividsolutions.jts.geom.Coordinate;
+import org.opentripplanner.common.geometry.GeometryUtils;
+import org.opentripplanner.util.PolylineEncoder;
 import org.opentripplanner.util.model.EncodedPolylineBean;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.vividsolutions.jts.geom.Geometry;
 
 public class JourneyToTripPlanConverter {
     
@@ -23,13 +29,20 @@ public class JourneyToTripPlanConverter {
         
         for(Journey journey: journeys)
         {
-            Itinerary itinerary = getItineraryInfo(journey);
+            Itinerary itinerary = new Itinerary();
             //Todo Generate Itinerary Information
             
             Footpath startpath = journey.getStartPath();
-            // Todo Generate leg and steps from footpath
             Leg startLeg = legFromFP(startpath);
             itinerary.addLeg(startLeg);
+            itinerary.startTime = startLeg.startTime;
+            itinerary.endTime = startLeg.endTime;
+            itinerary.transitTime = 0;
+            itinerary.walkTime = (long) startLeg.duration;
+            itinerary.waitingTime = 0;
+            itinerary.walkDistance = startLeg.distance;
+            itinerary.transfers = -1;
+       
             
             for(JourneyPointer jp: journey.getJourneyPointers())
             {
@@ -37,12 +50,22 @@ public class JourneyToTripPlanConverter {
                 LegCSA legcsa = jp.getLeg();
                 Leg leg = legFromLeg(legcsa);
                 itinerary.addLeg(leg);
+                itinerary.transitTime = itinerary.transitTime + (long) leg.duration;
+                itinerary.waitingTime = itinerary.waitingTime + ((leg.startTime.getTimeInMillis() - itinerary.endTime.getTimeInMillis())/1000);
+                itinerary.transfers = itinerary.transfers + 1;
                 
                 Footpath footpath = jp.getFootpath();
-                Leg walkLeg = legFromFP(startpath);
+                Leg walkLeg = legFromFP(footpath);
                 itinerary.addLeg(walkLeg);
+                itinerary.endTime = walkLeg.endTime;
+                itinerary.walkTime = itinerary.walkTime + (long) walkLeg.duration;
+                itinerary.walkDistance = itinerary.walkDistance + walkLeg.distance;
                 
                 
+            }
+            itinerary.duration = itinerary.transitTime + itinerary.walkTime + itinerary.waitingTime;
+            if(itinerary.transfers <= 0){
+                itinerary.transfers = 0;
             }
         }
         
@@ -98,30 +121,33 @@ public class JourneyToTripPlanConverter {
         leg.tripId = trip.getTripId();
         leg.routeShortName = trip.getRouteShortName();
         
-        leg.serviceDate = getDate(); //getDate from request
-        leg.legGeometry = getLegGeometry();
-        leg.duration = getDuration();
-        leg.transitLeg = isTransit();
+        leg.serviceDate = getDate(leg.startTime); //getDate from request
+        leg.duration = getDuration(leg.startTime, leg.endTime);
+        leg.transitLeg = true;
         
         
         leg.from = getPlace(center.getDepartureStop());
         leg.to = getPlace(cexit.getArrivalStop());
-        return null;
+        Coordinate startCor = new Coordinate(leg.from.lon, leg.from.lat, 0);
+        Coordinate endCor = new Coordinate(leg.to.lon, leg.to.lat, 0);
+        CoordinateArrayListSequence coordinates = new CoordinateArrayListSequence();
+        Geometry geometry = GeometryUtils.getGeometryFactory().createLineString(coordinates);
+        leg.legGeometry = PolylineEncoder.createEncodings(geometry);
+        return leg;
     }
 
-    private static String getDate() {
-        // TODO Auto-generated method stub
-        return null;
+    private static String getDate(Calendar dateTime) {
+        int year = dateTime.get(Calendar.YEAR);
+        int month = dateTime.get(Calendar.MONTH);
+        int day = dateTime.get(Calendar.DAY_OF_MONTH);
+        String sD = ""+year+month+day;
+        return sD;
     }
 
-    private static Boolean isTransit() {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
-    private static double getDuration() {
-        // TODO Auto-generated method stub
-        return 0;
+    private static double getDuration(Calendar start, Calendar end) {
+        double duration = ((end.getTimeInMillis() - start.getTimeInMillis())/1000);
+        return duration;
     }
 
     private static EncodedPolylineBean getLegGeometry() {
@@ -134,12 +160,6 @@ public class JourneyToTripPlanConverter {
         return null;
     }
 
-    private static Itinerary getItineraryInfo(Journey journey) {
-        Itinerary itinerary = new Itinerary();
-        
-        
-        return itinerary;
-    }
 
     public static Place getPlace(Stop stop){
         Place place = new Place();

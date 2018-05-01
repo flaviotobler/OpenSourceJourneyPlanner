@@ -6,10 +6,10 @@ public class StopCSA {
     private String name;
     private double lon;
     private double lat;
+
     
-    //public Stop(){};
     
-    public StopCSA(String stopId,String name, double lon, double lat)
+    public StopCSA(String stopId,String name, double lat, double lon)
     {
     	this.stopId = stopId;
         this.name = name;
@@ -46,6 +46,7 @@ public class StopCSA {
 
     public void setLat(double lat) {
         this.lat = lat;
+
     }
     
     

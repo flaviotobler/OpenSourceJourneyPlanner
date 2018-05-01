@@ -1,0 +1,3 @@
+agency_id,agency_name,agency_url,agency_timezone
+801,PostAuto Schweiz,http://www.sbb.ch/,Europe/Berlin
+802,TESTAUTO Taxi Schweiz,http://www.taxischwizzzzzzz.ch/,Europe/Berlin

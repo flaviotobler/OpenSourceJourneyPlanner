@@ -106,18 +106,17 @@ public class PlannerResource extends RoutingResource {
             /* Fill in request fields from query parameters via shared superclass method, catching any errors. */
             request = super.buildRequest();
             router = otpServer.getRouter(request.routerId);
-
             /* Find some good GraphPaths through the OTP Graph. */
-            GraphPathFinder gpFinder = new GraphPathFinder(router); // we could also get a persistent router-scoped GraphPathFinder but there's no setup cost here
-            paths = gpFinder.graphPathFinderEntryPoint(request);
+            //GraphPathFinder gpFinder = new GraphPathFinder(router); // we could also get a persistent router-scoped GraphPathFinder but there's no setup cost here
+            //paths = gpFinder.graphPathFinderEntryPoint(request);
 
             /* Convert the internal GraphPaths to a TripPlan object that is included in an OTP web service Response. */
-           TripPlan plan = GraphPathToTripPlanConverter.generatePlan(paths, request);
+           //TripPlan plan = GraphPathToTripPlanConverter.generatePlan(paths, request);
             
-            //TimeTable timeTable = new TimeTable();
+            TimeTable timeTable = new TimeTable();
             //Set<Journey> journeys = CSAMock.createJourneys(timeTable, request);
-            //Set<Journey> journeys = new LinkedHashSet<Journey>();
-            //TripPlan plan = JourneyToTripPlanConverterMock.generatePlan(journeys);
+            Set<Journey> journeys = new LinkedHashSet<Journey>();
+            TripPlan plan = JourneyToTripPlanConverterMock.generatePlan(journeys);
             
             response.setPlan(plan);
 

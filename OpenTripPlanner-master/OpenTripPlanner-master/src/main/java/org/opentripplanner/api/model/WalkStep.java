@@ -142,6 +142,8 @@ public class WalkStep {
      * Used only in generating the streetEdges array in StreetSegment; not serialized. 
      */
     public transient BikeRentalStationInfo bikeRentalOnStation, bikeRentalOffStation;
+    
+    public WalkStep(){}
 
     public void setDirections(double lastAngle, double thisAngle, boolean roundabout) {
         relativeDirection = getRelativeDirection(lastAngle, thisAngle, roundabout);

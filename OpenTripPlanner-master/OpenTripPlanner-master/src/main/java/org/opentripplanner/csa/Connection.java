@@ -2,14 +2,14 @@ package org.opentripplanner.csa;
 
 import java.util.Calendar;
 
-public class Connection {
+public class Connection implements Comparable { //Treeset braucht Comparable sonst exception
     private StopCSA departureStop;
     private StopCSA arrivalStop;
     private Calendar departureTime;
     private Calendar arrivalTime;
     private TripCSA trip;
     
-    public Connection(){}
+    
 
     public Connection(StopCSA departureStop, StopCSA arrivalStop, Calendar startZeit,
             Calendar stopZeit, TripCSA trip) {
@@ -59,6 +59,22 @@ public class Connection {
     public void setTrip(TripCSA trip) {
         this.trip = trip;
     }
+
+	@Override
+	public int compareTo(Object arg0) {   //TreeSet sortieren  nach ...
+		// TODO Auto-generated method stub
+		
+		/*
+		return 0; dublikat wird nicht aufgenommen
+		return 1; für in Reihenfolge ein begin mit erstem 1-2-3-4-5....
+		return-1; Reihenfolge begin mit letztem 15-14-13-12...
+		
+		
+		
+		*/
+		
+		return 1;
+	}
     
     
     

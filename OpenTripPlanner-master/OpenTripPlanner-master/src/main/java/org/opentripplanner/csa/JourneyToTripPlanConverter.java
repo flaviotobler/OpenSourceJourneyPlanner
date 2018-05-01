@@ -1,18 +1,27 @@
 package org.opentripplanner.csa;
 
 import java.io.IOException;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Set;
 
 import org.glassfish.grizzly.http.server.Request;
+import org.opentripplanner.api.model.AbsoluteDirection;
 import org.opentripplanner.api.model.Itinerary;
 import org.opentripplanner.api.model.Leg;
 import org.opentripplanner.api.model.Place;
+import org.opentripplanner.api.model.RelativeDirection;
 import org.opentripplanner.api.model.TripPlan;
+import org.opentripplanner.api.model.WalkStep;
 import org.opentripplanner.api.resource.CoordinateArrayListSequence;
 import com.vividsolutions.jts.geom.Coordinate;
 import org.opentripplanner.common.geometry.GeometryUtils;
+import org.opentripplanner.routing.core.RoutingRequest;
 import org.opentripplanner.util.PolylineEncoder;
 import org.opentripplanner.util.model.EncodedPolylineBean;
 
@@ -22,19 +31,21 @@ import com.vividsolutions.jts.geom.Geometry;
 
 public class JourneyToTripPlanConverter {
     
-    public static TripPlan generatePlan(Set<Journey> journeys, Request request) throws JsonGenerationException, JsonMappingException, IOException
+    public static TripPlan generatePlan(Set<Journey> journeys, RoutingRequest request) throws JsonGenerationException, JsonMappingException, IOException
     {
         TripPlan plan = getPlanInfo(request);
+        Date datum = plan.date;
         
         
         for(Journey journey: journeys)
         {
-            Itinerary itinerary = new Itinerary();
-            //Todo Generate Itinerary Information
-            
+            Itinerary itinerary = new Itinerary();     
             Footpath startpath = journey.getStartPath();
-            Leg startLeg = legFromFP(startpath);
-            itinerary.addLeg(startLeg);
+            Leg startLeg = legFromFP(startpath, datum);
+            if(startLeg.distance != 0)
+            {
+                itinerary.addLeg(startLeg);
+            }
             itinerary.startTime = startLeg.startTime;
             itinerary.endTime = startLeg.endTime;
             itinerary.transitTime = 0;
@@ -48,15 +59,19 @@ public class JourneyToTripPlanConverter {
             {
                 
                 LegCSA legcsa = jp.getLeg();
-                Leg leg = legFromLeg(legcsa);
+                Leg leg = legFromLeg(legcsa, datum);
                 itinerary.addLeg(leg);
                 itinerary.transitTime = itinerary.transitTime + (long) leg.duration;
                 itinerary.waitingTime = itinerary.waitingTime + ((leg.startTime.getTimeInMillis() - itinerary.endTime.getTimeInMillis())/1000);
                 itinerary.transfers = itinerary.transfers + 1;
                 
                 Footpath footpath = jp.getFootpath();
-                Leg walkLeg = legFromFP(footpath);
-                itinerary.addLeg(walkLeg);
+                Leg walkLeg = legFromFP(footpath, datum);
+                if(walkLeg.distance != 0)
+                {
+                    itinerary.addLeg(walkLeg);
+                }
+                
                 itinerary.endTime = walkLeg.endTime;
                 itinerary.walkTime = itinerary.walkTime + (long) walkLeg.duration;
                 itinerary.walkDistance = itinerary.walkDistance + walkLeg.distance;
@@ -73,7 +88,7 @@ public class JourneyToTripPlanConverter {
     }
     
 
-    private static TripPlan getPlanInfo(Request request) {
+    private static TripPlan getPlanInfo(RoutingRequest request) {
         TripPlan plan = new TripPlan();
         plan.date = getPlanDate(request);
         plan.from = getStartPlace(request);
@@ -82,41 +97,55 @@ public class JourneyToTripPlanConverter {
     }
 
 
-    private static Place getEndPlace(Request request) {
-        // TODO Auto-generated method stub
-        return null;
+    private static Place getEndPlace(RoutingRequest request) {
+        Place to = new Place();
+        to.name = request.to.name;
+        to.lon = request.to.lng;
+        to.lat = request.to.lat;
+        return to;
     }
 
 
-    private static Place getStartPlace(Request request) {
-        // TODO Auto-generated method stub
-        return null;
+    private static Place getStartPlace(RoutingRequest request) {
+        Place from = new Place();
+        from.name = request.from.name;
+        from.lon = request.from.lng;
+        from.lat = request.from.lat;
+        return from;
     }
 
 
-    private static Date getPlanDate(Request request) {
-        // TODO Auto-generated method stub
-        return null;
+    private static Date getPlanDate(RoutingRequest request) {
+        Date date = new Date();
+        date = request.getDateTime();
+        return date;
     }
 
 
-    private static Leg legFromLeg(LegCSA legcsa) {
+    private static Leg legFromLeg(LegCSA legcsa, Date datum) {
         Leg leg = new Leg();
         Connection center = legcsa.getEnter();
-        leg.startTime = center.getDepartureTime();
+        int year = datum.getYear();
+        int month = datum.getMonth();
+        int day = datum.getDate();
+        int hour = center.getDepartureTime().HOUR_OF_DAY;
+        int minute = center.getDepartureTime().MINUTE;      
+        leg.startTime = new GregorianCalendar(year,month,day,hour,minute);
         Connection cexit = legcsa.getExit();
-        leg.endTime = cexit.getArrivalTime();
-        Trip trip = cexit.getTrip();
+        hour = cexit.getArrivalTime().HOUR_OF_DAY;
+        minute = cexit.getArrivalTime().HOUR_OF_DAY;
+        leg.endTime = new GregorianCalendar(year,month,day,hour,minute);
+        TripCSA trip = cexit.getTrip();
         
         leg.mode = trip.getMode();
         leg.route = trip.getRoute();
         leg.agencyName = trip.getAgencyName();
         leg.agencyUrl = trip.getAgencyUrl();
-        leg.agencyTimeZoneOffset = getTimeZone(); //getTimeZone form the Date (Summertime)
+        leg.agencyTimeZoneOffset = getTimeZone(trip.getAgencyTimeZoneOffset()); //getTimeZone form the Date (Summertime)
         leg.routeType = trip.getRouteType();
         leg.routeId = trip.getRouteId();
-        leg.tripShortName = trip.getShortName();
-        leg.headsign = trip.getHeadsign();
+        leg.tripShortName = trip.getName();
+        leg.headsign = trip.getTripHeadSign();
         leg.agencyId = trip.getAgencyId();
         leg.tripId = trip.getTripId();
         leg.routeShortName = trip.getRouteShortName();
@@ -136,6 +165,12 @@ public class JourneyToTripPlanConverter {
         return leg;
     }
 
+    private static int getTimeZone(String timeZone) {
+        ZoneOffset zone = ZoneOffset.of(timeZone);
+        return zone.getTotalSeconds()*1000;
+    }
+
+
     private static String getDate(Calendar dateTime) {
         int year = dateTime.get(Calendar.YEAR);
         int month = dateTime.get(Calendar.MONTH);
@@ -150,18 +185,102 @@ public class JourneyToTripPlanConverter {
         return duration;
     }
 
-    private static EncodedPolylineBean getLegGeometry() {
-        // TODO Auto-generated method stub
+    private static Leg legFromFP(Footpath footpath, Date datum) {
+        Leg leg = new Leg();
+        leg.distance = getDistance(footpath);
+        leg.agencyTimeZoneOffset = getTimeZone(); // Timezoneoffset für schweitzer system machen bei walk?
+        //leg.startTime = todo
+        //leg.endTime = todo
+        leg.mode = "WALK";
+        leg.from = getPlace(footpath.getDepartureStop());
+        leg.to = getPlace(footpath.getArrivalStop());
+        // Achtung vieleicht Fehler
+        Coordinate startCor = new Coordinate(leg.from.lon, leg.from.lat, 0);
+        Coordinate endCor = new Coordinate(leg.to.lon, leg.to.lat, 0);
+        CoordinateArrayListSequence coordinates = new CoordinateArrayListSequence();
+        Geometry geometry = GeometryUtils.getGeometryFactory().createLineString(coordinates);
+        leg.legGeometry = PolylineEncoder.createEncodings(geometry);
+        WalkStep walkStep = new WalkStep();
+        walkStep.distance = leg.distance;
+        walkStep.streetName = "" + footpath.getDepartureStop().getName() + " => " + footpath.getArrivalStop().getName();
+        walkStep.absoluteDirection = getAbsoluteDirection(footpath);
+        walkStep.relativeDirection = RelativeDirection.DEPART;
+        walkStep.lon = footpath.getDepartureStop().getLon();
+        walkStep.lat = footpath.getDepartureStop().getLat();
+        List<WalkStep> walkSteps = new ArrayList<WalkStep>();
+        walkSteps.add(walkStep);
+        leg.walkSteps = walkSteps;
+        return leg;
+    }
+
+
+    private static int getTimeZone() {
+        
+        return 7200000;
+    }
+
+
+    private static AbsoluteDirection getAbsoluteDirection(Footpath footpath) {
+        double lat1 = footpath.getDepartureStop().getLat();
+        double lat2 = footpath.getArrivalStop().getLat();
+        double lon1 = footpath.getDepartureStop().getLon();
+        double lon2 = footpath.getArrivalStop().getLon();
+        double radians = Math.atan2(lon2-lon1, lat2-lat1);
+        double compassReading = radians * (180 / Math.PI);
+        int coordIndex = (int) Math.round(compassReading / 45);
+        if(coordIndex < 0)
+        {
+            coordIndex = coordIndex + 8;
+        }
+        AbsoluteDirection aDir;
+        switch (coordIndex) {
+            case 0: aDir = AbsoluteDirection.NORTH;
+                    break;
+            case 1: aDir = AbsoluteDirection.NORTHEAST;
+                    break;
+            case 2: aDir = AbsoluteDirection.EAST;
+                    break;
+            case 3: aDir = AbsoluteDirection.SOUTHEAST;
+                    break;
+            case 4: aDir = AbsoluteDirection.SOUTH;
+                    break;
+            case 5: aDir = AbsoluteDirection.SOUTHWEST;
+                    break;
+            case 6: aDir = AbsoluteDirection.WEST;
+                    break;
+            case 7: aDir = AbsoluteDirection.NORTHWEST;
+                    break;
+            case 8: aDir = AbsoluteDirection.NORTH;
+        }
         return null;
     }
 
-    private static Leg legFromFP(Footpath startpath) {
-        // TODO Auto-generated method stub
-        return null;
+
+    private static double getDistance(Footpath footpath) {
+        double lat1 = footpath.getDepartureStop().getLat();
+        double lat2 = footpath.getArrivalStop().getLat();
+        double lon1 = footpath.getDepartureStop().getLon();
+        double lon2 = footpath.getArrivalStop().getLon();
+        double theta = lon1 - lon2;
+        double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515;
+        dist = dist * 1.609344 / 1000;
+        return dist;
+    }
+    
+    
+    private static double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+    
+    private static double rad2deg(double rad) {
+        return (rad * 180 / Math.PI);
     }
 
 
-    public static Place getPlace(Stop stop){
+    public static Place getPlace(StopCSA stop){
         Place place = new Place();
         place.name = stop.getName();
         place.lon = stop.getLon();

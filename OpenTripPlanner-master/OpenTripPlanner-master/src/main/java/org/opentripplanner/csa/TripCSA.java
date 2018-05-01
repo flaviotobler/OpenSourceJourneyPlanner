@@ -15,12 +15,22 @@ public class TripCSA {
     private String agencyUrl;
     private String agencyTimeZoneOffset;
     
-    public TripCSA(){}
+    
 
     public TripCSA(String tripId, String tripShortName, String tripHeadSign, String routeId, int routeType, String agencyId, String agencyName, String agencyNameLong, String agencyUrl, String agencyTimeZoneOffset) {
         this.tripId = tripId;
         this.tripShortName = tripShortName;
         this.tripHeadSign = tripHeadSign;
+        
+        this.routeId = routeId;
+        this.routeType = routeType;
+        
+        this.agencyId = agencyId;
+        this.agencyName = agencyName;
+        this.agencyNameLong = agencyNameLong;
+        this.agencyUrl = agencyUrl;
+        this.agencyTimeZoneOffset = agencyTimeZoneOffset;
+        
     }
 
     public String getTripId() {

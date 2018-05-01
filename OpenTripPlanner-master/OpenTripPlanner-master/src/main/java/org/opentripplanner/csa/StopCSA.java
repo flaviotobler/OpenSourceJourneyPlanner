@@ -4,17 +4,17 @@ public class StopCSA {
     
 	private String stopId;
     private String name;
-    private double xCord;
-    private double yCord;
+    private double lon;
+    private double lat;
     
     //public Stop(){};
     
-    public StopCSA(String stopId,String name, double xCord, double yCord)
+    public StopCSA(String stopId,String name, double lon, double lat)
     {
     	this.stopId = stopId;
         this.name = name;
-        this.xCord = xCord;
-        this.yCord = yCord;
+        this.lon = lon;
+        this.lat = lat;
     }
     public String getStopId() {
     	return stopId;
@@ -32,20 +32,20 @@ public class StopCSA {
         this.name = name;
     }
 
-    public double getXCord() {
-        return xCord;
+    public double getLon() {
+        return lon;
     }
 
-    public void setXCord(double xCord) {
-        this.xCord = xCord;
+    public void setLon(double lon) {
+        this.lon = lon;
     }
 
-    public double getYCord() {
-        return yCord;
+    public double getLat() {
+        return lat;
     }
 
-    public void setYCord(double yCord) {
-        this.yCord = yCord;
+    public void setLat(double lat) {
+        this.lat = lat;
     }
     
     

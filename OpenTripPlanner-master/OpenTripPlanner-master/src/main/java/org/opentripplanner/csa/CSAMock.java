@@ -22,9 +22,13 @@ public class CSAMock {
         mapper.writeValue(new File("timeTableMockJSON.txt"),timeTable);
         
         
-        Stop testStop = new Stop("Heerbrugg Dornacherhof", 9.63119748849971, 47.4142968347706);
-        Stop testStop2 = new Stop("Heerbrugg Bahnhof", 9.62778389041958, 47.4108621837542);
-        Trip testTrip = new Trip(1, "DerBus");
+        StopCSA testStop = new StopCSA("Heerbrugg Dornacherhof", 9.63119748849971, 47.4142968347706);
+        StopCSA testStop2 = new StopCSA("Heerbrugg Bahnhof", 9.62778389041958, 47.4108621837542);
+        testStop2.setName("Heerbrugg Bahnhof");
+        testStop2.setName
+        TripCSA testTrip = new TripCSA();
+        testTrip.setTripName("DerBus");
+        testTrip.setTripId("1");
         Calendar startZeit = new GregorianCalendar(2018,04,02,12,37);
         Calendar stopZeit = new GregorianCalendar(2018,04,02,12,42);
         Connection testConnection = new Connection(testStop, testStop2, startZeit, stopZeit, testTrip);

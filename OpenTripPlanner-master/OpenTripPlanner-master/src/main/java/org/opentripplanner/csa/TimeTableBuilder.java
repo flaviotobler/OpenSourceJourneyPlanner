@@ -51,6 +51,10 @@ public class TimeTableBuilder {
     EntityHandler counter = new TimeTableEntityCounter();
     
     Set<String> agencyIdsSeen = Sets.newHashSet();  //holt library com.google.common.collect.Sets ??
+    
+    ArrayList<StopCSA> stoplist = new ArrayList<StopCSA>();  // temp liste
+    
+    ArrayList<TripCSA> triplist = new ArrayList<TripCSA>(); // temp liste
 
     int nextAgencyId = 1; // used for generating agency IDs to resolve ID conflicts
     
@@ -133,19 +137,24 @@ public class TimeTableBuilder {
         for (Stop stop : ttstore.getAllEntitiesForType(Stop.class)) {
             //stop.getId().setAgencyId(reader.getDefaultAgencyId());
         	
+        	
         	//TimeTable ADD STOPS
         	String stopId = stop.getId().getId();
             String stopName = stop.getName();
             double cordLongitude = stop.getLon();
             double cordLatitude = stop.getLat();
             LOG.info("Erzeuge Stop ----> "+"StopId: "+stopId +"  StopName: "+stopName +"  StopX: " +cordLongitude+ "  StopY: "+cordLatitude);
+          
             StopCSA tempstop = new StopCSA(stopId,stopName,cordLongitude,cordLatitude);
+            LOG.info("Erzeuge Stop ----> "+tempstop+"  StopId: "+tempstop.getStopId());
+            stoplist.add(tempstop);
             tt.addStop(tempstop);
-            
+           
+        	
             //TimeTable ADD FOOTPATH
             long duration = 300;//sekunden oder ms?
             LOG.info("Erzeuge Footpath ----> "+"departureStop: "+ tempstop.getName() +"  arrivalStop: "+tempstop.getName() +"  duration: "+ duration);
-            Footpath tempfootpath = new Footpath(tempstop,tempstop,300);
+            Footpath tempfootpath = new Footpath(tempstop,tempstop,300); //referenz stimmt nicht wenn in temp liste ..
             tt.addFootpaths(tempfootpath);
             
             
@@ -173,6 +182,8 @@ public class TimeTableBuilder {
             LOG.info("Erzeuge Trip ----> "+"TripId: "+tripId +"  TripShortName: "+tripShortName +"  TripHeadSign:  "+tripHeadSign+ "  RouteId:  "+routeId+"  RouteType: "+routeType);
             LOG.info("weitere Parameter  ----> "+"AgencyId: "+agencyId +"  AgencyName:  "+agencyName+ " AgencyNameLong:  "+agencyNameLong+ "  AgencyUrl: "+agencyUrl+"  AgencyTimeZoneOffset: "+agencyTimeZoneOffset);
             TripCSA temptrip = new TripCSA(tripId,tripShortName,tripHeadSign,routeId,routeType,agencyId,agencyName,agencyNameLong,agencyUrl,agencyTimeZoneOffset);
+            LOG.info("Erzeuge Trip ----> "+temptrip+"  TripId: "+temptrip.getTripId());
+            triplist.add(temptrip);
             tt.addTrip(temptrip);     
             
             
@@ -196,52 +207,88 @@ public class TimeTableBuilder {
             LOG.info("pathway");
         }
         
-        
-        //Parameter Startwerte
-        String lastTripId ="TEMPLATE-ID";
+        //TimeTable ADD Connections
+        String lastTripId ="TEMPLATE-ID"; //departureStopid
         int lastStopSequence = 9999;
         int concounter = 0;
-        String departureStop = "TEMPLATE-STOP";
+        String lastStop = "TEMPLATE-STOP"; //departureStop
+        String lastStopId = "TEMPLATE-STOP-ID"; //departureStopID
         for (StopTime stoptime : ttstore.getAllEntitiesForType(StopTime.class)) {
         	String currentTripId = stoptime.getTrip().getId().getId();
-        	//LOG.info("currentTripId: "+currentTripId);
-        	//LOG.info("lastTripId:  "+ lastTripId);
-        	//int length = ttstore.getAllEntitiesForType(StopTime.class).size();
-        	String arrivalStop = stoptime.getStop().getName();
+        	String currentStop = stoptime.getStop().getName();  //arrivalStop
+        	String currentStopId = stoptime.getStop().getId().getId(); //arrivalStopid
         	int currentStopSequence = stoptime.getStopSequence();
         	
-        	//ERKENNEN von Connections
-        		if(currentTripId.equals(lastTripId)) { //Selber Trip erkennen
-        			//LOG.info("currentStopSequence:  "+currentStopSequence);
-        			//LOG.info("lastStopSequence:  "+lastStopSequence);
-        			
-        				for(int i = 0; i<100; i++) {//geht bis zur 99ten Stopsequence durch
-        						//if(currentStopSequence == i && lastStopSequence == i-1 ) {//Reihenfolge erkennen z.B. 1 und 2 (nur Direkte Reihenfolge)
-        						//TimeTable ADD CONNECTION   
-        						//vielleicht bedingung lastStopsequenz weglassen das zahlen nicht direkt in reihenfolge steigen muessen (i-1)
-        						//lastStopSequence muss kleiner sein als i
-        						
-        					if(currentStopSequence == i && lastStopSequence<currentStopSequence) {
-        						
-        					
-        						// referenzen uebergeben 
-        						
-        						
-        						//Connection tempconnection = new Connection(tempstop,tempstop,....);
-        						//tt.addConnection(tempconnection);   
-    							concounter++;
-    							LOG.info("CONNECTION FOUND: "+concounter +"      VON: "+ departureStop + "---->NACH: "+ arrivalStop);
-        					}else{
-        					
-        					}		
-        				}
-        		}else {
-        			LOG.info("NO Connection FOUND");
+        	if(currentTripId.equals(lastTripId)) { 
+        		if(lastStopSequence<currentStopSequence) {
+        			concounter++;
+					LOG.info("CONNECTION FOUND: "+concounter +"      VON: "+ lastStop + "---->NACH: "+ currentStop);
+					//TO DO GET INFOS REFERENZEN etc.
+					//LOG.info("Triplist SIZE  "+triplist.size());
+					//LOG.info("Stoplist SIZE  "+stoplist.size());
+					
+					
+					for(int i = 0; i<triplist.size(); i++) {
+						TripCSA trippels = triplist.get(i);
+						if(trippels.getTripId() == currentTripId) {//suche Trip
+							LOG.info("----> FOUND THE TRIP:  "+trippels+"  TripId: " + trippels.getTripId()+ "  TripHeadsign: "+trippels.getTripHeadSign());
+							
+							//uebergebe TRIP
+							
+							
+							for(int j = 0; j<stoplist.size(); j++) {
+								StopCSA currentstoppps = stoplist.get(j);
+								if(currentstoppps.getStopId() == currentStopId) {//suche current Stop
+									LOG.info("----> FOUND THE CurrentSTop:  "+currentstoppps+"  StopId: " + currentstoppps.getStopId()+"  StopName: "+currentstoppps.getName()); //current Stop
+									
+									//uebergebe currentStop
+									
+									
+									for(int k = 0; k<stoplist.size(); k++) {
+										StopCSA laststoppps = stoplist.get(k);
+										if(laststoppps.getStopId() == lastStopId) {  //suche Last Stop
+											LOG.info("-------> FOUND THE LastSTop:  "+laststoppps+"  StopId: " + laststoppps.getStopId()+"  StopName: "+laststoppps.getName()); //last Stop
+											
+											//uebergebe lastStop
+											
+											
+											
+											
+											
+											LOG.info("Erzeuge Connection ----> "+"StopCSA departureStop: "+laststoppps +"  StopCSA arrivalStop: "+currentstoppps +"  Calendar:  "+ "  Calendar:  "+"  TripCSA trip: "+trippels);
+											
+											Connection tempconnection = new Connection (laststoppps,currentstoppps,null,null,trippels);
+											LOG.info("-->OBjekt pfad auf connection: "+ tempconnection);
+											tt.addConnection(tempconnection);
+											
+										}
+										
+									}
+									
+									
+									
+								
+								}
+								
+							}
+							
+							
+							
+							
+						}
+						
+					}
+					
         		}
+        	}
         	lastStopSequence = currentStopSequence;
         	lastTripId = currentTripId;
-        	departureStop = arrivalStop;
+        	lastStop = currentStop;
+        	lastStopId = currentStopId;
         }
+        
+        
+        
         
         
         ttstore.close(); 
@@ -251,6 +298,7 @@ public class TimeTableBuilder {
         tt.showTrips();
         tt.showConnections();
         tt.showFootPaths();
-    }
+       
+    }  
 
 }

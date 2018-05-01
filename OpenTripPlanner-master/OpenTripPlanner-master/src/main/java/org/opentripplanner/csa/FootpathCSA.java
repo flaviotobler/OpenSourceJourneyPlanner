@@ -1,14 +1,14 @@
 package org.opentripplanner.csa;
 
-public class Footpath {
+public class FootpathCSA {
     
     private StopCSA departureStop;
     private StopCSA arrivalStop;
     private long duration;  //sekunden?
     
-    public Footpath(){};
+   
     
-    public Footpath(StopCSA departureStop, StopCSA arrivalStop, long duration) 
+    public FootpathCSA(StopCSA departureStop, StopCSA arrivalStop, long duration) 
     {
         this.departureStop = departureStop;
         this.arrivalStop = arrivalStop;

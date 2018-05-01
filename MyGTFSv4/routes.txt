@@ -1,0 +1,6 @@
+route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_url,route_color,route_text_color
+27-11-j17-1,801,11,Linie 11,Bus,3,,,
+27-13-j17-1,801,13,Linie 13,Bus,3,,,
+27-14-j17-1,801,14,Linie 14,Bus,3,,,
+27-33-j17-1,801,33,Linie 33,Bus,3,,,
+27-35-j17-1,801,35,Linie 35,Bus,3,,,

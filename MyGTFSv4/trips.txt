@@ -1,0 +1,7 @@
+route_id,service_id,trip_id,trip_headsign,trip_short_name,direction_id
+27-11-j17-1,TA+b12z0,56.TA.27-11-j17-1.3.R,Schaanwald Zuschg,11408,1
+27-11-j17-1,TA+b12z1,57.TA.27-11-j17-1.3.R,Schaan Bahnhof,11412,1
+27-13-j17-1,TA+b12yz,85.TA.27-13-j17-1.4.R,Schaanwald Zuschg,13004,1
+27-14-j17-1,TA+b02y0,63.TA.27-14-j17-1.7.R,Schaanwald Zuschg,14902,1
+27-33-j17-1,TA+b12yz,11.TA.27-33-j17-1.2.R,Schellenberg Post,33001,1
+27-35-j17-1,TA+b12yz,10.TA.27-35-j17-1.2.R,Schellenberg Post,35001,1

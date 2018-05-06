@@ -1,55 +1,116 @@
 package org.opentripplanner.csa;
 
+import org.onebusaway.gtfs.model.AgencyAndId;
+
+/**
+ * This class implements the required stops for the Connection Scan Algorithm.
+ * @author Christian
+ *
+ */
 public class StopCSA {
     
 	private String stopId;
     private String name;
-    private double lon;
-    private double lat;
-
+    private double latitude;
+    private double longitude;
     
+    private AgencyAndId sAAId;
     
-    public StopCSA(String stopId,String name, double lat, double lon)
+    /**
+     * constructor for the stop.
+     * @param stopId
+     * @param name
+     * @param latitude
+     * @param longitude
+     * @param sAAId
+     */
+    public StopCSA(String stopId,String name, double latitude, double longitude, AgencyAndId sAAId)
     {
     	this.stopId = stopId;
         this.name = name;
-        this.lon = lon;
-        this.lat = lat;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.setsAAId(sAAId);
     }
+    
+    /**
+     * returns the stopId
+     * @return stopId as String
+     */
     public String getStopId() {
     	return stopId;
     }
     
+    /**
+     * sets the stopId
+     * @param stopId as String
+     */
     public void setStopId(String stopId) {
     	this.stopId = stopId;
     }
 
+    /**
+     * returns the stopname
+     * @return name as String
+     */
     public String getName() {
         return name;
     }
-
+    
+    /**
+     * sets the stopname
+     * @param name as String
+     */
     public void setName(String name) {
         this.name = name;
     }
 
-    public double getLon() {
-        return lon;
+    /**
+     * returns the latitude of the stop location
+     * @return latitude as double
+     */
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setLon(double lon) {
-        this.lon = lon;
+    /**
+     * sets the latitude of the stop
+     * @param latitude as double
+     */
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 
-    public double getLat() {
-        return lat;
+    /**
+     * returns the longitude of the stop location
+     * @return longitude as double
+     */
+    public double getLongitude() {
+        return longitude;
     }
 
-    public void setLat(double lat) {
-        this.lat = lat;
-
+    /** 
+     * sets the longitude of the stop
+     * @param longitude as double
+     */
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
     
+    /**
+     * returns the agencyAndId object from the stop
+     * @return sAAId as object
+     */
+	public AgencyAndId getsAAId() {
+		return sAAId;
+	}
+	
+	/**
+	 * sets the agencyAndId object from the stop
+	 * @param sAAId as object
+	 */
+	public void setsAAId(AgencyAndId sAAId) {
+		this.sAAId = sAAId;
+	}
     
-    
-
 }

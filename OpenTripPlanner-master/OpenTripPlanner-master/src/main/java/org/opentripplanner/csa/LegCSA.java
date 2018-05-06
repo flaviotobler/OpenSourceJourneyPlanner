@@ -2,29 +2,29 @@ package org.opentripplanner.csa;
 
 public class LegCSA {
     
-    private Connection enter;
-    private Connection exit;
+    private ConnectionCSA enter;
+    private ConnectionCSA exit;
     
     public LegCSA(){}
 
-    public LegCSA(Connection enter, Connection exit) {
+    public LegCSA(ConnectionCSA enter, ConnectionCSA exit) {
         this.enter = enter;
         this.exit = exit;
     }
 
-    public Connection getEnter() {
+    public ConnectionCSA getEnter() {
         return enter;
     }
 
-    public void setEnter(Connection enter) {
+    public void setEnter(ConnectionCSA enter) {
         this.enter = enter;
     }
 
-    public Connection getExit() {
+    public ConnectionCSA getExit() {
         return exit;
     }
 
-    public void setExit(Connection exit) {
+    public void setExit(ConnectionCSA exit) {
         this.exit = exit;
     };
     

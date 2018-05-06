@@ -1,0 +1,66 @@
+\documentclass[a4paper,12pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{cite} 
+\usepackage{graphicx}
+\usepackage[sort=use]{glossaries}
+\usepackage[colorlinks=true, urlcolor=black, linkcolor=black, citecolor=black]{hyperref}
+\graphicspath{{img/}}
+\usepackage{xcolor}
+\newcommand\todocomment[1]{\textcolor{red}{#1}}
+%\renewcommand\todocomment[1]{}
+
+
+\makeglossary
+\newglossaryentry{JourneyPlanner}
+{
+	name={JourneyPlanner},
+	description={Ein JourneyPlanner ist eine Software welche Verbindungsdaten analysiert und daraus die bessten reisewege von einem Punkt zu einem anderen berechnen kann.},
+} 
+
+
+
+\begin{document}
+	
+	\todocomment{Hund ist nicht Katze}
+	\include{titel}
+	\newpage
+	\pagenumbering{Roman}
+	\newpage
+	\include{abstract}
+	\newpage
+	\tableofcontents
+	\newpage
+	\pagenumbering{arabic}
+	\newpage
+	\printglossaries
+	\newpage
+	
+	
+	\include{Einfuehrung}
+	
+	\include{Aufgabenstellung}
+	
+	\include{Voraussetzungen}
+	
+	\include{EndProgramm}
+	
+	\include{Programmierverlauf}
+	
+	\include{Ergebnisse}
+	
+	\include{Fazit}
+	
+	\newpage
+	\listoffigures
+	\include{literatur}
+	
+	
+
+	
+	
+	
+	
+	
+\end{document}

@@ -5,20 +5,20 @@ import java.util.Set;
 
 public class Journey {
     
-    private Footpath startPath;
+    private FootpathCSA startPath;
     private Set<JourneyPointer> journeyPointers = new LinkedHashSet<JourneyPointer>();
     
     public Journey(){}
     
-    public Journey(Footpath startPath){
+    public Journey(FootpathCSA startPath){
         this.startPath = startPath;
     }
 
-    public Footpath getStartPath() {
+    public FootpathCSA getStartPath() {
         return startPath;
     }
 
-    public void setStartPath(Footpath startPath) {
+    public void setStartPath(FootpathCSA startPath) {
         this.startPath = startPath;
     }
     

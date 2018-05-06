@@ -3,11 +3,11 @@ package org.opentripplanner.csa;
 public class JourneyPointer {
     
     private LegCSA leg;
-    private Footpath footpath;
+    private FootpathCSA footpath;
     
     public JourneyPointer(){}
 
-    public JourneyPointer(LegCSA leg, Footpath footpath) {
+    public JourneyPointer(LegCSA leg, FootpathCSA footpath) {
         this.leg = leg;
         this.footpath = footpath;
     }
@@ -20,11 +20,11 @@ public class JourneyPointer {
         this.leg = leg;
     }
 
-    public Footpath getFootpath() {
+    public FootpathCSA getFootpath() {
         return footpath;
     }
 
-    public void setFootpath(Footpath footpath) {
+    public void setFootpath(FootpathCSA footpath) {
         this.footpath = footpath;
     };
     

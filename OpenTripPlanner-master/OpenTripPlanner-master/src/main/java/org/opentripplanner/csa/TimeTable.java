@@ -10,8 +10,8 @@ public class TimeTable {
 
     private Set<StopCSA> stops = new HashSet<StopCSA>();
     private Set<TripCSA> trips = new HashSet<TripCSA>();
-    private Set<Footpath> footpaths = new HashSet<Footpath>();
-    private Set<Connection> connections = new TreeSet<Connection>();
+    private Set<FootpathCSA> footpaths = new HashSet<FootpathCSA>();
+    private Set<ConnectionCSA> connections = new TreeSet<ConnectionCSA>();
     
     public TimeTable(){}
     
@@ -23,11 +23,11 @@ public class TimeTable {
         trips.add(trip);
     }
     
-    public void addFootpaths(Footpath footpath){
+    public void addFootpaths(FootpathCSA footpath){
         footpaths.add(footpath);
     }
     
-    public void addConnection(Connection connection){
+    public void addConnection(ConnectionCSA connection){
         connections.add(connection);
     }
     

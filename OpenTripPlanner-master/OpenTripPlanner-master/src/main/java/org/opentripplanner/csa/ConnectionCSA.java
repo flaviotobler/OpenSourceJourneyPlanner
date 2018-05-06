@@ -19,7 +19,14 @@ public class ConnectionCSA implements Comparable { //Treeset braucht Comparable 
     private TripCSA trip;
     
     
-
+    /**
+     * 
+     * @param departureStop
+     * @param arrivalStop
+     * @param gtfsDepartureTime
+     * @param gtfsArrivalTime
+     * @param trip
+     */
     public ConnectionCSA(StopCSA departureStop, StopCSA arrivalStop, int gtfsDepartureTime,
     		int gtfsArrivalTime, TripCSA trip) {
         this.departureStop = departureStop;

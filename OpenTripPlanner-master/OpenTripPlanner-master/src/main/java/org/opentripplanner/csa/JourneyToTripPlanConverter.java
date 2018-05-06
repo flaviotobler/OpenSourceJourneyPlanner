@@ -29,8 +29,24 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.vividsolutions.jts.geom.Geometry;
 
+/**
+ * The CSA gives back his results in form of Journeys. The Website needs the Result in form of a TripPlan
+ * with Itinerarys. This Class converts Journeys to a TripPlan.
+ * 
+ * @author flavio
+ */
 public class JourneyToTripPlanConverter {
     
+    /**
+     * Converts Journeys into a TripPlan. The request is needed to get the Date which is not saved in the Journeys.
+     * 
+     * @param journeys
+     * @param request
+     * @return plan
+     * @throws JsonGenerationException
+     * @throws JsonMappingException
+     * @throws IOException
+     */
     public static TripPlan generatePlan(Set<Journey> journeys, RoutingRequest request) throws JsonGenerationException, JsonMappingException, IOException
     {
         TripPlan plan = getPlanInfo(request);
@@ -40,7 +56,7 @@ public class JourneyToTripPlanConverter {
         for(Journey journey: journeys)
         {
             Itinerary itinerary = new Itinerary();     
-            Footpath startpath = journey.getStartPath();
+            FootpathCSA startpath = journey.getStartPath();
             Leg startLeg = legFromFP(startpath, datum);
             if(startLeg.distance != 0)
             {
@@ -65,7 +81,7 @@ public class JourneyToTripPlanConverter {
                 itinerary.waitingTime = itinerary.waitingTime + ((leg.startTime.getTimeInMillis() - itinerary.endTime.getTimeInMillis())/1000);
                 itinerary.transfers = itinerary.transfers + 1;
                 
-                Footpath footpath = jp.getFootpath();
+                FootpathCSA footpath = jp.getFootpath();
                 Leg walkLeg = legFromFP(footpath, datum);
                 if(walkLeg.distance != 0)
                 {
@@ -124,16 +140,16 @@ public class JourneyToTripPlanConverter {
 
     private static Leg legFromLeg(LegCSA legcsa, Date datum) {
         Leg leg = new Leg();
-        Connection center = legcsa.getEnter();
+        ConnectionCSA center = legcsa.getEnter();
         int year = datum.getYear();
         int month = datum.getMonth();
         int day = datum.getDate();
-        int hour = center.getDepartureTime().HOUR_OF_DAY;
-        int minute = center.getDepartureTime().MINUTE;      
+        int hour = center.gethDepartureTime();
+        int minute = center.getMinDepartureTime();     
         leg.startTime = new GregorianCalendar(year,month,day,hour,minute);
-        Connection cexit = legcsa.getExit();
-        hour = cexit.getArrivalTime().HOUR_OF_DAY;
-        minute = cexit.getArrivalTime().HOUR_OF_DAY;
+        ConnectionCSA cexit = legcsa.getExit();
+        hour = cexit.gethArrivalTime();
+        minute = cexit.getMinArrivalTime();
         leg.endTime = new GregorianCalendar(year,month,day,hour,minute);
         TripCSA trip = cexit.getTrip();
         
@@ -144,7 +160,7 @@ public class JourneyToTripPlanConverter {
         leg.agencyTimeZoneOffset = getTimeZone(trip.getAgencyTimeZoneOffset()); //getTimeZone form the Date (Summertime)
         leg.routeType = trip.getRouteType();
         leg.routeId = trip.getRouteId();
-        leg.tripShortName = trip.getName();
+        leg.tripShortName = trip.getRouteShortName();
         leg.headsign = trip.getTripHeadSign();
         leg.agencyId = trip.getAgencyId();
         leg.tripId = trip.getTripId();
@@ -185,7 +201,7 @@ public class JourneyToTripPlanConverter {
         return duration;
     }
 
-    private static Leg legFromFP(Footpath footpath, Date datum) {
+    private static Leg legFromFP(FootpathCSA footpath, Date datum) {
         Leg leg = new Leg();
         leg.distance = getDistance(footpath);
         leg.agencyTimeZoneOffset = getTimeZone(); // Timezoneoffset für schweitzer system machen bei walk?
@@ -219,8 +235,12 @@ public class JourneyToTripPlanConverter {
         return 7200000;
     }
 
-
-    private static AbsoluteDirection getAbsoluteDirection(Footpath footpath) {
+    /**
+     * 
+     * @param footpath
+     * @return
+     */
+    private static AbsoluteDirection getAbsoluteDirection(FootpathCSA footpath) {
         double lat1 = footpath.getDepartureStop().getLat();
         double lat2 = footpath.getArrivalStop().getLat();
         double lon1 = footpath.getDepartureStop().getLon();
@@ -232,7 +252,7 @@ public class JourneyToTripPlanConverter {
         {
             coordIndex = coordIndex + 8;
         }
-        AbsoluteDirection aDir;
+        AbsoluteDirection aDir = null;
         switch (coordIndex) {
             case 0: aDir = AbsoluteDirection.NORTH;
                     break;
@@ -252,11 +272,11 @@ public class JourneyToTripPlanConverter {
                     break;
             case 8: aDir = AbsoluteDirection.NORTH;
         }
-        return null;
+        return aDir;
     }
 
 
-    private static double getDistance(Footpath footpath) {
+    private static double getDistance(FootpathCSA footpath) {
         double lat1 = footpath.getDepartureStop().getLat();
         double lat2 = footpath.getArrivalStop().getLat();
         double lon1 = footpath.getDepartureStop().getLon();

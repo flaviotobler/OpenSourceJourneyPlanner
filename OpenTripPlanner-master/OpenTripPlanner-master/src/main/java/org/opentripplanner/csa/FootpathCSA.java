@@ -4,7 +4,7 @@ public class FootpathCSA {
     
     private StopCSA departureStop;
     private StopCSA arrivalStop;
-    private long duration;  //sekunden?
+    private long duration;  //sekunden? --> Minuten
     
    
     

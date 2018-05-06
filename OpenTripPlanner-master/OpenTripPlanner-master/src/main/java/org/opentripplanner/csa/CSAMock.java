@@ -22,18 +22,15 @@ public class CSAMock {
         mapper.writeValue(new File("timeTableMockJSON.txt"),timeTable);
         
         
-        StopCSA testStop = new StopCSA("Heerbrugg Dornacherhof", 9.63119748849971, 47.4142968347706);
-        StopCSA testStop2 = new StopCSA("Heerbrugg Bahnhof", 9.62778389041958, 47.4108621837542);
-        testStop2.setName("Heerbrugg Bahnhof");
-        testStop2.setName
-        TripCSA testTrip = new TripCSA();
-        testTrip.setTripName("DerBus");
-        testTrip.setTripId("1");
-        Calendar startZeit = new GregorianCalendar(2018,04,02,12,37);
-        Calendar stopZeit = new GregorianCalendar(2018,04,02,12,42);
-        Connection testConnection = new Connection(testStop, testStop2, startZeit, stopZeit, testTrip);
-        Footpath testFootpath = new Footpath(testStop, testStop, 3);
-        Footpath testFootpath2 = new Footpath(testStop2, testStop2, 5);
+        StopCSA testStop = new StopCSA("8578433", "Heerbrugg Dornacherhof", 9.63119748849971, 47.4142968347706);
+        StopCSA testStop2 = new StopCSA("8574137", "Heerbrugg Bahnhof", 9.62778389041958, 47.4108621837542);
+
+        TripCSA testTrip = new TripCSA("64.TA.16-304-j18-1.3.R","14065","Heerbrugg, Bahnhof","16-304-j18-1","304"," ",700,"1","Bus Ostschweiz (Rheintal)","Bus Ostschweiz (Rheintal)","http://www.sbb.ch/", "7200000", "");
+        int startZeit = 12*3600+37*60;
+        int stopZeit = 12*3600+42*60;
+        ConnectionCSA testConnection = new ConnectionCSA(testStop, testStop2, startZeit, stopZeit, testTrip);
+        FootpathCSA testFootpath = new FootpathCSA(testStop, testStop, 3);
+        FootpathCSA testFootpath2 = new FootpathCSA(testStop2, testStop2, 5);
         LegCSA testLeg = new LegCSA(testConnection, testConnection);
         JourneyPointer testJourneyPointer = new JourneyPointer(testLeg, testFootpath2);
         Journey testJourney = new Journey(testFootpath);

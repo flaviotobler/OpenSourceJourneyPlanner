@@ -29,9 +29,9 @@ public class TimeTableBuilderMock {
         TripCSA testTrip = new TripCSA(1, "DerBus");
         Calendar startZeit = new GregorianCalendar(2018,04,02,12,37);
         Calendar stopZeit = new GregorianCalendar(2018,04,02,12,42);
-        Footpath testFootpath = new Footpath(testStop, testStop, 3);
-        Footpath testFootpath2 = new Footpath(testStop2, testStop2, 5);
-        Connection testConnection = new Connection(testStop, testStop2, startZeit, stopZeit, testTrip);
+        FootpathCSA testFootpath = new FootpathCSA(testStop, testStop, 3);
+        FootpathCSA testFootpath2 = new FootpathCSA(testStop2, testStop2, 5);
+        ConnectionCSA testConnection = new ConnectionCSA(testStop, testStop2, startZeit, stopZeit, testTrip);
         TimeTable timeTable = new TimeTable();
         timeTable.addConnection(testConnection);
         timeTable.addStop(testStop);

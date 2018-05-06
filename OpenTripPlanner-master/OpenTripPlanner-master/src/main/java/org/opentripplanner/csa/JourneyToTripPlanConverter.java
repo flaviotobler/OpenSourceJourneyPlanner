@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.glassfish.grizzly.http.server.Request;
+import org.onebusaway.gtfs.model.AgencyAndId;
 import org.opentripplanner.api.model.AbsoluteDirection;
 import org.opentripplanner.api.model.Itinerary;
 import org.opentripplanner.api.model.Leg;
@@ -39,6 +40,8 @@ public class JourneyToTripPlanConverter {
     
     /**
      * Converts Journeys into a TripPlan. The request is needed to get the Date which is not saved in the Journeys.
+     * Generates an Itinerary for each Journey and a Leg for each Leg. It onely generates a Leg for a Footpath if
+     * the Start and End-Stop are not the same.
      * 
      * @param journeys
      * @param request
@@ -52,12 +55,11 @@ public class JourneyToTripPlanConverter {
         TripPlan plan = getPlanInfo(request);
         Date datum = plan.date;
         
-        
         for(Journey journey: journeys)
         {
             Itinerary itinerary = new Itinerary();     
             FootpathCSA startpath = journey.getStartPath();
-            Leg startLeg = legFromFP(startpath, datum);
+            Leg startLeg = legFromFP(startpath, datum, new GregorianCalendar(datum.getYear(),datum.getMonth(),datum.getDate(),datum.getHours(),datum.getMinutes()));
             if(startLeg.distance != 0)
             {
                 itinerary.addLeg(startLeg);
@@ -76,13 +78,14 @@ public class JourneyToTripPlanConverter {
                 
                 LegCSA legcsa = jp.getLeg();
                 Leg leg = legFromLeg(legcsa, datum);
+                itinerary.endTime = leg.endTime;
                 itinerary.addLeg(leg);
                 itinerary.transitTime = itinerary.transitTime + (long) leg.duration;
                 itinerary.waitingTime = itinerary.waitingTime + ((leg.startTime.getTimeInMillis() - itinerary.endTime.getTimeInMillis())/1000);
                 itinerary.transfers = itinerary.transfers + 1;
                 
                 FootpathCSA footpath = jp.getFootpath();
-                Leg walkLeg = legFromFP(footpath, datum);
+                Leg walkLeg = legFromFP(footpath, datum, itinerary.endTime);
                 if(walkLeg.distance != 0)
                 {
                     itinerary.addLeg(walkLeg);
@@ -103,16 +106,25 @@ public class JourneyToTripPlanConverter {
         return plan;
     }
     
-
+    /**
+     * Generates a TripPlan and fills in the From and To Place, and the Date
+     * 
+     * @param request
+     * @return plan
+     */
     private static TripPlan getPlanInfo(RoutingRequest request) {
         TripPlan plan = new TripPlan();
         plan.date = getPlanDate(request);
         plan.from = getStartPlace(request);
         plan.to = getEndPlace(request);
-        return null;
+        return plan;
     }
 
-
+    /**
+     * Extracts the To-Place from the request and returns it.
+     * @param request
+     * @return to
+     */
     private static Place getEndPlace(RoutingRequest request) {
         Place to = new Place();
         to.name = request.to.name;
@@ -121,7 +133,11 @@ public class JourneyToTripPlanConverter {
         return to;
     }
 
-
+    /**
+     * Extracts the From-Place from the request and returns it.
+     * @param request
+     * @return from
+     */
     private static Place getStartPlace(RoutingRequest request) {
         Place from = new Place();
         from.name = request.from.name;
@@ -130,14 +146,24 @@ public class JourneyToTripPlanConverter {
         return from;
     }
 
-
+    /**
+     * Extracts the DateTime from the request and returns it.
+     * @param request
+     * @return date
+     */
     private static Date getPlanDate(RoutingRequest request) {
         Date date = new Date();
         date = request.getDateTime();
         return date;
     }
 
-
+    /**
+     * Converts a leg from the CSA into a leg from the TripPlan. The DateTime gets combined from the Year, Month and Day from the requestDate
+     * and the Hours and Minutes from the LegCSA.
+     * @param legcsa
+     * @param datum
+     * @return leg
+     */
     private static Leg legFromLeg(LegCSA legcsa, Date datum) {
         Leg leg = new Leg();
         ConnectionCSA center = legcsa.getEnter();
@@ -154,16 +180,16 @@ public class JourneyToTripPlanConverter {
         TripCSA trip = cexit.getTrip();
         
         leg.mode = trip.getMode();
-        leg.route = trip.getRoute();
+        leg.route = trip.getRouteShortName();
         leg.agencyName = trip.getAgencyName();
         leg.agencyUrl = trip.getAgencyUrl();
         leg.agencyTimeZoneOffset = getTimeZone(trip.getAgencyTimeZoneOffset()); //getTimeZone form the Date (Summertime)
         leg.routeType = trip.getRouteType();
-        leg.routeId = trip.getRouteId();
+        leg.routeId = new AgencyAndId("1",trip.getRouteId());
         leg.tripShortName = trip.getRouteShortName();
         leg.headsign = trip.getTripHeadSign();
         leg.agencyId = trip.getAgencyId();
-        leg.tripId = trip.getTripId();
+        leg.tripId = new AgencyAndId("1",trip.getTripId());
         leg.routeShortName = trip.getRouteShortName();
         
         leg.serviceDate = getDate(leg.startTime); //getDate from request
@@ -180,13 +206,22 @@ public class JourneyToTripPlanConverter {
         leg.legGeometry = PolylineEncoder.createEncodings(geometry);
         return leg;
     }
-
+    
+    /**
+     * Converts a TimeZoneString like "Europe/Berlin" to the TimeZoneOffset in Milliseconds.
+     * @param timeZone
+     * @return TimeZoneOffset in Milliseconds
+     */
     private static int getTimeZone(String timeZone) {
         ZoneOffset zone = ZoneOffset.of(timeZone);
         return zone.getTotalSeconds()*1000;
     }
 
-
+    /**
+     * Returns only the Year, Month and Day from the DateTime object as a String.
+     * @param dateTime
+     * @return sD
+     */
     private static String getDate(Calendar dateTime) {
         int year = dateTime.get(Calendar.YEAR);
         int month = dateTime.get(Calendar.MONTH);
@@ -195,22 +230,36 @@ public class JourneyToTripPlanConverter {
         return sD;
     }
 
-
+    /**
+     * Calculates the Duration form the Start- and the Endtime.
+     * @param start
+     * @param end
+     * @return
+     */
     private static double getDuration(Calendar start, Calendar end) {
         double duration = ((end.getTimeInMillis() - start.getTimeInMillis())/1000);
         return duration;
     }
-
-    private static Leg legFromFP(FootpathCSA footpath, Date datum) {
+    
+    /**
+     * Generates a TripPlan Leg from a Footpath. The Date Parameter is neccessary because the Footpath does
+     * not have a DateTime specified.
+     * @param footpath
+     * @param datum
+     * @param startTime
+     * @return leg
+     */
+    private static Leg legFromFP(FootpathCSA footpath, Date datum, Calendar startTime) {
         Leg leg = new Leg();
         leg.distance = getDistance(footpath);
         leg.agencyTimeZoneOffset = getTimeZone(); // Timezoneoffset für schweitzer system machen bei walk?
-        //leg.startTime = todo
-        //leg.endTime = todo
+        leg.startTime = startTime;
+        leg.duration = footpath.getDuration();
+        leg.endTime = leg.startTime;
+        leg.endTime.add((GregorianCalendar.MINUTE), (int)leg.duration);
         leg.mode = "WALK";
         leg.from = getPlace(footpath.getDepartureStop());
         leg.to = getPlace(footpath.getArrivalStop());
-        // Achtung vieleicht Fehler
         Coordinate startCor = new Coordinate(leg.from.lon, leg.from.lat, 0);
         Coordinate endCor = new Coordinate(leg.to.lon, leg.to.lat, 0);
         CoordinateArrayListSequence coordinates = new CoordinateArrayListSequence();
@@ -229,16 +278,19 @@ public class JourneyToTripPlanConverter {
         return leg;
     }
 
-
+    /**
+     * Mock Method because i dont know how to get the TimeZoneOffset for the Footpaths.
+     * @return TimeZoneOffset in Milliseconds
+     */
     private static int getTimeZone() {
         
         return 7200000;
     }
 
     /**
-     * 
+     * Calculates the cardinal points of a footpath from its coordinates.
      * @param footpath
-     * @return
+     * @return aDir
      */
     private static AbsoluteDirection getAbsoluteDirection(FootpathCSA footpath) {
         double lat1 = footpath.getDepartureStop().getLat();
@@ -275,7 +327,11 @@ public class JourneyToTripPlanConverter {
         return aDir;
     }
 
-
+    /**
+     * Calculate the Distance between 2 Coordinates from a Footpath.
+     * @param footpath
+     * @return
+     */
     private static double getDistance(FootpathCSA footpath) {
         double lat1 = footpath.getDepartureStop().getLat();
         double lat2 = footpath.getArrivalStop().getLat();
@@ -290,16 +346,29 @@ public class JourneyToTripPlanConverter {
         return dist;
     }
     
-    
+    /**
+     * Converts Deg into Rad
+     * @param deg
+     * @return
+     */
     private static double deg2rad(double deg) {
         return (deg * Math.PI / 180.0);
     }
     
+    /**
+     * Converts Rad into Deg
+     * @param rad
+     * @return
+     */
     private static double rad2deg(double rad) {
         return (rad * 180 / Math.PI);
     }
 
-
+    /**
+     * Converts a StopCSA into a Place which is needed for the TripPlan
+     * @param stop
+     * @return
+     */
     public static Place getPlace(StopCSA stop){
         Place place = new Place();
         place.name = stop.getName();

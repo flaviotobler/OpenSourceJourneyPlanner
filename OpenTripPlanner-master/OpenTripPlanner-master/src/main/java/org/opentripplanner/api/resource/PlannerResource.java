@@ -114,9 +114,10 @@ public class PlannerResource extends RoutingResource {
            //TripPlan plan = GraphPathToTripPlanConverter.generatePlan(paths, request);
             
             TimeTable timeTable = new TimeTable();
-            //Set<Journey> journeys = CSAMock.createJourneys(timeTable, request);
-            Set<Journey> journeys = new LinkedHashSet<Journey>();
-            TripPlan plan = JourneyToTripPlanConverterMock.generatePlan(journeys);
+            Set<Journey> journeys = CSAMock.createJourneys(timeTable, request);
+            //Set<Journey> journeys = new LinkedHashSet<Journey>();
+            //TripPlan plan = JourneyToTripPlanConverterMock.generatePlan(journeys);
+            TripPlan plan = JourneyToTripPlanConverter.generatePlan(journeys, request);
             
             response.setPlan(plan);
 

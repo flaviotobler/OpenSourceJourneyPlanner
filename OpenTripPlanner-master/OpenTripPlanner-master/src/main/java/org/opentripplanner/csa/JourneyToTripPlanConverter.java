@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Set;
+import java.util.TimeZone;
 
 import org.glassfish.grizzly.http.server.Request;
 import org.onebusaway.gtfs.model.AgencyAndId;
@@ -101,6 +102,7 @@ public class JourneyToTripPlanConverter {
             if(itinerary.transfers <= 0){
                 itinerary.transfers = 0;
             }
+            plan.addItinerary(itinerary);
         }
         
         return plan;
@@ -183,7 +185,7 @@ public class JourneyToTripPlanConverter {
         leg.route = trip.getRouteShortName();
         leg.agencyName = trip.getAgencyName();
         leg.agencyUrl = trip.getAgencyUrl();
-        leg.agencyTimeZoneOffset = getTimeZone(trip.getAgencyTimeZoneOffset()); //getTimeZone form the Date (Summertime)
+        leg.agencyTimeZoneOffset = getTimeZone(trip.getAgencyTimeZoneOffset(),datum); //getTimeZone form the Date (Summertime)
         leg.routeType = trip.getRouteType();
         leg.routeId = new AgencyAndId("1",trip.getRouteId());
         leg.tripShortName = trip.getRouteShortName();
@@ -212,9 +214,9 @@ public class JourneyToTripPlanConverter {
      * @param timeZone
      * @return TimeZoneOffset in Milliseconds
      */
-    private static int getTimeZone(String timeZone) {
-        ZoneOffset zone = ZoneOffset.of(timeZone);
-        return zone.getTotalSeconds()*1000;
+    private static int getTimeZone(String timeZone,Date datum) {
+        TimeZone zone = TimeZone.getTimeZone(timeZone);
+        return zone.getOffset(datum.getTime());
     }
 
     /**

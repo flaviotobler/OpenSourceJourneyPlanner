@@ -138,15 +138,14 @@ public class TimeTableBuilder {
 
         for (Stop stop : ttstore.getAllEntitiesForType(Stop.class)) {
         	//TimeTable ADD STOPS
-        	String stopId = stop.getId().getId();
             String stopName = stop.getName();
             double cordLongitude = stop.getLon();
             double cordLatitude = stop.getLat();
             
             AgencyAndId sAAId = stop.getId();
             
-            StopCSA tempstop = new StopCSA(stopId,stopName,cordLatitude,cordLongitude,sAAId);
-            LOG.info("generate Stop ----> "+"StopId: "+stopId +"  StopName: "+stopName +"  Latitude: "+cordLatitude+"  Longitude: " +cordLongitude +" "+ tempstop);
+            StopCSA tempstop = new StopCSA(stopName,cordLatitude,cordLongitude,sAAId);
+            LOG.info("generate Stop ----> "+"StopId: "+tempstop.getsAAId().getId() +"  StopName: "+stopName +"  Latitude: "+cordLatitude+"  Longitude: " +cordLongitude +" "+ tempstop);
             stoplist.add(tempstop);
             tt.addStop(tempstop);
 
@@ -159,16 +158,13 @@ public class TimeTableBuilder {
         
         for (Trip trip : ttstore.getAllEntitiesForType(Trip.class)) {
         	//TimeTable ADD Trips
-            String tripId = trip.getId().getId();
             String tripShortName = trip.getTripShortName();
             String tripHeadSign = trip.getTripHeadsign();
             
-            String routeId = trip.getRoute().getId().getId();
             String routeShortName = trip.getRoute().getShortName();
             String routeDesc = trip.getRoute().getDesc();
             int routeType = trip.getRoute().getType();
             
-            String agencyId = trip.getId().getAgencyId();
             String agencyName = trip.getRoute().getAgency().getName();
             String agencyNameLong = trip.getRoute().getAgency().getLang();
             String agencyUrl = trip.getRoute().getAgency().getUrl();
@@ -179,9 +175,9 @@ public class TimeTableBuilder {
             AgencyAndId tAAId = trip.getId(); 
             AgencyAndId rAAId = trip.getRoute().getId();
             
-            TripCSA temptrip = new TripCSA(tripId,tripShortName,tripHeadSign,routeId,routeShortName,routeDesc,routeType,agencyId,agencyName,agencyNameLong,agencyUrl,agencyTimeZoneOffset,serviceId, tAAId, rAAId);
-            LOG.info("generate Trip ----> "+"TripId: "+tripId +"  TripShortName: "+tripShortName +"  TripHeadSign:  "+tripHeadSign+ "  RouteId:  "+routeId+"  RouteShortName  "+routeShortName+"  RouteDesc "+routeDesc+"  RouteType: "+routeType);
-            LOG.info("further parameters  ----> "+"AgencyId: "+agencyId +"  AgencyName:  "+agencyName+ " AgencyNameLong:  "+agencyNameLong+ "  AgencyUrl: "+agencyUrl+"  AgencyTimeZoneOffset: "+agencyTimeZoneOffset+"  ServiceId:  "+serviceId+"  "+temptrip);
+            TripCSA temptrip = new TripCSA(tripShortName,tripHeadSign,routeShortName,routeDesc,routeType,agencyName,agencyNameLong,agencyUrl,agencyTimeZoneOffset,serviceId, tAAId, rAAId);
+            LOG.info("generate Trip ----> "+"TripId: "+temptrip.gettAAId().getId() +"  TripShortName: "+tripShortName +"  TripHeadSign:  "+tripHeadSign+ "  RouteId:  "+temptrip.getrAAId()+"  RouteShortName  "+routeShortName+"  RouteDesc "+routeDesc+"  RouteType: "+routeType);
+            LOG.info("further parameters  ----> "+"AgencyId: "+temptrip.gettAAId().getAgencyId()+"  AgencyName:  "+agencyName+ " AgencyNameLong:  "+agencyNameLong+ "  AgencyUrl: "+agencyUrl+"  AgencyTimeZoneOffset: "+agencyTimeZoneOffset+"  ServiceId:  "+serviceId+"  "+temptrip);
             triplist.add(temptrip);
             tt.addTrip(temptrip);              
         }
@@ -288,19 +284,19 @@ public class TimeTableBuilder {
 					LOG.info("CONNECTION FOUND: "+concounter +"      from: "+ lastStop + "---->to: "+ currentStop);			
 					for(int i = 0; i<triplist.size(); i++) {
 						TripCSA temptrip = triplist.get(i);
-						if(temptrip.getTripId() == currentTripId) {//lf Trip
-							LOG.info("----> FOUND THE TRIP:  "+temptrip+"  TripId: " + temptrip.getTripId()+ "  TripHeadsign: "+temptrip.getTripHeadSign());
+						if(temptrip.gettAAId().getId() == currentTripId) {//lf Trip
+							LOG.info("----> FOUND THE TRIP:  "+temptrip+"  TripId: " + temptrip.gettAAId().getId()+ "  TripHeadsign: "+temptrip.getTripHeadSign());
 							
 							for(int j = 0; j<stoplist.size(); j++) {
 								StopCSA tempcurrentstop = stoplist.get(j);
-								if(tempcurrentstop.getStopId() == currentStopId) {//lf current Stop
-									LOG.info("----> FOUND THE CurrentStop:  "+tempcurrentstop+"  StopId: " + tempcurrentstop.getStopId()+"  StopName: "+tempcurrentstop.getName()); 
+								if(tempcurrentstop.getsAAId().getId() == currentStopId) {//lf current Stop
+									LOG.info("----> FOUND THE CurrentStop:  "+tempcurrentstop+"  StopId: " + tempcurrentstop.getsAAId().getId()+"  StopName: "+tempcurrentstop.getName()); 
 									
 									
 									for(int k = 0; k<stoplist.size(); k++) {
 										StopCSA templaststop = stoplist.get(k);
-										if(templaststop.getStopId() == lastStopId) {  //lf Last Stop
-											LOG.info("-------> FOUND THE LastStop:  "+templaststop+"  StopId: " + templaststop.getStopId()+"  StopName: "+templaststop.getName()); 
+										if(templaststop.getsAAId().getId() == lastStopId) {  //lf Last Stop
+											LOG.info("-------> FOUND THE LastStop:  "+templaststop+"  StopId: " + templaststop.getsAAId().getId()+"  StopName: "+templaststop.getName()); 
 											
 											LOG.info("generate Connection ----> "+"StopCSA departureStop: "+templaststop +"  StopCSA arrivalStop: "+tempcurrentstop +"  DepartureStopTime:  "+lastStopTime+ "  ArrivalStopTime:  "+currentArrivalStopTime+"  TripCSA trip: "+temptrip);
 											

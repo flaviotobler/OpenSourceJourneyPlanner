@@ -9,7 +9,6 @@ import org.onebusaway.gtfs.model.AgencyAndId;
  */
 public class StopCSA {
     
-	private String stopId;
     private String name;
     private double latitude;
     private double longitude;
@@ -18,37 +17,19 @@ public class StopCSA {
     
     /**
      * constructor for the stop.
-     * @param stopId
      * @param name
      * @param latitude
      * @param longitude
      * @param sAAId
      */
-    public StopCSA(String stopId,String name, double latitude, double longitude, AgencyAndId sAAId)
+    public StopCSA(String name, double latitude, double longitude, AgencyAndId sAAId)
     {
-    	this.stopId = stopId;
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.setsAAId(sAAId);
+        this.sAAId = sAAId;
     }
     
-    /**
-     * returns the stopId
-     * @return stopId as String
-     */
-    public String getStopId() {
-    	return stopId;
-    }
-    
-    /**
-     * sets the stopId
-     * @param stopId as String
-     */
-    public void setStopId(String stopId) {
-    	this.stopId = stopId;
-    }
-
     /**
      * returns the stopname
      * @return name as String

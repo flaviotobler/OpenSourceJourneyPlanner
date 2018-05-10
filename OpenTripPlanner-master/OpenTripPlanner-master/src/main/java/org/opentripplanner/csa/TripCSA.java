@@ -14,17 +14,14 @@ import org.onebusaway.gtfs.model.AgencyAndId;
  */
 public class TripCSA {
     
-    private String tripId;
     private String tripShortName;
     private String tripHeadSign;
     
-    private String routeId;
     private String routeShortName;
     private String routeDesc;   
     private int routeType;
     private String mode;
     
-    private String agencyId;
     private String agencyName;
     private String agencyNameLong;
     private String agencyUrl;
@@ -40,15 +37,12 @@ public class TripCSA {
     
     
     /**
-     * constructor for the trip.
-     * @param tripId 		
+     * constructor for the trip.	
      * @param tripShortName
      * @param tripHeadSign
-     * @param routeId
      * @param routeShortName
      * @param routeDesc
      * @param routeType
-     * @param agencyId
      * @param agencyName
      * @param agencyNameLong
      * @param agencyUrl
@@ -57,18 +51,15 @@ public class TripCSA {
      * @param tAAId
      * @param rAAId
      */
-    public TripCSA(String tripId, String tripShortName, String tripHeadSign, String routeId,String routeShortName,String routeDesc, int routeType, String agencyId, String agencyName, String agencyNameLong, String agencyUrl, String agencyTimeZoneOffset, String serviceId, AgencyAndId tAAId, AgencyAndId rAAId) {
-        this.tripId = tripId;
+    public TripCSA(String tripShortName, String tripHeadSign, String routeShortName,String routeDesc, int routeType, String agencyName, String agencyNameLong, String agencyUrl, String agencyTimeZoneOffset, String serviceId, AgencyAndId tAAId, AgencyAndId rAAId) {
         this.tripShortName = tripShortName;
         this.tripHeadSign = tripHeadSign;
         
-        this.routeId = routeId;
         this.routeShortName = routeShortName;
         this.routeDesc = routeDesc;
         this.routeType = routeType;
         this.mode = getModeFromRouteType(getRouteType());
         
-        this.agencyId = agencyId;
         this.agencyName = agencyName;
         this.agencyNameLong = agencyNameLong;
         this.agencyUrl = agencyUrl;
@@ -79,25 +70,9 @@ public class TripCSA {
         this.rAAId = rAAId;
         
         
-        this.serviceId = serviceId;
-        
+        this.serviceId = serviceId;    
     }
-    
-    /**
-     * returns the tripId
-     * @return tripId as String
-     */
-    public String getTripId() {
-        return tripId;
-    }
-    
-    /**
-     * sets the tripId
-     * @param tripId as String
-     */
-    public void setTripId(String tripId) {
-        this.tripId = tripId;
-    }
+     
     
     /**
      * returns the tripShortName
@@ -130,22 +105,6 @@ public class TripCSA {
 	public void setTripHeadSign(String tripHeadSign) {
 		this.tripHeadSign = tripHeadSign;
 	}
-	
-	/**
-	 * returns the routeId
-	 * @return	routeId as String
-	 */
-	public String getRouteId() {
-		return routeId;
-	}
-
-	/**
-	 * sets the routeId
-	 * @param routeId as String
-	 */
-	public void setRouteId(String routeId) {
-		this.routeId = routeId;
-	}
 
 	/**
 	 * returns the routeType 
@@ -161,22 +120,6 @@ public class TripCSA {
 	 */
 	public void setRouteType(int routeType) {
 		this.routeType = routeType;
-	}
-
-	/**
-	 * returns the agencyId
-	 * @return agencyId as String
-	 */
-	public String getAgencyId() {
-		return agencyId;
-	}
-	
-	/**
-	 * sets the agencyId
-	 * @param agencyId as String
-	 */
-	public void setAgencyId(String agencyId) {
-		this.agencyId = agencyId;
 	}
 
 	/**
@@ -292,7 +235,7 @@ public class TripCSA {
         	Calendar exceptionDate = new GregorianCalendar(serviceCalendarDate.getExceptionYear(), serviceCalendarDate.getExceptionMonth()-1, serviceCalendarDate.getExceptionDay());
         	if(exceptionDate.equals(requestDate)) {
         		boolean exceptiontype = serviceCalendarDate.getServiceCalendarDateExceptionType();
-        		System.out.println("-->exception Tripplan  "+"TripID  "+tripId+"  ServiceId "+serviceId+"  TripAvailable?("+dayname+")?  "+exceptiontype);
+        		System.out.println("-->exception Tripplan  "+"TripID  "+gettAAId().getId()+"  ServiceId "+serviceId+"  TripAvailable?("+dayname+")?  "+exceptiontype);
         		return exceptiontype;
         	} 	
         }
@@ -322,7 +265,7 @@ public class TripCSA {
 		            default: 			
 		                     			break;
 			        }
-			        System.out.println("-->regular Tripplan  "+"TripID  "+tripId+"  ServiceId "+serviceId+"  TripAvailable?("+dayname+")?  "+status);
+			        System.out.println("-->regular Tripplan  "+"TripID  "+gettAAId().getId()+"  ServiceId "+serviceId+"  TripAvailable?("+dayname+")?  "+status);
 			        return status;		
 				}		
 	

@@ -1,5 +1,7 @@
 package org.opentripplanner.csa;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * This class implements the required connections for the Connection Scan Algorithm.It uses the Comparable Interface for the needed TreeSet.
@@ -258,24 +260,53 @@ public class ConnectionCSA implements Comparable {
     
 
     /**
-     * the methode should sort the TreeSets list when a connection is added
-     * TODO
-     *	@return 0 when it is a dublicate that is added, return 1 if it should be added after, return -1 if it should be added before
+     * the methode should sort the TreeSet list when a connection is added
+     * the TreeSet is sorted ascending DepartureTime of a connection
+     *	@return 0 when it is a duplicate that is added, return 1 if it should be added after, return -1 if it should be added before
      */
 	@Override
-	public int compareTo(Object arg0) {   //TreeSet sortieren  nach ...
-		// TODO Auto-generated method stub
-		
-		/*
-		return 0; dublikat wird nicht aufgenommen
-		return 1; für in Reihenfolge ein begin mit erstem 1-2-3-4-5....
-		return-1; Reihenfolge begin mit letztem 15-14-13-12...
-		
-		
-		
-		*/
-		
-		return 1;
+	public int compareTo(Object compareObject) {   
+		// return value
+        int compareValue =-2;
+        
+    
+        ConnectionCSA compareConnection = (ConnectionCSA)compareObject;  
+        
+        
+        
+        
+     //Create Calendar object to compare
+        
+        Calendar compareConnectionTime = new GregorianCalendar(2018, 4, 11, compareConnection.gethDepartureTime(),compareConnection.getMinDepartureTime(),compareConnection.getsDepartureTime()); 
+        
+        Calendar thisConnection = new GregorianCalendar(2018, 4, 11, this.gethDepartureTime(), this.getMinDepartureTime(), this.getsDepartureTime());
+        
+        
+        
+        System.out.println("(thisConnection) "+this.gethDepartureTime()+":"+this.getMinDepartureTime()+":"+this.getsDepartureTime());
+        System.out.println("Object compareObject---->compareConnectionTime: "+compareConnection.gethDepartureTime()+":"+compareConnection.getMinDepartureTime()+":"+compareConnection.getsDepartureTime());
+        
+        if(thisConnection.equals(compareConnectionTime)){
+          
+        	System.out.println("oh found the same departuretime .... sorting extends.");
+            if(this.getTrip().gettAAId().getId().equals(compareConnection.getTrip().gettAAId().getId())) {
+            	compareValue = 0;
+            }else {
+            	compareValue = 1;
+            }    
+        }
+        
+        if(thisConnection.before(compareConnectionTime)){
+            compareValue = -1;
+        }
+    
+        if(thisConnection.after(compareConnectionTime)){
+            compareValue = 1;
+        }
+        
+        System.out.println("compareValue: "+compareValue);
+        
+        return compareValue;
 	}
 
 

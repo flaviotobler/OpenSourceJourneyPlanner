@@ -1,5 +1,8 @@
 package org.opentripplanner.csa;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import org.onebusaway.gtfs.model.AgencyAndId;
 
 /**
@@ -12,8 +15,25 @@ public class StopCSA {
     private String name;
     private double latitude;
     private double longitude;
-    
+
     private AgencyAndId sAAId;
+    
+    
+    //CSA attributes
+    private JourneyPointer stopJP = null;
+    
+    //private double unendlichindouble = Double.POSITIVE_INFINITY;
+   // private double unendlichindouble = Double.MAX_VALUE;
+    private double unendlichindouble = Long.MAX_VALUE;
+    //private int unendlich = (int)unendlichindouble;  //2147483647
+    private int unendlich = Integer.MAX_VALUE; //2147483647
+  
+   
+    
+    
+    private Calendar stopTime = new GregorianCalendar(2018,4 ,15,unendlich,unendlich,unendlich);  //sinnvoll??
+    
+    
     
     /**
      * constructor for the stop.
@@ -28,6 +48,9 @@ public class StopCSA {
         this.latitude = latitude;
         this.longitude = longitude;
         this.sAAId = sAAId;
+        
+        
+        gibaus();
     }
     
     /**
@@ -92,6 +115,21 @@ public class StopCSA {
 	 */
 	public void setsAAId(AgencyAndId sAAId) {
 		this.sAAId = sAAId;
+	}
+	
+	public void gibaus() {
+		System.out.println("unendlich in INT  "+ unendlich);
+		System.out.println("unendlich in Double  "+ unendlichindouble);
+		System.out.println("YEAR "+stopTime.YEAR+" MONTH "+stopTime.MONTH+" DAYOFMONTH "+stopTime.DAY_OF_MONTH+" HOurs "+ stopTime.HOUR+" Minutes "+stopTime.MINUTE+" Seconds "+stopTime.SECOND);
+		
+	}
+
+	public JourneyPointer getStopJP() {
+		return stopJP;
+	}
+
+	public void setStopJP(JourneyPointer stopJP) {
+		this.stopJP = stopJP;
 	}
     
 }

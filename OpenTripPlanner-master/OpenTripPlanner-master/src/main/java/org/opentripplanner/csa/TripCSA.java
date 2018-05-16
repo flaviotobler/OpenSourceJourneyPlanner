@@ -30,10 +30,15 @@ public class TripCSA {
     private AgencyAndId tAAId; 
     private AgencyAndId rAAId;
     
-    //Calendar Daten
+    //Calendar Dates
     private String serviceId;
     ArrayList<ServiceCalendarCSA> serviceCalendars = new ArrayList<ServiceCalendarCSA>();
     ArrayList<ServiceCalendarDateCSA> serviceCalendarDates = new ArrayList<ServiceCalendarDateCSA>();
+    
+    //CSA attributes
+    private int tripFlag = 0;
+    private ConnectionCSA tripEnterConnection = null;
+    
     
     
     /**
@@ -416,6 +421,26 @@ public class TripCSA {
 	 */
 	public void setrAAId(AgencyAndId rAAId) {
 		this.rAAId = rAAId;
+	}
+
+
+	public int getTripFlag() {
+		return tripFlag;
+	}
+
+
+	public void setTripFlag(int tripFlag) {
+		this.tripFlag = tripFlag;
+	}
+
+
+	public ConnectionCSA getTripEnterConnection() {
+		return tripEnterConnection;
+	}
+
+
+	public void setTripEnterConnection(ConnectionCSA tripEnterConnection) {
+		this.tripEnterConnection = tripEnterConnection;
 	}
 
 

@@ -36,7 +36,7 @@ public class TripCSA {
     ArrayList<ServiceCalendarDateCSA> serviceCalendarDates = new ArrayList<ServiceCalendarDateCSA>();
     
     //CSA attributes
-    private int tripFlag = 0;
+    private boolean tripFlag = false;
     private ConnectionCSA tripEnterConnection = null;
     
     
@@ -424,12 +424,12 @@ public class TripCSA {
 	}
 
 
-	public int getTripFlag() {
+	public boolean getTripFlag() {
 		return tripFlag;
 	}
 
 
-	public void setTripFlag(int tripFlag) {
+	public void setTripFlag(boolean tripFlag) {
 		this.tripFlag = tripFlag;
 	}
 

@@ -60,7 +60,7 @@ public class JourneyToTripPlanConverter {
         {
             Itinerary itinerary = new Itinerary();     
             FootpathCSA startpath = journey.getStartPath();
-            Leg startLeg = legFromFP(startpath, datum, new GregorianCalendar(datum.getYear(),datum.getMonth(),datum.getDate(),datum.getHours(),datum.getMinutes()));
+            Leg startLeg = legFromFP(startpath, datum, new GregorianCalendar(datum.getYear() + 1900,datum.getMonth() + 1,datum.getDate(),datum.getHours(),datum.getMinutes()));
             if(startLeg.distance != 0)
             {
                 itinerary.addLeg(startLeg);
@@ -79,10 +79,10 @@ public class JourneyToTripPlanConverter {
                 
                 LegCSA legcsa = jp.getLeg();
                 Leg leg = legFromLeg(legcsa, datum);
+                itinerary.waitingTime = itinerary.waitingTime + ((leg.startTime.getTimeInMillis() - itinerary.endTime.getTimeInMillis())/1000);
                 itinerary.endTime = leg.endTime;
                 itinerary.addLeg(leg);
                 itinerary.transitTime = itinerary.transitTime + (long) leg.duration;
-                itinerary.waitingTime = itinerary.waitingTime + ((leg.startTime.getTimeInMillis() - itinerary.endTime.getTimeInMillis())/1000);
                 itinerary.transfers = itinerary.transfers + 1;
                 
                 FootpathCSA footpath = jp.getFootpath();
@@ -169,8 +169,8 @@ public class JourneyToTripPlanConverter {
     private static Leg legFromLeg(LegCSA legcsa, Date datum) {
         Leg leg = new Leg();
         ConnectionCSA center = legcsa.getEnter();
-        int year = datum.getYear();
-        int month = datum.getMonth();
+        int year = datum.getYear() + 1900;
+        int month = datum.getMonth() + 1;
         int day = datum.getDate();
         int hour = center.gethDepartureTime();
         int minute = center.getMinDepartureTime();     
@@ -201,9 +201,11 @@ public class JourneyToTripPlanConverter {
         
         leg.from = getPlace(center.getDepartureStop());
         leg.to = getPlace(cexit.getArrivalStop());
-        Coordinate startCor = new Coordinate(leg.from.lon, leg.from.lat, 0);
-        Coordinate endCor = new Coordinate(leg.to.lon, leg.to.lat, 0);
+        Coordinate startCor = new Coordinate(leg.from.lat, leg.from.lon, 0);
+        Coordinate endCor = new Coordinate(leg.to.lat, leg.to.lon, 0);
         CoordinateArrayListSequence coordinates = new CoordinateArrayListSequence();
+        coordinates.add(startCor);
+        coordinates.add(endCor);
         Geometry geometry = GeometryUtils.getGeometryFactory().createLineString(coordinates);
         leg.legGeometry = PolylineEncoder.createEncodings(geometry);
         return leg;
@@ -258,13 +260,15 @@ public class JourneyToTripPlanConverter {
         leg.startTime = startTime;
         leg.duration = footpath.getDuration();
         leg.endTime = leg.startTime;
-        leg.endTime.add((GregorianCalendar.MINUTE), (int)leg.duration);
+        leg.endTime.add((GregorianCalendar.SECOND), (int)leg.duration);
         leg.mode = "WALK";
         leg.from = getPlace(footpath.getDepartureStop());
         leg.to = getPlace(footpath.getArrivalStop());
-        Coordinate startCor = new Coordinate(leg.from.lon, leg.from.lat, 0);
-        Coordinate endCor = new Coordinate(leg.to.lon, leg.to.lat, 0);
+        Coordinate startCor = new Coordinate(leg.from.lat, leg.from.lon, 0);
+        Coordinate endCor = new Coordinate(leg.to.lat, leg.to.lon, 0);
         CoordinateArrayListSequence coordinates = new CoordinateArrayListSequence();
+        coordinates.add(startCor);
+        coordinates.add(endCor);
         Geometry geometry = GeometryUtils.getGeometryFactory().createLineString(coordinates);
         leg.legGeometry = PolylineEncoder.createEncodings(geometry);
         WalkStep walkStep = new WalkStep();
@@ -272,8 +276,8 @@ public class JourneyToTripPlanConverter {
         walkStep.streetName = "" + footpath.getDepartureStop().getName() + " => " + footpath.getArrivalStop().getName();
         walkStep.absoluteDirection = getAbsoluteDirection(footpath);
         walkStep.relativeDirection = RelativeDirection.DEPART;
-        walkStep.lon = footpath.getDepartureStop().getLon();
-        walkStep.lat = footpath.getDepartureStop().getLat();
+        walkStep.lon = footpath.getDepartureStop().getLongitude();
+        walkStep.lat = footpath.getDepartureStop().getLatitude();
         List<WalkStep> walkSteps = new ArrayList<WalkStep>();
         walkSteps.add(walkStep);
         leg.walkSteps = walkSteps;
@@ -295,10 +299,10 @@ public class JourneyToTripPlanConverter {
      * @return aDir
      */
     private static AbsoluteDirection getAbsoluteDirection(FootpathCSA footpath) {
-        double lat1 = footpath.getDepartureStop().getLat();
-        double lat2 = footpath.getArrivalStop().getLat();
-        double lon1 = footpath.getDepartureStop().getLon();
-        double lon2 = footpath.getArrivalStop().getLon();
+        double lat1 = footpath.getDepartureStop().getLatitude();
+        double lat2 = footpath.getArrivalStop().getLatitude();
+        double lon1 = footpath.getDepartureStop().getLongitude();
+        double lon2 = footpath.getArrivalStop().getLongitude();
         double radians = Math.atan2(lon2-lon1, lat2-lat1);
         double compassReading = radians * (180 / Math.PI);
         int coordIndex = (int) Math.round(compassReading / 45);
@@ -335,10 +339,10 @@ public class JourneyToTripPlanConverter {
      * @return
      */
     private static double getDistance(FootpathCSA footpath) {
-        double lat1 = footpath.getDepartureStop().getLat();
-        double lat2 = footpath.getArrivalStop().getLat();
-        double lon1 = footpath.getDepartureStop().getLon();
-        double lon2 = footpath.getArrivalStop().getLon();
+        double lat1 = footpath.getDepartureStop().getLatitude();
+        double lat2 = footpath.getArrivalStop().getLatitude();
+        double lon1 = footpath.getDepartureStop().getLongitude();
+        double lon2 = footpath.getArrivalStop().getLongitude();
         double theta = lon1 - lon2;
         double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
         dist = Math.acos(dist);
@@ -373,9 +377,10 @@ public class JourneyToTripPlanConverter {
      */
     public static Place getPlace(StopCSA stop){
         Place place = new Place();
+        place.stopId = stop.getsAAId();
         place.name = stop.getName();
-        place.lon = stop.getLon();
-        place.lat = stop.getLat();
+        place.lon = stop.getLongitude();
+        place.lat = stop.getLatitude();
         
         return place;
     }

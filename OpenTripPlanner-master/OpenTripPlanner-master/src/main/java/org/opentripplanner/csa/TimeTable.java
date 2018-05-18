@@ -15,7 +15,9 @@ public class TimeTable {
     private Set<StopCSA> stops = new HashSet<StopCSA>();
     private Set<TripCSA> trips = new HashSet<TripCSA>();
     private Set<FootpathCSA> footpaths = new HashSet<FootpathCSA>();
-    private Set<ConnectionCSA> connections = new TreeSet<ConnectionCSA>();
+    private Set<ConnectionCSA> connectionsAscending = new TreeSet<ConnectionCSA>();
+    
+    private Set<ConnectionCSA> connectionsDescending = new TreeSet<ConnectionCSA>();
     
     /**
      * constructor for the TimeTable
@@ -51,7 +53,7 @@ public class TimeTable {
      * @param connection as object
      */
     public void addConnection(ConnectionCSA connection){
-        connections.add(connection);
+    	connectionsAscending.add(connection);
     }
     
     /**
@@ -79,19 +81,81 @@ public class TimeTable {
      * shows all the connections and and the size of the collection
      */
     public void showConnections() {
-    	System.out.println("CONNECTIONS: "+connections.size()+"--> "+connections);
+    	System.out.println("CONNECTIONS: "+connectionsAscending.size()+"--> "+connectionsAscending);
     }
     
-    //Wird wahrscheinlich nicht gebraucht da normal darueber iteriert werden kann.
-    /*public void sortConnections(){
-        Set<Connection> con = new TreeSet<Connection>();
-        Iterator<Connection> itr = connections.iterator();
-        while (itr.hasNext()){
-            con.add(itr.next());
-        }
-        connections = con;
-        
-    }*/
+    
+    public StopCSA getStopFromName (String stopName) {
+
+    	StopCSA stop = null;
+
+		Iterator<StopCSA> it = stops.iterator();
+		 
+		while(it.hasNext()){
+			stop = (StopCSA)it.next();
+			
+			if(stop.getName().equals(stopName)) {
+				return stop;
+			}
+		}
+
+    	return null;
+    }
+    
+    public FootpathCSA getFootPathChange(StopCSA stop) {
+    	
+    	FootpathCSA footpath = null;
+    	
+		Iterator<FootpathCSA> it = footpaths.iterator();
+		 
+		while(it.hasNext()){
+			footpath = (FootpathCSA)it.next();
+			
+			if(footpath.getDepartureStop().equals(stop)) {
+				if(footpath.getArrivalStop().equals(stop)) {
+					return footpath;
+				
+				}
+			return null;
+			}
+		}
+
+    	return null;
+    }
+    
+    public Set<ConnectionCSA> getConnectionsAscending() {
+    	return connectionsAscending;
+    }
+    
+    public Set<ConnectionCSA> getConnectionsDescending() {
+    	return connectionsDescending;
+    }
+    
+    public void createConnectionsDescending(){
+    	connectionsDescending = ((TreeSet<ConnectionCSA>)connectionsAscending).descendingSet();
+    }
+    
+    public void showCon(Set<ConnectionCSA> connections) {
+    	
+    	Iterator<ConnectionCSA> it = connections.iterator();
+		 
+		while(it.hasNext())
+		{
+			ConnectionCSA printcon = (ConnectionCSA) it.next();
+		      System.out.println("DepStop   "+printcon.getDepartureStop().getName()+"   DepartureTime "+printcon.gethDepartureTime()+":"+printcon.getMinDepartureTime()+":"+printcon.getsDepartureTime()+"  CON "+printcon);
+		}
+		
+    	Iterator<ConnectionCSA> it2 = ((TreeSet<ConnectionCSA>) connections).descendingIterator();
+		 
+		while(it2.hasNext())
+		{
+			ConnectionCSA zzzz = (ConnectionCSA) it2.next();
+		      System.out.println("DepStop   "+zzzz.getDepartureStop().getName()+"   DepartureTime "+zzzz.gethDepartureTime()+":"+zzzz.getMinDepartureTime()+":"+zzzz.getsDepartureTime()+"  CON "+zzzz);
+		}
+    	
+    	
+    	
+    }
     
     
     

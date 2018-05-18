@@ -148,12 +148,14 @@ public class TimeTableBuilder {
             LOG.info("generate Stop ----> "+"StopId: "+tempstop.getsAAId().getId() +"  StopName: "+stopName +"  Latitude: "+cordLatitude+"  Longitude: " +cordLongitude +" "+ tempstop);
             stoplist.add(tempstop);
             tt.addStop(tempstop);
+            
+            
 
             //TimeTable ADD FOOTPATH
             long duration = 300; 
-            FootpathCSA tempfootpath = new FootpathCSA(tempstop,tempstop,300); 
+            FootpathCSA tempfootpath = new FootpathCSA(tempstop,tempstop,duration); 
             LOG.info("generate Footpath ----> "+"departureStop: "+ tempstop.getName() +"  arrivalStop: "+tempstop.getName() +"  duration: "+ duration+"  "+ tempfootpath);
-            tt.addFootpaths(tempfootpath); 
+            tt.addFootpaths(tempfootpath);       
         }
         
         for (Trip trip : ttstore.getAllEntitiesForType(Trip.class)) {
@@ -316,6 +318,8 @@ public class TimeTableBuilder {
         	lastStopId = currentStopId;
         	lastStopTime = currentDepartureStopTime;
         }
+        
+        tt.createConnectionsDescending();
 
         ttstore.close(); 
         LOG.info("--------------TimetableStore closed -----------------------");
@@ -323,6 +327,14 @@ public class TimeTableBuilder {
         tt.showStops();
         tt.showTrips();
         tt.showConnections();
-        tt.showFootPaths();
+        tt.showFootPaths();   
+        
+        System.out.println("-----getConnectionsAscending-----------");
+        tt.showCon(tt.getConnectionsAscending());
+        
+        System.out.println("-----getConnectionsDescending----------");
+        //tt.showCon(tt.getConnectionsDescending());
+        tt.showCon(tt.getConnectionsAscending());
+        System.out.println("---------------------------------------");
     }    
 }

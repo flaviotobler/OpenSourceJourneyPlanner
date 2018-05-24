@@ -1,8 +1,14 @@
 package org.opentripplanner.csa;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.onebusaway.csv_entities.EntityHandler;
 import org.onebusaway.gtfs.impl.GtfsRelationalDaoImpl;
@@ -28,7 +34,11 @@ import org.opentripplanner.graph_builder.module.GtfsFeedId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.collect.Sets; 
 
 
@@ -44,6 +54,10 @@ import com.google.common.collect.Sets;
 public class TimeTableBuilder {
     
     private static final Logger LOG = LoggerFactory.getLogger(TimeTableBuilder.class);
+    
+    private static Set<ConnectionCSA> connectionsAscending = new TreeSet<ConnectionCSA>();
+    
+    private static Set<ConnectionCSA> connectionsDescending = new TreeSet<ConnectionCSA>();
     
     EntityHandler counter = new TimeTableEntityCounter();
     
@@ -74,7 +88,7 @@ public class TimeTableBuilder {
      * @param gtfsBundle as object has the information where the gtfs is
      * @throws IOException
      */
-    public void loadGtfs(GtfsBundle gtfsBundle)throws IOException {
+    public void loadGtfs(GtfsBundle gtfsBundle)throws JsonGenerationException, JsonMappingException, IOException {
     	
     	TimeTable tt = new TimeTable();
         
@@ -303,7 +317,7 @@ public class TimeTableBuilder {
 											LOG.info("generate Connection ----> "+"StopCSA departureStop: "+templaststop +"  StopCSA arrivalStop: "+tempcurrentstop +"  DepartureStopTime:  "+lastStopTime+ "  ArrivalStopTime:  "+currentArrivalStopTime+"  TripCSA trip: "+temptrip);
 											
 											ConnectionCSA tempconnection = new ConnectionCSA (templaststop,tempcurrentstop,lastStopTime,currentArrivalStopTime,temptrip);
-											tt.addConnection(tempconnection);	
+											connectionsAscending.add(tempconnection);	
 										}
 									}
 								}
@@ -319,7 +333,24 @@ public class TimeTableBuilder {
         	lastStopTime = currentDepartureStopTime;
         }
         
-        tt.createConnectionsDescending();
+        createConnectionsDescending();
+
+        tt.addConnectionsAscending(connectionsAscending);
+        tt.addConnectionsDescending(connectionsDescending);
+                
+            
+        
+        
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+        mapper.writeValue(new File("connectionsA.txt"),tt.getConnectionsAscending());
+        mapper.writeValue(new File("connectionsD.txt"),tt.getConnectionsDescending());
+        mapper.writeValue(new File("stops.txt"),tt.getStops());
+        mapper.writeValue(new File("trips.txt"),tt.getTrips());
+        mapper.writeValue(new File("footpaths.txt"),tt.getFootpaths());
+        
+        
+        
 
         ttstore.close(); 
         LOG.info("--------------TimetableStore closed -----------------------");
@@ -332,9 +363,22 @@ public class TimeTableBuilder {
         System.out.println("-----getConnectionsAscending-----------");
         tt.showCon(tt.getConnectionsAscending());
         
+        System.out.println("-----getConnectionsAscendingTest-----------");
+        System.out.println(connectionsAscending.size());
+        for(ConnectionCSA printcon:connectionsAscending){
+            System.out.println("DepStop   "+printcon.getDepartureStop().getName()+"   DepartureTime "+printcon.gethDepartureTime()+":"+printcon.getMinDepartureTime()+":"+printcon.getsDepartureTime()+"  CON "+printcon);
+
+        }
+        
         System.out.println("-----getConnectionsDescending----------");
         //tt.showCon(tt.getConnectionsDescending());
-        tt.showCon(tt.getConnectionsAscending());
+        tt.showCon(connectionsAscending);
         System.out.println("---------------------------------------");
+        
+        
     }    
+    
+    public void createConnectionsDescending(){
+        connectionsDescending = ((TreeSet<ConnectionCSA>)connectionsAscending).descendingSet();
+    }
 }

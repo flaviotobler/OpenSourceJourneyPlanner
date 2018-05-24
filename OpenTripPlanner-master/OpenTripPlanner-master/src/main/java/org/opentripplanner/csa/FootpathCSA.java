@@ -24,6 +24,10 @@ public class FootpathCSA {
         this.arrivalStop = arrivalStop;
         this.duration = duration;
     }
+    
+    public FootpathCSA(){
+        
+    }
 
     /**
      * returns the departureStop

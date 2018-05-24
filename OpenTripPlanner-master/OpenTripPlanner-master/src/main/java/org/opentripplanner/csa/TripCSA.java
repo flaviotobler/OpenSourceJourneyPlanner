@@ -77,13 +77,42 @@ public class TripCSA {
         
         this.serviceId = serviceId;    
     }
+    
+    public TripCSA(String tripShortName, String tripHeadSign, String routeShortName,String routeDesc, int routeType, String mode, String agencyName, String agencyNameLong, String agencyUrl, String agencyTimeZoneOffset, AgencyAndId tAAId, AgencyAndId rAAId, String serviceId, boolean tripFlag, ConnectionCSA tripEnterConnection) {
+        this.tripShortName = tripShortName;
+        this.tripHeadSign = tripHeadSign;
+        
+        this.routeShortName = routeShortName;
+        this.routeDesc = routeDesc;
+        this.routeType = routeType;
+        this.mode = mode;
+        
+        this.agencyName = agencyName;
+        this.agencyNameLong = agencyNameLong;
+        this.agencyUrl = agencyUrl;
+        this.agencyTimeZoneOffset = agencyTimeZoneOffset;
+        
+        
+        this.tAAId = tAAId;
+        this.rAAId = rAAId;
+        
+        
+        this.serviceId = serviceId;    
+        
+        this.tripFlag = tripFlag;
+        this.tripEnterConnection = tripEnterConnection;
+    }
+    
+    public TripCSA(){
+        
+    }
      
     
     /**
      * returns the tripShortName
      * @return tripShortName as String
      */
-    public String getTripName() {
+    public String getTripShortName() {
         return tripShortName;
     }
 
@@ -91,7 +120,7 @@ public class TripCSA {
      * sets the tripName
      * @param tripShortName as String
      */
-    public void setTripName(String tripShortName) {
+    public void setTripShortName(String tripShortName) {
     	this.tripShortName = tripShortName;
     }
     

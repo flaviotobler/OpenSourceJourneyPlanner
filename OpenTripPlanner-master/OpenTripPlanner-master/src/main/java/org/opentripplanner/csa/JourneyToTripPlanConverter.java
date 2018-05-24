@@ -187,11 +187,11 @@ public class JourneyToTripPlanConverter {
         leg.agencyUrl = trip.getAgencyUrl();
         leg.agencyTimeZoneOffset = getTimeZone(trip.getAgencyTimeZoneOffset(),datum); //getTimeZone form the Date (Summertime)
         leg.routeType = trip.getRouteType();
-        leg.routeId = new AgencyAndId("1",trip.getRouteId());
+        leg.routeId = trip.getrAAId();
         leg.tripShortName = trip.getRouteShortName();
         leg.headsign = trip.getTripHeadSign();
-        leg.agencyId = trip.getAgencyId();
-        leg.tripId = new AgencyAndId("1",trip.getTripId());
+        leg.agencyId = trip.getrAAId().getAgencyId();
+        leg.tripId = trip.gettAAId();
         leg.routeShortName = trip.getRouteShortName();
         
         leg.serviceDate = getDate(leg.startTime); //getDate from request

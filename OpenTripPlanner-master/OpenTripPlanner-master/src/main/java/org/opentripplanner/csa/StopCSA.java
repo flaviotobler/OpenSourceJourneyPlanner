@@ -41,6 +41,20 @@ public class StopCSA {
         this.sAAId = sAAId;
     }
     
+    public StopCSA(String name, double latitude, double longitude, AgencyAndId sAAId, JourneyPointer stopJP, Calendar stopTime)
+    {
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.sAAId = sAAId;
+        this.stopJP = stopJP;
+        this.stopTime = stopTime;
+    }
+    
+    public StopCSA(){
+        
+    }
+    
     /**
      * returns the stopname
      * @return name as String

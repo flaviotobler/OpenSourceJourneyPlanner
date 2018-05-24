@@ -2,6 +2,8 @@ package org.opentripplanner.csa;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -15,9 +17,9 @@ public class TimeTable {
     private Set<StopCSA> stops = new HashSet<StopCSA>();
     private Set<TripCSA> trips = new HashSet<TripCSA>();
     private Set<FootpathCSA> footpaths = new HashSet<FootpathCSA>();
-    private Set<ConnectionCSA> connectionsAscending = new TreeSet<ConnectionCSA>();
+    private static Set<ConnectionCSA> connectionsAscending = new LinkedHashSet<ConnectionCSA>();
     
-    private Set<ConnectionCSA> connectionsDescending = new TreeSet<ConnectionCSA>();
+    private static Set<ConnectionCSA> connectionsDescending = new LinkedHashSet<ConnectionCSA>();
     
     /**
      * constructor for the TimeTable
@@ -52,8 +54,12 @@ public class TimeTable {
      * adds a connection to the connections
      * @param connection as object
      */
-    public void addConnection(ConnectionCSA connection){
-    	connectionsAscending.add(connection);
+    public void addConnectionsAscending(Set<ConnectionCSA> connections){
+    	connectionsAscending.addAll(connections);
+    }
+    
+    public void addConnectionsDescending(Set<ConnectionCSA> connections){
+        connectionsDescending.addAll(connections);
     }
     
     /**
@@ -85,7 +91,7 @@ public class TimeTable {
     }
     
     
-    public StopCSA getStopFromName (String stopName) {
+    public StopCSA getStopFromCor (double lng, double lat) {
 
     	StopCSA stop = null;
 
@@ -93,9 +99,11 @@ public class TimeTable {
 		 
 		while(it.hasNext()){
 			stop = (StopCSA)it.next();
-			
-			if(stop.getName().equals(stopName)) {
-				return stop;
+			if(lng == stop.getLongitude()) {
+			    if(lat == stop.getLatitude()){
+			        return stop;
+			    }
+			        
 			}
 		}
 
@@ -123,17 +131,15 @@ public class TimeTable {
     	return null;
     }
     
-    public Set<ConnectionCSA> getConnectionsAscending() {
+    public static Set<ConnectionCSA> getConnectionsAscending() {
     	return connectionsAscending;
     }
     
-    public Set<ConnectionCSA> getConnectionsDescending() {
+    public static Set<ConnectionCSA> getConnectionsDescending() {
     	return connectionsDescending;
     }
     
-    public void createConnectionsDescending(){
-    	connectionsDescending = ((TreeSet<ConnectionCSA>)connectionsAscending).descendingSet();
-    }
+    
     
     public void showCon(Set<ConnectionCSA> connections) {
     	
@@ -145,16 +151,53 @@ public class TimeTable {
 		      System.out.println("DepStop   "+printcon.getDepartureStop().getName()+"   DepartureTime "+printcon.gethDepartureTime()+":"+printcon.getMinDepartureTime()+":"+printcon.getsDepartureTime()+"  CON "+printcon);
 		}
 		
-    	Iterator<ConnectionCSA> it2 = ((TreeSet<ConnectionCSA>) connections).descendingIterator();
+    	/*Iterator<ConnectionCSA> it2 = ((TreeSet<ConnectionCSA>) connections).descendingIterator();
 		 
 		while(it2.hasNext())
 		{
 			ConnectionCSA zzzz = (ConnectionCSA) it2.next();
 		      System.out.println("DepStop   "+zzzz.getDepartureStop().getName()+"   DepartureTime "+zzzz.gethDepartureTime()+":"+zzzz.getMinDepartureTime()+":"+zzzz.getsDepartureTime()+"  CON "+zzzz);
-		}
+		}*/
     	
     	
     	
+    }
+
+    public Set<StopCSA> getStops() {
+        return stops;
+    }
+
+    public Set<TripCSA> getTrips() {
+        return trips;
+    }
+
+    public Set<FootpathCSA> getFootpaths() {
+        return footpaths;
+    }
+
+    public void setConnectionsAscending(Set<ConnectionCSA> connectionsAscending) {
+        this.connectionsAscending = connectionsAscending;
+        
+    }
+    
+    public void setConnectionsDescending(Set<ConnectionCSA> connectionsDescending) {
+        this.connectionsDescending = connectionsDescending;
+        
+    }
+    
+    public void setStops(Set<StopCSA> stops) {
+        this.stops = stops;
+        
+    }
+    
+    public void setTrips(Set<TripCSA> trips) {
+        this.trips = trips;
+        
+    }
+    
+    public void setFootpaths(Set<FootpathCSA> footpaths) {
+        this.footpaths = footpaths;
+        
     }
     
     

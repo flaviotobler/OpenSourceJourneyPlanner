@@ -20,7 +20,7 @@ public class CSAMock {
     public static Set<Journey> createJourneys(TimeTable timeTable, RoutingRequest request) throws JsonGenerationException, JsonMappingException, IOException{
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-        mapper.writeValue(new File("timeTableMockJSON.txt"),timeTable);
+        mapper.writeValue(new File("timeTableMockJSON.txt"),timeTable.getStops());
         
         
         StopCSA testStop = new StopCSA("Heerbrugg Dornacherhof", 9.63119748849971, 47.4142968347706, new AgencyAndId("1","8578433"));

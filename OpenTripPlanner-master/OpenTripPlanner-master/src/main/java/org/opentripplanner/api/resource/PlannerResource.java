@@ -32,6 +32,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -57,6 +58,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -112,9 +114,34 @@ public class PlannerResource extends RoutingResource {
 
             /* Convert the internal GraphPaths to a TripPlan object that is included in an OTP web service Response. */
            //TripPlan plan = GraphPathToTripPlanConverter.generatePlan(paths, request);
-            
             TimeTable timeTable = new TimeTable();
+            
+            ObjectMapper mapper = new ObjectMapper();
+            Set<ConnectionCSA> connectionsAscending = new LinkedHashSet<ConnectionCSA>();
+            connectionsAscending = mapper.readValue(new File("connectionsA.txt"), new TypeReference<LinkedHashSet<ConnectionCSA>>(){});
+            timeTable.setConnectionsAscending(connectionsAscending);
+            
+            Set<ConnectionCSA> connectionsDescending = new LinkedHashSet<ConnectionCSA>();
+            connectionsDescending = mapper.readValue(new File("connectionsD.txt"), new TypeReference<LinkedHashSet<ConnectionCSA>>(){});
+            timeTable.setConnectionsDescending(connectionsDescending);
+            
+            Set<StopCSA> stops = new HashSet<StopCSA>();
+            stops = mapper.readValue(new File("stops.txt"), new TypeReference<HashSet<StopCSA>>(){});
+            timeTable.setStops(stops);
+            
+            Set<TripCSA> trips = new HashSet<TripCSA>();
+            trips = mapper.readValue(new File("trips.txt"), new TypeReference<HashSet<TripCSA>>(){});
+            timeTable.setTrips(trips);
+            
+            Set<FootpathCSA> footpaths = new HashSet<FootpathCSA>();
+            footpaths = mapper.readValue(new File("footpaths.txt"), new TypeReference<HashSet<FootpathCSA>>(){});
+            timeTable.setFootpaths(footpaths);
+            
+            
+            
+            //TimeTable timeTable = new TimeTable("CSATimeTable.json");
             Set<Journey> journeys = CSAMock.createJourneys(timeTable, request);
+            //Set<Journey> journeys = CSA_EAC.createJourneys(timeTable, request);
             //Set<Journey> journeys = new LinkedHashSet<Journey>();
             //TripPlan plan = JourneyToTripPlanConverterMock.generatePlan(journeys);
             TripPlan plan = JourneyToTripPlanConverter.generatePlan(journeys, request);

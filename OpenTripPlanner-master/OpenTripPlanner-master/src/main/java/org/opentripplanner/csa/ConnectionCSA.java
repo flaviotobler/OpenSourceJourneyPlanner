@@ -48,6 +48,26 @@ public class ConnectionCSA implements Comparable {
    
         this.trip = trip;
     }
+    
+    public ConnectionCSA(StopCSA departureStop, StopCSA arrivalStop, int gtfsDepartureTime, int gtfsArrivalTime, int hDepartureTime, int minDepartureTime, int sDepartureTime, int hArrivalTime, int minArrivalTime, int sArrivalTime, TripCSA trip){
+        this.departureStop = departureStop;
+        this.arrivalStop = arrivalStop;
+        this.gtfsDepartureTime = gtfsDepartureTime;
+        this.gtfsArrivalTime = gtfsArrivalTime;
+        this.hDepartureTime = hDepartureTime;
+        this.minDepartureTime = minDepartureTime;
+        this.sDepartureTime = sDepartureTime;
+        this.hArrivalTime = hArrivalTime;
+        this.minArrivalTime = minArrivalTime;
+        this.sArrivalTime = sArrivalTime;
+        this.trip = trip;
+        
+        
+    }
+    
+    public ConnectionCSA(){
+        
+    }
 
     /**
      * returns the departureStop

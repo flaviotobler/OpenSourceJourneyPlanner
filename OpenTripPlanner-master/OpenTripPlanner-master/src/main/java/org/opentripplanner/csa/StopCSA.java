@@ -19,10 +19,7 @@ public class StopCSA {
     private AgencyAndId sAAId;
     
     
-    //CSA attributes
-    private JourneyPointer stopJP = null;
     
-    private Calendar stopTime = new GregorianCalendar(20000,12 ,31,23,59,59);  //sinnvoll??
     
     
     
@@ -41,15 +38,6 @@ public class StopCSA {
         this.sAAId = sAAId;
     }
     
-    public StopCSA(String name, double latitude, double longitude, AgencyAndId sAAId, JourneyPointer stopJP, Calendar stopTime)
-    {
-        this.name = name;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.sAAId = sAAId;
-        this.stopJP = stopJP;
-        this.stopTime = stopTime;
-    }
     
     public StopCSA(){
         
@@ -120,20 +108,4 @@ public class StopCSA {
 	}
 	
 
-	public JourneyPointer getStopJP() {
-		return stopJP;
-	}
-
-	public void setStopJP(JourneyPointer stopJP) {
-		this.stopJP = stopJP;
-	}
-
-    public Calendar getStopTime() {
-        return stopTime;
-    }
-
-    public void setStopTime(Calendar stopTime) {
-        this.stopTime = stopTime;
-    }
-    
 }

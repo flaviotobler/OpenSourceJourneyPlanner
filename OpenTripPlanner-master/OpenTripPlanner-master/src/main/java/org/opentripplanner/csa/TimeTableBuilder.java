@@ -59,6 +59,8 @@ public class TimeTableBuilder {
     
     private static Set<ConnectionCSA> connectionsDescending = new TreeSet<ConnectionCSA>();
     
+    private static TimeTable tt = new TimeTable();
+    
     EntityHandler counter = new TimeTableEntityCounter();
     
     Set<String> agencyIdsSeen = Sets.newHashSet(); 
@@ -88,9 +90,14 @@ public class TimeTableBuilder {
      * @param gtfsBundle as object has the information where the gtfs is
      * @throws IOException
      */
+    public TimeTable getTimeTable(){
+        return tt;
+    }
+    
     public void loadGtfs(GtfsBundle gtfsBundle)throws JsonGenerationException, JsonMappingException, IOException {
     	
-    	TimeTable tt = new TimeTable();
+        // tt leeren!!!!
+        // file speicherungen wieder entfernen
         
         GtfsMutableRelationalDao dao = new GtfsRelationalDaoImpl();
         
@@ -166,7 +173,7 @@ public class TimeTableBuilder {
             
 
             //TimeTable ADD FOOTPATH
-            long duration = 300; 
+            long duration = 60; 
             FootpathCSA tempfootpath = new FootpathCSA(tempstop,tempstop,duration); 
             LOG.info("generate Footpath ----> "+"departureStop: "+ tempstop.getName() +"  arrivalStop: "+tempstop.getName() +"  duration: "+ duration+"  "+ tempfootpath);
             tt.addFootpaths(tempfootpath);       

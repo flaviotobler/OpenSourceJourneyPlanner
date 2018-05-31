@@ -802,6 +802,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
+		<!-- EasyDI dependancy -->
+		<dependency>
+			<groupId>eu.lestard</groupId>
+			<artifactId>easy-di</artifactId>
+			<version>0.3.0</version>
+		</dependency>
     </dependencies>
 
 </project>

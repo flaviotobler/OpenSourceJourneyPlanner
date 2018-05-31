@@ -37,6 +37,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import eu.lestard.easydi.EasyDI;
+
 import org.opentripplanner.csa.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -114,7 +116,14 @@ public class PlannerResource extends RoutingResource {
 
             /* Convert the internal GraphPaths to a TripPlan object that is included in an OTP web service Response. */
            //TripPlan plan = GraphPathToTripPlanConverter.generatePlan(paths, request);
-            TimeTable timeTable = new TimeTable();
+            
+            EasyDI easyDI = new EasyDI();
+            
+            final TimeTableBuilder timeTableBuilder = easyDI.getInstance(TimeTableBuilder.class);
+            TimeTable timeTable = timeTableBuilder.getTimeTable();
+            
+            System.out.println("check tt");
+            /*TimeTable timeTable = new TimeTable();
             
             ObjectMapper mapper = new ObjectMapper();
             Set<ConnectionCSA> connectionsAscending = new LinkedHashSet<ConnectionCSA>();
@@ -136,12 +145,13 @@ public class PlannerResource extends RoutingResource {
             Set<FootpathCSA> footpaths = new HashSet<FootpathCSA>();
             footpaths = mapper.readValue(new File("footpaths.txt"), new TypeReference<HashSet<FootpathCSA>>(){});
             timeTable.setFootpaths(footpaths);
-            
+            */
             
             
             //TimeTable timeTable = new TimeTable("CSATimeTable.json");
-            Set<Journey> journeys = CSAMock.createJourneys(timeTable, request);
+            //Set<Journey> journeys = CSAMock.createJourneys(timeTable, request);
             //Set<Journey> journeys = CSA_EAC.createJourneys(timeTable, request);
+            Set<Journey> journeys = CSA_PCS.createJourneys(timeTable, request);
             //Set<Journey> journeys = new LinkedHashSet<Journey>();
             //TripPlan plan = JourneyToTripPlanConverterMock.generatePlan(journeys);
             TripPlan plan = JourneyToTripPlanConverter.generatePlan(journeys, request);

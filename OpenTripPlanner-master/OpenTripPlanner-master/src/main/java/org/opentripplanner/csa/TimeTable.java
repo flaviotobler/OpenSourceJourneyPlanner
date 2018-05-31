@@ -91,24 +91,7 @@ public class TimeTable {
     }
     
     
-    public StopCSA getStopFromCor (double lng, double lat) {
-
-    	StopCSA stop = null;
-
-		Iterator<StopCSA> it = stops.iterator();
-		 
-		while(it.hasNext()){
-			stop = (StopCSA)it.next();
-			if(lng == stop.getLongitude()) {
-			    if(lat == stop.getLatitude()){
-			        return stop;
-			    }
-			        
-			}
-		}
-
-    	return null;
-    }
+    
     
     public FootpathCSA getFootPathChange(StopCSA stop) {
     	

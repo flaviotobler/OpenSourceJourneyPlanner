@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TimeZone;
@@ -55,30 +57,36 @@ public class JourneyToTripPlanConverter {
     {
         TripPlan plan = getPlanInfo(request);
         Date datum = plan.date;
+        Boolean firstFlag = true;
         
         for(Journey journey: journeys)
         {
             Itinerary itinerary = new Itinerary();     
             FootpathCSA startpath = journey.getStartPath();
-            Leg startLeg = legFromFP(startpath, datum, new GregorianCalendar(datum.getYear() + 1900,datum.getMonth() + 1,datum.getDate(),datum.getHours(),datum.getMinutes()));
-            if(startLeg.distance != 0)
-            {
-                itinerary.addLeg(startLeg);
-            }
-            itinerary.startTime = startLeg.startTime;
-            itinerary.endTime = startLeg.endTime;
-            itinerary.transitTime = 0;
-            itinerary.walkTime = (long) startLeg.duration;
-            itinerary.waitingTime = 0;
-            itinerary.walkDistance = startLeg.distance;
-            itinerary.transfers = -1;
-       
+            
             
             for(JourneyPointer jp: journey.getJourneyPointers())
             {
-                
                 LegCSA legcsa = jp.getLeg();
                 Leg leg = legFromLeg(legcsa, datum);
+                if(firstFlag)
+                {
+                    firstFlag = false;
+                    Calendar startLegStartTime = leg.startTime;
+                    startLegStartTime.add(Calendar.SECOND, (int)(-1 * startpath.getDuration()));
+                    Leg startLeg = legFromFP(startpath, datum, startLegStartTime);
+                    if(startLeg.distance != 0)
+                    {
+                        itinerary.addLeg(startLeg);
+                    }
+                    itinerary.startTime = startLeg.startTime;
+                    itinerary.endTime = startLeg.endTime;
+                    itinerary.transitTime = 0;
+                    itinerary.walkTime = (long) startLeg.duration;
+                    itinerary.waitingTime = 0;
+                    itinerary.walkDistance = startLeg.distance;
+                    itinerary.transfers = -1;
+                }
                 itinerary.waitingTime = itinerary.waitingTime + ((leg.startTime.getTimeInMillis() - itinerary.endTime.getTimeInMillis())/1000);
                 itinerary.endTime = leg.endTime;
                 itinerary.addLeg(leg);
@@ -201,8 +209,8 @@ public class JourneyToTripPlanConverter {
         
         leg.from = getPlace(center.getDepartureStop());
         leg.to = getPlace(cexit.getArrivalStop());
-        Coordinate startCor = new Coordinate(leg.from.lat, leg.from.lon, 0);
-        Coordinate endCor = new Coordinate(leg.to.lat, leg.to.lon, 0);
+        Coordinate startCor = new Coordinate(leg.from.lon, leg.from.lat, 0);
+        Coordinate endCor = new Coordinate(leg.to.lon, leg.to.lat, 0);
         CoordinateArrayListSequence coordinates = new CoordinateArrayListSequence();
         coordinates.add(startCor);
         coordinates.add(endCor);
@@ -264,8 +272,8 @@ public class JourneyToTripPlanConverter {
         leg.mode = "WALK";
         leg.from = getPlace(footpath.getDepartureStop());
         leg.to = getPlace(footpath.getArrivalStop());
-        Coordinate startCor = new Coordinate(leg.from.lat, leg.from.lon, 0);
-        Coordinate endCor = new Coordinate(leg.to.lat, leg.to.lon, 0);
+        Coordinate startCor = new Coordinate(leg.from.lon, leg.from.lat, 0);
+        Coordinate endCor = new Coordinate(leg.to.lon, leg.to.lat, 0);
         CoordinateArrayListSequence coordinates = new CoordinateArrayListSequence();
         coordinates.add(startCor);
         coordinates.add(endCor);
@@ -349,6 +357,11 @@ public class JourneyToTripPlanConverter {
         dist = rad2deg(dist);
         dist = dist * 60 * 1.1515;
         dist = dist * 1.609344 / 1000;
+        if(lat1 == lat2){
+            if(lon1 == lon2){
+                dist = 0;
+            }
+        }
         return dist;
     }
     

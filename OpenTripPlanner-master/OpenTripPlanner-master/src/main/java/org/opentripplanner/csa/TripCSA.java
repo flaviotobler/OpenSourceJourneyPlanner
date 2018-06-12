@@ -101,8 +101,12 @@ public class TripCSA {
         this.tripEnterConnection = tripEnterConnection;
     }
     
-    public TripCSA(){
-        
+    public TripCSA(AgencyAndId tAAId) {  //constructor for Template Trip 
+        this.tAAId = tAAId;
+    }
+    
+    public TripCSA() {
+    	
     }
      
     

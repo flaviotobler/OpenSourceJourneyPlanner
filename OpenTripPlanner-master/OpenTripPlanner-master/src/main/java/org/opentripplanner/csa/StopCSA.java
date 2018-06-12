@@ -38,6 +38,11 @@ public class StopCSA {
         this.sAAId = sAAId;
     }
     
+    public StopCSA(AgencyAndId sAAId)  //constructor for Template Stop 
+    {
+        this.sAAId = sAAId;
+    }
+    
     
     public StopCSA(){
         

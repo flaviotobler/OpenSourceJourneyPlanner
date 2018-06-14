@@ -10,7 +10,7 @@ import org.onebusaway.gtfs.model.AgencyAndId;
  * @author Christian
  *
  */
-public class StopCSA {
+public class StopCSA implements Cloneable{
     
     private String name;
     private double latitude;
@@ -107,5 +107,8 @@ public class StopCSA {
 		this.sAAId = sAAId;
 	}
 	
+	public Object clone()throws CloneNotSupportedException{  
+	        return (StopCSA)super.clone();  
+	   }
 
 }

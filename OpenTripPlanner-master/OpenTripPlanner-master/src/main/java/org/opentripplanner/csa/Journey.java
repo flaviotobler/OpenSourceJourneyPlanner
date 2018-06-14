@@ -8,7 +8,7 @@ import java.util.Set;
  * The CSA returns the found results in form of Journeys. They exist of a StartFootpath and a set of JourneyPointers.
  * @author flavi
  */
-public class Journey {
+public class Journey implements Cloneable{
     
     private FootpathCSA startPath;
     private ArrayList<JourneyPointer> journeyPointers = new ArrayList<JourneyPointer>();
@@ -54,4 +54,16 @@ public class Journey {
     public ArrayList<JourneyPointer> getJourneyPointers(){
         return journeyPointers;
     }
+    
+    public void addJourneyPointerFront(JourneyPointer jp){
+        journeyPointers.add(0,jp);
+    }
+    
+    public void addJourneyPointerIndex(int index, JourneyPointer jp){
+        journeyPointers.add(index,jp);
+    }
+    
+    public Object clone()throws CloneNotSupportedException{  
+        return (Journey)super.clone();  
+   }
 }

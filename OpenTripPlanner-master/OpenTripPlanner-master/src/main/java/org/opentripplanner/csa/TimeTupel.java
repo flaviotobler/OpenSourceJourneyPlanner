@@ -3,7 +3,7 @@ package org.opentripplanner.csa;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class TimeTupel {
+public class TimeTupel implements Cloneable{
     private Calendar departureTime = new GregorianCalendar(20000,12 ,31,23,59,59);
     private Calendar arrivalTime = new GregorianCalendar(20000,12 ,31,23,59,59);
     private JourneyPointer jp = new JourneyPointer();
@@ -32,4 +32,7 @@ public class TimeTupel {
     public void setJourneyPointer(JourneyPointer jp){
         this.jp = jp;
     }
+    public Object clone()throws CloneNotSupportedException{  
+        return (TimeTupel)super.clone();  
+   }
 }

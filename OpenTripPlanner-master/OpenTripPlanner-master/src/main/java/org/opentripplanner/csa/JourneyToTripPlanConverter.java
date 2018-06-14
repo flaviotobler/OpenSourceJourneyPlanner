@@ -61,6 +61,7 @@ public class JourneyToTripPlanConverter {
         
         for(Journey journey: journeys)
         {
+            firstFlag = true;
             Itinerary itinerary = new Itinerary();     
             FootpathCSA startpath = journey.getStartPath();
             

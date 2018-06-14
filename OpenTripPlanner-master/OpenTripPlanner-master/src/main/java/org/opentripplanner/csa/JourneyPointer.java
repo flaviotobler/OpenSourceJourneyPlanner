@@ -4,7 +4,7 @@ package org.opentripplanner.csa;
  * Represents a Leg with the following Footpath to change Legs.
  * @author flavi
  */
-public class JourneyPointer {
+public class JourneyPointer implements Cloneable{
     
     private LegCSA leg;
     private FootpathCSA footpath;
@@ -53,7 +53,9 @@ public class JourneyPointer {
         this.footpath = footpath;
     };
     
-    
+    public Object clone()throws CloneNotSupportedException{  
+        return (JourneyPointer)super.clone();  
+   }
     
     
 

@@ -9,7 +9,7 @@ import java.util.GregorianCalendar;
  * @author Christian
  *
  */
-public class ConnectionCSA implements Comparable { 
+public class ConnectionCSA implements Comparable, Cloneable { 
     private StopCSA departureStop;
     private StopCSA arrivalStop;
     
@@ -328,6 +328,10 @@ public class ConnectionCSA implements Comparable {
         
         return compareValue;
 	}
+	
+	public Object clone()throws CloneNotSupportedException{  
+	        return (ConnectionCSA)super.clone();  
+	   }
 
 
 }

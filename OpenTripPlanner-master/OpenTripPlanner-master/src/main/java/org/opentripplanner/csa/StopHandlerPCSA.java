@@ -11,7 +11,6 @@ public class StopHandlerPCSA {
     
     private StopCSA stop = new StopCSA();
     private List<TimeTupel> timeTupels = new ArrayList<TimeTupel>();
-    private JourneyPointer stopJP = null;
     public StopHandlerPCSA(StopCSA stop){
         this.stop = stop;
         
@@ -23,23 +22,27 @@ public class StopHandlerPCSA {
         this.stop = stop;
     }
     
-    public JourneyPointer getStopJP() {
-        return stopJP;
-    }
-    public void setStopJP(JourneyPointer stopJP) {
-        this.stopJP = stopJP;
-    }
     public void addTupelFront(TimeTupel timeTupel){
-        timeTupels.add(0,timeTupel);
+        TimeTupel ttupel = new TimeTupel();
+        ttupel.setArrivalTime(timeTupel.getArrivalTime());
+        ttupel.setDepartureTime(timeTupel.getDepartureTime());
+        ttupel.setJourneyPointer(timeTupel.getJourneyPointer());
+        
+        timeTupels.add(0,ttupel);
+        System.out.println(timeTupel.getArrivalTime().getTimeInMillis());
+        System.out.println(ttupel.getArrivalTime().getTimeInMillis());
+        System.out.println(this.timeTupels.get(0).getArrivalTime().getTimeInMillis());
     }
     public void replaceTupelFront(TimeTupel timeTupel){
         timeTupels.set(0,timeTupel);
     }
     
     public TimeTupel getTupel(int index){
+        System.out.println(timeTupels.get(index).getArrivalTime().getTimeInMillis());
         return timeTupels.get(index);
     }
     public List<TimeTupel> getTupels(){
         return timeTupels;
     }
+    
 }

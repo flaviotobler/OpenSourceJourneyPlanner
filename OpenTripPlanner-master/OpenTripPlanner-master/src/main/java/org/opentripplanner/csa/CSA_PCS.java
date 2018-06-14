@@ -25,18 +25,20 @@ public class CSA_PCS {
         int year = request.getDateTime().getYear() + 1900;
         int month = request.getDateTime().getMonth();
         int day = request.getDateTime().getDate();
+        System.out.println(year);
+        System.out.println(month);
+        System.out.println(day);
+        System.out.println(request.getDateTime().getHours());
+        System.out.println(request.getDateTime().getMinutes());
         Calendar t1 = new GregorianCalendar(20000,12 ,31,23,59,59);
         Calendar t2 = new GregorianCalendar(20000,12 ,31,23,59,59);
         Calendar t3 = new GregorianCalendar(20000,12 ,31,23,59,59);
         Calendar tc = new GregorianCalendar(20000,12 ,31,23,59,59);
+        System.out.println("Timezone tc:" + tc.getTimeZone());
         Calendar tconst = new GregorianCalendar(20000,12 ,31,23,59,59);
         System.out.println(tconst.getTimeInMillis());
         Calendar startingTime = new GregorianCalendar();
-        startingTime.set(Calendar.YEAR, year);
-        startingTime.set(Calendar.MONTH, month);
-        startingTime.set(Calendar.DATE, day);
-        startingTime.set(Calendar.HOUR, request.getDateTime().getHours());
-        startingTime.set(Calendar.MINUTE, request.getDateTime().getMinutes());
+        startingTime.setTime(request.getDateTime());
         CSA_EAC_Time cTime = new CSA_EAC_Time();
         Calendar frAnZeit = new GregorianCalendar(20000,12 ,31,23,59,59);
         frAnZeit = cTime.getEarliestArrivalTime(timeTable, request);
@@ -134,6 +136,7 @@ public class CSA_PCS {
             {
                 StopHandlerPCSA reconstructionPoint = getStop(stops, tt.getJourneyPointer().getLeg().getExit().getArrivalStop());
                 Calendar reconstructionTime = new GregorianCalendar();
+                reconstructionTime.setTime(request.getDateTime());
                 reconstructionTime.set(Calendar.YEAR, year);
                 reconstructionTime.set(Calendar.MONTH, month);
                 reconstructionTime.set(Calendar.DATE, day);

@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import org.onebusaway.csv_entities.EntityHandler;
+import org.onebusaway.gtfs.impl.GenericDaoImpl;
 import org.onebusaway.gtfs.impl.GtfsRelationalDaoImpl;
 
 import org.onebusaway.gtfs.model.Agency;
@@ -23,8 +24,6 @@ import org.onebusaway.gtfs.model.StopTime;
 import org.onebusaway.gtfs.model.Trip;
 
 import org.onebusaway.gtfs.serialization.GtfsReader;
-
-import org.onebusaway.gtfs.services.GtfsMutableRelationalDao;
 
 
 //inputs aus org.opentripplanner
@@ -60,24 +59,7 @@ public class TimeTableBuilder {
     private static Set<ConnectionCSA> connectionsDescending = new TreeSet<ConnectionCSA>();
     
     private static TimeTable tt = new TimeTable();
-    
-    EntityHandler counter = new TimeTableEntityCounter();
-    
-    Set<String> agencyIdsSeen = Sets.newHashSet(); 
-    
-    /**
-     * temporary assistant stoplist
-     */
-    ArrayList<StopCSA> stoplist = new ArrayList<StopCSA>();  
-    
-    /**
-     * temporary assistant triplist
-     */
-    ArrayList<TripCSA> triplist = new ArrayList<TripCSA>(); 
 
-    int nextAgencyId = 1; // used for generating agency IDs to resolve ID conflicts
-    
-    
     /**
      * constructor for the TimeTableBuilder
      */
@@ -99,12 +81,14 @@ public class TimeTableBuilder {
         // tt leeren!!!!
         // file speicherungen wieder entfernen
         
-        GtfsMutableRelationalDao dao = new GtfsRelationalDaoImpl();
+
         
-        TimeTableStoreImpl ttstore = new TimeTableStoreImpl(dao);
-        ttstore.open();
         
-        LOG.info("--------------TimetableStore opening -----------------------");
+        GenericDaoImpl store = new GenericDaoImpl();
+
+        store.open();  //brauchtes dich?
+        
+        
         LOG.info("reading {}", gtfsBundle.toString());
 
         GtfsFeedId gtfsFeedId = gtfsBundle.getFeedId();
@@ -113,51 +97,14 @@ public class TimeTableBuilder {
         
         GtfsReader reader = new GtfsReader();
         reader.setInputSource(gtfsBundle.getCsvInputSource());
-        reader.setEntityStore(ttstore);
-        reader.setInternStrings(true);
-        reader.setDefaultAgencyId(gtfsFeedId.getId());
-        
-        if (LOG.isDebugEnabled())
-            reader.addEntityHandler(counter);
+        reader.setEntityStore(store);
+      
+        LOG.info("--------------Start reading -----------------------");
+        reader.run();
 
-        for (Class<?> entityClass : reader.getEntityClasses()) {
-            LOG.info("reading entities: " + entityClass.getName());
-            reader.readEntities(entityClass);
-            ttstore.flush();
-
-            if (entityClass == Agency.class) {
-                for (Agency agency : reader.getAgencies()) {
-                    String agencyId = agency.getId();
-                    String agencyname = agency.getName();
-                    LOG.info("This Agency has the ID {}", agencyId);
-                    LOG.info("Agency has Name {}", agencyname);
-                    
-                    // Somehow, when the agency's id field is missing, OBA replaces it with the agency's name.
-                    // TODO Figure out how and why this is happening.
-                    if (agencyId == null || agencyIdsSeen.contains(gtfsFeedId.getId() + agencyId)) {
-                        // Loop in case generated name is already in use.
-                        String generatedAgencyId = null;
-                        while (generatedAgencyId == null || agencyIdsSeen.contains(generatedAgencyId)) {
-                            generatedAgencyId = "F" + nextAgencyId;
-                            nextAgencyId++;
-                        }
-                        LOG.warn("The agency ID '{}' was already seen, or I think it's bad. Replacing with '{}'.", agencyId, generatedAgencyId);
-                        reader.addAgencyIdMapping(agencyId, generatedAgencyId); // NULL key should work
-                        agency.setId(generatedAgencyId);
-                        agencyId = generatedAgencyId;
-                    }
-                    if (agencyId != null) agencyIdsSeen.add(gtfsFeedId.getId() + agencyId);
-                }
-            }
-        }
-        
-        LOG.info("readerDefaultAgencyId: " + reader.getDefaultAgencyId());
-        LOG.info("readergetAgencies: " + reader.getAgencies());
-        LOG.info("readerEntityClasses: " + reader.getEntityClasses());
-        LOG.info("mystoregetAllEntitiesForType: " + ttstore.getAllEntitiesForType(Route.class));
-        
-
-        for (Stop stop : ttstore.getAllEntitiesForType(Stop.class)) {
+        int stopcounter = 0;
+	    LOG.info("ADD Stops and Footpath");
+        for (Stop stop : store.getAllEntitiesForType(Stop.class)) {
         	//TimeTable ADD STOPS
             String stopName = stop.getName();
             double cordLongitude = stop.getLon();
@@ -167,9 +114,8 @@ public class TimeTableBuilder {
             
             StopCSA tempstop = new StopCSA(stopName,cordLatitude,cordLongitude,sAAId);
             LOG.info("generate Stop ----> "+"StopId: "+tempstop.getsAAId().getId() +"  StopName: "+stopName +"  Latitude: "+cordLatitude+"  Longitude: " +cordLongitude +" "+ tempstop);
-            stoplist.add(tempstop);
             tt.addStop(tempstop);
-            
+            stopcounter++;
             
 
             //TimeTable ADD FOOTPATH
@@ -178,8 +124,12 @@ public class TimeTableBuilder {
             LOG.info("generate Footpath ----> "+"departureStop: "+ tempstop.getName() +"  arrivalStop: "+tempstop.getName() +"  duration: "+ duration+"  "+ tempfootpath);
             tt.addFootpaths(tempfootpath);       
         }
+        LOG.info("Added "+stopcounter+" Stops and Footpath");
         
-        for (Trip trip : ttstore.getAllEntitiesForType(Trip.class)) {
+        
+        int tripcounter = 0;
+        LOG.info("ADD Trips");
+        for (Trip trip : store.getAllEntitiesForType(Trip.class)) {
         	//TimeTable ADD Trips
             String tripShortName = trip.getTripShortName();
             String tripHeadSign = trip.getTripHeadsign();
@@ -201,11 +151,15 @@ public class TimeTableBuilder {
             TripCSA temptrip = new TripCSA(tripShortName,tripHeadSign,routeShortName,routeDesc,routeType,agencyName,agencyNameLong,agencyUrl,agencyTimeZoneOffset,serviceId, tAAId, rAAId);
             LOG.info("generate Trip ----> "+"TripId: "+temptrip.gettAAId().getId() +"  TripShortName: "+tripShortName +"  TripHeadSign:  "+tripHeadSign+ "  RouteId:  "+temptrip.getrAAId()+"  RouteShortName  "+routeShortName+"  RouteDesc "+routeDesc+"  RouteType: "+routeType);
             LOG.info("further parameters  ----> "+"AgencyId: "+temptrip.gettAAId().getAgencyId()+"  AgencyName:  "+agencyName+ " AgencyNameLong:  "+agencyNameLong+ "  AgencyUrl: "+agencyUrl+"  AgencyTimeZoneOffset: "+agencyTimeZoneOffset+"  ServiceId:  "+serviceId+"  "+temptrip);
-            triplist.add(temptrip);
-            tt.addTrip(temptrip);              
+            tt.addTrip(temptrip);
+            tripcounter++;
         }
+        LOG.info("Added "+tripcounter+" Trips");
         
-        for (ServiceCalendar serviceCalendar : ttstore.getAllEntitiesForType(ServiceCalendar.class)) {
+      
+        int SCcounter = 0;
+	    LOG.info("ADD ServiceCalendar");
+        for (ServiceCalendar serviceCalendar : store.getAllEntitiesForType(ServiceCalendar.class)) {
         	//ADD toTrips-serviceCalendar
         	String currentServiceId = serviceCalendar.getServiceId().getId(); 
         	String ServiceCalendarStartDate = serviceCalendar.getStartDate().getAsString(); 
@@ -240,22 +194,24 @@ public class TimeTableBuilder {
             int intserviceCalendarSu = serviceCalendar.getSunday();
             if(intserviceCalendarSu == 1) serviceCalendarSu=true;
             
-        	for(int i = 0; i<triplist.size(); i++) {
-				TripCSA temptrip = triplist.get(i);
-				if(temptrip.getServiceId() == currentServiceId) {//suche Trip
-					LOG.info("----> generate ServiceCalendar for Trip:   "+temptrip+"  ServiceId:  "+currentServiceId+" ServiceCalendarStartDate: " + ServiceCalendarStartDate+
-							"  ServiceCalendarEndDate: "+ServiceCalendarEndDate+" DayAvailability: "+serviceCalendarMo+","+serviceCalendarTu+","+serviceCalendarWe+","+serviceCalendarTh+","+
-							serviceCalendarFr+","+serviceCalendarSa+","+serviceCalendarSu);
+            for(TripCSA temptrip : tt.getTrips()) {	
+				if(temptrip.getServiceId().equals(currentServiceId)) {//suche Trip temptrip.getServiceId() == currentServiceId
+					LOG.info("----> generate ServiceCalendar for Trip:   "+"TripID "+temptrip.gettAAId().getId()+"  REF "+temptrip+"  ServiceId:  "+currentServiceId+" ServiceCalendarStartDate: " + ServiceCalendarStartDate+"  ServiceCalendarEndDate: "+ServiceCalendarEndDate+" DayAvailability: "+serviceCalendarMo+","+serviceCalendarTu+","+serviceCalendarWe+","+serviceCalendarTh+","+serviceCalendarFr+","+serviceCalendarSa+","+serviceCalendarSu);
 					
 					ServiceCalendarCSA scCSA = new ServiceCalendarCSA(ServiceCalendarStartDate,serviceCalendarMo,serviceCalendarTu,serviceCalendarWe,
 							serviceCalendarTh,serviceCalendarFr,serviceCalendarSa,serviceCalendarSu,ServiceCalendarEndDate);
 					temptrip.serviceCalendars.add(scCSA);
+					SCcounter++;
 					
 				}
         	}	
         }
+        LOG.info("Added "+SCcounter+" ServiceCalendar");
         
-        for (ServiceCalendarDate serviceCalendarDate : ttstore.getAllEntitiesForType(ServiceCalendarDate.class)) {
+        
+        int SCDcounter = 0;
+        LOG.info("ADD ServiceCalendarDates");
+        for (ServiceCalendarDate serviceCalendarDate : store.getAllEntitiesForType(ServiceCalendarDate.class)) {
         	//ADD toTrips-serviceCalendarDate
             String currentServiceId = serviceCalendarDate.getServiceId().getId();
             String serviceCalendarDateDate = serviceCalendarDate.getDate().getAsString();
@@ -270,75 +226,87 @@ public class TimeTableBuilder {
             	LOG.error("WRONG ENTRY in GTFS");
             }
 
-        	for(int i = 0; i<triplist.size(); i++) {
-				TripCSA temptrip = triplist.get(i);
-				if(temptrip.getServiceId() == currentServiceId) {//looking for trip
-					LOG.info("----> generate ServiceCalendarDate for Trip:   "+temptrip+"  ServiceId:  "+currentServiceId+"  serviceCalendarDate: " +
-							serviceCalendarDateDate+ "  serviceCalendarDateExceptionType: "+serviceCalendarDateExceptionType);  
+            for(TripCSA temptrip : tt.getTrips()) {	
+				if(temptrip.getServiceId().equals(currentServiceId)) {//looking for trip (temptrip.getServiceId() == currentServiceId)
+					LOG.info("----> generate ServiceCalendarDate for Trip:   "+"TripID "+temptrip.gettAAId().getId()+"  REF "+temptrip+"  ServiceId:  "+currentServiceId+"  serviceCalendarDate: " +serviceCalendarDateDate+ "  serviceCalendarDateExceptionType: "+serviceCalendarDateExceptionType);  
 
 					ServiceCalendarDateCSA scdCSA = new ServiceCalendarDateCSA(serviceCalendarDateDate,serviceCalendarDateExceptionType);
 					temptrip.serviceCalendarDates.add(scdCSA);
+					SCDcounter++;
 
 				}
         	}
    
         }
+        LOG.info("Added "+SCDcounter+" ServiceCalendarDates");
         
+        
+        
+        LOG.info("ADD Connections");
         //TimeTable ADD Connections
+        AgencyAndId tAAId1 = new AgencyAndId("999","TEMPLATE-currentTripID");
+        TripCSA currentTrip = new TripCSA(tAAId1);
+        
+        AgencyAndId sAAId1 = new AgencyAndId("998","TEMPLATE-currentStopID");
+        StopCSA currentStop = new StopCSA(sAAId1);
+        
+        AgencyAndId tAAId2 = new AgencyAndId("997","TEMPLATE-lastTripTRIPID");
+        TripCSA lastTrip = new TripCSA(tAAId2);
+        
+        AgencyAndId sAAId2 = new AgencyAndId("996","TEMPLATE-lastStopID");
+        StopCSA lastStop = new StopCSA(sAAId2);
+        
+        //weiteres
         String lastTripId ="TEMPLATE-ID"; //departureStopid
         int lastStopSequence = 9999;
-        int concounter = 0;
-        String lastStop = "TEMPLATE-STOP"; //departureStop
-        String lastStopId = "TEMPLATE-STOP-ID"; //departureStopID
+        int concounter = 0;  
         int lastStopTime = 0;  //departuretime
         
-        for (StopTime stoptime : ttstore.getAllEntitiesForType(StopTime.class)) {
+        for (StopTime stoptime : store.getAllEntitiesForType(StopTime.class)) {
         	String currentTripId = stoptime.getTrip().getId().getId();
-        	String currentStop = stoptime.getStop().getName();  //arrivalStop
         	String currentStopId = stoptime.getStop().getId().getId(); //arrivalStopid
         	int currentStopSequence = stoptime.getStopSequence();
         	
         	int currentArrivalStopTime = stoptime.getArrivalTime();
         	int currentDepartureStopTime = stoptime.getDepartureTime();
         	
-        	if(currentTripId.equals(lastTripId)) { 
-        		if(lastStopSequence<currentStopSequence) {
-        			concounter++;
-					LOG.info("CONNECTION FOUND: "+concounter +"      from: "+ lastStop + "---->to: "+ currentStop);			
-					for(int i = 0; i<triplist.size(); i++) {
-						TripCSA temptrip = triplist.get(i);
-						if(temptrip.gettAAId().getId() == currentTripId) {//lf Trip
-							LOG.info("----> FOUND THE TRIP:  "+temptrip+"  TripId: " + temptrip.gettAAId().getId()+ "  TripHeadsign: "+temptrip.getTripHeadSign());
-							
-							for(int j = 0; j<stoplist.size(); j++) {
-								StopCSA tempcurrentstop = stoplist.get(j);
-								if(tempcurrentstop.getsAAId().getId() == currentStopId) {//lf current Stop
-									LOG.info("----> FOUND THE CurrentStop:  "+tempcurrentstop+"  StopId: " + tempcurrentstop.getsAAId().getId()+"  StopName: "+tempcurrentstop.getName()); 
-									
-									
-									for(int k = 0; k<stoplist.size(); k++) {
-										StopCSA templaststop = stoplist.get(k);
-										if(templaststop.getsAAId().getId() == lastStopId) {  //lf Last Stop
-											LOG.info("-------> FOUND THE LastStop:  "+templaststop+"  StopId: " + templaststop.getsAAId().getId()+"  StopName: "+templaststop.getName()); 
-											
-											LOG.info("generate Connection ----> "+"StopCSA departureStop: "+templaststop +"  StopCSA arrivalStop: "+tempcurrentstop +"  DepartureStopTime:  "+lastStopTime+ "  ArrivalStopTime:  "+currentArrivalStopTime+"  TripCSA trip: "+temptrip);
-											
-											ConnectionCSA tempconnection = new ConnectionCSA (templaststop,tempcurrentstop,lastStopTime,currentArrivalStopTime,temptrip);
-											connectionsAscending.add(tempconnection);	
-										}
-									}
-								}
-							}
-						}
+        	
+        	if(lastTrip.gettAAId().getId().equals(currentTripId)) { //last trip same then...
+				currentTrip = lastTrip;
+			}else{
+				
+				for(TripCSA temptrip : tt.getTrips()) { 					
+					if(temptrip.gettAAId().getId().equals(currentTripId)) {
+						currentTrip = temptrip;
+						break;
 					}
-        		}
-        	}
-        	lastStopSequence = currentStopSequence;
+				}	
+			}
+        	
+			for(StopCSA tempstop : tt.getStops()) {
+		    	if(tempstop.getsAAId().getId().equals(currentStopId)) {
+		    		currentStop = tempstop;
+		    		break;
+		    	}	
+			}	
+			
+			if(currentTripId.equals(lastTripId)) { 
+	        	if(lastStopSequence<currentStopSequence) {
+	        		ConnectionCSA tempconnection = new ConnectionCSA (lastStop,currentStop,lastStopTime,currentArrivalStopTime,currentTrip);
+	        		LOG.info("FOUND CONNECTION"+"FROM "+lastStop.getsAAId().getId()+"---->TO "+currentStop.getsAAId().getId()+"  with Trip "+currentTrip.gettAAId().getId());
+	        		LOG.info("generate Connection ----> "+"StopCSA departureStop: "+lastStop +"  StopCSA arrivalStop: "+currentStop +"  DepartureStopTime:  "+lastStopTime+ "  ArrivalStopTime:  "+currentArrivalStopTime+"  TripCSA trip: "+currentTrip);
+					connectionsAscending.add(tempconnection);	
+					concounter++;	
+	        	}
+			}
+			lastStop = currentStop;
+			lastTrip = currentTrip; 	
+			
+			lastStopSequence = currentStopSequence;
         	lastTripId = currentTripId;
-        	lastStop = currentStop;
-        	lastStopId = currentStopId;
         	lastStopTime = currentDepartureStopTime;
         }
+        System.out.println("Added "+concounter+" Connections");
         
         createConnectionsDescending();
 
@@ -359,7 +327,7 @@ public class TimeTableBuilder {
         
         
 
-        ttstore.close(); 
+        store.close();  //brauchtes dich und sind dannach noch AgencyAndId objects noch erreichbar
         LOG.info("--------------TimetableStore closed -----------------------");
         
         tt.showStops();

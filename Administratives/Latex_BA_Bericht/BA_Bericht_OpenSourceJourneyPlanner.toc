@@ -2,38 +2,40 @@
 \contentsline {section}{\numberline {1}Abstract}{I}{section.1}
 \contentsline {section}{\numberline {2}Einleitung}{2}{section.2}
 \contentsline {section}{\numberline {3}Augabenstellung}{3}{section.3}
-\contentsline {section}{\numberline {4}Voraussetzungen}{4}{section.4}
-\contentsline {subsection}{\numberline {4.1}OpenTripPlanner}{4}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}ConnectionScanAlgorithmus}{4}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}General Transit Feed Specification}{4}{subsection.4.3}
-\contentsline {section}{\numberline {5}Endprogramm}{5}{section.5}
-\contentsline {subsection}{\numberline {5.1}Datenstruktur}{5}{subsection.5.1}
-\contentsline {subsubsection}{\numberline {5.1.1}TimeTable}{5}{subsubsection.5.1.1}
-\contentsline {subsubsection}{\numberline {5.1.2}StopCSA}{5}{subsubsection.5.1.2}
-\contentsline {subsubsection}{\numberline {5.1.3}TripCSA}{5}{subsubsection.5.1.3}
-\contentsline {subsubsection}{\numberline {5.1.4}FootpathCSA}{5}{subsubsection.5.1.4}
-\contentsline {subsubsection}{\numberline {5.1.5}ConnectionCSA}{5}{subsubsection.5.1.5}
-\contentsline {subsubsection}{\numberline {5.1.6}LegCSA}{5}{subsubsection.5.1.6}
-\contentsline {subsubsection}{\numberline {5.1.7}JourneyPointer}{5}{subsubsection.5.1.7}
-\contentsline {subsubsection}{\numberline {5.1.8}Journey}{5}{subsubsection.5.1.8}
-\contentsline {subsection}{\numberline {5.2}Programmablauf}{5}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}TimeTableBuilder}{5}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Server}{5}{subsection.5.4}
-\contentsline {subsection}{\numberline {5.5}Webseitenaufruf}{5}{subsection.5.5}
-\contentsline {subsection}{\numberline {5.6}CSA}{5}{subsection.5.6}
-\contentsline {subsection}{\numberline {5.7}JourneyToTripPlanConverter}{6}{subsection.5.7}
-\contentsline {section}{\numberline {6}Programmierverlauf}{7}{section.6}
-\contentsline {subsection}{\numberline {6.1}OTP mit Schweizer Daten implementieren}{7}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Kann OTP ohne .osm file ausgef\IeC {\"u}hrt werden?}{7}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Modellierung der Datenstrukur}{7}{subsection.6.3}
-\contentsline {subsection}{\numberline {6.4}Automatische generierte Klassendiagramme}{7}{subsection.6.4}
-\contentsline {subsection}{\numberline {6.5}Dummy-GTFS Daten erstellen}{7}{subsection.6.5}
-\contentsline {subsection}{\numberline {6.6}Mocking}{7}{subsection.6.6}
-\contentsline {subsubsection}{\numberline {6.6.1}CSAMock}{7}{subsubsection.6.6.1}
-\contentsline {subsubsection}{\numberline {6.6.2}TimeTableBuilderMock}{7}{subsubsection.6.6.2}
-\contentsline {subsubsection}{\numberline {6.6.3}JourneyToTripPlanConverterMock}{7}{subsubsection.6.6.3}
-\contentsline {subsection}{\numberline {6.7}TimeTableBuilder}{7}{subsection.6.7}
-\contentsline {subsection}{\numberline {6.8}JourneyToTripPlanConverter}{7}{subsection.6.8}
-\contentsline {subsubsection}{\numberline {6.8.1}Knackpunkte}{8}{subsubsection.6.8.1}
-\contentsline {section}{\numberline {7}Ergebniss}{9}{section.7}
-\contentsline {section}{\numberline {8}Fazit}{10}{section.8}
+\contentsline {section}{\numberline {4}Ausgangslage}{4}{section.4}
+\contentsline {subsection}{\numberline {4.1}JourneyPlanning}{4}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}OpenTripPlanner}{4}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Algorithmen}{4}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}General Transit Feed Specification}{4}{subsection.4.4}
+\contentsline {section}{\numberline {5}Methode}{5}{section.5}
+\contentsline {section}{\numberline {6}Produkt}{6}{section.6}
+\contentsline {subsection}{\numberline {6.1}OTP mit Schweizer Daten implementieren}{6}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Kann OTP ohne .osm file ausgef\IeC {\"u}hrt werden?}{6}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Modellierung der Datenstrukur}{6}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Automatische generierte Klassendiagramme}{6}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}Dummy-GTFS Daten erstellen}{6}{subsection.6.5}
+\contentsline {subsection}{\numberline {6.6}Mocking}{6}{subsection.6.6}
+\contentsline {subsubsection}{\numberline {6.6.1}CSAMock}{6}{subsubsection.6.6.1}
+\contentsline {subsubsection}{\numberline {6.6.2}TimeTableBuilderMock}{6}{subsubsection.6.6.2}
+\contentsline {subsubsection}{\numberline {6.6.3}JourneyToTripPlanConverterMock}{6}{subsubsection.6.6.3}
+\contentsline {subsection}{\numberline {6.7}TimeTableBuilder}{6}{subsection.6.7}
+\contentsline {subsection}{\numberline {6.8}JourneyToTripPlanConverter}{6}{subsection.6.8}
+\contentsline {subsubsection}{\numberline {6.8.1}Knackpunkte}{7}{subsubsection.6.8.1}
+\contentsline {section}{\numberline {7}CSAfuerOTP}{8}{section.7}
+\contentsline {subsection}{\numberline {7.1}Datenstruktur}{8}{subsection.7.1}
+\contentsline {subsubsection}{\numberline {7.1.1}TimeTable}{8}{subsubsection.7.1.1}
+\contentsline {subsubsection}{\numberline {7.1.2}StopCSA}{8}{subsubsection.7.1.2}
+\contentsline {subsubsection}{\numberline {7.1.3}TripCSA}{8}{subsubsection.7.1.3}
+\contentsline {subsubsection}{\numberline {7.1.4}FootpathCSA}{8}{subsubsection.7.1.4}
+\contentsline {subsubsection}{\numberline {7.1.5}ConnectionCSA}{8}{subsubsection.7.1.5}
+\contentsline {subsubsection}{\numberline {7.1.6}Journey}{8}{subsubsection.7.1.6}
+\contentsline {subsubsection}{\numberline {7.1.7}JourneyPointer}{8}{subsubsection.7.1.7}
+\contentsline {subsubsection}{\numberline {7.1.8}LegCSA}{8}{subsubsection.7.1.8}
+\contentsline {subsection}{\numberline {7.2}Programmablauf}{8}{subsection.7.2}
+\contentsline {subsubsection}{\numberline {7.2.1}TimeTableBuilder}{9}{subsubsection.7.2.1}
+\contentsline {subsubsection}{\numberline {7.2.2}Server}{9}{subsubsection.7.2.2}
+\contentsline {subsubsection}{\numberline {7.2.3}Webseitenaufruf}{9}{subsubsection.7.2.3}
+\contentsline {subsubsection}{\numberline {7.2.4}CSA}{9}{subsubsection.7.2.4}
+\contentsline {subsubsection}{\numberline {7.2.5}JourneyToTripPlanConverter}{9}{subsubsection.7.2.5}
+\contentsline {section}{\numberline {8}Resultate}{10}{section.8}
+\contentsline {section}{\numberline {9}Fazit}{11}{section.9}

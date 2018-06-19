@@ -1,0 +1,42 @@
+\section{CSAfuerOTP}
+Dies ist eine Erläuterung des Endprogramms
+
+\subsection{Datenstruktur}
+Der CSA benötigt zwei Datenstrukturen. Einen TimeTable für die Eingabe von Daten und ein Journey für die Rückgabe von Daten. Da sich einige Klassennamen mit den Bezeichnungen des Dijkstra Algorithmuses überschneiden ist deren Namen mit einem "CSA"  erweitert worden.
+
+Datenstrukturen des TimeTables und des Journeys erläutern. Sagen dass CSA hinter namen. Auch sagen was und wieso diese containerklasse
+\subsubsection{TimeTable}
+Der TimeTable ist die vom ConnectionScanAlgorithmus als Eingabe benötigte Datenstruktur. Er ist ein Quadrupel aus einem Set von StopCSA, TripCSA, FootpathCSA und ConnectionCSA. Das ConnectionCSA-Set ist ein LinkedHashSet, da sie für den Algorithmus anhand der Abfahrtszeit auf- oder absteigend sortiert werden muss. Die anderen Sets sind HashSets. Neben den "add" und "show" Funktionen für die Sets enthält die TimeTable-Klasse die Methode "getFootpathChange" welche für einen Stop die Umsteigzeit zurückgibt.
+
+\subsubsection{StopCSA}
+Ein Stop ist eine Haltestelle für öffentliche Verkehrsmittel. Ein Stop besitzt einen Namen, Längen- und Breitengrad sowie eine AgencyAndID-Nummer. Die Klasse besitzt neben den Gettern, Settern und Konstruktoren eine Methode um den Stop zu klonen. 
+
+\subsubsection{TripCSA}
+Als Trip wird die Fahrt eines Öffentlichen-Verkehrsmittels von der Start-Station bis zur End-Station bezeichnet. Es ermöglicht den CSA ohne umsteigen erreichbare Orte zu erkennen.
+- Weiterschreiben
+
+\subsubsection{FootpathCSA}
+
+\subsubsection{ConnectionCSA}
+
+\subsubsection{Journey}
+Ein Journey ist ein vom CSA berechneter Weg vom Start- zum Zielpunkt. Er besteht aus einem StartPath, welcher den Fussweg zur ersten Station hin darstellt, sowie eine Liste aus journeyPointern welche den Weg mit allen Umsteigestationen repräsentiert. Neben den Gettern und Settern gibt es eine Klonfunktion. Für die Liste der journeyPointer gibt es Add-Funktionen zum Einfügen am Anfang, am Ende oder an einem bestimmten Punkt anhand eines Indexes.
+
+\subsubsection{JourneyPointer}
+Ein JourneyPointer ist eine Hilfskonstruktion welche der CSA anlegt um die berechnete Abfolge von Stationen später wieder rekonstruieren zu können.Ein JourneyPointer besteht aus einem Leg sowie einem Footpath. Dabei handelt es sich beim Leg um eine Fahrt in einem ÖV vom einsteigen bis zum Aussteigen und beim Footpath um das darauffolgende Umsteigen oder das erreichen des Ziels.
+
+\subsubsection{LegCSA}
+
+\subsection{Programmablauf}
+TimetableBuilder zu Serverstart zu Webseitenaufruf zu CSA zu JourneyToTripPlanConverter
+
+\subsubsection{TimeTableBuilder}
+Erstellte einen Timetable aus GTFS-Daten
+\subsubsection{Server}
+Startet server welchen die Webseite für afrufe zur verfügung stellt
+\subsubsection{Webseitenaufruf}
+Aufruf über webseite abgesetzt. PlannerRessource primärer einstiegspunkt
+\subsubsection{CSA}
+Eigentlicher algorithmus welcher journeys bildet
+\subsubsection{JourneyToTripPlanConverter}
+Wandelt vom algorithmus zurückgegebene Journeys in vom Server verlangten TripPlan um

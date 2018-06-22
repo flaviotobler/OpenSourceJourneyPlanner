@@ -18,8 +18,8 @@
 \contentsline {subsubsection}{\numberline {6.6.1}CSAMock}{6}{subsubsection.6.6.1}
 \contentsline {subsubsection}{\numberline {6.6.2}TimeTableBuilderMock}{6}{subsubsection.6.6.2}
 \contentsline {subsubsection}{\numberline {6.6.3}JourneyToTripPlanConverterMock}{6}{subsubsection.6.6.3}
-\contentsline {subsection}{\numberline {6.7}TimeTableBuilder}{6}{subsection.6.7}
-\contentsline {subsection}{\numberline {6.8}JourneyToTripPlanConverter}{6}{subsection.6.8}
+\contentsline {subsection}{\numberline {6.7}TimeTableBuilder}{7}{subsection.6.7}
+\contentsline {subsection}{\numberline {6.8}JourneyToTripPlanConverter}{7}{subsection.6.8}
 \contentsline {subsubsection}{\numberline {6.8.1}Knackpunkte}{7}{subsubsection.6.8.1}
 \contentsline {section}{\numberline {7}CSAfuerOTP}{8}{section.7}
 \contentsline {subsection}{\numberline {7.1}Datenstruktur}{8}{subsection.7.1}
@@ -35,7 +35,7 @@
 \contentsline {subsubsection}{\numberline {7.2.1}TimeTableBuilder}{9}{subsubsection.7.2.1}
 \contentsline {subsubsection}{\numberline {7.2.2}Server}{9}{subsubsection.7.2.2}
 \contentsline {subsubsection}{\numberline {7.2.3}Webseitenaufruf}{9}{subsubsection.7.2.3}
-\contentsline {subsubsection}{\numberline {7.2.4}CSA}{9}{subsubsection.7.2.4}
+\contentsline {subsubsection}{\numberline {7.2.4}CSA}{10}{subsubsection.7.2.4}
 \contentsline {subsubsection}{\numberline {7.2.5}JourneyToTripPlanConverter}{10}{subsubsection.7.2.5}
 \contentsline {section}{\numberline {8}Resultate}{11}{section.8}
 \contentsline {section}{\numberline {9}Fazit}{12}{section.9}

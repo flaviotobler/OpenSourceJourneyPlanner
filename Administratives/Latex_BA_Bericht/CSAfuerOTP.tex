@@ -2,7 +2,7 @@
 Dies ist eine Erläuterung des Endprogramms
 
 \subsection{Datenstruktur}
-Der CSA benötigt zwei Datenstrukturen. Einen TimeTable für die Eingabe von Daten und ein Journey für die Rückgabe von Daten. Da sich einige Klassennamen mit den Bezeichnungen des Dijkstra Algorithmuses überschneiden ist deren Namen mit einem "CSA"  erweitert worden.
+Der CSA benötigt zwei Datenstrukturen. Einen TimeTable für die Eingabe von Daten und ein Journey für die Rückgabe von Daten. Da sich einige Klassennamen mit den Bezeichnungen des Dijkstra Algorithmuses überschneiden ist deren Namen mit einem "CSA"  erweitert worden. (Sagen dass ersichtlich in Bild)
 
 Datenstrukturen des TimeTables und des Journeys erläutern. Sagen dass CSA hinter namen. Auch sagen was und wieso diese containerklasse
 
@@ -38,8 +38,10 @@ Erstellte einen Timetable aus GTFS-Daten
 \subsubsection{Server}
 Startet server welchen die Webseite für afrufe zur verfügung stellt
 \subsubsection{Webseitenaufruf}
-Aufruf über webseite abgesetzt. PlannerRessource primärer einstiegspunkt
+Wenn ein Aufruf von der Webseite eingeht so wird die plan Methode der Klasse PlannerResource aufgerufen. Diese erhält die Anfragenparameter in einem RoutingRequest-Objekt. Das im Preprocessing generierte TimeTable-Objekt wird als neue Instanz übergeben. Dies wird gemacht, da der OTP eine seperate Isntanz des Algorithmusses für jeden Aufruf verwendet. Der TimeTable sowie der Request werden dann der createJourneys-Methode des Algorithmuses übergeben. Dessen Rückgabe wird in einem Set von Journeys gespeichert.
+
 \subsubsection{CSA}
 Eigentlicher algorithmus welcher journeys bildet
 \subsubsection{JourneyToTripPlanConverter}
-Wandelt vom algorithmus zurückgegebene Journeys in vom Server verlangten TripPlan um
+Die vom Algorithmus gefundenen Journeys werden dann zusammen mit dem Request der generatePlan-Methode des JourneyToTripPlanConverter übergeben. Dieser wandelt die Journeys in ein TripPlan-Objekt um, welches von der Webapplikation als response erwartet wird.
+Die vom Request benötigten informationen werden zu beginn in das TripPlan-Objekt übertragen. Danach wird aus jedem Journey ein Itinerary-Objekt erzeugt. Dieses wird dann mithilfe der dem Journey zugehörigen JourneyPointer befüllt. Für die Legs sowie die Footpaths der JourneyPointer wird ein Leg generiert. Dies ist jedoch ein Leg-Objekt und kein LegCSA-Objekt. Während des ersten durchlaufs wird zudem aus dem StartPath des Journeys ein Leg generiert. Dazu gibt es die beiden Methoden legFromLeg und legFromFootpath. Diese übertragen die benötigten Parameter und erstellen eine Geometrische-Form welche dem Fahrtweg folgen und für die Anzeige auf der Webseite benötigt werden. Wenn ein Leg aus einem Footpath generiert wird, wird zusätzlich überprüft ob dieser eine Distanz überwindet oder ob der Start- und Zielpunkt gleich sind. Dies dient dazu umsteigewege hinauszufiltern, welche von der Webseite nicht als Leg benötigt werden, jedoch trotzdem in die Zeit mit einfliessen. Sobald alle JourneyPointer abgearbeitet sind wird das Itinerary den TripPlan hinzugefügt. Nachdem die 3 besten Journeys convertiert wurden wird der TripPlan an die Webseite zurückgegeben.

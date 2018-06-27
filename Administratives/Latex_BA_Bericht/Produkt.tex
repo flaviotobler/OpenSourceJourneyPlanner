@@ -31,6 +31,11 @@ Dadurch das wir dieses GTFS-Daten selber erstellt haben, wissen wir nun was gena
 
 \subsection{TimeTableBuilder}
 \todocomment{einstiegspunkt in GTFSMODUL + Namenskonflikt mit der onebusaway Biblothek + Problematik Objektreferenz}
+Die Aufgabe des TimeTableBuilder ist es Daten aus dem GTFS zu lesen und anschliessend eine Datenstruktur daraus zu erzeugen die der Connection Scan Algorithm benötigt. Zum einlesen der GTFS-Daten wird die Onebusaway library verwendet. Diese erzeugt anhand der Daten Objekte. Durch diese Library ist es einfacher Daten aus dem GTFS abzufragen. zb. von einem Stop kann man gezielt nach dem Namen fragen(stop.getName()).  
+
+Da ein Stop aus der Library gleich bei uns heissen würde. Führt dies zu einem Namenskonflikt mit der Klasse Stop(für CSA) und Stop von der onebusaway Library. Um dieses Problem zu lösen benannten wir die Klassen die benötigt werden für den CSA um. z.B. Stop -> StopCSA. 
+
+
 
 \subsection{JourneyToTripPlanConverter}
 \todocomment{bildet TripPlan aus Journey + Schleife für jedes Journey Itinerary}

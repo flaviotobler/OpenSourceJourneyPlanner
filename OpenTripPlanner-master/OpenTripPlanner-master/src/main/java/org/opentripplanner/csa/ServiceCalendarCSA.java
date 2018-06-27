@@ -5,7 +5,7 @@ package org.opentripplanner.csa;
  * @author Christian
  *
  */
-public class ServiceCalendarCSA {
+public class ServiceCalendarCSA implements java.io.Serializable {
 	
     private String serviceCalendarStartDate;
     private int startDateYear;

@@ -10,7 +10,7 @@ import org.onebusaway.gtfs.model.AgencyAndId;
  * @author Christian
  *
  */
-public class StopCSA implements Cloneable{
+public class StopCSA implements Cloneable, java.io.Serializable{
     
     private String name;
     private double latitude;
@@ -18,11 +18,7 @@ public class StopCSA implements Cloneable{
 
     private AgencyAndId sAAId;
     
-    
-    
-    
-    
-    
+
     /**
      * constructor for the stop.
      * @param name

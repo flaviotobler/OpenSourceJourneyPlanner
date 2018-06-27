@@ -5,7 +5,7 @@ package org.opentripplanner.csa;
  * @author Christian
  *
  */
-public class ServiceCalendarDateCSA {
+public class ServiceCalendarDateCSA implements java.io.Serializable {
 	
 	private String serviceCalendarDate;
 	//in gtfs int added(1) or removed(2) trip

@@ -12,14 +12,18 @@ import java.util.TreeSet;
  * @author Christian
  *
  */
-public class TimeTable {
+public class TimeTable implements java.io.Serializable, Cloneable {
 
     private Set<StopCSA> stops = new HashSet<StopCSA>();
     private Set<TripCSA> trips = new HashSet<TripCSA>();
     private Set<FootpathCSA> footpaths = new HashSet<FootpathCSA>();
-    private static Set<ConnectionCSA> connectionsAscending = new LinkedHashSet<ConnectionCSA>();
     
+    private static Set<ConnectionCSA> connectionsAscending = new LinkedHashSet<ConnectionCSA>();
     private static Set<ConnectionCSA> connectionsDescending = new LinkedHashSet<ConnectionCSA>();
+    
+    private Set<ConnectionCSA> connectionsAscendingNonStatic = new LinkedHashSet<ConnectionCSA>();
+    private Set<ConnectionCSA> connectionsDescendingNonStatic = new LinkedHashSet<ConnectionCSA>();
+    
     
     /**
      * constructor for the TimeTable
@@ -122,6 +126,13 @@ public class TimeTable {
     	return connectionsDescending;
     }
     
+    public Set<ConnectionCSA> getConnectionsAscendingNotStatic() {
+    	return connectionsAscendingNonStatic;
+    }
+    
+    public Set<ConnectionCSA> getConnectionsDescendingNotStatic() {
+    	return connectionsDescendingNonStatic;
+    }
     
     
     public void showCon(Set<ConnectionCSA> connections) {
@@ -168,6 +179,17 @@ public class TimeTable {
         
     }
     
+    public void setConnectionsAscendingNonStatic(Set<ConnectionCSA> connectionsAscendingNonStatic) {
+        this.connectionsAscendingNonStatic = connectionsAscendingNonStatic;
+        
+    }
+    
+    public void setConnectionsDescendingNonStatic(Set<ConnectionCSA> connectionsDescendingNonStatic) {
+        this.connectionsDescendingNonStatic = connectionsDescendingNonStatic;
+        
+    }
+    
+    
     public void setStops(Set<StopCSA> stops) {
         this.stops = stops;
         
@@ -181,6 +203,10 @@ public class TimeTable {
     public void setFootpaths(Set<FootpathCSA> footpaths) {
         this.footpaths = footpaths;
         
+    }
+    
+    public Object clone()throws CloneNotSupportedException{
+    	return (TimeTable)super.clone();
     }
     
     

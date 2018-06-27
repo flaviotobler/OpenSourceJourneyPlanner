@@ -9,7 +9,7 @@ import java.util.GregorianCalendar;
  * @author Christian
  *
  */
-public class ConnectionCSA implements Comparable, Cloneable { 
+public class ConnectionCSA implements Comparable, Cloneable, java.io.Serializable { 
     private StopCSA departureStop;
     private StopCSA arrivalStop;
     
@@ -255,7 +255,7 @@ public class ConnectionCSA implements Comparable, Cloneable {
         int minutes = (int)(gtfsDepartureTime / (60) % 60);
         int seconds = (int)(gtfsDepartureTime % 60);
        
-        System.out.println("DepartureTime: " +hours+":"+ minutes+":"+seconds);
+        //System.out.println("DepartureTime: " +hours+":"+ minutes+":"+seconds);
         
         this.hDepartureTime = hours;
         this.minDepartureTime = minutes;
@@ -270,7 +270,7 @@ public class ConnectionCSA implements Comparable, Cloneable {
         int minutes = (int)(gtfsArrivalTime / (60) % 60);
         int seconds = (int)(gtfsArrivalTime % 60);
 
-        System.out.println("ArrivalTime: " +hours+":"+ minutes+":"+seconds);
+        //System.out.println("ArrivalTime: " +hours+":"+ minutes+":"+seconds);
         
         this.hArrivalTime = hours;
         this.minArrivalTime = minutes;
@@ -303,12 +303,12 @@ public class ConnectionCSA implements Comparable, Cloneable {
         
         
         
-        System.out.println("(thisConnection) "+this.gethDepartureTime()+":"+this.getMinDepartureTime()+":"+this.getsDepartureTime());
-        System.out.println("Object compareObject---->compareConnectionTime: "+compareConnection.gethDepartureTime()+":"+compareConnection.getMinDepartureTime()+":"+compareConnection.getsDepartureTime());
+        //System.out.println("(thisConnection) "+this.gethDepartureTime()+":"+this.getMinDepartureTime()+":"+this.getsDepartureTime());
+        //System.out.println("Object compareObject---->compareConnectionTime: "+compareConnection.gethDepartureTime()+":"+compareConnection.getMinDepartureTime()+":"+compareConnection.getsDepartureTime());
         
         if(thisConnection.equals(compareConnectionTime)){
           
-        	System.out.println("oh found the same departuretime .... sorting extends.");
+        	//System.out.println("oh found the same departuretime .... sorting extends.");
             if(this.getTrip().gettAAId().getId().equals(compareConnection.getTrip().gettAAId().getId())) {
             	compareValue = 0;
             }else {
@@ -324,7 +324,7 @@ public class ConnectionCSA implements Comparable, Cloneable {
             compareValue = 1;
         }
         
-        System.out.println("compareValue: "+compareValue);
+        //System.out.println("compareValue: "+compareValue);
         
         return compareValue;
 	}

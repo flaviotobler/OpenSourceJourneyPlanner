@@ -5,7 +5,7 @@ package org.opentripplanner.csa;
  * @author Christian
  *
  */
-public class FootpathCSA {
+public class FootpathCSA implements java.io.Serializable {
     
     private StopCSA departureStop;
     private StopCSA arrivalStop;

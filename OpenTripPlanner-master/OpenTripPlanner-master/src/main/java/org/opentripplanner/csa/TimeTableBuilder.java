@@ -1,8 +1,14 @@
 package org.opentripplanner.csa;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -34,6 +40,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -76,17 +83,11 @@ public class TimeTableBuilder {
         return tt;
     }
     
-    public void loadGtfs(GtfsBundle gtfsBundle)throws JsonGenerationException, JsonMappingException, IOException {
-    	
-        // tt leeren!!!!
-        // file speicherungen wieder entfernen
-        
+    public void loadFromGtfs(GtfsBundle gtfsBundle)throws JsonGenerationException, JsonMappingException, IOException {
 
-        
-        
         GenericDaoImpl store = new GenericDaoImpl();
 
-        store.open();  //brauchtes dich?
+        store.open(); 
         
         
         LOG.info("reading {}", gtfsBundle.toString());
@@ -113,7 +114,7 @@ public class TimeTableBuilder {
             AgencyAndId sAAId = stop.getId();
             
             StopCSA tempstop = new StopCSA(stopName,cordLatitude,cordLongitude,sAAId);
-            LOG.info("generate Stop ----> "+"StopId: "+tempstop.getsAAId().getId() +"  StopName: "+stopName +"  Latitude: "+cordLatitude+"  Longitude: " +cordLongitude +" "+ tempstop);
+            //LOG.info("generate Stop ----> "+"StopId: "+tempstop.getsAAId().getId() +"  StopName: "+stopName +"  Latitude: "+cordLatitude+"  Longitude: " +cordLongitude +" "+ tempstop);
             tt.addStop(tempstop);
             stopcounter++;
             
@@ -121,7 +122,7 @@ public class TimeTableBuilder {
             //TimeTable ADD FOOTPATH
             long duration = 60; 
             FootpathCSA tempfootpath = new FootpathCSA(tempstop,tempstop,duration); 
-            LOG.info("generate Footpath ----> "+"departureStop: "+ tempstop.getName() +"  arrivalStop: "+tempstop.getName() +"  duration: "+ duration+"  "+ tempfootpath);
+            //LOG.info("generate Footpath ----> "+"departureStop: "+ tempstop.getName() +"  arrivalStop: "+tempstop.getName() +"  duration: "+ duration+"  "+ tempfootpath);
             tt.addFootpaths(tempfootpath);       
         }
         LOG.info("Added "+stopcounter+" Stops and Footpath");
@@ -149,14 +150,14 @@ public class TimeTableBuilder {
             AgencyAndId rAAId = trip.getRoute().getId();
             
             TripCSA temptrip = new TripCSA(tripShortName,tripHeadSign,routeShortName,routeDesc,routeType,agencyName,agencyNameLong,agencyUrl,agencyTimeZoneOffset,serviceId, tAAId, rAAId);
-            LOG.info("generate Trip ----> "+"TripId: "+temptrip.gettAAId().getId() +"  TripShortName: "+tripShortName +"  TripHeadSign:  "+tripHeadSign+ "  RouteId:  "+temptrip.getrAAId()+"  RouteShortName  "+routeShortName+"  RouteDesc "+routeDesc+"  RouteType: "+routeType);
-            LOG.info("further parameters  ----> "+"AgencyId: "+temptrip.gettAAId().getAgencyId()+"  AgencyName:  "+agencyName+ " AgencyNameLong:  "+agencyNameLong+ "  AgencyUrl: "+agencyUrl+"  AgencyTimeZoneOffset: "+agencyTimeZoneOffset+"  ServiceId:  "+serviceId+"  "+temptrip);
+            //LOG.info("generate Trip ----> "+"TripId: "+temptrip.gettAAId().getId() +"  TripShortName: "+tripShortName +"  TripHeadSign:  "+tripHeadSign+ "  RouteId:  "+temptrip.getrAAId()+"  RouteShortName  "+routeShortName+"  RouteDesc "+routeDesc+"  RouteType: "+routeType);
+            //LOG.info("further parameters  ----> "+"AgencyId: "+temptrip.gettAAId().getAgencyId()+"  AgencyName:  "+agencyName+ " AgencyNameLong:  "+agencyNameLong+ "  AgencyUrl: "+agencyUrl+"  AgencyTimeZoneOffset: "+agencyTimeZoneOffset+"  ServiceId:  "+serviceId+"  "+temptrip);
             tt.addTrip(temptrip);
             tripcounter++;
         }
         LOG.info("Added "+tripcounter+" Trips");
         
-      
+        /*
         int SCcounter = 0;
 	    LOG.info("ADD ServiceCalendar");
         for (ServiceCalendar serviceCalendar : store.getAllEntitiesForType(ServiceCalendar.class)) {
@@ -240,7 +241,7 @@ public class TimeTableBuilder {
         }
         LOG.info("Added "+SCDcounter+" ServiceCalendarDates");
         
-        
+        */
         
         LOG.info("ADD Connections");
         //TimeTable ADD Connections
@@ -293,10 +294,13 @@ public class TimeTableBuilder {
 			if(currentTripId.equals(lastTripId)) { 
 	        	if(lastStopSequence<currentStopSequence) {
 	        		ConnectionCSA tempconnection = new ConnectionCSA (lastStop,currentStop,lastStopTime,currentArrivalStopTime,currentTrip);
-	        		LOG.info("FOUND CONNECTION"+"FROM "+lastStop.getsAAId().getId()+"---->TO "+currentStop.getsAAId().getId()+"  with Trip "+currentTrip.gettAAId().getId());
-	        		LOG.info("generate Connection ----> "+"StopCSA departureStop: "+lastStop +"  StopCSA arrivalStop: "+currentStop +"  DepartureStopTime:  "+lastStopTime+ "  ArrivalStopTime:  "+currentArrivalStopTime+"  TripCSA trip: "+currentTrip);
+	        		//LOG.info("FOUND CONNECTION"+"FROM "+lastStop.getsAAId().getId()+"---->TO "+currentStop.getsAAId().getId()+"  with Trip "+currentTrip.gettAAId().getId());
+	        		//LOG.info("generate Connection ----> "+"StopCSA departureStop: "+lastStop +"  StopCSA arrivalStop: "+currentStop +"  DepartureStopTime:  "+lastStopTime+ "  ArrivalStopTime:  "+currentArrivalStopTime+"  TripCSA trip: "+currentTrip);
 					connectionsAscending.add(tempconnection);	
 					concounter++;	
+					if(concounter%10000 == 0) {
+						LOG.info("Concounter: "+concounter);
+					}
 	        	}
 			}
 			lastStop = currentStop;
@@ -306,30 +310,35 @@ public class TimeTableBuilder {
         	lastTripId = currentTripId;
         	lastStopTime = currentDepartureStopTime;
         }
-        System.out.println("Added "+concounter+" Connections");
+        LOG.info("Added "+concounter+" Connections");
         
         createConnectionsDescending();
 
         tt.addConnectionsAscending(connectionsAscending);
         tt.addConnectionsDescending(connectionsDescending);
-                
-            
         
+        tt.setConnectionsAscendingNonStatic(connectionsAscending);
+        tt.setConnectionsDescendingNonStatic(connectionsDescending);
+                       
+        try {
+        	LOG.info("Start Serialization...");
+        	FileOutputStream fileOut = new FileOutputStream("timetable.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(tt);
+            out.close();
+            fileOut.close();
+            LOG.info("Serialized data is saved in timetable.ser");
+        }catch(IOException i) {
+        	i.printStackTrace();
+        }
         
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-        mapper.writeValue(new File("connectionsA.txt"),tt.getConnectionsAscending());
-        mapper.writeValue(new File("connectionsD.txt"),tt.getConnectionsDescending());
-        mapper.writeValue(new File("stops.txt"),tt.getStops());
-        mapper.writeValue(new File("trips.txt"),tt.getTrips());
-        mapper.writeValue(new File("footpaths.txt"),tt.getFootpaths());
         
         
         
 
         store.close();  //brauchtes dich und sind dannach noch AgencyAndId objects noch erreichbar
         LOG.info("--------------TimetableStore closed -----------------------");
-        
+        /*
         tt.showStops();
         tt.showTrips();
         tt.showConnections();
@@ -350,8 +359,68 @@ public class TimeTableBuilder {
         tt.showCon(connectionsAscending);
         System.out.println("---------------------------------------");
         
+        for(ConnectionCSA con : tt.getConnectionsAscending()) {
+        	System.out.println("FROM "+con.getDepartureStop().getName()+" to "+con.getArrivalStop().getName());
+        	Calendar connectionDepTime = new GregorianCalendar(2018, 5, 19, con.gethDepartureTime(),con.getMinDepartureTime(),con.getsDepartureTime()); 
+        	Calendar connectionArrTime = new GregorianCalendar(2018, 5, 19, con.gethArrivalTime(),con.getMinArrivalTime(),con.getsArrivalTime()); 
+        	
+        	System.out.println("ConnectionDepTime "+ connectionDepTime.getTimeInMillis());
+        	System.out.println("ConnectionArrTime "+ connectionArrTime.getTimeInMillis());
+        }
         
-    }    
+        */
+        
+    } 
+    
+    public void loadFromSerializedObjectFile() throws JsonParseException, JsonMappingException, IOException{ //giveFilepath
+    	try {
+            FileInputStream fileIn = new FileInputStream("timetable.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            tt = (TimeTable) in.readObject();
+            in.close();
+            fileIn.close();
+    	}catch(IOException i) {
+    		i.printStackTrace();
+            return;
+    	}catch(ClassNotFoundException c) {
+    		LOG.info("timetable class not found");
+            c.printStackTrace();
+    	}
+    	
+    	tt.addConnectionsAscending(tt.getConnectionsAscendingNotStatic());
+        tt.addConnectionsDescending(tt.getConnectionsDescendingNotStatic());
+    	
+        /*
+        LOG.info("Show all Footpaths");
+        for(FootpathCSA footpath :  tt.getFootpaths()){
+            LOG.info("StopNameDeparture "+footpath.getDepartureStop().getName()+" StopNameArrival "+footpath.getArrivalStop().getName()+" Footpath.Duration "+footpath.getDuration());
+            LOG.info("StopDepREF: "+footpath.getDepartureStop()+"  StopArrREF: "+footpath.getArrivalStop());
+        }
+    	
+        LOG.info("Show all Stops");
+        for(StopCSA stop :  tt.getStops()){
+            LOG.info("StopId "+stop.getsAAId().getId()+" StopName "+stop.getName());
+            LOG.info("--->StopRef: "+stop);
+        }
+        
+        LOG.info("Show all Trips");
+        for(TripCSA trip :  tt.getTrips()){
+            LOG.info("TripId "+trip.gettAAId().getId()+" TripShortname "+trip.getTripShortName()+" TripHeadSign "+trip.getTripHeadSign());
+            LOG.info("--->TripRef: "+trip+ "  tAAId: "+trip.gettAAId()+" rAAId: "+trip.getrAAId());
+        }
+    	
+        LOG.info("Show all ConnectionsAscending");
+        for(ConnectionCSA printcon :  tt.getConnectionsAscending()){
+            LOG.info("DepStop   "+printcon.getDepartureStop().getName()+"   DepartureTime "+printcon.gethDepartureTime()+":"+printcon.getMinDepartureTime()+":"+printcon.getsDepartureTime()+"  CON "+printcon);
+            LOG.info("--->ConRef:"+printcon+ "  StopDepRef:"+printcon.getDepartureStop()+"  StopArrRef:"+printcon.getArrivalStop());
+        }
+        LOG.info("Show all ConnectionsDescending");
+        for(ConnectionCSA printcon :  tt.getConnectionsDescending()){
+            LOG.info("DepStop   "+printcon.getDepartureStop().getName()+"   DepartureTime "+printcon.gethDepartureTime()+":"+printcon.getMinDepartureTime()+":"+printcon.getsDepartureTime()+"  CON "+printcon);
+            LOG.info("--->ConRef:"+printcon+ "  StopDepRef:"+printcon.getDepartureStop()+"  StopArrRef:"+printcon.getArrivalStop());
+        }  	
+        */
+    }
     
     public void createConnectionsDescending(){
         connectionsDescending = ((TreeSet<ConnectionCSA>)connectionsAscending).descendingSet();

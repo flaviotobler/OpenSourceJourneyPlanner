@@ -12,7 +12,7 @@ import org.onebusaway.gtfs.model.AgencyAndId;
  * @author Christian
  *
  */
-public class TripCSA {
+public class TripCSA implements java.io.Serializable {
     
     private String tripShortName;
     private String tripHeadSign;

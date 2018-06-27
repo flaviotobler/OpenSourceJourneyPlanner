@@ -107,7 +107,8 @@ public class GtfsModule implements GraphBuilderModule {
                 
                 //start TimeTableBuilder
                 TimeTableBuilder ttb = new TimeTableBuilder();
-                ttb.loadGtfs(gtfsBundle); 
+                ttb.loadFromGtfs(gtfsBundle); 
+                //ttb.loadFromSerializedObjectFile();
                 
                 
                 GtfsMutableRelationalDao dao = new GtfsRelationalDaoImpl();

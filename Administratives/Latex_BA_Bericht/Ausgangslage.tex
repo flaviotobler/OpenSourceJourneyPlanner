@@ -59,4 +59,27 @@ Nun wird vom Startpunkt aus jede gespeicherte Ankunftszeit überprüft. Dann wir
  
 
 \subsection{General Transit Feed Specification}
-Erklärung was GTFS ist und was dessen aufbau und regeln sind
+%Erklärung was GTFS ist und was dessen aufbau und regeln sind
+General Transit Feed Specification (GTFS) ist ein von Google entwickeltes Dateiformat zum Austausch von Öffentlichen Verkehrsdaten sprich Fahrpläne. Die Daten werden von der Platform\footnote{\url{https://opentransportdata.swiss/}} zur Verfügung gestellt. GTFS ist ein statisches Dateiformat und beinhaltet keine Echtzeitdaten, wie Verspätungen, Ausfälle etc. und wird deshalb auch GTFS Static genannt. Die Daten werden in verschiedenen Textfiles zur Verfügung gestellt, welche wiederum viele wichtige Informationen enthält.\newline
+
+\begin{tabular}{|l|c|l|}  \hline
+	Dateiname & pflicht? & Definition \\ \hline
+	agency.txt & ja & Geschäftsstellen die Daten zur Verfügung stellen \\ \hline
+	stops.txt & ja & Haltestellen mit ihrer Position \\ \hline
+	routes.txt & ja & Verkehrsverbindungen (Linien) mit den Fahrzeugarten \\ \hline %(zeitunabhängig)
+	trips.txt & ja & Fahrten  \\ \hline												%(zeitabhängig)
+	stop\_times.txt & ja & Zeiten in der Fahrzeuge Ankommen/Abfahren an Haltestellen \\ \hline
+	calendar.txt & ja & Fahrplanveränderungen (Jahreszeiten) \\ \hline
+	calendar\_dates & optional & Ausnahmeplan für bestimmtes Datum \\ \hline
+	fare\_attributes.txt & optional & Fahrpreise und die Art der Bezahlung \\ \hline
+	fare\_rules.txt & optional & Fahrpreisregeln verschiedener Zonen  \\ \hline
+	shapes.txt & optional & Beschreibt den Weg eines Fahrzeuges (Darstellung) \\ \hline
+	frequencies.txt & optional & Fahrpläne ohne fixe stop Zeiten. \\ \hline
+	transfers.txt & optional & Umsteigpunkte verschiedener Routen (Linien) \\ \hline
+	feed\_info.txt & optional & Zusätzliche Informationen über den Datensatz \\ \hline	
+\end{tabular}
+
+%\cite{gtfsInhalt} %Verweis aus Fachmodul!!
+Daten die bisher nicht von der Plattform zur Verfügung gestellt werden: fare\_attributes.txt, fare\_rules.txt, frequencies.txt.
+
+

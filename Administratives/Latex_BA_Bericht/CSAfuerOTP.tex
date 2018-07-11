@@ -2,24 +2,55 @@
 Dies ist eine Erläuterung des Endprogramms
 
 \subsection{Datenstruktur}
-Der CSA benötigt zwei Datenstrukturen. Einen TimeTable für die Eingabe von Daten und ein Journey für die Rückgabe von Daten. Da sich einige Klassennamen mit den Bezeichnungen des Dijkstra Algorithmuses überschneiden ist deren Namen mit einem "CSA"  erweitert worden. (Sagen dass ersichtlich in Bild)
-
-Datenstrukturen des TimeTables und des Journeys erläutern. Sagen dass CSA hinter namen. Auch sagen was und wieso diese containerklasse
+Der CSA benötigt zwei Datenstrukturen. Eine Zeittafel(TimeTable) für die Eingabe von Daten und ein Reise(Journey) für die Rückgabe von Daten. 
 
 \subsubsection{TimeTable}
-Der TimeTable ist die vom ConnectionScanAlgorithmus als Eingabe benötigte Datenstruktur. Er ist ein Quadrupel aus Sets von StopCSA, TripCSA, FootpathCSA und ConnectionCSA. Das ConnectionCSA-Set ist ein LinkedHashSet, da sie für den Algorithmus anhand der Abfahrtszeit auf- oder absteigend sortiert werden muss. Die anderen Sets sind HashSets. Neben den "add" und "show" Funktionen für die Sets enthält die TimeTable-Klasse die Methode "getFootpathChange" welche für einen Stop die Umsteigzeit zurückgibt.
+Der TimeTable ist eine Zeittafel die alle benötigen Daten für den CSA zur Verfügung stellt. Die Datenstruktur ist ein Quadrupel aus Sammlungen von Fusswege(FootpathCSA), Haltestellen(StopCSA), Verbindungen(ConnectionCSA) und Fahrten(TripCSA).\newline 
+Neben den \texttt{.add()} und \texttt{.show()} Funktionen für die Sammlungen enthält die TimeTable-Klasse die Methode \texttt{.getFootpathChange()} welche für eine Haltestelle die Umsteigzeit zurückgibt.
 
-\subsubsection{StopCSA}
-Ein Stop ist eine Haltestelle für öffentliche Verkehrsmittel. Ein Stop besitzt einen Namen, Längen- und Breitengrad sowie eine AgencyAndID-Nummer. Die Klasse besitzt neben den Gettern, Settern und Konstruktoren eine Methode um den Stop zu klonen. 
-
-\subsubsection{TripCSA}
-Als Trip wird die Fahrt eines Öffentlichen-Verkehrsmittels von der Start-Station bis zur End-Station bezeichnet. Es ermöglicht den CSA ohne umsteigen erreichbare Orte zu erkennen.
-- Weiterschreiben
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=8cm]{img/UML-TimeTable.png}
+	\caption{Hier ist das UML-Diagramm zur TimeTable Datenstruktur zu sehen.}
+	\label{fig:uml-timetable}
+\end{figure}
 
 \subsubsection{FootpathCSA}
-Ein Footpath kann zwei verschiedene Funktionen haben. Er besteht aus einem DepartureStop, einem ArrivalStop sowie einer Dauer. Wenn der DepartureStop und der ArrivalStop gleich sind repräsentiert der Footpath einen Umsteigeprozess. Wenn sie unterschiedlich sind repräsentiert er einen Laufweg zu einem Stop hin oder von einem Stop weg. Neben Gettern, Settern und Kosntruktoren hat der Footpath keine weiteren Methoden.
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=5cm]{img/footpath.png}
+	\caption{Symbolbild für den Fussweg(FootpathCSA)}
+	\label{fig:footpath}
+\end{figure}
+Ein Footpath kann zwei verschiedene Funktionen haben. Er besteht aus einem DepartureStop, einem ArrivalStop sowie einer Dauer. Wenn der DepartureStop und der ArrivalStop gleich sind repräsentiert der Footpath einen Umsteigeprozess. Wenn sie unterschiedlich sind repräsentiert er einen Laufweg zu einem Stop hin oder von einem Stop weg.
+
+
+\subsubsection{StopCSA}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=5cm]{img/stop.png}
+	\caption{Symbolbild für die Haltestelle(StopCSA)}
+	\label{fig:stop}
+\end{figure}
+Ein Stop ist eine Haltestelle für öffentliche Verkehrsmittel. Ein Stop besitzt einen Namen, Längen- und Breitengrad. 
 
 \subsubsection{ConnectionCSA}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=5cm]{img/connection.png}
+	\caption{Symbolbild für die Verbindung(ConnectionCSA)}
+	\label{fig:connection}
+\end{figure}
+Eine Connection ist eine Verbindung zwischen einem DepartureStop und einem ArrivalStop . Die Connection hält Daten wie die Abfahrtszeit vom DepartureStop und die Ankunftszeit vom ArrivalStop. Zudem weiss die Connection zu welchem Trip sie gehört. Sie besitzt auch eine CompareFunktion (Vergleichsfunktion) um sich in einer Liste einzuordnen z.B. nach der Abfahrtszeit.
+
+\subsubsection{TripCSA}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=5cm]{img/trip.png}
+	\caption{Symbolbild für die Fahrt(TripCSA)}
+	\label{fig:trip}
+\end{figure}
+Als Trip wird die Fahrt eines Öffentlichen-Verkehrsmittels von der Start-Station bis zur End-Station bezeichnet. Es ermöglicht den CSA ohne umsteigen erreichbare Orte zu erkennen. Ein Trip besteht aus mehreren Connections die aneinandergereiht sind. Desweiteren hält der Trip Informationen über das Verkehrsmittel(Zug,Bus usw.) und welche Geschäftsorganisation dieses Verkehrsmittel zur Verfügung stellt. Ausserdem enthält der Trip Informationen ob der Trip an jenem Tag auch fährt oder nicht.
 
 \subsubsection{Journey}
 Ein Journey ist ein vom CSA berechneter Weg vom Start- zum Zielpunkt. Er besteht aus einem StartPath, welcher den Fussweg zur ersten Station hin darstellt, sowie eine Liste aus journeyPointern welche den Weg mit allen Umsteigestationen repräsentiert. Neben den Gettern und Settern gibt es eine Klonfunktion. Für die Liste der journeyPointer gibt es Add-Funktionen zum Einfügen am Anfang, am Ende oder an einem bestimmten Punkt anhand eines Indexes.
@@ -34,7 +65,8 @@ Ein Leg ist die Fahrt in einem Öffentlichen Verkehrsmittel vom einsteigen bis z
 TimetableBuilder zu Serverstart zu Webseitenaufruf zu CSA zu JourneyToTripPlanConverter
 
 \subsubsection{TimeTableBuilder}
-Erstellte einen Timetable aus GTFS-Daten
+Da wir für den CSA eine Zeittafel(TimeTable) benötigen, muss diese durch den Zeittafelersteller (TimeTableBuilder) erstellt werden. Die zugrundeliegenden GTFS-Daten können jedoch nicht in dieser Form einfach der Zeittafel übergeben werden. Der Zeittafelersteller erzeugt die Zeittafel. Durch die Funktion \texttt{.loadFromGtfs()} werden die Daten eingelesen und in die benötigte Form gebracht. Dieser Prozess kann durchaus einige Zeit in Anspruch nehmen. Deshalb wird nachdem die Zeittafel fertig befüllt wurde anschliessend serialisiert und als Java-SerializedObjectFile gespeichert. Somit brauchen wir nicht mehr jedesmal die Zeittafel komplett neu einzulesen und zu erstellen. Durch die Funktion \texttt{.loadFromSerializedObjectFile()} kann die zwischengespeicherte Zeittafel jederzeit eingelesen werden, was die Zeit um eine schon in Form gebrachte Zeittafel zu erzeugen um einiges verkürzt. Unabhängig von beiden Methoden wird dann der Server gestartet.
+
 \subsubsection{Server}
 Startet server welchen die Webseite für afrufe zur verfügung stellt
 \subsubsection{Webseitenaufruf}

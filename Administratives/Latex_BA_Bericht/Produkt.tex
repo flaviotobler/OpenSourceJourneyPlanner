@@ -13,18 +13,47 @@ Das zweite Problem war der benötigte Arbeitsspeicher. Für die Grafberechnung m
 
 
 \subsection{Kann OTP ohne .osm file ausgeführt werden?}
+Das .osm steht für OpenStreetMap und ist eine Plattform\footnote{\url{https://www.openstreetmap.org/}} die frei nutzbare Daten(sprich Geodaten) zur Verfügung stellt. Wie z.B. Strassen, Wege, Gebäude, Haltestellen usw. OTP kann ohne .osm file ausgeführt werden. Jedoch werden dann keine Fusswege mit einberechnet um zu einer Haltestelle zu gelangen, wie man in Abbildung \ref{fig:ohneosmfile} erkennen kann.
+Aber wenn OTP mit dem .osm File ausgeführt wird lässt sich anhand der Informationen einen Gehweg zu der Haltestelle finden (inklusive Laufzeit und Distanz), wie man in Abbildung \ref{fig:mitosmfile} erkennen kann. 
+
+\begin{figure}[htb]
+	\centering
+	\begin{minipage}{0.45\linewidth}
+		\centering
+		\includegraphics[width=6cm]{img/ohneosmfile.png}
+		\caption{ohne .osm File}
+		\label{fig:ohneosmfile}
+	\end{minipage}
+	%\hfill
+	\begin{minipage}{0.45\linewidth}
+		\centering
+		\includegraphics[width=6cm]{img/mitosmfile.png}
+		\caption{mit .osm File}
+		\label{fig:mitosmfile}
+	\end{minipage}
+\end{figure}
+
 
 \subsection{Modellierung der Datenstrukur}
 \todocomment{Java container klassen + UML Diagramm}
 
 \subsection{Automatische generierte Klassendiagramme}
+Klassendiagramme können sehr behilflich sein bei der Entwicklung. Sie geben einen Überblick welche Klassen miteinander agieren.
+Der Opentripplaner besteht aus unzähligen verschiedenen Klassen. Um eine bessere Übersicht zu erhalten erzeugten wir mit dem Programm objectaid\footnote{\url{http://www.objectaid.com/home}} (ein Plugin für Eclipse) fast vollautomatisch Klassendiagramme. 
+
+%beispielbild eines Klassendiagramms mit objectaid ?
 
 \subsection{Dummy-GTFS Daten erstellen}
-Das "Dummy"-GTFS wurde anhand der bestehenden Schweizer-GTFS Daten erstellt. Es wurde nur ein Teil der Liechtensteinischen Busverbindungen übernommen und selber erstellt um den Stil der Schweizer-GTFS Daten zu übernehmen und die gleichen Daten zur Verfügung zu stellen.
-\newline
+Wir haben selbst GTFS-Daten erstellt, weil ein komplettes Schweizer-GTFS schon ein paar Stunden braucht um die Daten einzulesen. So brauchen wir nicht bei jedem Ausführen des Programms jedes mal ein paar Stunden zu warten, was uns bei der Entwicklung viel Zeit erspart. Dadurch das wir dieses GTFS-Daten selber erstellt haben, wissen wir nun was genau vorhanden ist und können dadurch nachvollziehen ob z.B. Die GTFS-Daten richtig eingelesen wurden und daraus auch weitere Methoden auf ihre Richtigkeit Überprüfen kann.\newline
 
+Das Dummy-GTFS wurde anhand der bestehenden Schweizer-GTFS Daten erstellt. Im Schweizer-GTFS sind auch die Daten des öffentlichen Verkehrs von Liechtenstein enthalten. Wir haben uns entschieden nur ein Teil der Liechtensteinischen Busverbindungen zu übernehmen und selber zu erstellen um den Inhalt der Schweizer-GTFS Daten beizubehalten.
 
-Dadurch das wir dieses GTFS-Daten selber erstellt haben, wissen wir nun was genau vorhanden ist und können dadurch nachvollziehen ob z.B. Die GTFS-Daten richtig eingelesen wurden und daraus auch weitere Methoden auf ihre Richtigkeit Überprüfen kann. Des weiteren hilft uns dieses Dummy-GTFS bei der Zeitersparnis, weil ein komplettes Schweizer-GTFS schon ein paar Minuten braucht um die Daten einzulesen. So brauchen wir nicht bei jedem Ausführen des Programms jedes mal ein paar Minuten zu warten, was uns bei der Entwicklung viel Zeit erspart. 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{img/LiniennetzDummyGTFS.png}
+	\caption{Dieses Bild gibt eine Übersicht welche Haltestellen und Routen im Dummy-GTFS vorhanden ist.}
+	\label{fig:DummyGTFS-uebersicht}
+\end{figure}
 
 \subsection{Mocking}
 Das Programm kann grob in drei Abschnitte aufgeteilt werden. Das erstellen des Zeitplans aus den GTFS-Daten, den Wegfindungsalgorithmus und einen Converter welcher das Resultat in die von der Webseite verlangte Form bringt. Damit diese drei Abschnitte separat behandelt werden konnten und das Programm dennoch jederzeit überprüft werden konnte entschieden wir uns ein Mockup für die Abschnitte durchzuführen.
@@ -39,11 +68,16 @@ Das Mocking des TimeTableBuilders erstellt manuell einen Zeitplan mit zwei Halte
 Der als Parameter bekommene Journey wird zur Überprüfung in ein JSON-File gespeichert. Anschliessend wird manuell eine Webseitenantwort aufgebaut. Anfangs wurde eine Reise ohne Zwischenstops, Umsteigen und Fusswege zurückgegeben. Doch in folgenden Schritten wurde das Mocking erweitert um die zuvor erwähnten, komplexeren Fälle zu behandeln.
 
 \subsection{TimeTableBuilder}
-\todocomment{einstiegspunkt in GTFSMODUL + Namenskonflikt mit der onebusaway Biblothek + Problematik Objektreferenz}
-Die Aufgabe des TimeTableBuilder ist es Daten aus dem GTFS zu lesen und anschliessend eine Datenstruktur daraus zu erzeugen die der Connection Scan Algorithm benötigt. Zum einlesen der GTFS-Daten wird die Onebusaway library verwendet. Diese erzeugt anhand der Daten Objekte. Durch diese Library ist es einfacher Daten aus dem GTFS abzufragen. zb. von einem Stop kann man gezielt nach dem Namen fragen(stop.getName()).  
+Die Aufgabe des TimeTableBuilder ist es Daten aus dem GTFS zu lesen und anschliessend eine Datenstruktur daraus zu erzeugen die der Connection Scan Algorithm benötigt. Zum einlesen der GTFS-Daten wird die Onebusaway Library verwendet. Diese erzeugt anhand der Daten Objekte.Die Objektdaten von der Onebusaway Library sind in Listen abrufbar.
+z.B. Entspricht im GTFS Stop.txt ein Zeileneintrag einem Stop Objekt. Durch diese Library ist es einfacher Daten aus dem GTFS abzufragen. z.B. von einem Stop kann man gezielt nach dem Namen fragen\texttt{stop.getName()}.\newline  
 
-Da ein Stop aus der Library gleich bei uns heissen würde. Führt dies zu einem Namenskonflikt mit der Klasse Stop(für CSA) und Stop von der onebusaway Library. Um dieses Problem zu lösen benannten wir die Klassen die benötigt werden für den CSA um. z.B. Stop -> StopCSA. 
+Da ein Stop aus der Library gleich bei uns heissen würde. Führt dies zu einem Namenskonflikt mit der Klasse Stop für den CSA und Stop von der onebusaway Library. Um dieses Problem zu lösen benannten wir die Klassen, die wir benötigen werden für den CSA um. Indem wir die Klassen mit der CSA Endung erweiterten z.B. Stop in StopCSA.\newline
 
+Durch diese Library lässt es sich nun relativ einfach die Daten aus dem GTFS lesen und anschliessend mit den gewünschten Daten die benötigten Objekte erstellen.Dafür wir die Funktion \texttt{.loadFromGtfs()} ausgeführt.  Stop, Footpath und Trips lassen sich relativ leicht erstellen weil die GTFS-Daten hierbei schon in sehr ähnlich Form aufgebaut sind. Jedoch ist es bei der Connection etwas schwieriger, da die Daten nicht in dieser Art direkt vorhanden sind. Die Connections müssen beim der Stop\_times.txt immer zwei hintereinanderfolgende Einträge(Objekte) vergleichen um zu Erkennen das es sich um eine Connection handelt. Eine Connection wird erkannt wenn sie auf den selben Trip stattfinden und die stop\_sequence Zahl muss grösser sein als der vorhergehende Eintrag. Wenn dieser Fall nur Zutrifft wurde eine Connection erkannt. Bevor jetzt aber das Connection Objekt einfach erzeugt werden kann müssen noch die richtigen Referenzen gefunden werden. Den die Stops und Trips wurden zuvor schon erzeugt. Den eine Connection muss wissen auf welchem Trip sie ist und welche Departure- und ArrivalStops sie enthält. Nachdem also eine Connection gefunden wurde wird er richtige Trip in der bestehenden Liste gesucht, anhand der TripId kann der Trip aus der Liste gefunden werden. Das selbe geschieht auch mit den Departure- und ArrivalStops. Wenn alle Informationen gefunden wurden wird das Connection Objekt erzeugt und in das TreeSet(sortiere Liste) übergeben. Durch die \texttt{.compareTo()} Funktion der Connection lässt sie sich an der richtigen Stelle im TreeSet einfügen. Somit bekommen wir alle Connections sortiert nach der Departuretime. Am Ende der Funtion wird ein Java-SerializedObjectFile vom TimeTable erstellt. Somit wird das gewünschte Format zwischengespeichert. Das erstellen dieser Datei benötigt nur 1-2 Minuten und die Datei ist 367MB gross.\newline
+
+Die Funktion \texttt{.loadFromGtfs()} benötigt etwa 60h um das Schweizer GTFS einzulesen. Aber durch Optimierung konnte die Zeit veringert werden auf 22h. Indem wir die nicht mehr einfach wie vorher ständig nach dem Trip wieder suchen wenn eine Connection gefunden wurde. Durch zwischenspeichern der Referenz des vorhergehenden Trips kann dieser wiederverwendet werden, wenn die TripId der Einträge übereinstimmen. Somit muss nur ein Trip in der Liste gesucht werden wenn diese TripId nicht übereinstimmen. Zudem kann durch zwischenspeichern der Referenz auf den vorhergehenden Stop eine Suche in der Liste vermieden werden. Da ein Trip und Stop nur einmal vorkommt in der Liste, kann beim durchlaufen mit einer Suchschleife die suche nach dem Trip vorzeitig abgebrochen werden, was verhindert das unnötig weiter nachdem Trip/Stop gesucht wird.  
+
+Die Funktion \texttt{.loadFromSerializedObjectFile()} kann verwendet werden um zwischengespeicherte TimeTables einzulesen. Das SerializedObjectFile das zuvor aus dem Schweizer GTFS erstellt wurde lässt sich innerhalb von 151s einlesen.
 
 
 \subsection{JourneyToTripPlanConverter}
@@ -104,7 +138,7 @@ Um den Performance-Test durchzuführen wird ein JUNIT-Test mit der JUNIT-Benchma
 \newline
 
 
-Die Tests schlugen jedoch bei dem CSA ohne die QuadTree-Optimierung fehl, da die Anfrage mit den kompletten Schweitzer-Daten länger als 24 Stunden dauerte.
+Die Tests schlugen jedoch bei dem CSA ohne die QuadTree-Optimierung fehl, da die Anfrage mit den kompletten Schweizer-Daten länger als 24 Stunden dauerte.
 
 
 

@@ -20,42 +20,7 @@ OTP steht unter einer GNU Lesser General Public License.
 
 
 
-\subsection{Connection Scan Algorithm}
-Der Connection Scan Algorithm, kurz CSA,  ist ein moderner Algorithmus zur Bearbeitung von Anfragen auf zeitplanbasierten Sytemen. Er basiert, im Gegensatz zu den gängigen Algorithmen wie z.B. dem Dijkstra-Algorithmus, nicht auf einem gewichteten Graphen. 
-Es gibt zwei Arten des CSA. Zum einen den EACS(EarlyestArrivalConnectionScan) welcher die frühestmögliche Ankunftszeit und wenn benötigt auch noch den dazugehörigen Journey zurückliefert. Zum anderen den PCS(ProfileConnectionScan) welcher alle möglichen Journeys berechnet und den Bessten Journey nach mehreren Kriterien sortieren kann. Beide sind darauf ausgelegt genau einen Journey zurückzugeben.
-
-\subsubsection{Earliest Arrival Connection Scan}
-Der Earliest Arrival Connection Scan Algorithmus, kurz EACS, arbeitet mit einer nach Abfahrtszeit sortierten Liste von Verbindungen. Über diese iteriert er dann aufsteigend wobei als Startpunkt die erste Verbindung, welche nach der im Request spezifizierten Abfahrtszeit abfährt. 
-
-Jede Verbindung wird auf drei Eigenschaften überprüft:
-\begin{itemize}
-	\item Ist der Abfahrtsort der Startort?
-	\item Wurde der Abfahrtsort schon von einer früheren Verbindung erreicht?
-	\item Wurde das zur Verbindung gehörende Fahrzeug schon von einer früheren Verbindung benutzt?
-\end{itemize}
-Wenn eine dieser drei Bedingungen erfüllt ist so wird dies im Ankunftsort der Verbindung mit einem Zeiger auf den Ort, bei welchem man in das jeweilige ÖV eingestiegen ist, vermerkt. Der Ort bei welchem man eingestiegen wird mithilfe eines Trip-Bits gespeichert. Wenn eine ÖV zum ersten mal verwendet wird so wird der Startort gespeichert und das Trip-Bit wird für das ÖV gesetzt. Wird das ÖV erneut verwendet so ist das Trip-Bit bereits gesetzt und der Startort wird nicht überschreiben. 
-
-Sobald der Algorithmus eine Verbindung findet, welche eine der drei Bedingungen erfüllt und gleichzeitig der Ankunftsort dem Zielort entspricht, hat er einen Journey zum Ziel gefunden. Die Schleife wird unterbrochen und der Algorithmus baut sich vom Zielort aus mithilfe der Zeiger den kompletten Journey auf welcher dann als Antwort zurückgegeben wird.
-
-Der ECSA existiert auch in einer schlankeren Version bei welcher keine Zeiger gespeichert werden. Dies führt dazu, dass der ECSA schneller ist, jedoch liefert er nur noch die Ankunftszeit ohne den Reiseweg zurück.
-
-\subsubsection{Profile Connection Scan}
-Der Profile Connection Scan Algorithmus, kurz PCS, arbeitet auch mit einer nach Abfahrtszeiten sortierten Liste von Verbindungen. Im Gegensatz zum EACS iteriert er absteigend über die Verbindungen. Er sucht als o die Verbindung vom Zielpunkt aus. Jede Verbindung durchläuft dabei drei Prüfungen:
-
-\begin{itemize}
-	\item Kommt man ans Ziel wenn man aussteigt?
-	
-	Diese Bedingung überprüft ob der Ankunftsort der Verbindung der Zielort ist. Sollte dies der Fall sein so wird im Abfahrtsort der Verbindung die Ankunftszeit sowie die dazugehörige Verbindung gespeichert. Zusätzlich wird die Ankunftszeit für das jeweilige ÖV gespeichert.
-	\item Kommt man ans Ziel wenn man umsteigt?
-	
-	Es wird überprüft ob vom Ankunftsort der Verbindung schon ein Weg gefunden wurde, welcher zum Zielort führt. Dazu wird vom wird überprüft, ob im Ankunftsort eine Ankunftszeit gespeichert wurde. Ist dies der Fall so wurde schon ein möglicher Weg vom Ankunftsort zum Zielort gefunden. Dann werden die Informationen wie in der ersten Bedingung in Abfahrtsort und dem ÖV gespeichert.
-	\item Kommt man ans Ziel wenn man sitzen bleibt?
-	
-	Es wird überprüft, ob von diesem ÖV aus schon eine Weg zum Zielort gefunden wurde. Dazu wird überprüft ob für das ÖV schon eine Ankunftszeit gespeichert wurde. Ist dies der fall so werden die Informationen wie in den ersten beiden Schritten im Abfahrtsort und dem ÖV gespeichert.
-\end{itemize}
-Die Suche ist abgeschlossen sobald die Abfahrtszeit der Verbindung früher als die im Request definierte Abfahrtszeit ist. 
-
-Nun wird vom Startpunkt aus jede gespeicherte Ankunftszeit überprüft. Dann wird von der zur Ankunftszeit gehörigen Verbindung der Ankunftsort genommen. Von diesem Ort aus werden wieder die gespeicherten Ankunftszeiten überprüft und die gleichen Schritte erneut durchgeführt. Dies wird so lange wiederholt bis der Ankunftsort der Zielort ist. Der gefundene Weg entspricht dann einem Journey zum Ziel. Der beste gefundene Journey kann dann als Response zurückgegeben werden. 
+\subsection{Connection Scan Algorithmus}
  
 
 \subsection{General Transit Feed Specification}

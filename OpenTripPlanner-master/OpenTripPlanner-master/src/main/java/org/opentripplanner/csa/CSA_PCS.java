@@ -22,6 +22,7 @@ public class CSA_PCS {
         Set<TripHandlerPCSA> trips = generateTripHandlers(timeTable.getTrips());
         StopHandlerPCSA startStop = getStopFromCor(request.from.lng,request.from.lat,stops);
         StopHandlerPCSA endStop = getStopFromCor(request.to.lng,request.to.lat,stops);
+        Boolean dayChangeBit = false;
         int year = request.getDateTime().getYear() + 1900;
         int month = request.getDateTime().getMonth();
         int day = request.getDateTime().getDate();
@@ -104,6 +105,17 @@ public class CSA_PCS {
                         if(tempTrip.getTripExitConnection() == null){
                             tempTrip.setTripExitConnection((ConnectionCSA)c.clone());
                         }
+                        if(dayChangeBit && q.getArrivalTime().after(q.getDepartureTime())){
+                            q.addArrivalTimeDay();
+                            q.addDepartureTimeDay();
+                            day = day + 1;
+                        }
+                        if(q.getArrivalTime().before(q.getDepartureTime()))
+                        {
+                            q.addArrivalTimeDay();
+                            dayChangeBit = true;
+                        }
+                        
                             q.setJourneyPointer(new JourneyPointer(new LegCSA(c,tempTrip.getTripExitConnection()),timeTable.getFootPathChange(tempTrip.getTripExitConnection().getArrivalStop())));
                             getStop(stops, c.getDepartureStop()).addTupelFront((TimeTupel)q.clone());
                             getTrip(trips, c.getTrip()).setTripTime((Calendar)tc.clone());    

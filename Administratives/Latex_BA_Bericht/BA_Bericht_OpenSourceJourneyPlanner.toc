@@ -1,4 +1,4 @@
-\babel@toc {ngerman}{}
+\select@language {ngerman}
 \contentsline {section}{\numberline {1}Abstract}{I}{section.1}
 \contentsline {section}{\numberline {2}Einleitung}{2}{section.2}
 \contentsline {section}{\numberline {3}Augabenstellung}{3}{section.3}
@@ -22,9 +22,9 @@
 \contentsline {subsubsection}{\numberline {6.2.1}TimeTableBuilder}{10}{subsubsection.6.2.1}
 \contentsline {subsubsection}{\numberline {6.2.2}Server}{10}{subsubsection.6.2.2}
 \contentsline {subsubsection}{\numberline {6.2.3}Webseitenaufruf}{10}{subsubsection.6.2.3}
-\contentsline {subsubsection}{\numberline {6.2.4}Connection Scan Algorithm}{10}{subsubsection.6.2.4}
+\contentsline {subsubsection}{\numberline {6.2.4}Connection Scan Algorithm}{11}{subsubsection.6.2.4}
 \contentsline {subsubsection}{\numberline {6.2.5}Earliest Arrival Connection Scan}{11}{subsubsection.6.2.5}
-\contentsline {subsubsection}{\numberline {6.2.6}Profile Connection Scan}{11}{subsubsection.6.2.6}
+\contentsline {subsubsection}{\numberline {6.2.6}Profile Connection Scan}{12}{subsubsection.6.2.6}
 \contentsline {subsubsection}{\numberline {6.2.7}JourneyToTripPlanConverter}{12}{subsubsection.6.2.7}
 \contentsline {section}{\numberline {7}Produkt}{14}{section.7}
 \contentsline {subsection}{\numberline {7.1}OTP mit Schweizer Daten implementieren}{14}{subsection.7.1}

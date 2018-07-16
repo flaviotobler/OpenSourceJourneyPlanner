@@ -1,5 +1,4 @@
-\section{CSAfuerOTP}
-Dies ist eine Erläuterung des Endprogramms
+\section{CSA für OTP}
 
 \subsection{Datenstruktur}
 Der CSA benötigt zwei Datenstrukturen. Eine Zeittafel(TimeTable) für die Eingabe von Daten und ein Reise(Journey) für die Rückgabe von Daten. 
@@ -62,13 +61,18 @@ Ein JourneyPointer ist eine Hilfskonstruktion welche der CSA anlegt um die berec
 Ein Leg ist die Fahrt in einem Öffentlichen Verkehrsmittel vom einsteigen bis zum aussteigen. Dies ermöglicht es den Journey nicht von Station zu Station, sondern von Umsteigen zu Umsteigen zu rekonstruieren. Ein Leg besteht aus einer EnterConnection und einer ExitConnection. Er besitzt neben den Gettern, Settern und Konstruktoren keine weiteren Methoden.
 
 \subsection{Programmablauf}
-TimetableBuilder zu Serverstart zu Webseitenaufruf zu CSA zu JourneyToTripPlanConverter
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=15cm]{img/programmablauf.png}
+	\caption{Programmablauf des OTP mit dem CSA}
+	\label{fig:programmablauf}
+\end{figure}
 
 \subsubsection{TimeTableBuilder}
 Da wir für den CSA eine Zeittafel(TimeTable) benötigen, muss diese durch den Zeittafelersteller (TimeTableBuilder) erstellt werden. Die zugrundeliegenden GTFS-Daten können jedoch nicht in dieser Form einfach der Zeittafel übergeben werden. Der Zeittafelersteller erzeugt die Zeittafel. Durch die Funktion \texttt{.loadFromGtfs()} werden die Daten eingelesen und in die benötigte Form gebracht. Dieser Prozess kann durchaus einige Zeit in Anspruch nehmen. Deshalb wird nachdem die Zeittafel fertig befüllt wurde anschliessend serialisiert und als Java-SerializedObjectFile gespeichert. Somit brauchen wir nicht mehr jedesmal die Zeittafel komplett neu einzulesen und zu erstellen. Durch die Funktion \texttt{.loadFromSerializedObjectFile()} kann die zwischengespeicherte Zeittafel jederzeit eingelesen werden, was die Zeit um eine schon in Form gebrachte Zeittafel zu erzeugen um einiges verkürzt. Unabhängig von beiden Methoden wird dann der Server gestartet.
 
 \subsubsection{Server}
-Startet server welchen die Webseite für afrufe zur verfügung stellt
+\todocomment{Startet server welchen die Webseite für afrufe zur verfügung stellt}
 \subsubsection{Webseitenaufruf}
 Wenn ein Aufruf von der Webseite eingeht so wird die plan Methode der Klasse PlannerResource aufgerufen. Diese erhält die Anfragenparameter in einem RoutingRequest-Objekt. Das im Preprocessing generierte TimeTable-Objekt wird als neue Instanz übergeben. Dies wird gemacht, da der OTP eine seperate Isntanz des Algorithmusses für jeden Aufruf verwendet. Der TimeTable sowie der Request werden dann der createJourneys-Methode des Algorithmuses übergeben. Dessen Rückgabe wird in einem Set von Journeys gespeichert.
 

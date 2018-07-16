@@ -35,4 +35,10 @@ public class TimeTupel implements Cloneable{
     public Object clone()throws CloneNotSupportedException{  
         return (TimeTupel)super.clone();  
    }
+    public void addArrivalTimeDay(){
+        arrivalTime.add(Calendar.DATE, 1);
+    }
+    public void addDepartureTimeDay(){
+        departureTime.add(Calendar.DATE, 1);
+    }
 }

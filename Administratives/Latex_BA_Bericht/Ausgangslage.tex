@@ -21,6 +21,12 @@ OTP steht unter einer GNU Lesser General Public License.
 
 
 \subsection{Connection Scan Algorithmus}
+Der Connection Scan Algorithmus ist ein Wegfindungs-Algorithmus für zeitplanbasierte Systeme. Er iteriert über eine nach Abfahrtszeit sortierte Liste aller Verbindungen. Dabei werden vom Start- oder Zielpunkt erreichbare Verbindungen markiert. Dadurch entsteht ein Netz aus Verbindungen welches sich immer weiter aufspannt. Dies wird dann so lange wiederholt bis ein Weg zwischen den beiden Punkten gefunden wurde. Danach gibt der Algorithmus entweder die früheste Ankunftszeit am Zielpunkt, oder den besten Weg vom Startpunkt zum Zielpunkt zurück.
+
+\subsection{Dijkstra Algorithmus}
+Der Dijkstra Algorithmus ist ein auf einem Graphen basierender Wegfindungsalgorithmus. Er bildet einen Graph, wobei Haltestellen Punkte sind und Verbindungen die Linien zwischen den Punkten. Alle Verbindungen besitzen eine Gewichtung, welche mit der benötigten Zeit korreliert. Der Algorithmus sucht nun den Weg mit der geringsten summierten Gewichtung vom Start- zum Zielpunkt.
+
+
  
 
 \subsection{General Transit Feed Specification}

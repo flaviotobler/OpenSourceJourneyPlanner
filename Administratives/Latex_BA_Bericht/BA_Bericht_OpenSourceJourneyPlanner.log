@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.12)  11 JUL 2018 20:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.12)  17 JUL 2018 08:52
 entering extended mode
 **./BA_Bericht_OpenSourceJourneyPlanner.tex
 (BA_Bericht_OpenSourceJourneyPlanner.tex
@@ -1084,29 +1084,34 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 26.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 26.
-
-Underfull \hbox (badness 10000) in paragraph at lines 28--29
-
- []
-
-
-Overfull \hbox (51.92899pt too wide) in paragraph at lines 30--46
-[][] 
- []
-
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 28.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 28.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 28.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 48.
-[4
+(babel)             in language  on input line 28.
+ [4
 
 
 ]
-Overfull \hbox (20.08421pt too wide) in paragraph at lines 48--49
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 32.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 32.
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+
+ []
+
+
+Overfull \hbox (51.92899pt too wide) in paragraph at lines 36--52
+[][] 
+ []
+
+
+Overfull \hbox (20.08421pt too wide) in paragraph at lines 54--55
 []\OT1/cmr/m/n/12 Daten die bis-her nicht von der Platt-form zur Verf[]ugung ge
 -stellt wer-den: fa-re[]attributes.txt,
  []
@@ -1162,7 +1167,7 @@ Overfull \hbox (8.21658pt too wide) in paragraph at lines 7--9
 en von Fuss-we-ge(FootpathCSA),
  []
 
-<img/UML-TimeTable.png, id=284, 414.54875pt x 271.0125pt>
+<img/UML-TimeTable.png, id=285, 414.54875pt x 271.0125pt>
 File: img/UML-TimeTable.png Graphic file (type png)
 
 <use img/UML-TimeTable.png>
@@ -1173,7 +1178,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 17.
 
-<img/footpath.png, id=285, 225.84375pt x 225.84375pt>
+<img/footpath.png, id=286, 225.84375pt x 225.84375pt>
 File: img/footpath.png Graphic file (type png)
  <use img/footpath.png>
 Package pdftex.def Info: img/footpath.png used on input line 20.
@@ -1183,7 +1188,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 27.
 
-<img/stop.png, id=287, 225.84375pt x 225.84375pt>
+<img/stop.png, id=288, 225.84375pt x 225.84375pt>
 File: img/stop.png Graphic file (type png)
  <use img/stop.png>
 Package pdftex.def Info: img/stop.png used on input line 30.
@@ -1193,7 +1198,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 36.
 
-<img/connection.png, id=288, 225.84375pt x 225.84375pt>
+<img/connection.png, id=289, 225.84375pt x 225.84375pt>
 File: img/connection.png Graphic file (type png)
 
 <use img/connection.png>
@@ -1216,7 +1221,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 45.
 
-<img/trip.png, id=295, 225.84375pt x 225.84375pt>
+<img/trip.png, id=296, 225.84375pt x 225.84375pt>
 File: img/trip.png Graphic file (type png)
  <use img/trip.png>
 Package pdftex.def Info: img/trip.png used on input line 48.
@@ -1256,7 +1261,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 63.
 
-<img/programmablauf.png, id=313, 1132.98282pt x 235.63031pt>
+<img/programmablauf.png, id=314, 1132.98282pt x 235.63031pt>
 File: img/programmablauf.png Graphic file (type png)
 
 <use img/programmablauf.png>
@@ -1383,14 +1388,14 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 15.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 15.
-<img/ohneosmfile.png, id=337, 236.38312pt x 245.41687pt>
+<img/ohneosmfile.png, id=338, 236.38312pt x 245.41687pt>
 File: img/ohneosmfile.png Graphic file (type png)
 
 <use img/ohneosmfile.png>
 Package pdftex.def Info: img/ohneosmfile.png used on input line 23.
 (pdftex.def)             Requested size: 170.71652pt x 177.24298pt.
 
-<img/mitosmfile.png, id=338, 239.39438pt x 258.9675pt>
+<img/mitosmfile.png, id=339, 239.39438pt x 258.9675pt>
 File: img/mitosmfile.png Graphic file (type png)
 
 <use img/mitosmfile.png>
@@ -1437,7 +1442,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
-<img/LiniennetzDummyGTFS.png, id=349, 1005.00468pt x 676.77844pt>
+<img/LiniennetzDummyGTFS.png, id=350, 1005.00468pt x 676.77844pt>
 File: img/LiniennetzDummyGTFS.png Graphic file (type png)
 
 <use img/LiniennetzDummyGTFS.png>
@@ -1693,13 +1698,21 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 67.
 (literatur.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 67.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 67.
-Package rerunfilecheck Info: File `BA_Bericht_OpenSourceJourneyPlanner.out' has
- not changed.
-(rerunfilecheck)             Checksum: AC578B17A8ECA7CCC9190086BF0FA03F;3108.
+
+
+Package rerunfilecheck Warning: File `BA_Bericht_OpenSourceJourneyPlanner.out' 
+has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `BA_Bericht_OpenSourceJourneyPlanner
+.out':
+(rerunfilecheck)             Before: AC578B17A8ECA7CCC9190086BF0FA03F;3108
+(rerunfilecheck)             After:  A9B5ADBA0F5B74648D8719F58C4FD861;3183.
  ) 
 Here is how much of TeX's memory you used:
- 15454 strings out of 493323
- 258322 string characters out of 3139065
+ 15455 strings out of 493323
+ 258336 string characters out of 3139065
  489720 words of memory out of 3000000
  18581 multiletter control sequences out of 15000+200000
  10462 words of font info for 39 fonts, out of 3000000 for 9000
@@ -1714,10 +1727,10 @@ ublic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.
 pfb>
-Output written on BA_Bericht_OpenSourceJourneyPlanner.pdf (29 pages, 545204 byt
+Output written on BA_Bericht_OpenSourceJourneyPlanner.pdf (29 pages, 546347 byt
 es).
 PDF statistics:
- 462 PDF objects out of 1000 (max. 8388607)
- 92 named destinations out of 1000 (max. 500000)
+ 463 PDF objects out of 1000 (max. 8388607)
+ 93 named destinations out of 1000 (max. 500000)
  406 words of extra memory for PDF output out of 10000 (max. 10000000)
 

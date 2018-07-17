@@ -6,9 +6,10 @@
 \contentsline {subsection}{\numberline {4.1}JourneyPlanning}{4}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}OpenTripPlanner}{4}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Connection Scan Algorithmus}{4}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}General Transit Feed Specification}{4}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.4}Dijkstra Algorithmus}{4}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}General Transit Feed Specification}{5}{subsection.4.5}
 \contentsline {section}{\numberline {5}Methode}{6}{section.5}
-\contentsline {section}{\numberline {6}CSAfuerOTP}{7}{section.6}
+\contentsline {section}{\numberline {6}CSA f\IeC {\"u}r OTP}{7}{section.6}
 \contentsline {subsection}{\numberline {6.1}Datenstruktur}{7}{subsection.6.1}
 \contentsline {subsubsection}{\numberline {6.1.1}TimeTable}{7}{subsubsection.6.1.1}
 \contentsline {subsubsection}{\numberline {6.1.2}FootpathCSA}{7}{subsubsection.6.1.2}

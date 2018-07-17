@@ -6,14 +6,14 @@ Ein JourneyPlanner ist ein Programm, welches den optimalen Weg für eine Reise z
 
 \subsection{OpenTripPlanner}
 
-Der OpenTripPlanner, kurz OTP, ist eine auf der Maven-Repository %\cite{maven_repository} 
-aufbauende trip planning Software welche anfangs für Städte ausgelegt war, nun aber auch in ersten landesweiten Netzwerken Anwendung findet. Er wurde von einem OpenSource-Kollektiv aus mehr als 100 Personen in acht Jahren entwickelt. %/*~\cite{otp_website}
+Der OpenTripPlanner \cite{otp}, kurz OTP, ist eine auf der Maven-Repository \cite{maven_repository} 
+aufbauende trip planning Software welche anfangs für Städte ausgelegt war, nun aber auch in ersten landesweiten Netzwerken Anwendung findet. Er wurde von einem OpenSource-Kollektiv aus mehr als 100 Personen in acht Jahren entwickelt.
 
-Der OTP basiert auf dem A*-Algorithmus und verwendet GTFS-Daten und OpenStreetMap Daten in Form. In einem preprocessing Schritt wird der Graph für den Algorithmus erstellt. Dieser kann in einer Datei gespeichert werden oder direkt im RAM des Servers gelagert werden. Selbiges wird für die OpenStreetMap-Daten gemacht. Während dem Betrieb kann der Graph angepasst werden, so dass das Programm auf verspätete Züge reagieren kann. %~\cite{otp_git}
+Der OTP basiert auf dem A*-Algorithmus und verwendet GTFS-Daten und OpenStreetMap Daten in Form. In einem preprocessing Schritt wird der Graph für den Algorithmus erstellt. Dieser kann in einer Datei gespeichert werden oder direkt im RAM des Servers gelagert werden. Selbiges wird für die OpenStreetMap-Daten gemacht. Während dem Betrieb kann der Graph angepasst werden, so dass das Programm auf verspätete Züge reagieren kann. \cite{otp_git}
 
 Der OTP erzeugt für jeden Aufruf eine neue Instanz des Graphen. Dies ist nötig, da während des Aufrufs Daten im Graphen verändert werden, diese sich jedoch nicht auf andere Aufrufe auswirken dürfen.
 
-OTP steht unter einer GNU Lesser General Public License. 
+OTP steht unter einer GNU Lesser General Public License. \cite{gnulpl}
 
 
 \todocomment{!!! Selbstplagiat}
@@ -22,10 +22,10 @@ OTP steht unter einer GNU Lesser General Public License.
 
 
 \subsection{Dijkstra Algorithmus}
-Der Dijkstra Algorithmus ist ein auf einem Graphen basierender Wegfindungsalgorithmus. Er bildet einen Graph, wobei Haltestellen Punkte sind und Verbindungen die Linien zwischen den Punkten. Alle Verbindungen besitzen eine Gewichtung, welche mit der benötigten Zeit korreliert. Der Algorithmus sucht nun den Weg mit der geringsten summierten Gewichtung vom Start- zum Zielpunkt.
+Der Dijkstra Algorithmus \cite{dij_bell} ist ein auf einem Graphen basierender Wegfindungsalgorithmus. Er bildet einen Graph, wobei Haltestellen Punkte sind und Verbindungen die Linien zwischen den Punkten. Alle Verbindungen besitzen eine Gewichtung, welche mit der benötigten Zeit korreliert. Der Algorithmus sucht nun den Weg mit der geringsten summierten Gewichtung vom Start- zum Zielpunkt.
 
 \subsection{Connection Scan Algorithmus}
-Der Connection Scan Algorithm, kurz CSA,  ist ein moderner Algorithmus zur Bearbeitung von Anfragen auf zeitplanbasierten Sytemen. Er basiert, im Gegensatz zu den gängigen Algorithmen wie z.B. dem Dijkstra-Algorithmus, nicht auf einem gewichteten Graphen. 
+Der Connection Scan Algorithm \cite{csa} , kurz CSA,  ist ein moderner Algorithmus zur Bearbeitung von Anfragen auf zeitplanbasierten Sytemen. Er basiert, im Gegensatz zu den gängigen Algorithmen wie z.B. dem Dijkstra-Algorithmus, nicht auf einem gewichteten Graphen. 
 Es gibt zwei Arten des CSA. Zum einen den EACS(EarlyestArrivalConnectionScan) welcher die frühestmögliche Ankunftszeit und wenn benötigt auch noch den dazugehörigen Journey zurückliefert. Zum anderen den PCS(ProfileConnectionScan) welcher alle möglichen Journeys berechnet und den Bessten Journey nach mehreren Kriterien sortieren kann. Beide sind darauf ausgelegt genau einen Journey zurückzugeben.
 Der Algorithmus iteriert über eine nach Abfahrtszeit sortierte Liste aller Verbindungen. Dabei werden vom Start- oder Zielpunkt erreichbare Verbindungen markiert. Dadurch entsteht ein Netz aus Verbindungen welches sich immer weiter aufspannt. Dies wird dann so lange wiederholt bis ein Weg zwischen den beiden Punkten gefunden wurde. Danach gibt der Algorithmus entweder die früheste Ankunftszeit am Zielpunkt, oder den besten Weg vom Startpunkt zum Zielpunkt zurück.
 

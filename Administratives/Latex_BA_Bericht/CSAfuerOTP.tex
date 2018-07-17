@@ -74,11 +74,8 @@ Da wir für den CSA eine Zeittafel(TimeTable) benötigen, muss diese durch den Z
 \subsubsection{Server}
 \todocomment{Startet server welchen die Webseite für afrufe zur verfügung stellt}
 \subsubsection{Webseitenaufruf}
-Wenn ein Aufruf von der Webseite eingeht so wird die plan Methode der Klasse PlannerResource aufgerufen. Diese erhält die Anfragenparameter in einem RoutingRequest-Objekt. Das im Preprocessing generierte TimeTable-Objekt wird als neue Instanz übergeben. Dies wird gemacht, da der OTP eine seperate Isntanz des Algorithmusses für jeden Aufruf verwendet. Der TimeTable sowie der Request werden dann der createJourneys-Methode des Algorithmuses übergeben. Dessen Rückgabe wird in einem Set von Journeys gespeichert.
+Wenn ein Aufruf von der Webseite eingeht so wird die plan Methode der Klasse PlannerResource aufgerufen. Diese erhält die Anfragenparameter in einem RoutingRequest-Objekt. Das im Preprocessing generierte TimeTable-Objekt wird als neue Instanz übergeben. Dies wird gemacht, da der OTP eine seperate Isntanz des Algorithmus für jeden Aufruf verwendet. Der TimeTable sowie der Request werden dann der createJourneys-Methode des Algorithmuses übergeben. Dessen Rückgabe wird in einem Set von Journeys gespeichert.
 
-\subsubsection{Connection Scan Algorithm}
-Der Connection Scan Algorithm, kurz CSA,  ist ein moderner Algorithmus zur Bearbeitung von Anfragen auf zeitplanbasierten Sytemen. Er basiert, im Gegensatz zu den gängigen Algorithmen wie z.B. dem Dijkstra-Algorithmus, nicht auf einem gewichteten Graphen. 
-Es gibt zwei Arten des CSA. Zum einen den EACS(EarlyestArrivalConnectionScan) welcher die frühestmögliche Ankunftszeit und wenn benötigt auch noch den dazugehörigen Journey zurückliefert. Zum anderen den PCS(ProfileConnectionScan) welcher alle möglichen Journeys berechnet und den Bessten Journey nach mehreren Kriterien sortieren kann. Beide sind darauf ausgelegt genau einen Journey zurückzugeben.
 
 \subsubsection{Earliest Arrival Connection Scan}
 Der Earliest Arrival Connection Scan Algorithmus, kurz EACS, arbeitet mit einer nach Abfahrtszeit sortierten Liste von Verbindungen. Über diese iteriert er dann aufsteigend wobei als Startpunkt die erste Verbindung, welche nach der im Request spezifizierten Abfahrtszeit abfährt. 
@@ -93,7 +90,7 @@ Wenn eine dieser drei Bedingungen erfüllt ist so wird dies im Ankunftsort der V
 
 Sobald der Algorithmus eine Verbindung findet, welche eine der drei Bedingungen erfüllt und gleichzeitig der Ankunftsort dem Zielort entspricht, hat er einen Journey zum Ziel gefunden. Die Schleife wird unterbrochen und der Algorithmus baut sich vom Zielort aus mithilfe der Zeiger den kompletten Journey auf welcher dann als Antwort zurückgegeben wird.
 
-Der ECSA existiert auch in einer schlankeren Version bei welcher keine Zeiger gespeichert werden. Dies führt dazu, dass der ECSA schneller ist, jedoch liefert er nur noch die Ankunftszeit ohne den Reiseweg zurück.
+Alternativ kann der ECSA auch nur die früheste Ankunftszeit anstelle des kompletten Journeys zurückgeben. In dieser Version müssen keine Zeiger gespeichert werden, was den Algorithmus schneller macht, es gehen jedoch Informationen über den Reiseweg verloren.
 
 \subsubsection{Profile Connection Scan}
 Der Profile Connection Scan Algorithmus, kurz PCS, arbeitet auch mit einer nach Abfahrtszeiten sortierten Liste von Verbindungen. Im Gegensatz zum EACS iteriert er absteigend über die Verbindungen. Er sucht als o die Verbindung vom Zielpunkt aus. Jede Verbindung durchläuft dabei drei Prüfungen:

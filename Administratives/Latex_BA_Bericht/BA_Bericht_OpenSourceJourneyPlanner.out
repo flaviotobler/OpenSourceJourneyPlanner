@@ -4,43 +4,44 @@
 \BOOKMARK [1][-]{section.4}{Ausgangslage}{}% 4
 \BOOKMARK [2][-]{subsection.4.1}{JourneyPlanning}{section.4}% 5
 \BOOKMARK [2][-]{subsection.4.2}{OpenTripPlanner}{section.4}% 6
-\BOOKMARK [2][-]{subsection.4.3}{Connection Scan Algorithmus}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.3}{Verwendung des OpenTripPlanners}{section.4}% 7
 \BOOKMARK [2][-]{subsection.4.4}{Dijkstra Algorithmus}{section.4}% 8
-\BOOKMARK [2][-]{subsection.4.5}{General Transit Feed Specification}{section.4}% 9
-\BOOKMARK [1][-]{section.5}{Methode}{}% 10
-\BOOKMARK [1][-]{section.6}{CSA f\374r OTP}{}% 11
-\BOOKMARK [2][-]{subsection.6.1}{Datenstruktur}{section.6}% 12
-\BOOKMARK [3][-]{subsubsection.6.1.1}{TimeTable}{subsection.6.1}% 13
-\BOOKMARK [3][-]{subsubsection.6.1.2}{FootpathCSA}{subsection.6.1}% 14
-\BOOKMARK [3][-]{subsubsection.6.1.3}{StopCSA}{subsection.6.1}% 15
-\BOOKMARK [3][-]{subsubsection.6.1.4}{ConnectionCSA}{subsection.6.1}% 16
-\BOOKMARK [3][-]{subsubsection.6.1.5}{TripCSA}{subsection.6.1}% 17
-\BOOKMARK [3][-]{subsubsection.6.1.6}{Journey}{subsection.6.1}% 18
-\BOOKMARK [3][-]{subsubsection.6.1.7}{JourneyPointer}{subsection.6.1}% 19
-\BOOKMARK [3][-]{subsubsection.6.1.8}{LegCSA}{subsection.6.1}% 20
-\BOOKMARK [2][-]{subsection.6.2}{Programmablauf}{section.6}% 21
-\BOOKMARK [3][-]{subsubsection.6.2.1}{TimeTableBuilder}{subsection.6.2}% 22
-\BOOKMARK [3][-]{subsubsection.6.2.2}{Server}{subsection.6.2}% 23
-\BOOKMARK [3][-]{subsubsection.6.2.3}{Webseitenaufruf}{subsection.6.2}% 24
-\BOOKMARK [3][-]{subsubsection.6.2.4}{Connection Scan Algorithm}{subsection.6.2}% 25
-\BOOKMARK [3][-]{subsubsection.6.2.5}{Earliest Arrival Connection Scan}{subsection.6.2}% 26
-\BOOKMARK [3][-]{subsubsection.6.2.6}{Profile Connection Scan}{subsection.6.2}% 27
-\BOOKMARK [3][-]{subsubsection.6.2.7}{JourneyToTripPlanConverter}{subsection.6.2}% 28
-\BOOKMARK [1][-]{section.7}{Produkt}{}% 29
-\BOOKMARK [2][-]{subsection.7.1}{OTP mit Schweizer Daten implementieren}{section.7}% 30
-\BOOKMARK [2][-]{subsection.7.2}{Kann OTP ohne .osm file ausgef\374hrt werden?}{section.7}% 31
-\BOOKMARK [2][-]{subsection.7.3}{Modellierung der Datenstrukur}{section.7}% 32
-\BOOKMARK [2][-]{subsection.7.4}{Automatische generierte Klassendiagramme}{section.7}% 33
-\BOOKMARK [2][-]{subsection.7.5}{Dummy-GTFS Daten erstellen}{section.7}% 34
-\BOOKMARK [2][-]{subsection.7.6}{Mocking}{section.7}% 35
-\BOOKMARK [3][-]{subsubsection.7.6.1}{CSAMock}{subsection.7.6}% 36
-\BOOKMARK [3][-]{subsubsection.7.6.2}{TimeTableBuilderMock}{subsection.7.6}% 37
-\BOOKMARK [3][-]{subsubsection.7.6.3}{JourneyToTripPlanConverterMock}{subsection.7.6}% 38
-\BOOKMARK [2][-]{subsection.7.7}{TimeTableBuilder}{section.7}% 39
-\BOOKMARK [2][-]{subsection.7.8}{JourneyToTripPlanConverter}{section.7}% 40
-\BOOKMARK [2][-]{subsection.7.9}{ConnectionScanAlgorithm}{section.7}% 41
-\BOOKMARK [3][-]{subsubsection.7.9.1}{EAS}{subsection.7.9}% 42
-\BOOKMARK [3][-]{subsubsection.7.9.2}{PCS}{subsection.7.9}% 43
-\BOOKMARK [2][-]{subsection.7.10}{Performance-Test}{section.7}% 44
-\BOOKMARK [1][-]{section.8}{Resultate}{}% 45
-\BOOKMARK [1][-]{section.9}{Fazit}{}% 46
+\BOOKMARK [2][-]{subsection.4.5}{Connection Scan Algorithmus}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.6}{General Transit Feed Specification}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Methode}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Verzeichnissstruktur}{section.5}% 12
+\BOOKMARK [1][-]{section.6}{CSA f\374r OTP}{}% 13
+\BOOKMARK [2][-]{subsection.6.1}{Datenstruktur}{section.6}% 14
+\BOOKMARK [3][-]{subsubsection.6.1.1}{TimeTable}{subsection.6.1}% 15
+\BOOKMARK [3][-]{subsubsection.6.1.2}{FootpathCSA}{subsection.6.1}% 16
+\BOOKMARK [3][-]{subsubsection.6.1.3}{StopCSA}{subsection.6.1}% 17
+\BOOKMARK [3][-]{subsubsection.6.1.4}{ConnectionCSA}{subsection.6.1}% 18
+\BOOKMARK [3][-]{subsubsection.6.1.5}{TripCSA}{subsection.6.1}% 19
+\BOOKMARK [3][-]{subsubsection.6.1.6}{Journey}{subsection.6.1}% 20
+\BOOKMARK [3][-]{subsubsection.6.1.7}{JourneyPointer}{subsection.6.1}% 21
+\BOOKMARK [3][-]{subsubsection.6.1.8}{LegCSA}{subsection.6.1}% 22
+\BOOKMARK [2][-]{subsection.6.2}{Programmablauf}{section.6}% 23
+\BOOKMARK [3][-]{subsubsection.6.2.1}{TimeTableBuilder}{subsection.6.2}% 24
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Server}{subsection.6.2}% 25
+\BOOKMARK [3][-]{subsubsection.6.2.3}{Webseitenaufruf}{subsection.6.2}% 26
+\BOOKMARK [3][-]{subsubsection.6.2.4}{Earliest Arrival Connection Scan}{subsection.6.2}% 27
+\BOOKMARK [3][-]{subsubsection.6.2.5}{Profile Connection Scan}{subsection.6.2}% 28
+\BOOKMARK [3][-]{subsubsection.6.2.6}{JourneyToTripPlanConverter}{subsection.6.2}% 29
+\BOOKMARK [1][-]{section.7}{Produkt}{}% 30
+\BOOKMARK [2][-]{subsection.7.1}{OTP mit Schweizer Daten implementieren}{section.7}% 31
+\BOOKMARK [2][-]{subsection.7.2}{Kann OTP ohne .osm file ausgef\374hrt werden?}{section.7}% 32
+\BOOKMARK [2][-]{subsection.7.3}{Modellierung der Datenstrukur}{section.7}% 33
+\BOOKMARK [2][-]{subsection.7.4}{Automatische generierte Klassendiagramme}{section.7}% 34
+\BOOKMARK [2][-]{subsection.7.5}{Dummy-GTFS Daten erstellen}{section.7}% 35
+\BOOKMARK [2][-]{subsection.7.6}{Mocking}{section.7}% 36
+\BOOKMARK [3][-]{subsubsection.7.6.1}{CSAMock}{subsection.7.6}% 37
+\BOOKMARK [3][-]{subsubsection.7.6.2}{TimeTableBuilderMock}{subsection.7.6}% 38
+\BOOKMARK [3][-]{subsubsection.7.6.3}{JourneyToTripPlanConverterMock}{subsection.7.6}% 39
+\BOOKMARK [2][-]{subsection.7.7}{TimeTableBuilder}{section.7}% 40
+\BOOKMARK [2][-]{subsection.7.8}{JourneyToTripPlanConverter}{section.7}% 41
+\BOOKMARK [2][-]{subsection.7.9}{ConnectionScanAlgorithm}{section.7}% 42
+\BOOKMARK [3][-]{subsubsection.7.9.1}{EAS}{subsection.7.9}% 43
+\BOOKMARK [3][-]{subsubsection.7.9.2}{PCS}{subsection.7.9}% 44
+\BOOKMARK [2][-]{subsection.7.10}{Performance-Test}{section.7}% 45
+\BOOKMARK [1][-]{section.8}{Resultate}{}% 46
+\BOOKMARK [1][-]{section.9}{Fazit}{}% 47

@@ -1,4 +1,4 @@
-\select@language {ngerman}
+\babel@toc {ngerman}{}
 \contentsline {section}{\numberline {1}Abstract}{I}{section.1}
 \contentsline {section}{\numberline {2}Einleitung}{2}{section.2}
 \contentsline {section}{\numberline {3}Augabenstellung}{3}{section.3}
@@ -13,16 +13,16 @@
 \contentsline {subsection}{\numberline {5.1}Verzeichnissstruktur}{7}{subsection.5.1}
 \contentsline {section}{\numberline {6}CSA f\IeC {\"u}r OTP}{8}{section.6}
 \contentsline {subsection}{\numberline {6.1}Datenstruktur}{8}{subsection.6.1}
-\contentsline {subsubsection}{\numberline {6.1.1}TimeTable}{8}{subsubsection.6.1.1}
-\contentsline {subsubsection}{\numberline {6.1.2}FootpathCSA}{8}{subsubsection.6.1.2}
-\contentsline {subsubsection}{\numberline {6.1.3}StopCSA}{8}{subsubsection.6.1.3}
-\contentsline {subsubsection}{\numberline {6.1.4}ConnectionCSA}{9}{subsubsection.6.1.4}
-\contentsline {subsubsection}{\numberline {6.1.5}TripCSA}{9}{subsubsection.6.1.5}
-\contentsline {subsubsection}{\numberline {6.1.6}Journey}{10}{subsubsection.6.1.6}
-\contentsline {subsubsection}{\numberline {6.1.7}JourneyPointer}{11}{subsubsection.6.1.7}
+\contentsline {subsubsection}{\numberline {6.1.1}Zeittafel (\texttt {TimeTable})}{8}{subsubsection.6.1.1}
+\contentsline {subsubsection}{\numberline {6.1.2}Fusswege (\texttt {FootpathCSA})}{8}{subsubsection.6.1.2}
+\contentsline {subsubsection}{\numberline {6.1.3}Haltestellen (\texttt {StopCSA})}{8}{subsubsection.6.1.3}
+\contentsline {subsubsection}{\numberline {6.1.4}Verbindungen (\texttt {ConnectionCSA})}{9}{subsubsection.6.1.4}
+\contentsline {subsubsection}{\numberline {6.1.5}Fahrten (\texttt {TripCSA})}{9}{subsubsection.6.1.5}
+\contentsline {subsubsection}{\numberline {6.1.6}Reise (\texttt {Journey})}{10}{subsubsection.6.1.6}
+\contentsline {subsubsection}{\numberline {6.1.7}Reisepunkt (\texttt {JourneyPointer})}{11}{subsubsection.6.1.7}
 \contentsline {subsubsection}{\numberline {6.1.8}LegCSA}{11}{subsubsection.6.1.8}
 \contentsline {subsection}{\numberline {6.2}Programmablauf}{11}{subsection.6.2}
-\contentsline {subsubsection}{\numberline {6.2.1}TimeTableBuilder}{11}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.1}Zeittafelerzeuger (\texttt {TimeTableBuilder})}{11}{subsubsection.6.2.1}
 \contentsline {subsubsection}{\numberline {6.2.2}Server}{12}{subsubsection.6.2.2}
 \contentsline {subsubsection}{\numberline {6.2.3}Webseitenaufruf}{12}{subsubsection.6.2.3}
 \contentsline {subsubsection}{\numberline {6.2.4}Earliest Arrival Connection Scan}{12}{subsubsection.6.2.4}

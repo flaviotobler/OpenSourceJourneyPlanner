@@ -70,7 +70,7 @@ Das Mocking des TimeTableBuilders erstellt manuell einen Zeitplan mit zwei Halte
 Der als Parameter bekommene Journey wird zur Überprüfung in ein JSON-File gespeichert. Anschliessend wird manuell eine Webseitenantwort aufgebaut. Anfangs wurde eine Reise ohne Zwischenstops, Umsteigen und Fusswege zurückgegeben. Doch in folgenden Schritten wurde das Mocking erweitert um die zuvor erwähnten, komplexeren Fälle zu behandeln.
 
 \subsection{TimeTableBuilder}
-Die Aufgabe des TimeTableBuilder ist es Daten aus dem GTFS zu lesen und anschliessend eine Datenstruktur daraus zu erzeugen die der Connection Scan Algorithm benötigt. Zum einlesen der GTFS-Daten wird die Onebusaway Library verwendet. Diese erzeugt anhand der Daten Objekte.Die Objektdaten von der Onebusaway Library sind in Listen abrufbar.
+Die Aufgabe des TimeTableBuilder ist es Daten aus dem GTFS zu lesen und anschliessend eine Datenstruktur daraus zu erzeugen die der Connection Scan Algorithm benötigt. Zum Einlesen der GTFS-Daten wird die Onebusaway Library verwendet. Diese erzeugt anhand der Daten Objekte.Die Objektdaten von der Onebusaway Library sind in Listen abrufbar.
 z.B. Entspricht im GTFS Stop.txt ein Zeileneintrag einem Stop Objekt. Durch diese Library ist es einfacher Daten aus dem GTFS abzufragen. z.B. von einem Stop kann man gezielt nach dem Namen fragen\texttt{stop.getName()}.\newline  
 
 Da ein Stop aus der Library gleich bei uns heissen würde. Führt dies zu einem Namenskonflikt mit der Klasse Stop für den CSA und Stop von der onebusaway Library. Um dieses Problem zu lösen benannten wir die Klassen, die wir benötigen werden für den CSA um. Indem wir die Klassen mit der CSA Endung erweiterten z.B. Stop in StopCSA.\newline

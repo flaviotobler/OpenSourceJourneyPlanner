@@ -90,7 +90,7 @@ Wenn ein Aufruf von der Webseite eingeht so wird die plan Methode der Klasse Pla
 
 
 \subsubsection{Earliest Arrival Connection Scan}
-Der Earliest Arrival Connection Scan Algorithmus, kurz EACS, arbeitet mit einer nach Abfahrtszeit sortierten Liste von Verbindungen. Über diese iteriert er dann aufsteigend wobei als Startpunkt die erste Verbindung, welche nach der im Request spezifizierten Abfahrtszeit abfährt. 
+Der Earliest Arrival Connection Scan Algorithmus\cite{csa}, kurz EACS, arbeitet mit einer nach Abfahrtszeit sortierten Liste von Verbindungen. Über diese iteriert er dann aufsteigend wobei als Startpunkt die erste Verbindung, welche nach der im Request spezifizierten Abfahrtszeit abfährt. 
 
 Jede Verbindung wird auf drei Eigenschaften überprüft:
 \begin{itemize}
@@ -105,7 +105,7 @@ Sobald der Algorithmus eine Verbindung findet, welche eine der drei Bedingungen 
 Alternativ kann der ECSA auch nur die früheste Ankunftszeit anstelle des kompletten Journeys zurückgeben. In dieser Version müssen keine Zeiger gespeichert werden, was den Algorithmus schneller macht. Es gehen jedoch Informationen über den Reiseweg verloren.
 
 \subsubsection{Profile Connection Scan}
-Der Profile Connection Scan Algorithmus, kurz PCS, arbeitet auch mit einer nach Abfahrtszeiten sortierten Liste von Verbindungen. Im Gegensatz zum EACS iteriert er absteigend über die Verbindungen. Er sucht also die Verbindung vom Zielpunkt aus. Jede Verbindung durchläuft dabei drei Prüfungen:
+Der Profile Connection Scan Algorithmus\cite{csa}, kurz PCS, arbeitet auch mit einer nach Abfahrtszeiten sortierten Liste von Verbindungen. Im Gegensatz zum EACS iteriert er absteigend über die Verbindungen. Er sucht also die Verbindung vom Zielpunkt aus. Jede Verbindung durchläuft dabei drei Prüfungen:
 
 \begin{itemize}
 	\item Kommt man ans Ziel wenn man aussteigt?

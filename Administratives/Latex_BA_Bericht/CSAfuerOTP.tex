@@ -9,7 +9,7 @@ Neben den \texttt{.add()} und \texttt{.show()} Funktionen für die Sammlungen en
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=8cm]{img/UML-TimeTable.png}
+	\includegraphics[width=8cm]{img/TimeTable.png}
 	\caption{Hier ist das UML-Diagramm zur \texttt{TimeTable} Datenstruktur zu sehen.}
 	\label{fig:uml-timetable}
 \end{figure}
@@ -28,7 +28,7 @@ Ein Fussweg kann zwei verschiedene Funktionen haben. Er besteht aus einem Depart
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=5cm]{img/stop.png}
-	\caption{Symbolbild für die Haltestelle(StopCSA)}
+	\caption{Symbolbild für die Haltestelle(StopCSA)\cite{stop-pic}}
 	\label{fig:stop}
 \end{figure}
 Ein Stop ist eine Haltestelle für öffentliche Verkehrsmittel. Ein Stop besitzt einen Namen, Längen- und Breitengrad. 
@@ -53,6 +53,12 @@ Als Trip wird die Fahrt eines Öffentlichen-Verkehrsmittels von der Start-Statio
 
 \subsection{Reise (\texttt{Journey})}
 Ein Journey ist ein vom CSA berechneter Weg vom Start- zum Zielpunkt. Er besteht aus einem StartPath, welcher den Fussweg zur ersten Station hin darstellt, sowie eine Liste aus journeyPointern welche den Weg mit allen Umsteigestationen repräsentiert. 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=8cm]{img/Journey.png}
+	\caption{Hier ist das UML-Diagramm zur \texttt{Journey} Datenstruktur zu sehen.}
+	\label{fig:uml-journey}
+\end{figure}
 
 \subsubsection{Reisezeiger (\texttt{JourneyPointer})}
 Ein JourneyPointer ist eine Hilfskonstruktion welche der CSA anlegt um die berechnete Abfolge von Stationen später wieder rekonstruieren zu können.Ein JourneyPointer besteht aus einem Leg sowie einem Footpath. Dabei handelt es sich beim Leg um eine Fahrt in einem ÖV vom einsteigen bis zum Aussteigen und beim Footpath um das darauffolgende Umsteigen oder das erreichen des Ziels.
@@ -77,10 +83,9 @@ Der Server wird über die Main-Funktion gestartet. Bei dem Server handelt es sic
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=8cm]{img/serverrequestresponse.jpg}
-	\caption{Darstellung der Kommunikation zwischen Clients und Server}
+	\caption{Darstellung der Kommunikation zwischen Clients und Server\cite{server-pic}}
 	\label{fig:serverrequestresponse}
 \end{figure}
-%https://hosting.1und1.de/digitalguide/server/knowhow/was-ist-ein-server-ein-begriff-zwei-definitionen/
 
 
 

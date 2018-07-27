@@ -4,6 +4,17 @@
 \subsection{Performance Test (Benchmarking)}
 
 \subsection{Verzeichnisstruktur}
+Da der OTP sehr viele verschiedene Pakete besitzt haben wir uns entschieden alles was den CSA betrifft und von uns programmiert wird in einem separaten Paket zu sammeln wie in Abbildung \ref{fig:csapackage} zu sehen. Dadurch behalten wir die Übersicht was wir zusätzlich in das bestehende Programm hinzugefügt haben. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=5cm]{img/csapackage.png}
+	\caption{Dieses Bild gibt eine Übersicht welche Klassen in unserem Paket vorhanden ist.}
+	\label{fig:csapackage}
+\end{figure}
+
+Da ein Stop aus der Library gleich bei uns heissen würde. Führt dies zu einem Namenskonflikt mit der Klasse Stop für den CSA und Stop von der onebusaway Library. Ein weiterer Namenskonflikt war Leg diese Klasse ist schon im OTP(Grundversion) vorhanden.
+Um dieses Problem zu lösen benannten wir die Klassen, die wir benötigen werden für den CSA um. Indem wir die Klassen mit der CSA Endung erweiterten z.B. Stop in StopCSA.\newline
 
 \subsection{Zeitplan}
 

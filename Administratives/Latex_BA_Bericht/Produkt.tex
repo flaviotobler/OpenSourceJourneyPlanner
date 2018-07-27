@@ -3,7 +3,16 @@
 
 
 \subsection{Modellierung der Datenstrukur}
-\todocomment{Java container klassen + UML Diagramm}
+Der \texttt{TimeTable} muss alle Daten Fusswege(\texttt{FootpathCSA}), Haltestellen(\texttt{StopCSA}), Fahrten(\texttt{TripCSA}), Verbindungen(\texttt{ConnectionCSA}) zur Verfügung stellen. Dies kann sie indem wir Sets(Mengen) verwenden. Der Grund wieso wir Sets verwenden ist das es keine Duplikate geben kann. Den ein Stop darf nur einmal in der Sammlung von \texttt{stops} vorkommen.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12cm]{img/Sammlungen.png}
+	\caption{Das Bild zeigt welche Sammlungen wir in der Zeittafel zur Verfügung stehen.}
+	\label{fig:Sammlungen}
+\end{figure}
+\newline
+Wie man in der Abbildung \ref{fig:Sammlungen} erkennen kann verwenden wir HashSets für Haltestellen(\texttt{stops}), Fahrten(\texttt{trips}) und Fusswege(\texttt{footpaths}), weil diese Sammlung nicht sortiert sein müssen. Im TimeTableBuilder verwendeten wir noch den TreeSet um die Verbindungen(\texttt{ConnectionCSA}) zu sortieren bei ihrer Erzeugung. Beim TimeTable haben wir die gleiche Sammlung von Verbindungen, jedoch in LinkedHashSet erzeugt, weil wir zuvor versuchten die Sammlungen zwischenzuspeichern mit Textfiles (Jackson 2). Da dies jedoch nicht mit TreeSets funktionierte änderten wir diese zu LinkedHashSet. Der einzige Unterschied zwischen LinkedHashSet und HashSet ist das die Daten, die Reihenfolge beibehalten wie man sie auch hinzufügt hat. Da die Sammlungen (\texttt{connectionsAscending} und \texttt{connectionsDescending}) nachdem erstellen nicht mehr ändern, benötigten wir also nicht zwingend ein TreeSet sondern können es auch mit einem LinkedHashSet umgesetzt werden.
+
 
 \subsection{Automatische generierte Klassendiagramme}
 Klassendiagramme können sehr behilflich sein bei der Entwicklung. Sie geben einen Überblick welche Klassen miteinander agieren.
@@ -38,16 +47,15 @@ Der als Parameter bekommene Journey wird zur Überprüfung in ein JSON-File gesp
 
 \subsection{TimeTableBuilder}
 Die Aufgabe des TimeTableBuilder ist es Daten aus dem GTFS zu lesen und anschliessend eine Datenstruktur daraus zu erzeugen die der Connection Scan Algorithm benötigt. Zum Einlesen der GTFS-Daten wird die Onebusaway Library verwendet. Diese erzeugt anhand der Daten Objekte.Die Objektdaten von der Onebusaway Library sind in Listen abrufbar.
-z.B. Entspricht im GTFS Stop.txt ein Zeileneintrag einem Stop Objekt. Durch diese Library ist es einfacher Daten aus dem GTFS abzufragen. z.B. von einem Stop kann man gezielt nach dem Namen fragen\texttt{stop.getName()}.\newline  
-
-Da ein Stop aus der Library gleich bei uns heissen würde. Führt dies zu einem Namenskonflikt mit der Klasse Stop für den CSA und Stop von der onebusaway Library. Um dieses Problem zu lösen benannten wir die Klassen, die wir benötigen werden für den CSA um. Indem wir die Klassen mit der CSA Endung erweiterten z.B. Stop in StopCSA.\newline
+z.B. Entspricht im GTFS Stop.txt ein Zeileneintrag einem Stop Objekt. Durch diese Library ist es einfacher Daten aus dem GTFS abzufragen. z.B. von einem Stop kann man gezielt nach dem Namen fragen \texttt{stop.getName()}.\newline  
 
 Durch diese Library lässt es sich nun relativ einfach die Daten aus dem GTFS lesen und anschliessend mit den gewünschten Daten die benötigten Objekte erstellen.Dafür wir die Funktion \texttt{.loadFromGtfs()} ausgeführt.  Stop, Footpath und Trips lassen sich relativ leicht erstellen weil die GTFS-Daten hierbei schon in sehr ähnlich Form aufgebaut sind. Jedoch ist es bei der Connection etwas schwieriger, da die Daten nicht in dieser Art direkt vorhanden sind. Die Connections müssen beim der Stop\_times.txt immer zwei hintereinanderfolgende Einträge(Objekte) vergleichen um zu Erkennen das es sich um eine Connection handelt. Eine Connection wird erkannt wenn sie auf den selben Trip stattfinden und die stop\_sequence Zahl muss grösser sein als der vorhergehende Eintrag. Wenn dieser Fall nur Zutrifft wurde eine Connection erkannt. Bevor jetzt aber das Connection Objekt einfach erzeugt werden kann müssen noch die richtigen Referenzen gefunden werden. Den die Stops und Trips wurden zuvor schon erzeugt. Den eine Connection muss wissen auf welchem Trip sie ist und welche Departure- und ArrivalStops sie enthält. Nachdem also eine Connection gefunden wurde wird er richtige Trip in der bestehenden Liste gesucht, anhand der TripId kann der Trip aus der Liste gefunden werden. Das selbe geschieht auch mit den Departure- und ArrivalStops. Wenn alle Informationen gefunden wurden wird das Connection Objekt erzeugt und in das TreeSet(sortiere Liste) übergeben. Durch die \texttt{.compareTo()} Funktion der Connection lässt sie sich an der richtigen Stelle im TreeSet einfügen. Somit bekommen wir alle Connections sortiert nach der Departuretime. Am Ende der Funtion wird ein Java-SerializedObjectFile vom TimeTable erstellt. Somit wird das gewünschte Format zwischengespeichert. Das erstellen dieser Datei benötigt nur 1-2 Minuten und die Datei ist 367MB gross.\newline
+
+Bevor wir uns entschlossen haben das Java-SerializedObjectFile am Ende der Funktion zu erstellen, versuchten wir es stattdessen mit Textfiles die durch Jackson 2.Jackson 2 ist eine library zum konvertieren von JSON(Textfile) zu Java-Objekte und umgekehrt. Doch dies hatte ein grosses Problem. Die Files wurden zwar wieder mit den Angaben richtig eingelesen, jedoch waren die Referenzen auf die richtigen Objekte nicht vorhanden. z.B. ein Stop ist einzigartig und sollte nur einmal vorkommen, jedoch wurden mehrere Stops dann erzeugt mit den selben Namen und Werten. Dies führt wiederum dann zu Probleme beim Algorithmus und konnte deshalb nicht verwendet werden.
 
 Die Funktion \texttt{.loadFromGtfs()} benötigt etwa 60h um das Schweizer GTFS einzulesen. Aber durch Optimierung konnte die Zeit veringert werden auf 22h. Indem wir die nicht mehr einfach wie vorher ständig nach dem Trip wieder suchen wenn eine Connection gefunden wurde. Durch zwischenspeichern der Referenz des vorhergehenden Trips kann dieser wiederverwendet werden, wenn die TripId der Einträge übereinstimmen. Somit muss nur ein Trip in der Liste gesucht werden wenn diese TripId nicht übereinstimmen. Zudem kann durch zwischenspeichern der Referenz auf den vorhergehenden Stop eine Suche in der Liste vermieden werden. Da ein Trip und Stop nur einmal vorkommt in der Liste, kann beim durchlaufen mit einer Suchschleife die suche nach dem Trip vorzeitig abgebrochen werden, was verhindert das unnötig weiter nachdem Trip/Stop gesucht wird.  
 
 Die Funktion \texttt{.loadFromSerializedObjectFile()} kann verwendet werden um zwischengespeicherte TimeTables einzulesen. Das SerializedObjectFile das zuvor aus dem Schweizer GTFS erstellt wurde lässt sich innerhalb von 151s einlesen.
-
 
 \subsection{JourneyToTripPlanConverter}
 Der JourneyToTripPlanConverter bildet einen von der Webseite benötigten TripPlan aus den vom CSA generierten Journeys. Aus dem Mocking sind die benötigten Parameter schon bekannt so dass die Generierung nun nur noch automatisiert werden muss. Dabei gab es jedoch mehrere Punkte welche speziell beachtet werden mussten.

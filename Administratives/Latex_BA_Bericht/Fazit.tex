@@ -1,2 +1,7 @@
 \section{Fazit}
-\todocomment{Fazit der BA über den CSA und das Projekt selbst}
+Unsere Implementation des CSA im OTP ist funktionsfähig. Die von uns angestrebte Performance konnte jedoch nicht erreicht werden. Unsere Implementation ist mit den Schweizer GTFS-Daten um den Faktor 10000 langsamer als der Originalalgorithmus des OTP.
+
+Der grösste Performanceverlust rührt von unserer implementation Der Stop- und Trip-Handler. Die Handler haben zwar eine Referenz auf das ihnen zugehörige Objekt, jedoch hat das Objekt keine Referenz zum Handler. Da in unserem Algorithmus jedoch mit den Objekten gearbeitet wird und dann im zum Objekt gehörigen Handler Informationen abgespeichert werden müssen, muss jedes mal mit einer Suchschleife der richtige Handler gefunden werden. Dies führt dazu, dass in einem Schleifendurchlauf des Algorithmus acht Suchschleifen durchlaufen werden, welche jeweils auch grosse Datensätze durchsuchen müssen. 
+
+Um dieses Problem zu lösen müssten die Referenzen gedreht werden, so dass die Objekte auf ihre jeweiligen Handler referenzieren. Somit lassen sich die Suchschleifen vermeiden. Aus zeitlichen Gründen konnten wir diese Optimierung jedoch nicht mehr durchführen.
+

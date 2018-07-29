@@ -111,11 +111,13 @@ Nun werden die Journeys vom Startstop aus rekonstruiert. Es wird ein Journey fü
 Der Vorgang benötigt jedoch noch einen Zusatz, da der Algorithmus auch Reisen findet, welche Kreise fahren und den selben Ort mehrfach anfahren. Um dies zu verhindern wird eine Liste mit allen schon angefahrenen Stops geführt. Für jeden neuen JourneyPointer wird geprüft ob der Ankuftsstop schon in der Liste vorhanden ist. Ist dies der Fall so wird ein Bit auf TRUE gesetzt. Am ende werden nur Journey der Rückgabe hinzugefügt bei welchen kein Stop mehrfach angefahren wurde.
 
 \subsection{Performance-Test}
-Um den Performance-Test durchzuführen wird ein JUNIT-Test mit der JUNIT-Benchmark erweiterung genutzt. Dieser führt mehrere Requests durch. Ein Reqeust ohne Umsteigen. Einer mit einmal Umsteigen und einer mit zweimal umsteigen.
+Um den Performance-Test durchzuführen wird ein JUNIT-Test mit der JUNIT-Benchmark erweiterung genutzt. Als Grundlage der Test dient der EACS. Mit diesem wurden mehrere Tests durchgeführt durch welche den Flaschenhals des Algorithmus aufzeigen sollten.
 \newline
 
 
-Die Tests schlugen jedoch bei dem CSA ohne die QuadTree-Optimierung fehl, da die Anfrage mit den kompletten Schweizer-Daten länger als 24 Stunden dauerte.
+Ein Request auf dem gesamtschweizerischen Netzwerk mit dem EACS dauerte ca. 24 Stunden. Um die Dauer einer Anfrage auf eine annehmbare Zeit zu minimieren so dass wir genauere Analysen durchführen konnten, verwendeten wir ein etwas kleineres GTFS, nämlich das von Portland. Dabei stellten wir fest, dass unser Hauptbreakkriterium aufgrund von einigen Methoden, welche wegen dem JUnit-Benchmark zusätzlich als static definiert werden mussten, nicht mehr funktionierte. Das Breakkriterium soll in kraft treten wenn der Algorithmus eine Lösung gefunden hat. Dies wurde aber nicht mehr ausgelöst, somit lief er einfach durch alle Connections ohne einen Treffer zu landen. Somit waren die im Test erzeugten Zeiten nicht repräsentativ für unseren Algorithmus.
+
+Alternativ haben wir die Funktion \texttt{System.currentTimeMillis()} verwendet. Die Funktion gibt die aktuelle Zeit in Millisekunden zurück. Durch diese Funktion ist es also möglich die zu Stoppen für beliebige Abschnitte. Indem man am einem gewählten Anfangspunkt/Endpunkt die Zeit speichert. Durch die Differenz der zwei Zeiten vom Anfangs- und Endpunkt lässt sich nun die Zeitspanne berechnen, die das Programm benötigt hat. 
 
 \subsection{OTP mit Schweizer Daten implementieren}
 Der originale OTP muss mit den Schweizer GTFS-Daten funktionieren, da er als Grundlage für den Algorithmus dient und die Performance der beiden Algorithmen verglichen wird. Es gab zwei Probleme, welche dabei behandelt werden mussten.

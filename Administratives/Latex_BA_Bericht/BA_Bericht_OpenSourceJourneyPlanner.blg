@@ -9,6 +9,37 @@ A level-1 auxiliary file: Produkt.aux
 A level-1 auxiliary file: Resultate.aux
 A level-1 auxiliary file: Fazit.aux
 A level-1 auxiliary file: literatur.aux
-I found no \bibdata command---while reading file BA_Bericht_OpenSourceJourneyPlanner.aux
-I found no \bibstyle command---while reading file BA_Bericht_OpenSourceJourneyPlanner.aux
-(There were 2 error messages)
+The style file: ieeetran.bst
+Database file #1: quellen.bib
+I was expecting a `,' or a `}'---line 23 of file quellen.bib
+ :  
+ :  month = jul,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 80 of file quellen.bib
+ :  
+ :  month = jul,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 188 of file quellen.bib
+ : @misc{dij_bell
+ :               ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 227 of file quellen.bib
+ : @online{gtfsInhalt
+ :                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 241 of file quellen.bib
+ : @online{gtfs
+ :             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 262 of file quellen.bib
+ : @online{gtfs-rt-google
+ :                       ,
+I'm skipping whatever remains of this entry
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+(There were 6 error messages)

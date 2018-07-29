@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.12)  29 JUL 2018 09:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.12)  29 JUL 2018 12:39
 entering extended mode
 **./BA_Bericht_OpenSourceJourneyPlanner.tex
 (BA_Bericht_OpenSourceJourneyPlanner.tex
@@ -1132,75 +1132,75 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 5.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 4.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 5.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 4.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 13.
+(babel)             in language  on input line 12.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 13.
+(babel)             in language  on input line 12.
 
-Underfull \hbox (badness 4328) in paragraph at lines 21--21
+Underfull \hbox (badness 4328) in paragraph at lines 20--20
 []\OT1/cmr/m/n/12 Der CSA muss als Be-
  []
 
 
-Underfull \hbox (badness 5245) in paragraph at lines 21--21
+Underfull \hbox (badness 5245) in paragraph at lines 20--20
 \OT1/cmr/m/n/12 rech-nungs-al-go-rith-mus ver-
  []
 
 
-Underfull \hbox (badness 1286) in paragraph at lines 23--23
+Underfull \hbox (badness 1286) in paragraph at lines 22--22
 []\OT1/cmr/m/n/12 Es kann ei-ne Ver-bin-dung
  []
 
 
-Underfull \hbox (badness 2096) in paragraph at lines 27--27
+Underfull \hbox (badness 2096) in paragraph at lines 26--26
 []\OT1/cmr/m/n/12 Das Pro-gramm kann auf
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--27
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
 \OT1/cmr/m/n/12 Ver-sp[]atungen und Fahr-
  []
 
 
-Underfull \hbox (badness 1546) in paragraph at lines 29--29
+Underfull \hbox (badness 1546) in paragraph at lines 28--28
 []\OT1/cmr/m/n/12 Mehrere m[]ogliche Ver-bin-
  []
 
 
-Underfull \hbox (badness 3396) in paragraph at lines 29--29
+Underfull \hbox (badness 3396) in paragraph at lines 28--28
 \OT1/cmr/m/n/12 dun-gen k[]onnen an-ge-zeigt
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--31
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
 \OT1/cmr/m/n/12 de-nen Sta-tio-nen k[]onnen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 15--40
+Underfull \hbox (badness 10000) in paragraph at lines 14--39
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 15--40
+Underfull \hbox (badness 10000) in paragraph at lines 14--39
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 40.
+(babel)             in language  on input line 39.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 40.
+(babel)             in language  on input line 39.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 40.
+(babel)             in language  on input line 39.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 40.
+(babel)             in language  on input line 39.
 [3
 
 
@@ -1229,10 +1229,6 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 7.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 7.
-
-
-LaTeX Warning: Citation `otp' on page 5 undefined on input line 9.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 19.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1241,9 +1237,6 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 25.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 25.
-
-LaTeX Warning: Citation `dij_bell' on page 5 undefined on input line 26.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 27.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1252,7 +1245,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 27.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 27.
-[5
+ [5
 
 
 ]
@@ -1260,30 +1253,14 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 28.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 28.
-
-
-LaTeX Warning: Citation `dij_a' on page 6 undefined on input line 29.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 31.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 31.
-
-LaTeX Warning: Citation `csa' on page 6 undefined on input line 32.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 41.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 41.
-
-LaTeX Warning: Citation `gtfsinhalt' on page 6 undefined on input line 43.
-
-
-LaTeX Warning: Citation `gtfs' on page 6 undefined on input line 43.
-
-
-LaTeX Warning: Citation `gtfs-rt-google' on page 6 undefined on input line 43.
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
@@ -1320,40 +1297,40 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 4.
+(babel)             in language  on input line 3.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 4.
+(babel)             in language  on input line 3.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 10.
+(babel)             in language  on input line 9.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 10.
- <img/csapackage.png, id=333, 201.00093pt x 338.76563pt>
+(babel)             in language  on input line 9.
+ <img/csapackage.png, id=346, 201.00093pt x 338.76563pt>
 File: img/csapackage.png Graphic file (type png)
 
 <use img/csapackage.png>
-Package pdftex.def Info: img/csapackage.png used on input line 15.
+Package pdftex.def Info: img/csapackage.png used on input line 14.
 (pdftex.def)             Requested size: 142.26378pt x 239.77057pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--22
+Underfull \hbox (badness 10000) in paragraph at lines 19--21
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 22.
+(babel)             in language  on input line 21.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 22.
+(babel)             in language  on input line 21.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 22.
+(babel)             in language  on input line 21.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 22.
+(babel)             in language  on input line 21.
 [8
 
 
  <./img/csapackage.png>]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 23.
+(babel)             in language  on input line 22.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 23.
+(babel)             in language  on input line 22.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 26.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1397,7 +1374,7 @@ Overfull \hbox (35.36267pt too wide) in paragraph at lines 7--9
 en von Fuss-we-ge(\OT1/cmtt/m/n/12 FootpathCSA\OT1/cmr/m/n/12 ),
  []
 
-<img/TimeTable.png, id=346, 664.4825pt x 266.9975pt>
+<img/TimeTable.png, id=360, 664.4825pt x 266.9975pt>
 File: img/TimeTable.png Graphic file (type png)
  <use img/TimeTable.png>
 Package pdftex.def Info: img/TimeTable.png used on input line 12.
@@ -1407,7 +1384,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 17.
 
-<img/footpath.png, id=347, 225.84375pt x 225.84375pt>
+<img/footpath.png, id=361, 225.84375pt x 225.84375pt>
 File: img/footpath.png Graphic file (type png)
  <use img/footpath.png>
 Package pdftex.def Info: img/footpath.png used on input line 20.
@@ -1430,23 +1407,17 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 27.
 
-<img/stop.png, id=355, 225.84375pt x 225.84375pt>
+<img/stop.png, id=369, 225.84375pt x 225.84375pt>
 File: img/stop.png Graphic file (type png)
  <use img/stop.png>
 Package pdftex.def Info: img/stop.png used on input line 30.
 (pdftex.def)             Requested size: 142.26378pt x 142.27196pt.
-
-
-LaTeX Warning: Citation `stop-pic' on page 11 undefined on input line 31.
-
-
-LaTeX Warning: Citation `stop-pic' on page 11 undefined on input line 31.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 36.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 36.
-<img/connection.png, id=356, 225.84375pt x 225.84375pt>
+
+<img/connection.png, id=372, 225.84375pt x 225.84375pt>
 File: img/connection.png Graphic file (type png)
 
 <use img/connection.png>
@@ -1466,7 +1437,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 45.
 
-<img/trip.png, id=365, 225.84375pt x 225.84375pt>
+<img/trip.png, id=382, 225.84375pt x 225.84375pt>
 File: img/trip.png Graphic file (type png)
  <use img/trip.png>
 Package pdftex.def Info: img/trip.png used on input line 48.
@@ -1478,7 +1449,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 54.
 
-<img/Journey.png, id=366, 372.39125pt x 464.73625pt>
+<img/Journey.png, id=383, 372.39125pt x 464.73625pt>
 File: img/Journey.png Graphic file (type png)
  <use img/Journey.png>
 Package pdftex.def Info: img/Journey.png used on input line 58.
@@ -1506,7 +1477,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 69.
 
-<img/programmablauf.png, id=373, 1340.00626pt x 258.9675pt>
+<img/programmablauf.png, id=390, 1340.00626pt x 258.9675pt>
 File: img/programmablauf.png Graphic file (type png)
 
 <use img/programmablauf.png>
@@ -1546,19 +1517,12 @@ Overfull \hbox (5.72336pt too wide) in paragraph at lines 81--82
 -ver stellt ei-ne Web-sei-te zur Verf[]ugung(Webserver).
  []
 
-<img/serverrequestresponse.jpg, id=381, 953.5625pt x 783.92876pt>
+<img/serverrequestresponse.jpg, id=398, 953.5625pt x 783.92876pt>
 File: img/serverrequestresponse.jpg Graphic file (type jpg)
 
 <use img/serverrequestresponse.jpg>
 Package pdftex.def Info: img/serverrequestresponse.jpg used on input line 85.
 (pdftex.def)             Requested size: 227.62204pt x 187.12999pt.
-
-
-LaTeX Warning: Citation `server-pic' on page 14 undefined on input line 86.
-
-
-LaTeX Warning: Citation `server-pic' on page 14 undefined on input line 86.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 93.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1582,17 +1546,10 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 97.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 97.
-
-
-LaTeX Warning: Citation `csa' on page 15 undefined on input line 98.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 114.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 114.
-
-LaTeX Warning: Citation `csa' on page 15 undefined on input line 115.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 116.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1601,7 +1558,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 116.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 116.
-[15]
+ [15]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 133.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1636,7 +1593,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 5.
 
-<img/Sammlungen.png, id=400, 502.12593pt x 61.73062pt>
+<img/Sammlungen.png, id=422, 502.12593pt x 61.73062pt>
 File: img/Sammlungen.png Graphic file (type png)
 
 <use img/Sammlungen.png>
@@ -1680,7 +1637,7 @@ Package babel Info: Redefining ngerman shorthand "~
 
 
  <./img/Sammlungen.png>]
-<img/LiniennetzDummyGTFS.png, id=411, 1005.00468pt x 676.77844pt>
+<img/LiniennetzDummyGTFS.png, id=433, 1005.00468pt x 676.77844pt>
 File: img/LiniennetzDummyGTFS.png Graphic file (type png)
 
 <use img/LiniennetzDummyGTFS.png>
@@ -1751,10 +1708,6 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 69.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 69.
-
-
-LaTeX Warning: Citation `csa' on page 22 undefined on input line 70.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 71.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1843,44 +1796,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 114--116
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 120.
+(babel)             in language  on input line 122.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 120.
+(babel)             in language  on input line 122.
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--123
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 124--126
+Underfull \hbox (badness 10000) in paragraph at lines 123--125
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 125.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 125.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 125.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 125.
 [25]
+Underfull \hbox (badness 10000) in paragraph at lines 126--128
+
+ []
+
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 131.
+(babel)             in language  on input line 133.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 131.
- <img/ohneosmfile.png, id=451, 236.38312pt x 245.41687pt>
+(babel)             in language  on input line 133.
+<img/ohneosmfile.png, id=474, 236.38312pt x 245.41687pt>
 File: img/ohneosmfile.png Graphic file (type png)
 
 <use img/ohneosmfile.png>
-Package pdftex.def Info: img/ohneosmfile.png used on input line 139.
+Package pdftex.def Info: img/ohneosmfile.png used on input line 141.
 (pdftex.def)             Requested size: 170.71652pt x 177.24298pt.
 
-<img/mitosmfile.png, id=452, 239.39438pt x 258.9675pt>
+<img/mitosmfile.png, id=475, 239.39438pt x 258.9675pt>
 File: img/mitosmfile.png Graphic file (type png)
 
 <use img/mitosmfile.png>
-Package pdftex.def Info: img/mitosmfile.png used on input line 146.
+Package pdftex.def Info: img/mitosmfile.png used on input line 148.
 (pdftex.def)             Requested size: 170.71652pt x 184.6743pt.
 )
 Package babel Info: Redefining ngerman shorthand "|
@@ -1891,15 +1843,29 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 51.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 51.
- [26 <./img/ohneosmfile.png> <./img/mitosmfile.png>]
+ [26]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 51.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 51.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 51.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 51.
+ [27 <./img/ohneosmfile.png> <./img/mitosmfile.png>]
 \openout2 = `Resultate.aux'.
 
-
-(Resultate.tex
+ (Resultate.tex
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
+
+Overfull \hbox (46.85162pt too wide) in paragraph at lines 4--5
+[]\OT1/cmr/m/n/12 Die Tests mit den PortlandGTFS-Daten mit der Funk-ti-on \OT1/
+cmtt/m/n/12 System.currentTimeMillis()
+ []
+
 )
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 53.
@@ -1909,7 +1875,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 53.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 53.
- [27
+ [28
 
 
 ]
@@ -1929,17 +1895,10 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 55.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 55.
- [28
+ [29
 
 
 ] (BA_Bericht_OpenSourceJourneyPlanner.lof
-
-LaTeX Warning: Citation `stop-pic' on page 29 undefined on input line 5.
-
-
-LaTeX Warning: Citation `server-pic' on page 29 undefined on input line 10.
-
-
 Overfull \hbox (0.75177pt too wide) in paragraph at lines 11--11
  [][] [][][]\OT1/cmr/m/n/12 Das Bild zeigt wel-che Samm-lun-gen wir in der Zeit
 -ta-fel zur Verf[]ugung 
@@ -1957,33 +1916,41 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 59.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 59.
- [29
+ [30
 
 ]
 \openout2 = `literatur.aux'.
 
- (literatur.tex)
+ (literatur.tex (BA_Bericht_OpenSourceJourneyPlanner.bbl))
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 59.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 59.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 59.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 59.
+ [31
+
+]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 68.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 68.
- (BA_Bericht_OpenSourceJourneyPlanner.aux (abstract.aux)
-(Einleitung.aux) (Aufgabenstellung.aux) (Ausgangslage.aux) (Methode.aux)
-(CSAfuerOTP.aux) (Produkt.aux) (Resultate.aux) (Fazit.aux) (literatur.aux))
+
+(BA_Bericht_OpenSourceJourneyPlanner.aux (abstract.aux) (Einleitung.aux)
+(Aufgabenstellung.aux) (Ausgangslage.aux) (Methode.aux) (CSAfuerOTP.aux)
+(Produkt.aux) (Resultate.aux) (Fazit.aux) (literatur.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 68.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 68.
 Package rerunfilecheck Info: File `BA_Bericht_OpenSourceJourneyPlanner.out' has
  not changed.
 (rerunfilecheck)             Checksum: B01B35058F11937F13CD16A5B34BC0DF;3707.
-
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 15962 strings out of 493323
- 265979 string characters out of 3139065
- 500467 words of memory out of 3000000
- 19062 multiletter control sequences out of 15000+200000
- 10758 words of font info for 40 fonts, out of 3000000 for 9000
+ 15986 strings out of 493323
+ 266462 string characters out of 3139065
+ 500730 words of memory out of 3000000
+ 19071 multiletter control sequences out of 15000+200000
+ 10451 words of font info for 39 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,9n,51p,8848b,546s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
@@ -1993,13 +1960,14 @@ es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX
 /type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/
-Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on BA_Bericht_OpenSourceJourneyPlanner.pdf (34 pages, 897012 byt
+m/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on BA_Bericht_OpenSourceJourneyPlanner.pdf (36 pages, 918838 byt
 es).
 PDF statistics:
- 553 PDF objects out of 1000 (max. 8388607)
- 109 named destinations out of 1000 (max. 500000)
+ 610 PDF objects out of 1000 (max. 8388607)
+ 121 named destinations out of 1000 (max. 500000)
  492 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -47,7 +47,7 @@
 \contentsline {subsubsection}{\numberline {7.7.1}EAS}{23}{subsubsection.7.7.1}
 \contentsline {subsubsection}{\numberline {7.7.2}PCS}{24}{subsubsection.7.7.2}
 \contentsline {subsection}{\numberline {7.8}Performance-Test}{25}{subsection.7.8}
-\contentsline {subsection}{\numberline {7.9}OTP mit Schweizer Daten implementieren}{25}{subsection.7.9}
+\contentsline {subsection}{\numberline {7.9}OTP mit Schweizer Daten implementieren}{26}{subsection.7.9}
 \contentsline {subsection}{\numberline {7.10}Kann OTP ohne .osm file ausgef\IeC {\"u}hrt werden?}{26}{subsection.7.10}
-\contentsline {section}{\numberline {8}Resultate}{27}{section.8}
-\contentsline {section}{\numberline {9}Fazit}{28}{section.9}
+\contentsline {section}{\numberline {8}Resultate}{28}{section.8}
+\contentsline {section}{\numberline {9}Fazit}{29}{section.9}

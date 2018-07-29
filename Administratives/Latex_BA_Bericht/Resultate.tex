@@ -1,2 +1,6 @@
 \section{Resultate}
-\todocomment{Unsere Tests und deren Ergebnisse darstellen}
+Die Tests mit den gesamtschweizerischen GTFS-Daten mit dem JUnit-Benchmark führten zu folgenden Ergebnissen. Ein Request benötigt ca. 24h um bearbeitet zu werden. Somit ist der Algorithmus um den Faktor 10000 langsamer als der Originalalgorithmus des OTP, welcher für die selbe Anfrage nur wenige Sekunden benötigt.
+
+Die Tests mit den PortlandGTFS-Daten mit der Funktion \texttt{System.currentTimeMillis()} führten zu folgenden Ergebnissen. Ein Request kann in einem Zeitfenster zwischen 1 - 9 Minuten bearbeitet werden. Diese Zeitspanne hängt davon ab, nach wie vielen Schleifendurchläufen eine Lösung gefunden wurde und somit das Break-Kriterium greift. Damit ist der Request um den Faktor 1000 langsamer als der Originalalgorithmus.
+
+Für einen Schleifendurchlauf gibt es zwei mögliche Zeiten. Ist die in der Schleife behandelte Connection nicht relevant, so werden diese nicht bearbeitet. Dabei wird eine Zeit von <1ms benötigt. Wenn die Connection jedoch relevant ist, so wird eine Zeit von 15ms benötigt.

@@ -1,11 +1,14 @@
 \select@language {ngerman}
-\contentsline {figure}{\numberline {1}{\ignorespaces Hier ist das UML-Diagramm zur \texttt {TimeTable} Datenstruktur zu sehen.}}{8}{figure.1}
-\contentsline {figure}{\numberline {2}{\ignorespaces Symbolbild f\IeC {\"u}r den Fussweg(FootpathCSA)}}{9}{figure.2}
-\contentsline {figure}{\numberline {3}{\ignorespaces Symbolbild f\IeC {\"u}r die Haltestelle(StopCSA)}}{9}{figure.3}
-\contentsline {figure}{\numberline {4}{\ignorespaces Symbolbild f\IeC {\"u}r die Verbindung(ConnectionCSA)}}{10}{figure.4}
-\contentsline {figure}{\numberline {5}{\ignorespaces Symbolbild f\IeC {\"u}r die Fahrt(TripCSA)}}{10}{figure.5}
-\contentsline {figure}{\numberline {6}{\ignorespaces Programmablauf des OTP mit dem CSA}}{11}{figure.6}
-\contentsline {figure}{\numberline {7}{\ignorespaces Darstellung der Kommunikation zwischen Clients und Server}}{12}{figure.7}
-\contentsline {figure}{\numberline {8}{\ignorespaces Dieses Bild gibt eine \IeC {\"U}bersicht welche Haltestellen und Routen im Dummy-GTFS vorhanden ist.}}{16}{figure.8}
-\contentsline {figure}{\numberline {9}{\ignorespaces ohne .osm File}}{23}{figure.9}
-\contentsline {figure}{\numberline {10}{\ignorespaces mit .osm File}}{23}{figure.10}
+\contentsline {figure}{\numberline {1}{\ignorespaces Dieses Bild gibt eine \IeC {\"U}bersicht welche Klassen in unserem Paket vorhanden ist.}}{8}{figure.1}
+\contentsline {figure}{\numberline {2}{\ignorespaces Hier ist das UML-Diagramm zur \texttt {TimeTable} Datenstruktur zu sehen.}}{10}{figure.2}
+\contentsline {figure}{\numberline {3}{\ignorespaces Symbolbild f\IeC {\"u}r den Fussweg(FootpathCSA)}}{10}{figure.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces Symbolbild f\IeC {\"u}r die Haltestelle(StopCSA)\cite {stop-pic}}}{11}{figure.4}
+\contentsline {figure}{\numberline {5}{\ignorespaces Symbolbild f\IeC {\"u}r die Verbindung(ConnectionCSA)}}{11}{figure.5}
+\contentsline {figure}{\numberline {6}{\ignorespaces Symbolbild f\IeC {\"u}r die Fahrt(TripCSA)}}{12}{figure.6}
+\contentsline {figure}{\numberline {7}{\ignorespaces Hier ist das UML-Diagramm zur \texttt {Journey} Datenstruktur zu sehen.}}{13}{figure.7}
+\contentsline {figure}{\numberline {8}{\ignorespaces Programmablauf des OTP mit dem CSA}}{13}{figure.8}
+\contentsline {figure}{\numberline {9}{\ignorespaces Darstellung der Kommunikation zwischen Clients und Server\cite {server-pic}}}{14}{figure.9}
+\contentsline {figure}{\numberline {10}{\ignorespaces Das Bild zeigt welche Sammlungen wir in der Zeittafel zur Verf\IeC {\"u}gung stehen.}}{18}{figure.10}
+\contentsline {figure}{\numberline {11}{\ignorespaces Dieses Bild gibt eine \IeC {\"U}bersicht welche Haltestellen und Routen im Dummy-GTFS vorhanden ist.}}{19}{figure.11}
+\contentsline {figure}{\numberline {12}{\ignorespaces ohne .osm File}}{26}{figure.12}
+\contentsline {figure}{\numberline {13}{\ignorespaces mit .osm File}}{26}{figure.13}

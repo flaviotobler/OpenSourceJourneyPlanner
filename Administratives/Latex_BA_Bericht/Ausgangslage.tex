@@ -17,6 +17,9 @@ OTP steht unter einer GNU Lesser General Public License.
 
 
 \subsection{Verwendung des OpenTripPlanners}
+Der OTP wird über das OTPMain-File im Packet org.opentripplanner.otp gestartet. Dabei benötigt er drei Parameter. Mit den Parameter «--build» wird dem OTP ein Pfad mitgegeben, in welchem die GTFS- und OSM-Daten abgelegt sind. Mit dem Parameter «--inMemory» behält der OTP seine Daten ausschliesslich im RAM. Wird der Parameter nicht angegeben so werden die Daten im im Build-Parameter angegebenen Pfad gespeichert.
+
+Mit einem Weiteren Parameter kann festgelegt werden wie viel Arbeitsspeicher das Programm maximal verwenden darf. Der Parameter lautet «-Xmx4g». Die Zahl steht dabei für die Anzahl zur Verfügung gestellten Gigabyte.
 
 
 \subsection{Dijkstra Algorithmus}

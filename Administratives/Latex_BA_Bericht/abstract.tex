@@ -1,20 +1,14 @@
 \section{Abstract}
-Das Ziel dieser Bachelorarbeit war es, zu prüfen ob der «Connection Scan Algorithmus», kurz CSA, für die Wegfindung im Netzwerk der schweizerischen öffentlichen Verkehrsmittel geeignet ist. Zusätzlich soll der CSA für die Verwendung von Matrizen-Abfragen eingeschätzt werden. Dazu wurde das bestehende Programm «OpenTripPlanner» verwendet. Dieses basiert auf dem Dijkstra-Algorithmus. In dieser Arbeit wurde nun der konzeptionell bestehende CSA programmiertechnisch umgesetzt und der bestehende Algorithmus ersetzt. Anschliessend wurde dessen Performance geprüft.
-\newline
+Der Connection Scan Algorithmus (CSA) ist ein moderner  Algorithmus zur Beantwortung von Anfragen auf zeitplanbasierten Systemen. Diese Arbeit liefert eine Implementation des CSA in Java. Mittels dem Web Frontend des FOSS Reiseplaners OpenTripPlanner (OTP) wird diese Benutzern zugänglich gemacht. OTP verwendet standardmässig den A* Algorithmus. 
 
+Im Benchmark konnte die angestrebte Performance-Steigerung des CSA gegenüber A* nicht erreicht werden: Unsere Implementierung ist bei Anfragen auf das gesamtschweizerische Fahrplannetz um den Faktor 1000 langsamer als der zuvor verwendete Algorithmus.
 
-Die Grundversion des CSA ist nicht für diese grossen Datenmengen geeignet, da sie zu Verarbeitungszeiten von mehr als 24h pro Anfrage führte. Um dies zu verbessern wurde eine Quad-Tree-Optimierung hinzugefügt. Diese führte zu einer starken Performance-Verbesserung. ………………..
-\newline
+\newpage 
 
+The Connection Scan Algorithm (CSA) is a modern Algorithm for answering inquiries on timetable based systems. This paper provides an implementation of the CSA in Java. User accessibility is granted via the web frontend of the FOSS tripplanner OpenTripPlanner (OTP). OTP uses the A* Algorithm by default.
 
-Dies führt uns zu dem Schluss, dass der CSA …………….
-\newline
-
-
-Der CSA ist nicht für Matrizenanfragen geeignet, da einer der grossen Geschwindigkeitsvorteile des Algorithmus daher rührt, dass er nur einen kleinen Teil der Verbindungen überhaupt behandeln muss, und die anderen Verbindungen ignoriert werden können. Eine Matrizenanfrage schränkt diesen Vorteil stark ein. Zusätzlich müsste die Struktur des CSA überarbeitet werden, da immer nur Zeiten zu einem bestimmten Zielpunkt gespeichert werden, welche im Falle einer Matrizen-Anfrage nicht differenzierbar sind. 
-\newpage
+In the benchmark we couldn’t achieve the expected performance increase of the CSA compared to the A* algorithm. Our implementation is slower than the original algorithm by a factor of 1000.
 
 
 
 
-\todocomment{Abstract in Englisch}

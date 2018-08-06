@@ -1,12 +1,13 @@
-\section{Augabenstellung}
+\section{Aufgabenstellung}
+\subsection{Vorgaben aus Fachmodul}
 \label{AufgabenstellungBA}
 \begin{itemize}
-	\item Schreiben sie eine Implementation des CSA für den OpenTripPlanner. Dieser muss OTP-Development-Richtklinien konform sein.
-	\item Implementieren sie die Schweizer GTFS und OpenStreetMap daten für den OTP, so dass Punkt zu Punkt Verbindungen in der Schweiz berechnet werden können.
-	\item Implementieren sie den Schweizer realtime GTFS-Feed, so dass das Programm auf Verspätungen oder Fahrplanänderungen reagieren kann.
-	\item Implementieren sie Skalierungsoptimierungen für das Programm, so dass es mit einem landesweiten System bessere Performanz liefert.
-	\item Führen sie Performance Tests durch und vergleichen sie das Implementierte System mit dem auf Dijkstra basierenden OTP.
-	\item Dokumentieren sie ihre Ergebnisse und schreiben sie einen ausführlichen Bericht.
+	\item Schreiben Sie eine Implementation des CSA für den OpenTripPlanner. Dieser muss OTP-Development-Richtklinien konform sein.
+	\item Implementieren Sie die Schweizer GTFS und OpenStreetMap-Daten für den OTP, so dass Punkt zu Punkt Verbindungen in der Schweiz berechnet werden können.
+	\item Implementieren Sie den Schweizer realtime GTFS-Feed, so dass das Programm auf Verspätungen oder Fahrplanänderungen reagieren kann.
+	\item Implementieren Sie Skalierungsoptimierungen für das Programm, so dass es mit einem landesweiten System bessere Performanz liefert.
+	\item Führen Sie Performance Tests durch und vergleichen Sie das implementierte System mit dem auf Dijkstra basierenden OTP.
+	\item Dokumentieren Sie ihre Ergebnisse und schreiben Sie einen ausführlichen Bericht.
 \end{itemize}
 
 \subsection{Lastenheft}
@@ -19,7 +20,7 @@
 	\hline
 	Der CSA muss als Berechnungsalgorithmus verwendet werden. & Muss & 1 \\
 	\hline
-	Es kann eine Verbindung zwischen 2 Stationen zu einem bestimmten Zeitpunkt errechnet werden. & Muss & 2 \\
+	Es kann eine Verbindung zwischen zwei Stationen zu einem bestimmten Zeitpunkt errechnet werden. & Muss & 2 \\
 	\hline
 	Fusswege zu Stationen hin können miteinbezogen werden können. & Muss & 3 \\
 	\hline
@@ -29,13 +30,13 @@
 	\hline
 	Fusswege zwischen verschiedenen Stationen können miteinbezogen werden. & Soll & 6 \\
 	\hline
-	Die Angezeigte Route soll den Fahrlinien, z.B. Schienen, folgen. & Kann & 7 \\
+	Die angezeigte Route soll den Fahrlinien, z.B. Schienen, folgen. & Kann & 7 \\
 	\hline
 \end{tabular}
 \newline
 \newline
 \newline
-Nicht funktionale Anforderungen
+Nicht-funktionale Anforderungen
 \begin{itemize}
 	\item Der Programmcode muss den OTP-Development-Richtlinien entsprechen.
 	\item Die Query-Zeit muss weniger als 1 Sekunde betragen.

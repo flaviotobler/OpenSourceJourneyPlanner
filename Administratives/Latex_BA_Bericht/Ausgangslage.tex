@@ -1,37 +1,39 @@
 \section{Ausgangslage}
-Um unsere Programm und unser vorgehen zu besser verstehen muessen wir zuerst das von uns verwendete Basisprogramm sowie den von uns verwendeten Basisalgorithms erlaeutern.
+Um unsere Programm und unser Vorgehen besser zu verstehen, müssen wir zuerst das von uns verwendete Basisprogramm sowie den von uns verwendeten Basisalgorithmus erläutern.
 
 \subsection{JourneyPlanning}
-Ein JourneyPlanner ist ein Programm, welches den optimalen Weg für eine Reise zwischen zwei oder mehr Orten findet. Im gegensatz zum RoutePlanning oder Routenplanner bezieht sich ein JourneyPlanner nur auf öffentliche Verkehrsmittel und nicht auf Privatfahrzeuge.
+Ein \hypertarget{JourneyPlanner}{JourneyPlanner} ist ein Programm, welches den optimalen Weg für eine Reise zwischen zwei oder mehr Orten findet. Im Gegensatz zum RoutePlanning oder Routenplanner bezieht sich ein JourneyPlanner nur auf öffentliche Verkehrsmittel und nicht auf Privatfahrzeuge.
 
 \subsection{OpenTripPlanner}
 
-Der OpenTripPlanner \cite{otp} \footnote{\url{https://opentripplanner.org/}}, kurz OTP, ist eine auf der Maven-Repository 
-aufbauende Trip-Planning Software. Er war Anfangs für Städte ausgelegt, findet nun jedoch auch in ersten landesweiten Verkehrsnetzen Anwendung. Er wurde von einem OpenSource-Kollektiv aus mehr als 100 Personen in acht Jahren entwickelt.
+Der \hypertarget{OTP}{OpenTripPlanner} \cite{otp}\footnote{\url{https://opentripplanner.org/}}, kurz OTP, ist eine auf der \gls{Maven-Repository} 
+aufbauende Trip-Planning Software. Er war anfangs für Städte ausgelegt, findet nun jedoch auch in ersten landesweiten Verkehrsnetzen Anwendung. Er wurde von einem OpenSource-Kollektiv aus mehr als 100 Personen in acht Jahren entwickelt. \newline
 
-Der OTP basiert auf dem A*-Algorithmus und verwendet GTFS-Daten und OpenStreetMap Daten. In einem preprocessing Schritt wird der Graph für den Algorithmus erstellt. Dieser kann in einer Datei gespeichert werden oder direkt im RAM des Servers gelagert werden. Während dem Betrieb kann der Graph angepasst werden, so dass das Programm auf verspätete Züge reagieren kann. 
+Der OTP basiert auf dem A*-Algorithmus und verwendet GTFS-Daten und OpenStreetMap-Daten. In einem Preprocessing-Schritt wird der Graph für den Algorithmus erstellt. Dieser kann in einer Datei gespeichert werden oder direkt im RAM des Servers gelagert werden. Während des Betriebs kann der Graph angepasst werden, so dass das Programm auf verspätete Züge reagieren kann. \newline
 
 Der OTP erzeugt für jeden Aufruf eine neue Instanz des Graphen. Dies ist nötig, weil während des Aufrufs Daten im Graphen verändert werden, diese sich jedoch nicht auf andere Aufrufe auswirken dürfen.
 
-OTP steht unter einer GNU Lesser General Public License. 
+OTP steht unter einer \gls{GNU Lesser General Public License}. 
 
 
 \subsection{Verwendung des OpenTripPlanners}
-Der OTP wird über das OTPMain-File im Packet org.opentripplanner.otp gestartet. Dabei benötigt er drei Parameter. Mit den Parameter \texttt{--build} wird dem OTP ein Pfad mitgegeben, in welchem die GTFS- und OSM-Daten abgelegt sind. Mit dem Parameter \texttt{--inMemory} behält der OTP seine Daten ausschliesslich im RAM. Wird der Parameter nicht angegeben so werden die Daten im im Build-Parameter angegebenen Pfad gespeichert.
+Der OTP wird über das OTPMain-File im Packet org.opentripplanner.otp gestartet. Dabei benötigt er drei Parameter. Mit den Parameter \texttt{--build} wird dem OTP ein Pfad mitgegeben, in welchem die GTFS- und OSM-Daten abgelegt sind. Mit dem Parameter \texttt{--inMemory} behält der OTP seine Daten ausschliesslich im RAM. Wird der Parameter nicht angegeben, so werden die Daten im im Build-Parameter angegebenen Pfad gespeichert. \newline
 
-Mit einem Weiteren Parameter kann festgelegt werden wie viel Arbeitsspeicher das Programm maximal verwenden darf. Der Parameter lautet \texttt{-Xmx4g}. Die Zahl steht dabei für die Anzahl zur Verfügung gestellten Gigabyte.
+Mit einem weiteren Parameter kann festgelegt werden, wie viel Arbeitsspeicher das Programm maximal verwenden darf. Der Parameter lautet \texttt{-Xmx4g}. Die Zahl steht dabei für die Anzahl der zur Verfügung gestellten Gigabyte.
 
 
-\subsection{Dijkstra Algorithmus}
-Der Dijkstra Algorithmus \cite{dij_bell} ist ein auf einem Graphen basierender Wegfindungsalgorithmus. Er bildet einen Graph, wobei Haltestellen Punkte sind und Verbindungen die Linien zwischen den Punkten. Alle Verbindungen besitzen eine Gewichtung, welche mit der benötigten Zeit korreliert. Der Algorithmus sucht nun den Weg mit der geringsten summierten Gewichtung vom Start- zum Zielpunkt.
+\subsection{Dijkstra-Algorithmus}
+Der \hypertarget{dij}{Dijkstra-Algorithmus} \cite{dij_bell} ist ein auf einem Graphen basierender Wegfindungsalgorithmus. Er bildet einen Graph, wobei Haltestellen Punkte sind und Verbindungen die Linien zwischen den Punkten. Alle Verbindungen besitzen eine Gewichtung, welche mit der benötigten Zeit korreliert. Der Algorithmus sucht nun den Weg mit der geringsten summierten Gewichtung vom Start- zum Zielpunkt.
 
 \subsection{A* Algorithmus}
-Der A* Algorithmus \cite{dij_a} ist eine Erweiterung des Dijkstra Algorithmus. Er durchsucht den Graphen nicht in alle Richtungen sondern sucht gezielt in die Richtung des Zielpunktes. Dadurch lässt sich die Performance verbessern.
+Der \hypertarget{A*}{A*-Algorithmus} \cite{dij_a} ist eine Erweiterung des Dijkstra-Algorithmus. Er durchsucht den Graphen nicht in alle Richtungen sondern sucht gezielt in die Richtung des Zielpunktes. Dadurch lässt sich die Performance verbessern.
 
 \subsection{Connection Scan Algorithmus}
-Der Connection Scan Algorithm \cite{csa} , kurz CSA,  ist ein moderner Algorithmus zur Bearbeitung von Anfragen auf zeitplanbasierten Sytemen. Er basiert, im Gegensatz zu den gängigen Algorithmen wie z.B. dem Dijkstra-Algorithmus, nicht auf einem gewichteten Graphen. 
-Es gibt zwei Arten des CSA. Zum einen den EACS(EarlyestArrivalConnectionScan) welcher die frühestmögliche Ankunftszeit und wenn benötigt auch noch den dazugehörigen Journey zurückliefert. Zum anderen den PCS(ProfileConnectionScan) welcher alle möglichen Journeys berechnet und den Bessten Journey nach mehreren Kriterien sortieren kann. Beide sind darauf ausgelegt genau einen Journey zurückzugeben.
-Der Algorithmus iteriert über eine nach Abfahrtszeit sortierte Liste aller Verbindungen. Dabei werden vom Start- oder Zielpunkt erreichbare Verbindungen markiert. Dadurch entsteht ein Netz aus Verbindungen welches sich immer weiter aufspannt. Dies wird dann so lange wiederholt bis ein Weg zwischen den beiden Punkten gefunden wurde. Danach gibt der Algorithmus entweder die früheste Ankunftszeit am Zielpunkt, oder den besten Weg vom Startpunkt zum Zielpunkt zurück.
+Der {\hypertarget{CSA}{Connect}ion Scan Algorithm} \cite{csa} , kurz CSA,  ist ein moderner Algorithmus zur Bearbeitung von Anfragen auf zeitplanbasierten Sytemen. Er basiert, im Gegensatz zu den gängigen Algorithmen wie z.B. dem Dijkstra-Algorithmus, nicht auf einem gewichteten Graphen. \newline
+
+Es gibt zwei Arten des CSA. Zum einen den EACS (EarliestArrivalConnectionScan) welcher die frühestmögliche Ankunftszeit und wenn benötigt auch noch den dazugehörigen Journey zurückliefert. Zum anderen den PCS (ProfileConnectionScan) welcher alle möglichen Journeys berechnet und den besten Journey nach mehreren Kriterien sortieren kann. Beide sind darauf ausgelegt genau einen Journey zurückzugeben. \newline
+
+Der Algorithmus iteriert über eine nach Abfahrtszeit sortierte Liste aller Verbindungen. Dabei werden vom Start- oder Zielpunkt erreichbare Verbindungen markiert. Dadurch entsteht ein Netz aus Verbindungen, welches sich immer weiter aufspannt. Dies wird dann so lange wiederholt, bis ein Weg zwischen den beiden Punkten gefunden wurde. Danach gibt der Algorithmus entweder die früheste Ankunftszeit am Zielpunkt oder den besten Weg vom Startpunkt zum Zielpunkt zurück.
 
 
 
@@ -40,26 +42,26 @@ Der Algorithmus iteriert über eine nach Abfahrtszeit sortierte Liste aller Verb
 
 \subsection{General Transit Feed Specification}
 %Erklärung was GTFS ist und was dessen aufbau und regeln sind
-General Transit Feed Specification (GTFS)\cite{gtfsinhalt}\cite{gtfs} ist ein von Google entwickeltes Dateiformat zum Austausch von Öffentlichen Verkehrsdaten sprich Fahrpläne. Die Daten werden von der SBB-Platform\footnote{\url{https://opentransportdata.swiss/}} zur Verfügung gestellt. GTFS ist ein statisches Dateiformat und beinhaltet keine Echtzeitdaten, wie Verspätungen, Ausfälle etc. und wird deshalb auch GTFS Static genannt. Die Daten werden in verschiedenen Textfiles zur Verfügung gestellt, welche wiederum viele wichtige Informationen enthält. GTFS-RT(RealTime) ist eine Erweiterung der GTFS-Static Daten. Dies ermöglicht es die GTFS-Daten dynamisch zu aktualisieren. \cite{gtfs-rt-google} \newline
+\hypertarget{GTFS}{General Transit Feed Specification (GTFS)}\cite{gtfsinhalt}\cite{gtfs} ist ein von Google entwickeltes Dateiformat zum Austausch von öffentlichen Verkehrsdaten sprich Fahrpläne. Die Daten werden von der SBB-Platform\footnote{\url{https://opentransportdata.swiss/}} zur Verfügung gestellt. GTFS ist ein statisches Dateiformat und beinhaltet keine Echtzeitdaten wie Verspätungen, Ausfälle etc. und wird deshalb auch GTFS-Static genannt. Die Daten werden in verschiedenen Textfiles zur Verfügung gestellt, welche wiederum viele wichtige Informationen enthalten. GTFS-RT(RealTime) ist eine Erweiterung der GTFS-Static-Daten. Dies ermöglicht es die GTFS-Daten dynamisch zu aktualisieren. \cite{gtfs-rt-google} \newline
 
 \begin{tabular}{|l|c|l|}  \hline
-	Dateiname & pflicht? & Definition \\ \hline
-	agency.txt & ja & Geschäftsstellen die Daten zur Verfügung stellen \\ \hline
+	Dateiname & Pflicht? & Definition \\ \hline
+	agency.txt & ja & Geschäftsstellen, die Daten zur Verfügung stellen \\ \hline
 	stops.txt & ja & Haltestellen mit ihrer Position \\ \hline
 	routes.txt & ja & Verkehrsverbindungen (Linien) mit den Fahrzeugarten \\ \hline %(zeitunabhängig)
 	trips.txt & ja & Fahrten  \\ \hline												%(zeitabhängig)
-	stop\_times.txt & ja & Zeiten in der Fahrzeuge Ankommen/Abfahren an Haltestellen \\ \hline
+	stop\_times.txt & ja & Zeiten, in der Fahrzeuge ankommen/abfahren an Haltestellen \\ \hline
 	calendar.txt & ja & Fahrplanveränderungen (Jahreszeiten) \\ \hline
 	calendar\_dates & optional & Ausnahmeplan für bestimmtes Datum \\ \hline
 	fare\_attributes.txt & optional & Fahrpreise und die Art der Bezahlung \\ \hline
 	fare\_rules.txt & optional & Fahrpreisregeln verschiedener Zonen  \\ \hline
 	shapes.txt & optional & Beschreibt den Weg eines Fahrzeuges (Darstellung) \\ \hline
-	frequencies.txt & optional & Fahrpläne ohne fixe stop Zeiten. \\ \hline
+	frequencies.txt & optional & Fahrpläne ohne fixe Stopp-Zeiten. \\ \hline
 	transfers.txt & optional & Umsteigpunkte verschiedener Routen (Linien) \\ \hline
 	feed\_info.txt & optional & Zusätzliche Informationen über den Datensatz \\ \hline	
 \end{tabular}
 
 %\cite{gtfsInhalt} %Verweis aus Fachmodul!!
-Daten die bisher nicht von der Plattform zur Verfügung gestellt werden: fare\_attributes.txt, fare\_rules.txt, frequencies.txt.
+Daten, die bisher nicht von der Plattform zur Verfügung gestellt werden: fare\_attributes.txt, fare\_rules.txt, frequencies.txt.
 
 

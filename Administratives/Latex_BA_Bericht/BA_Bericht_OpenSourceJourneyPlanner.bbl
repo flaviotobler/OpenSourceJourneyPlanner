@@ -48,7 +48,7 @@ J.~Dibbelt, T.~Pajor, B.~Strasser, and D.~Wagner, ``Connection scan
 
 \bibitem{gtfsinhalt}
 \BIBentryALTinterwordspacing
-``Google,'' Jul. 2018. [Online]. Available:
+``Google reference site gtfs,'' Jul. 2018. [Online]. Available:
   \url{https://developers.google.com/transit/gtfs/reference/}
 \BIBentrySTDinterwordspacing
 
@@ -60,7 +60,7 @@ Gtfs-opentransportdata. [Online]. Available:
 
 \bibitem{gtfs-rt-google}
 \BIBentryALTinterwordspacing
-``Google,'' Jul. 2018. [Online]. Available:
+``Google reference site gtfs-rt,'' Jul. 2018. [Online]. Available:
   \url{https://developers.google.com/transit/gtfs-realtime/guides/feed-entities}
 \BIBentrySTDinterwordspacing
 

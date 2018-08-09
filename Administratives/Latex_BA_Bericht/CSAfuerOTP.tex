@@ -104,9 +104,9 @@ Wenn ein Aufruf von der Webseite eingeht, so wird die \texttt{plan()}-Methode de
 
 
 \subsubsection{Earliest Arrival Connection Scan}
-Der \hypertarget{EAS}{Earliest Arrival Connection Scan Algorithmus}\cite{csa}, kurz EACS, ist ein Wegfindungsalgorithmus, welcher ein \gls{MEAT} (Minimum Expected Arrival Time) Problem löst. Er sucht sich den schnellsten Weg vom Start zum Zielpunkt und beendet dann seine Suche, ohne nach Alternativen zu suchen. \newline
+Der \hypertarget{EAS}{Earliest Arrival Connection Scan Algorithmus}\cite{csa}, kurz EAS, ist ein Wegfindungsalgorithmus, welcher ein \gls{MEAT} (Minimum Expected Arrival Time) Problem löst. Er sucht sich den schnellsten Weg vom Start zum Zielpunkt und beendet dann seine Suche, ohne nach Alternativen zu suchen. \newline
 
-EACS arbeitet mit einer nach Abfahrtszeit sortierten Liste von Verbindungen. Über diese iteriert er dann aufsteigend, wobei als Startpunkt die erste Verbindung verwendet wird, welche nach der im Request spezifizierten Abfahrtszeit abfährt. \newline
+EAS arbeitet mit einer nach Abfahrtszeit sortierten Liste von Verbindungen. Über diese iteriert er dann aufsteigend, wobei als Startpunkt die erste Verbindung verwendet wird, welche nach der im Request spezifizierten Abfahrtszeit abfährt. \newline
 
 Jede Verbindung wird auf drei Eigenschaften überprüft:
 \begin{itemize}
@@ -119,12 +119,12 @@ Wenn eine dieser drei Bedingungen erfüllt ist, so wird dies im Ankunftsort der 
 
 Sobald der Algorithmus eine Verbindung findet, welche eine der drei Bedingungen erfüllt und gleichzeitig der Ankunftsort dem Zielort entspricht, hat er einen Journey zum Ziel gefunden. Die Schleife wird unterbrochen und der Algorithmus baut sich vom Zielort aus mithilfe der Zeiger den kompletten Journey, auf welcher dann als Antwort zurückgegeben wird. \newline
 
-Alternativ kann der EACS auch nur die früheste Ankunftszeit anstelle des kompletten Journeys zurückgeben. In dieser Version müssen keine Zeiger gespeichert werden, was den Algorithmus schneller macht. Es gehen jedoch Informationen über den Reiseweg verloren.
+Alternativ kann der EAS auch nur die früheste Ankunftszeit anstelle des kompletten Journeys zurückgeben. In dieser Version müssen keine Zeiger gespeichert werden, was den Algorithmus schneller macht. Es gehen jedoch Informationen über den Reiseweg verloren.
 
 \subsubsection{Profile Connection Scan}
 Der \hypertarget{PCS}{Profile Connection Scan Algorithmus}\cite{csa}, kurz PCS, ist ein Wegfindungsalgorithmus, welcher alle möglichen Reisen in einem bestimmten Zeitraum errechnet und sich anschliessend nach den gewünschten Kriterien die  beste Reise zurückgibt. \newline
 
-Er arbeitet auch mit einer nach Abfahrtszeiten sortierten Liste von Verbindungen. Im Gegensatz zum EACS iteriert er absteigend über die Verbindungen. Er sucht also die Verbindung vom Zielpunkt aus. Jede Verbindung durchläuft dabei drei Prüfungen:
+Er arbeitet auch mit einer nach Abfahrtszeiten sortierten Liste von Verbindungen. Im Gegensatz zum EAS iteriert er absteigend über die Verbindungen. Er sucht also die Verbindung vom Zielpunkt aus. Jede Verbindung durchläuft dabei drei Prüfungen:
 
 \begin{itemize}
 	\item Kommt man ans Ziel, wenn man aussteigt?	\newline

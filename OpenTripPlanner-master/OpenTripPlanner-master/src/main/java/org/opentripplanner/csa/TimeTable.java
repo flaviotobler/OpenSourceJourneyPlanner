@@ -96,7 +96,11 @@ public class TimeTable implements java.io.Serializable, Cloneable {
     
     
     
-    
+    /**
+     * 
+     * @param stop
+     * @return the footpath of the Stop
+     */
     public FootpathCSA getFootPathChange(StopCSA stop) {
     	
     	FootpathCSA footpath = null;
@@ -118,6 +122,10 @@ public class TimeTable implements java.io.Serializable, Cloneable {
     	return null;
     }
     
+    /**
+     * The next four functions return different Set-Configurations for the Connections
+     */
+    
     public static Set<ConnectionCSA> getConnectionsAscending() {
     	return connectionsAscending;
     }
@@ -134,7 +142,10 @@ public class TimeTable implements java.io.Serializable, Cloneable {
     	return connectionsDescendingNonStatic;
     }
     
-    
+    /**
+     * shows the Connections in the Connection Set
+     * @param connections
+     */
     public void showCon(Set<ConnectionCSA> connections) {
     	
     	Iterator<ConnectionCSA> it = connections.iterator();
@@ -156,50 +167,90 @@ public class TimeTable implements java.io.Serializable, Cloneable {
     	
     	
     }
-
+    
+    
+    /**
+     * 
+     * @return the Set of Stops
+     */
     public Set<StopCSA> getStops() {
         return stops;
     }
 
+    /**
+     * 
+     * @return the Set of Trips
+     */
     public Set<TripCSA> getTrips() {
         return trips;
     }
 
+    /**
+     * 
+     * @return the Set of Footpaths
+     */
     public Set<FootpathCSA> getFootpaths() {
         return footpaths;
     }
 
+    /**
+     * Sets the Set of ascending Connections
+     * @param connectionsAscending
+     */
     public void setConnectionsAscending(Set<ConnectionCSA> connectionsAscending) {
         this.connectionsAscending = connectionsAscending;
         
     }
     
+    /**
+     * Sets the Set of descending Connections
+     * @param connectionsDescending
+     */
     public void setConnectionsDescending(Set<ConnectionCSA> connectionsDescending) {
         this.connectionsDescending = connectionsDescending;
         
     }
     
+    /**
+     * Sets the Set of nonStatic ascending Connections
+     * @param connectionsAscendingNonStatic
+     */
     public void setConnectionsAscendingNonStatic(Set<ConnectionCSA> connectionsAscendingNonStatic) {
         this.connectionsAscendingNonStatic = connectionsAscendingNonStatic;
         
     }
     
+    /**
+     * Sets the Set of nonStatic descending Connections
+     * @param connectionsDescendingNonStatic
+     */
     public void setConnectionsDescendingNonStatic(Set<ConnectionCSA> connectionsDescendingNonStatic) {
         this.connectionsDescendingNonStatic = connectionsDescendingNonStatic;
         
     }
     
-    
+    /**
+     * Sets the Set of Stops
+     * @param stops
+     */
     public void setStops(Set<StopCSA> stops) {
         this.stops = stops;
         
     }
     
+    /**
+     * Sets the Set of Trips
+     * @param trips
+     */
     public void setTrips(Set<TripCSA> trips) {
         this.trips = trips;
         
     }
     
+    /**
+     *Sets the Set of Footpaths 
+     * @param footpaths
+     */
     public void setFootpaths(Set<FootpathCSA> footpaths) {
         this.footpaths = footpaths;
         

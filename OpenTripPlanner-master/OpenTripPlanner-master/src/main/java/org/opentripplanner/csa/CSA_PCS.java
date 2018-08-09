@@ -10,10 +10,24 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * This class is the implementation of the Profile Connection Scan Algorithm. 
+ * To switch between the different algorithms you need to adjust the code in the class "PlannerResource"
+ * in the Package "org.opentripplanner.api.resource".
+ * @author Flavio Tobler
+ *
+ */
+
 import org.opentripplanner.routing.core.RoutingRequest;
 
 public class CSA_PCS {
     
+	/**
+	 * implementation of the Profile Connection Scan Algorithm.
+	 * @param timeTable
+	 * @param request
+	 * @return a list of the journey which go from the start- to the endpoint
+	 */
     public static Set<Journey> createJourneys(TimeTable timeTable, RoutingRequest request){
         
         Date dateTime = request.getDateTime();
@@ -210,6 +224,12 @@ public class CSA_PCS {
         return journeys;     
     }
     
+    /**
+     * Finds a specific TripHandler
+     * @param trip
+     * @param trips
+     * @return the found TripHandler or null if none is found
+     */
     public static TripHandlerPCSA getTrip(Set<TripHandlerPCSA> trips, TripCSA trip){
         for(TripHandlerPCSA th : trips){
             if(th.getTrip() == trip){
@@ -219,6 +239,12 @@ public class CSA_PCS {
         return null;
     }
     
+    /**
+     * Finds a specific StopHandler
+     * @param stop
+     * @param stops
+     * @return the found StopHandler or null if none is found.
+     */
     public static StopHandlerPCSA getStop(Set<StopHandlerPCSA> stops, StopCSA stop){
         for(StopHandlerPCSA sh : stops){
             if(sh.getStop() == stop){
@@ -228,6 +254,11 @@ public class CSA_PCS {
         return null;
     }
     
+    /**
+     * Generates a TripHandler for each Trip in the TimeTable
+     * @param trips
+     * @return a list of the generated TripHandler
+     */
     private static Set<TripHandlerPCSA> generateTripHandlers(Set<TripCSA> trips) {
         Set<TripHandlerPCSA> tripHandlers = new HashSet<TripHandlerPCSA>();
         for(TripCSA t : trips){
@@ -237,6 +268,11 @@ public class CSA_PCS {
         return tripHandlers;
     }
 
+    /**
+     * Generates a StopHandler for each Stop in the TimeTable
+     * @param stops
+     * @return a list of the generated TripHandler
+     */
     private static Set<StopHandlerPCSA> generateStopHandlers(Set<StopCSA> stops) {
         Set<StopHandlerPCSA> stopHandlers = new HashSet<StopHandlerPCSA>();
         for(StopCSA s : stops){
@@ -248,6 +284,14 @@ public class CSA_PCS {
         return stopHandlers;
     }
     
+    /**
+     * 
+	 * finds a stop based on his coordinates
+     * @param lng
+     * @param lat
+     * @param stops
+     * @return the found Stop or null if none is found
+     */
     public static StopHandlerPCSA getStopFromCor (double lng, double lat, Set<StopHandlerPCSA> stops) {
 
         StopHandlerPCSA stop = null;

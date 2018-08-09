@@ -5,7 +5,6 @@ import java.util.GregorianCalendar;
 
 /**
  * This class implements the required connections for the Connection Scan Algorithm.It uses the Comparable Interface for the needed TreeSet.
- * TODO implement the comparable function
  * @author Christian
  *
  */
@@ -49,6 +48,21 @@ public class ConnectionCSA implements Comparable, Cloneable, java.io.Serializabl
         this.trip = trip;
     }
     
+    
+    /**
+     * constructor for the connection to reconstruct it from a Jackson2-serialized file.
+     * @param departureStop
+     * @param arrivalStop
+     * @param gtfsDepartureTime
+     * @param gtfsArrivalTime
+     * @param hDepartureTime
+     * @param minDepartureTime
+     * @param sDepartureTime
+     * @param hArrivalTime
+     * @param minArrivalTime
+     * @param sArrivalTime
+     * @param trip
+     */
     public ConnectionCSA(StopCSA departureStop, StopCSA arrivalStop, int gtfsDepartureTime, int gtfsArrivalTime, int hDepartureTime, int minDepartureTime, int sDepartureTime, int hArrivalTime, int minArrivalTime, int sArrivalTime, TripCSA trip){
         this.departureStop = departureStop;
         this.arrivalStop = arrivalStop;

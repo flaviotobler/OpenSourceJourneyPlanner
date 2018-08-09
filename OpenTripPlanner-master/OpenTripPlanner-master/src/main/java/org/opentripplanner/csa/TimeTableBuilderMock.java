@@ -3,8 +3,17 @@ package org.opentripplanner.csa;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ * Mockup function of the TimeTableBuilders. Returns a fixed TimeTable.
+ * @author Flavio
+ *
+ */
 public class TimeTableBuilderMock {
     
+	/**
+	 * Mockup function of the TimeTableBuilders.
+	 * @return Returns a fixed TimeTable.
+	 */
     public TimeTable createTimeTable(){
         /*Stop testStop = new Stop("Heerbrugg Dornacherhof", 9.63119748849971, 47.4142968347706);
         Stop testStop2 = new Stop("Heerbrugg Bahnhof", 9.62778389041958, 47.4108621837542);

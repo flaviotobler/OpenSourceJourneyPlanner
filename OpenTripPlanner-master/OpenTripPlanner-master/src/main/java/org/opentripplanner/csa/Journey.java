@@ -6,7 +6,7 @@ import java.util.Set;
 
 /**
  * The CSA returns the found results in form of Journeys. They exist of a StartFootpath and a set of JourneyPointers.
- * @author flavi
+ * @author Flavio
  */
 public class Journey implements Cloneable{
     
@@ -55,14 +55,26 @@ public class Journey implements Cloneable{
         return journeyPointers;
     }
     
+    /**
+     * Adds a JourneyPointer in the front of the JourneyPointer-List
+     * @param jp
+     */
     public void addJourneyPointerFront(JourneyPointer jp){
         journeyPointers.add(0,jp);
     }
     
+    /**
+     * Adds a JourneyPointer at a specific Index of the JourneyPointer-List
+     * @param index
+     * @param jp
+     */
     public void addJourneyPointerIndex(int index, JourneyPointer jp){
         journeyPointers.add(index,jp);
     }
     
+    /**
+     * Clone function to clone the object for the Jackson2 serializiation 
+     */
     public Object clone()throws CloneNotSupportedException{  
         return (Journey)super.clone();  
    }

@@ -46,8 +46,22 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+/**
+ * Mockup function of the JourneyToTripPlanConverter. It serialites the journeys and gives back a fixed TripPlan-Object.
+ * @author Flavio
+ *
+ */
+
 public class JourneyToTripPlanConverterMock {
     
+	/**
+	 * Mockup function of the JourneyToTripPlanConverter. It serialites the journeys and gives back a fixed TripPlan-Object.
+	 * @param journeys
+	 * @return fixed TripPlan-Object
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
     public static TripPlan generatePlan(Set<Journey> journeys) throws JsonGenerationException, JsonMappingException, IOException
     {
         ObjectMapper mapper = new ObjectMapper();

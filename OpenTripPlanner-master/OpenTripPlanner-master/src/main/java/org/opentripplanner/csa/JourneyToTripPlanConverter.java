@@ -37,7 +37,7 @@ import com.vividsolutions.jts.geom.Geometry;
  * The CSA gives back his results in form of Journeys. The Website needs the Result in form of a TripPlan
  * with Itinerarys. This Class converts Journeys to a TripPlan.
  * 
- * @author flavio
+ * @author Flavio
  */
 public class JourneyToTripPlanConverter {
     
@@ -247,7 +247,7 @@ public class JourneyToTripPlanConverter {
      * Calculates the Duration form the Start- and the Endtime.
      * @param start
      * @param end
-     * @return
+     * @return duration
      */
     private static double getDuration(Calendar start, Calendar end) {
         double duration = ((end.getTimeInMillis() - start.getTimeInMillis())/1000);
@@ -345,7 +345,7 @@ public class JourneyToTripPlanConverter {
     /**
      * Calculate the Distance between 2 Coordinates from a Footpath.
      * @param footpath
-     * @return
+     * @return distance
      */
     private static double getDistance(FootpathCSA footpath) {
         double lat1 = footpath.getDepartureStop().getLatitude();
@@ -369,7 +369,7 @@ public class JourneyToTripPlanConverter {
     /**
      * Converts Deg into Rad
      * @param deg
-     * @return
+     * @return rad
      */
     private static double deg2rad(double deg) {
         return (deg * Math.PI / 180.0);
@@ -378,7 +378,7 @@ public class JourneyToTripPlanConverter {
     /**
      * Converts Rad into Deg
      * @param rad
-     * @return
+     * @return deg
      */
     private static double rad2deg(double rad) {
         return (rad * 180 / Math.PI);

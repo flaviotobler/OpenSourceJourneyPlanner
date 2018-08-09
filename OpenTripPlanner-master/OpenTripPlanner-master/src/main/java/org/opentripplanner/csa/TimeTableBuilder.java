@@ -49,11 +49,10 @@ import com.google.common.collect.Sets;
 
 
 /**
- * This class gets the Information from the GTFS and generates the important objects that are needed for the Connection Scan Algorithm.
- * With the TimeTableStoreImpl we can getAllEntitiesForType(class xxx) so we can read the for example all the routes etc.
- * Now with the information we read we can generate all the need Classes for the with the information for the CSA.
- * 
- * (TripsCSA,StopCSA,FootpathCSA,ConnectionCSA)
+ * This class gets the Information from the GTFS and generates the important objects that are needed for the Connection Scan Algorithm, 
+ * and save them in a SerializedObjectFile. Alternativ the object can be loaded from the SerializedObjectFile.
+ * To switch between the different modes you need to adjust the code in the class "GtfsModule"
+ * in the Package "org.opentripplanner.graph_builder.module".
  * @author Christian
  *
  */
@@ -75,14 +74,18 @@ public class TimeTableBuilder {
     }
     
     /**
-     * This methode opens a store to load in the gtfs information with relations (dao). Then with the 
-     * @param gtfsBundle as object has the information where the gtfs is
-     * @throws IOException
+     * 
+     * @return the TimeTable
      */
     public TimeTable getTimeTable(){
         return tt;
     }
     
+    /**
+     * This methode opens a store to load in the gtfs information with relations (dao). Then with the 
+     * @param gtfsBundle as object has the information where the gtfs is
+     * @throws IOException
+     */
     public void loadFromGtfs(GtfsBundle gtfsBundle)throws JsonGenerationException, JsonMappingException, IOException {
 
         GenericDaoImpl store = new GenericDaoImpl();
@@ -372,6 +375,9 @@ public class TimeTableBuilder {
         
     } 
     
+    /**
+     * loads the Data from SerializedObjectFile to create the TimeTable
+     */
     public void loadFromSerializedObjectFile() throws JsonParseException, JsonMappingException, IOException{ //giveFilepath
     	try {
             FileInputStream fileIn = new FileInputStream("timetable.ser");
@@ -422,6 +428,9 @@ public class TimeTableBuilder {
         */
     }
     
+    /**
+     * reverses the ascending Connections and filles them into the descending Connection-Set
+     */
     public void createConnectionsDescending(){
         connectionsDescending = ((TreeSet<ConnectionCSA>)connectionsAscending).descendingSet();
     }

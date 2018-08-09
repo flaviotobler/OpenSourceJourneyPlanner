@@ -101,6 +101,10 @@ public class TripCSA implements java.io.Serializable {
         this.tripEnterConnection = tripEnterConnection;
     }
     
+    /**
+     * constructor for the Template Trip for generating connections
+     * @param tAAId
+     */
     public TripCSA(AgencyAndId tAAId) {  //constructor for Template Trip 
         this.tAAId = tAAId;
     }
@@ -454,12 +458,20 @@ public class TripCSA implements java.io.Serializable {
 		this.rAAId = rAAId;
 	}
 
-
+	
+	/**
+	 * 
+	 * @return the tripEnterConnection
+	 */
 	public ConnectionCSA getTripEnterConnection() {
 		return tripEnterConnection;
 	}
 
 
+	/**
+	 * Sets the tripEnterConnection
+	 * @param tripEnterConnection
+	 */
 	public void setTripEnterConnection(ConnectionCSA tripEnterConnection) {
 		this.tripEnterConnection = tripEnterConnection;
 	}

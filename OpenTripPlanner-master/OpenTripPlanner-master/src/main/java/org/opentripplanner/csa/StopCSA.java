@@ -34,6 +34,10 @@ public class StopCSA implements Cloneable, java.io.Serializable{
         this.sAAId = sAAId;
     }
     
+    /**
+     * constructor for the Template Stop for generating connections
+     * @param sAAId
+     */
     public StopCSA(AgencyAndId sAAId)  //constructor for Template Stop 
     {
         this.sAAId = sAAId;

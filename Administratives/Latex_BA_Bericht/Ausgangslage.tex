@@ -29,9 +29,9 @@ Der \hypertarget{dij}{Dijkstra-Algorithmus} \cite{dij_bell} ist ein auf einem Gr
 Der \hypertarget{A*}{A*-Algorithmus} \cite{dij_a} ist eine Erweiterung des Dijkstra-Algorithmus. Er durchsucht den Graphen nicht in alle Richtungen sondern sucht gezielt in die Richtung des Zielpunktes. Dadurch lässt sich die Performance verbessern.
 
 \subsection{Connection Scan Algorithmus}
-Der {\hypertarget{CSA}{Connect}ion Scan Algorithm} \cite{csa} , kurz CSA,  ist ein moderner Algorithmus zur Bearbeitung von Anfragen auf zeitplanbasierten Sytemen. Er basiert, im Gegensatz zu den gängigen Algorithmen wie z.B. dem Dijkstra-Algorithmus, nicht auf einem gewichteten Graphen. \newline
+Der \hypertarget{CSA}{Connection Scan Algorithm} \cite{csa} , kurz CSA,  ist ein moderner Algorithmus zur Bearbeitung von Anfragen auf zeitplanbasierten Sytemen. Er basiert, im Gegensatz zu den gängigen Algorithmen wie z.B. dem Dijkstra-Algorithmus, nicht auf einem gewichteten Graphen. \newline
 
-Es gibt zwei Arten des CSA. Zum einen den EACS (EarliestArrivalConnectionScan) welcher die frühestmögliche Ankunftszeit und wenn benötigt auch noch den dazugehörigen Journey zurückliefert. Zum anderen den PCS (ProfileConnectionScan) welcher alle möglichen Journeys berechnet und den besten Journey nach mehreren Kriterien sortieren kann. Beide sind darauf ausgelegt genau einen Journey zurückzugeben. \newline
+Es gibt zwei Arten des CSA. Zum einen den EAS (EarliestArrivalConnectionScan) welcher die frühestmögliche Ankunftszeit und wenn benötigt auch noch den dazugehörigen Journey zurückliefert. Zum anderen den PCS (ProfileConnectionScan) welcher alle möglichen Journeys berechnet und den besten Journey nach mehreren Kriterien sortieren kann. Beide sind darauf ausgelegt genau einen Journey zurückzugeben. \newline
 
 Der Algorithmus iteriert über eine nach Abfahrtszeit sortierte Liste aller Verbindungen. Dabei werden vom Start- oder Zielpunkt erreichbare Verbindungen markiert. Dadurch entsteht ein Netz aus Verbindungen, welches sich immer weiter aufspannt. Dies wird dann so lange wiederholt, bis ein Weg zwischen den beiden Punkten gefunden wurde. Danach gibt der Algorithmus entweder die früheste Ankunftszeit am Zielpunkt oder den besten Weg vom Startpunkt zum Zielpunkt zurück.
 

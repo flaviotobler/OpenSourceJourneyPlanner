@@ -149,6 +149,13 @@ public class PlannerResource extends RoutingResource {
             
             
             //TimeTable timeTable = new TimeTable("CSATimeTable.json");
+            
+            
+            
+            
+            //In this section, the algorithm can be selected by activating the appropriate line.
+            
+            
             //Set<Journey> journeys = CSAMock.createJourneys(timeTable, request);
             //Set<Journey> journeys = CSA_EAC.createJourneys(timeTable, request);
             Set<Journey> journeys = CSA_PCS.createJourneys(timeTable, request);

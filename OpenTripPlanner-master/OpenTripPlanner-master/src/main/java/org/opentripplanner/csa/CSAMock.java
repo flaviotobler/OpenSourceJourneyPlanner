@@ -15,8 +15,23 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+/**
+ * Mocking function which which serializes the TimeTable in it's parameter and gives back a fixed Journey.
+ * @author Flavio
+ *
+ */
+
 public class CSAMock {
     
+	/**
+	 *  Mocking function which which serializes the TimeTable in it's parameter and gives back a fixed Journey.
+	 * @param timeTable
+	 * @param request
+	 * @return fixed Journey
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
     public static Set<Journey> createJourneys(TimeTable timeTable, RoutingRequest request) throws JsonGenerationException, JsonMappingException, IOException{
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);

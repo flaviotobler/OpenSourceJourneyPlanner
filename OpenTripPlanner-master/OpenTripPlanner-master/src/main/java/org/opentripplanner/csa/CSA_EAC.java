@@ -14,10 +14,26 @@ import org.opentripplanner.routing.core.RoutingRequest;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
+/**
+ * This class is the implementation of the Earliest Arrival Connection Scan Algorithm. 
+ * To switch between the different algorithms you need to adjust the code in the class "PlannerResource"
+ * in the Package "org.opentripplanner.api.resource".
+ * @author Flavio Tobler
+ *
+ */
+
 public class CSA_EAC {
     
+	/**
+	 * implementation of the Earliest Arrival Connection Scan Algorithm.
+	 * @param timeTable
+	 * @param request
+	 * @return the earliest arriving Journey
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
     public static Set<Journey> createJourneys(TimeTable timeTable, RoutingRequest request) throws JsonGenerationException, JsonMappingException, IOException{
-        
         Set<StopHandlerCSA> stops = generateStopHandlers(timeTable.getStops());
         Set<TripHandlerCSA> trips = generateTripHandlers(timeTable.getTrips());
         Date dateTime = request.getDateTime();
@@ -36,7 +52,6 @@ public class CSA_EAC {
         Calendar startTime = new GregorianCalendar();
         startTime.setTime(dateTime);
         startStop.setStopTime(startTime);
-        // Todo startpunkt für schleife finden
         for(ConnectionCSA c : timeTable.getConnectionsAscending())
         {
             tempTime.setHours(c.gethDepartureTime());
@@ -96,6 +111,12 @@ public class CSA_EAC {
         
     }
     
+    /**
+     * Sets the JourneyPointer for a StopHandler
+     * @param stop
+     * @param stops
+     * @param journeyPointer
+     */
     private static void setStopJP(StopCSA stop, Set<StopHandlerCSA> stops,
             JourneyPointer journeyPointer) {
         for(StopHandlerCSA sh : stops){
@@ -106,6 +127,12 @@ public class CSA_EAC {
         
     }
 
+    /**
+     * Sets the StopTime for a StopHandler
+     * @param stop
+     * @param stops
+     * @param time
+     */
     private static void setStopTime(StopCSA stop, Set<StopHandlerCSA> stops,
             Calendar time) {
         for(StopHandlerCSA sh : stops){
@@ -115,7 +142,12 @@ public class CSA_EAC {
         }
         
     }
-
+    
+    /**
+     * Sets the TripFlag for a TripHandler
+     * @param trip
+     * @param trips
+     */
     private static void setTripFlag(TripCSA trip, Set<TripHandlerCSA> trips) {
         for(TripHandlerCSA th : trips){
             if(th.getTrip() == trip){
@@ -125,6 +157,12 @@ public class CSA_EAC {
         
     }
 
+    /**
+     * Finds a specific StopHandler
+     * @param stop
+     * @param stops
+     * @return the found StopHandler or null if none is found.
+     */
     private static StopHandlerCSA getStop(StopCSA stop, Set<StopHandlerCSA> stops) {
         for(StopHandlerCSA sh : stops){
             if(sh.getStop() == stop){
@@ -134,6 +172,12 @@ public class CSA_EAC {
         return null;
     }
 
+    /**
+     * Finds a specific TripHandler
+     * @param trip
+     * @param trips
+     * @return the found TripHandler or null if none is found
+     */
     private static TripHandlerCSA getTrip(TripCSA trip, Set<TripHandlerCSA> trips) {
         for(TripHandlerCSA th : trips){
             if(th.getTrip() == trip){
@@ -143,6 +187,11 @@ public class CSA_EAC {
         return null;
     }
 
+    /**
+     * Generates a TripHandler for each Trip in the TimeTable
+     * @param trips
+     * @return a list of the generated TripHandler
+     */
     private static Set<TripHandlerCSA> generateTripHandlers(Set<TripCSA> trips) {
         Set<TripHandlerCSA> tripHandlers = new HashSet<TripHandlerCSA>();
         for(TripCSA t : trips){
@@ -152,6 +201,11 @@ public class CSA_EAC {
         return tripHandlers;
     }
 
+    /**
+     * Generates a StopHandler for each Stop in the TimeTable
+     * @param stops
+     * @return a list of the generated TripHandler
+     */
     private static Set<StopHandlerCSA> generateStopHandlers(Set<StopCSA> stops) {
         Set<StopHandlerCSA> stopHandlers = new HashSet<StopHandlerCSA>();
         for(StopCSA s : stops){
@@ -161,6 +215,14 @@ public class CSA_EAC {
         return stopHandlers;
     }
 
+    /**
+     * 
+	 * finds a stop based on his coordinates
+     * @param lng
+     * @param lat
+     * @param stops
+     * @return the found Stop or null if none is found
+     */
     public static StopHandlerCSA getStopFromCor (double lng, double lat, Set<StopHandlerCSA> stops) {
 
         StopHandlerCSA stop = null;

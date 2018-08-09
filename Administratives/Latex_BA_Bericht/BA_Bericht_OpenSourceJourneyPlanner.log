@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.12)  6 AUG 2018 15:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.12)  7 AUG 2018 15:36
 entering extended mode
 **./BA_Bericht_OpenSourceJourneyPlanner.tex
 (BA_Bericht_OpenSourceJourneyPlanner.tex
@@ -2079,14 +2079,14 @@ Package babel Info: Redefining ngerman shorthand "~
  [31
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 89.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 89.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 91.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 91.
 
 (BA_Bericht_OpenSourceJourneyPlanner.aux (abstract.aux) (Einleitung.aux)
 (Aufgabenstellung.aux) (Ausgangslage.aux) (Methode.aux) (CSAfuerOTP.aux)
 (Produkt.aux) (Resultate.aux) (Fazit.aux) (literatur.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 89.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 89.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 91.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 91.
 Package rerunfilecheck Info: File `BA_Bericht_OpenSourceJourneyPlanner.out' has
  not changed.
 (rerunfilecheck)             Checksum: 3950917A01200FB38B0E3880660560C4;3790.
@@ -2117,7 +2117,7 @@ msy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb
 ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on BA_Bericht_OpenSourceJourneyPlanner.pdf (36 pages, 943017 byt
+Output written on BA_Bericht_OpenSourceJourneyPlanner.pdf (36 pages, 943011 byt
 es).
 PDF statistics:
  673 PDF objects out of 1000 (max. 8388607)
